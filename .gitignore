@@ -1,0 +1,8 @@
+# Ignorar outros arquivos ou pastas desnecessárias
+.git/
+Library/
+Logs/
+Temp/
+UserSettings/
+cuzcuz.sln
+Build/
