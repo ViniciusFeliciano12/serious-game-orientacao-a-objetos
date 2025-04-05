@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "serious game orientacao a objetos.sln"
+    "dotnet.defaultSolution": "serious-game-orientacao-a-objetos.sln"
 }
