@@ -1,75 +1,130 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-/*
-    This file has a commented version with details about how each line works. 
-    The commented version contains code that is easier and simpler to read. This file is minified.
-*/
-
-/// <summary>
-/// Camera movement script for third person games.
-/// This Script should not be applied to the camera! It is attached to an empty object and inside
-/// it (as a child object) should be your game's MainCamera.
-/// </summary>
-public class CameraController : MonoBehaviour
+public class WowCamera : MonoBehaviour
 {
+	public Transform target;
 
-    [Tooltip("Enable to move the camera by holding the right mouse button. Does not work with joysticks.")]
-    public bool clickToMoveCamera = false;
-    [Tooltip("Enable zoom in/out when scrolling the mouse wheel. Does not work with joysticks.")]
-    public bool canZoom = true;
-    [Space]
-    [Tooltip("The higher it is, the faster the camera moves. It is recommended to increase this value for games that uses joystick.")]
-    public float sensitivity = 5f;
+	public float targetHeight = 1.7f;
+	public float distance = 5.0f;
+	public float offsetFromWall = 0.1f;
 
-    [Tooltip("Camera Y rotation limits. The X axis is the maximum it can go up and the Y axis is the maximum it can go down.")]
-    public Vector2 cameraLimit = new Vector2(-45, 40);
+	public float maxDistance = 20;
+	public float minDistance = .6f;
+	public float speedDistance = 5;
 
-    float mouseX;
-    float mouseY;
-    float offsetDistanceY;
+	public float xSpeed = 200.0f;
+	public float ySpeed = 200.0f;
 
-    Transform player;
+	public int yMinLimit = -40;
+	public int yMaxLimit = 80;
 
-    void Start()
-    {
+	public int zoomRate = 40;
 
-        player = GameObject.FindWithTag("Player").transform;
-        offsetDistanceY = transform.position.y;
+	public float rotationDampening = 3.0f;
+	public float zoomDampening = 5.0f;
 
-        // Lock and hide cursor with option isn't checked
-        if ( ! clickToMoveCamera )
-        {
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-            UnityEngine.Cursor.visible = false;
-        }
+	public LayerMask collisionLayers = -1;
 
-    }
+	private float xDeg = 0.0f;
+	private float yDeg = 0.0f;
+	private float currentDistance;
+	private float desiredDistance;
+	private float correctedDistance;
+
+	void Start ()
+	{
+		Vector3 angles = transform.eulerAngles;
+		xDeg = angles.x;
+		yDeg = angles.y;
+
+		currentDistance = distance;
+		desiredDistance = distance;
+		correctedDistance = distance;
+
+		// Make the rigid body not change rotation
+		if (this.gameObject.GetComponent<Rigidbody>())
+			this.gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+	}
+
+	/**
+     * Camera logic on LateUpdate to only update after all character movement logic has been handled.
+     */
+	void LateUpdate ()
+	{
+		Vector3 vTargetOffset;
+
+		// Don't do anything if target is not defined
+		if (!target)
+			return;
+
+		// If either mouse buttons are down, let the mouse govern camera position
+		if (GUIUtility.hotControl == 0) {
+			if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+			{
+				xDeg += Input.GetAxis ("Mouse X") * xSpeed * 0.02f;
+				yDeg -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
+			}
+
+			// otherwise, ease behind the target if any of the directional keys are pressed
+			else if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+			{
+				float targetRotationAngle = target.eulerAngles.y;
+				float currentRotationAngle = transform.eulerAngles.y;
+				xDeg = Mathf.LerpAngle (currentRotationAngle, targetRotationAngle, rotationDampening * Time.deltaTime);
+			}
+		}
 
 
-    void Update()
-    {
+		// calculate the desired distance
+		desiredDistance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs (desiredDistance) * speedDistance;
+		desiredDistance = Mathf.Clamp (desiredDistance, minDistance, maxDistance);
 
-        // Follow player - camera offset
-        transform.position = player.position + new Vector3(0, offsetDistanceY, 0);
+		yDeg = ClampAngle(yDeg, yMinLimit, yMaxLimit);
 
-        // Set camera zoom when mouse wheel is scrolled
-        if( canZoom && Input.GetAxis("Mouse ScrollWheel") != 0 )
-            Camera.main.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * sensitivity * 2;
-        // You can use Mathf.Clamp to set limits on the field of view
+		// set camera rotation
+		Quaternion rotation = Quaternion.Euler(yDeg, xDeg, 0);
+		correctedDistance = desiredDistance;
 
-        // Checker for right click to move camera
-        if ( clickToMoveCamera )
-            if (Input.GetAxisRaw("Fire2") == 0)
-                return;
-            
-        // Calculate new position
-        mouseX += Input.GetAxis("Mouse X") * sensitivity;
-        mouseY += Input.GetAxis("Mouse Y") * sensitivity;
-        // Apply camera limts
-        mouseY = Mathf.Clamp(mouseY, cameraLimit.x, cameraLimit.y);
+		// calculate desired camera position
+		vTargetOffset = new Vector3 (0, -targetHeight, 0);
+		Vector3 position = target.position - (rotation * Vector3.forward * desiredDistance + vTargetOffset);
 
-        transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
+		// check for collision using the true target's desired registration point as set by user using height
+		RaycastHit collisionHit;
+		Vector3 trueTargetPosition = new Vector3(target.position.x, target.position.y, target.position.z) - vTargetOffset;
 
-    }
+		// if there was a collision, correct the camera position and calculate the corrected distance
+		bool isCorrected = false;
+		if (Physics.Linecast (trueTargetPosition, position, out collisionHit, collisionLayers.value))
+		{
+			// calculate the distance from the original estimated position to the collision location,
+			// subtracting out a safety "offset" distance from the object we hit.  The offset will help
+			// keep the camera from being right on top of the surface we hit, which usually shows up as
+			// the surface geometry getting partially clipped by the camera's front clipping plane.
+			correctedDistance = Vector3.Distance (trueTargetPosition, collisionHit.point) - offsetFromWall;
+			isCorrected = true;
+		}
+
+		// For smoothing, lerp distance only if either distance wasn't corrected, or correctedDistance is more than currentDistance
+		currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp (currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance;
+
+		// keep within legal limits
+		currentDistance = Mathf.Clamp (currentDistance, minDistance, maxDistance);
+
+		// recalculate position based on the new currentDistance
+		position = target.position - (rotation * Vector3.forward * currentDistance + vTargetOffset);
+
+		transform.rotation = rotation;
+		transform.position = position;
+	}
+
+	private static float ClampAngle (float angle, float min, float max)
+	{
+		if (angle < -360)
+			angle += 360;
+		if (angle > 360)
+			angle -= 360;
+		return Mathf.Clamp (angle, min, max);
+	}
 }
