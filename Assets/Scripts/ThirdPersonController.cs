@@ -84,7 +84,7 @@ public class ThirdPersonController : MonoBehaviour
 
             // Crouch
             // Note: The crouch animation does not shrink the character's collider
-            animator.SetBool("crouch", isCrouching);
+            //animator.SetBool("crouch", isCrouching);
             
             // Run
             float minimumSpeed = 0.9f;
@@ -96,7 +96,7 @@ public class ThirdPersonController : MonoBehaviour
 
             // Sprint
             isSprinting = cc.velocity.magnitude > minimumSpeed && inputSprint;
-            animator.SetBool("sprint", isSprinting );
+            //animator.SetBool("sprint", isSprinting );
 
         }
 
