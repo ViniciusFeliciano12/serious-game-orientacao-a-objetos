@@ -85,7 +85,7 @@ public class ThirdPersonController : MonoBehaviour
         }
 
         // Toggle Combat Mode
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !isJumping)
         {
             combatMode = !combatMode;
             if (animator != null)
