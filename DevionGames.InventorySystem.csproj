@@ -1041,9 +1041,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DevionGames.Utilities.csproj" />
-    <ProjectReference Include="DevionGames.UIWidgets.csproj" />
-    <ProjectReference Include="DevionGames.Triggers.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
