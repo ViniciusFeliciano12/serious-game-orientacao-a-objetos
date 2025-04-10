@@ -1,11 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour
 {
+    public static PauseController Instance { get; private set; }
+
     public GameObject Panel;
-    private bool pausedGame = false;
+    public bool pausedGame = false;
+    public bool pausedByMinigame = false;
+
+    public bool timeStopped 
+    {
+        get => pausedGame || pausedByMinigame;
+    }
+
+    private void Awake()
+    {
+        if(Instance!= null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         Panel.SetActive(false);
@@ -19,9 +39,21 @@ public class PauseController : MonoBehaviour
         }
     }
 
+    public void ChangeFlowTime(){
+        Time.timeScale = timeStopped ? 0.00001f : 1f;
+    }
+
     public void PauseUnPause(){
+        if (pausedByMinigame){
+            return;
+        }
+        
         pausedGame = !pausedGame;
+        ChangeFlowTime();
         Panel.SetActive(pausedGame);
-        Time.timeScale = pausedGame ? 0.00001f : 1f;
+    }
+
+    public void BackToMenu(){
+        SceneManager.LoadScene(0);
     }
 }

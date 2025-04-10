@@ -55,6 +55,9 @@ public class ThirdPersonController : MonoBehaviour
 
     void Update()
     {
+        if (PauseController.Instance.timeStopped)
+            return;
+
         // Input checkers
         inputHorizontal = Input.GetAxis("Horizontal");
         inputVertical = Input.GetAxis("Vertical");
@@ -122,6 +125,9 @@ public class ThirdPersonController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (PauseController.Instance.timeStopped)
+            return;
+
         float velocityAdittion = 0;
         if (isSprinting)
             velocityAdittion = sprintAdittion;
