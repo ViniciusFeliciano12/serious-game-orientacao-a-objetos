@@ -68,23 +68,27 @@
     <Compile Include="Assets\Scripts\ScriptableObject\GameDatabase.cs" />
     <Compile Include="Assets\Scripts\Interaction\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Interaction\DoorInteraction.cs" />
+    <Compile Include="Assets\Scripts\SkillTree\DraggableText.cs" />
     <Compile Include="Assets\Scripts\PauseController.cs" />
+    <Compile Include="Assets\Scripts\SkillTree\DropZone.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_DestroyTimed.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_RandomScale.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_TrailFade.cs" />
     <Compile Include="Assets\Scripts\SkillTree\UILineConnector.cs" />
     <Compile Include="Assets\Scripts\ScriptableObject\ItemObject.cs" />
+    <Compile Include="Assets\Scripts\WowCameraController.cs" />
     <Compile Include="Assets\7th Side\Samples\Showcase\FlyCam.cs" />
     <Compile Include="Assets\Scripts\SkillTree\SkillTreeController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_AnimSpeedRandomizer.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_PrefabGenerator.cs" />
+    <Compile Include="Assets\Scripts\SkillTree\SkillTreeMinigameSpawner.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactor.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionText.cs" />
     <Compile Include="Assets\Scripts\Interaction\RecipeInteraction.cs" />
+    <Compile Include="Assets\Scripts\SkillTree\SkillTreeButton.cs" />
     <Compile Include="Assets\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_Rotate.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
