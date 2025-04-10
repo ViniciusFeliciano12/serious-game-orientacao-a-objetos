@@ -74,6 +74,7 @@
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_RandomScale.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_TrailFade.cs" />
     <Compile Include="Assets\Scripts\SkillTree\UILineConnector.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObject\ItemObject.cs" />
     <Compile Include="Assets\7th Side\Samples\Showcase\FlyCam.cs" />
     <Compile Include="Assets\Scripts\SkillTree\SkillTreeController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_AnimSpeedRandomizer.cs" />

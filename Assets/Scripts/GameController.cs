@@ -1,23 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static GameDatabase;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance { get; private set; }
+    public static GameController Instance { get; private set; }
 
     public GameDatabase Database; 
-
+    private bool PlayerCanMove = true;
     private void Awake()
     {
-        if(instance!= null && instance != this)
+        Database.ResetDatabase();
+
+        if(Instance!= null && Instance != this)
         {
             Destroy(this);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
@@ -32,17 +36,29 @@ public class GameController : MonoBehaviour
         
     }
 
-    public bool VerifyRecipesUnlocked(Recipes recipe){
-        return recipe switch
-        {
-            Recipes.Key => Database.recipeKeyLearned,
-            Recipes.Sword => Database.recipeSwordLearned,
-            _ => false,
-        };
+    public void UpdatePlayerMovement(){
+        PlayerCanMove = !PlayerCanMove;
     }
 
-    public enum Recipes{
-        Key,
-        Sword
+    public bool CanPlayerMove(){
+        return PlayerCanMove;
+    }
+
+    public void AddItemFound(ItemDatabase item){
+        Database.AddItem(item);
+        SkillTreeController.Instance.VerifyButtons();
+    }
+
+    public void AddItemLearned(ItemEnumerator item){
+        Database.LearnItem(item);
+        SkillTreeController.Instance.VerifyButtons();
+    }
+
+    public bool VerifyItemFound(ItemEnumerator recipe){
+        return Database.VerifyItemFound(recipe);
+    }
+
+    public bool VerifyItemLearned(ItemEnumerator recipe){
+        return Database.VerifyItemLearned(recipe);
     }
 }
