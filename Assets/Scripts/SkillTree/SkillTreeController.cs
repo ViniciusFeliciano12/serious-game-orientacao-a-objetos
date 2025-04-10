@@ -23,7 +23,7 @@ public class SkillTreeController : MonoBehaviour
         }
     }
 
-    private bool isActive = false;
+    public GameObject PointAndClickCanvas;
     public GameObject SkillTreePanel;
     private Volume GlobalVolume;
 
@@ -33,7 +33,7 @@ public class SkillTreeController : MonoBehaviour
     {
         buttons = SkillTreePanel.GetComponentsInChildren<Button>();
         GlobalVolume = FindObjectOfType<Volume>();
-        SkillTreePanel.SetActive(isActive);
+        SkillTreePanel.SetActive(PauseController.Instance.pausedByMinigame);
 
         VerifyButtons();
     }
@@ -41,15 +41,23 @@ public class SkillTreeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseController.Instance.pausedGame){
+            return;
+        }
+        
         if(Input.GetKeyDown(KeyCode.I)){
-            isActive = !isActive;
-            SkillTreePanel.SetActive(isActive);
+            PauseController.Instance.pausedByMinigame = !PauseController.Instance.pausedByMinigame;
+
+            SkillTreePanel.SetActive(PauseController.Instance.pausedByMinigame);
+            PointAndClickCanvas.SetActive(false);
+
+            PauseController.Instance.ChangeFlowTime();
 
             if (GlobalVolume.profile.TryGet(out DepthOfField dof)){
-                dof.focusDistance.overrideState = isActive;
+                dof.focusDistance.overrideState = PauseController.Instance.pausedByMinigame;
             }
 
-            Debug.Log("Skill tree " + (isActive ? "active" : "inactive"));
+            Debug.Log("Skill tree " + (PauseController.Instance.pausedByMinigame ? "active" : "inactive"));
         }
     }
 
