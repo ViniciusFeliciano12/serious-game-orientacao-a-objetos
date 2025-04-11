@@ -28,7 +28,7 @@ public class PauseController : MonoBehaviour
 
     void Start()
     {
-        Panel = GameObject.Find("PausePanel");
+        Panel = FindInactive.FindUIElement("PausePanel");
         Panel.SetActive(false);
     }
 

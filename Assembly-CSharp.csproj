@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\SkillTree\UILineConnector.cs" />
     <Compile Include="Assets\Scripts\ScriptableObject\ItemObject.cs" />
     <Compile Include="Assets\Scripts\WowCameraController.cs" />
+    <Compile Include="Assets\Scripts\Utils\FindInactive.cs" />
     <Compile Include="Assets\7th Side\Samples\Showcase\FlyCam.cs" />
     <Compile Include="Assets\Scripts\SkillTree\SkillTreeController.cs" />
     <Compile Include="Assets\Scripts\SkillTree\LearnNewRecipeMinigameController.cs" />

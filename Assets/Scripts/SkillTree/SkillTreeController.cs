@@ -31,7 +31,7 @@ public class SkillTreeController : MonoBehaviour
 
     void Start()
     {
-        SkillTreePanel = GameObject.Find("SkillTreePanel");
+        SkillTreePanel = FindInactive.FindUIElement("SkillTreePanel");
         buttons = SkillTreePanel.GetComponentsInChildren<Button>();
         GlobalVolume = FindObjectOfType<Volume>();
         SkillTreePanel.SetActive(false);

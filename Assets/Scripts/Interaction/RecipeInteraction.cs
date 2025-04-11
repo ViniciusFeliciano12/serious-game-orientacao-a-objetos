@@ -26,6 +26,7 @@ public class RecipeInteraction : MonoBehaviour, IInteractable
 
             GameController.Instance.AddItemFound(RecipeItem);
             InteractionText.instance.SetTextTimeout("Pegou receita nova! Aperte I para verificar sua árvore de habilidades");
+            CharacterController.Instance.animator.SetTrigger("Gathering");
             Destroy(gameObject);
         }
     }
