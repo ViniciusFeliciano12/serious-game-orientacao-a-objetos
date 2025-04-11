@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using static GameDatabase;
+using static PauseController;
 
 public class SkillTreeController : MonoBehaviour
 {
@@ -23,17 +24,17 @@ public class SkillTreeController : MonoBehaviour
         }
     }
 
-    public GameObject PointAndClickCanvas;
-    public GameObject SkillTreePanel;
+    private GameObject SkillTreePanel;
     private Volume GlobalVolume;
 
     private Button[] buttons;
 
     void Start()
     {
+        SkillTreePanel = GameObject.Find("SkillTreePanel");
         buttons = SkillTreePanel.GetComponentsInChildren<Button>();
         GlobalVolume = FindObjectOfType<Volume>();
-        SkillTreePanel.SetActive(PauseController.Instance.pausedByMinigame);
+        SkillTreePanel.SetActive(false);
 
         VerifyButtons();
     }
@@ -41,23 +42,20 @@ public class SkillTreeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseController.Instance.pausedGame){
-            return;
-        }
-        
         if(Input.GetKeyDown(KeyCode.I)){
-            PauseController.Instance.pausedByMinigame = !PauseController.Instance.pausedByMinigame;
+            HandleSkillTree();
+        }
+    }
 
-            SkillTreePanel.SetActive(PauseController.Instance.pausedByMinigame);
-            PointAndClickCanvas.SetActive(false);
+    public void HandleSkillTree(){
+        if(PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree)){
+            LearnNewRecipeMinigameController.Instance.ClearFields();
 
-            PauseController.Instance.ChangeFlowTime();
+            SkillTreePanel.SetActive(PauseController.Instance.pausedBySkillTree);
 
             if (GlobalVolume.profile.TryGet(out DepthOfField dof)){
-                dof.focusDistance.overrideState = PauseController.Instance.pausedByMinigame;
+                dof.focusDistance.overrideState = PauseController.Instance.pausedBySkillTree;
             }
-
-            Debug.Log("Skill tree " + (PauseController.Instance.pausedByMinigame ? "active" : "inactive"));
         }
     }
 

@@ -44,6 +44,7 @@ public class DropZone : MonoBehaviour, IDropHandler
 
                 if (backgroundImage != null)
                     backgroundImage.color = correctColor;
+                LearnNewRecipeMinigameController.Instance.VerifyComplete();
             }
             else
             {

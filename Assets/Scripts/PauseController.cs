@@ -5,13 +5,13 @@ public class PauseController : MonoBehaviour
 {
     public static PauseController Instance { get; private set; }
 
-    public GameObject Panel;
+    private GameObject Panel;
     public bool pausedGame = false;
-    public bool pausedByMinigame = false;
+    public bool pausedBySkillTree = false;
 
     public bool timeStopped 
     {
-        get => pausedGame || pausedByMinigame;
+        get => pausedGame || pausedBySkillTree;
     }
 
     private void Awake()
@@ -28,6 +28,7 @@ public class PauseController : MonoBehaviour
 
     void Start()
     {
+        Panel = GameObject.Find("PausePanel");
         Panel.SetActive(false);
     }
 
@@ -39,21 +40,36 @@ public class PauseController : MonoBehaviour
         }
     }
 
-    public void ChangeFlowTime(){
+    public bool ChangeFlowTime(PauseMode mode){
+        switch(mode){
+            case PauseMode.Pause: 
+                if (!pausedBySkillTree)
+                    pausedGame = !pausedGame; 
+                else return false;
+            break;
+
+            case PauseMode.SkillTree: 
+                if(!pausedGame)
+                    pausedBySkillTree = !pausedBySkillTree; 
+                else return false;
+            break;
+        }
+
         Time.timeScale = timeStopped ? 0.00001f : 1f;
+        return true;
     }
 
     public void PauseUnPause(){
-        if (pausedByMinigame){
-            return;
-        }
-        
-        pausedGame = !pausedGame;
-        ChangeFlowTime();
+        ChangeFlowTime(PauseMode.Pause);
         Panel.SetActive(pausedGame);
     }
 
     public void BackToMenu(){
         SceneManager.LoadScene(0);
+    }
+
+    public enum PauseMode{
+        Pause,
+        SkillTree
     }
 }
