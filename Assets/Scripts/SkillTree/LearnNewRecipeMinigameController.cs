@@ -40,11 +40,11 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     private void Start()
     {
-        Title = GameObject.Find("Nome").GetComponent<TextMeshProUGUI>();
-        spawnArea = GameObject.Find("PointAndClickMinigame").GetComponent<RectTransform>();
-        propriedadesArea = GameObject.Find("PropriedadesArea").GetComponent<RectTransform>();
-        metodosArea = GameObject.Find("MetodosArea").GetComponent<RectTransform>();
-        learnButton = GameObject.Find("AprenderButton").GetComponent<Button>();
+        Title = FindInactive.FindUIElement("Nome").GetComponent<TextMeshProUGUI>();
+        spawnArea = FindInactive.FindUIElement("PointAndClickMinigame").GetComponent<RectTransform>();
+        propriedadesArea = FindInactive.FindUIElement("PropriedadesArea").GetComponent<RectTransform>();
+        metodosArea = FindInactive.FindUIElement("MetodosArea").GetComponent<RectTransform>();
+        learnButton = FindInactive.FindUIElement("AprenderButton").GetComponent<Button>();
 
         learnButton.gameObject.SetActive(false);
         spawnArea.gameObject.SetActive(false);

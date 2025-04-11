@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Main script for third-person movement of the character in the game.
-/// Make sure that the object that will receive this script (the player) 
-/// has the Player tag and the Character Controller component.
-/// </summary>
-public class ThirdPersonController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
+    public static CharacterController Instance { get; private set; }
+
     [Tooltip("Speed ​​at which the character moves. It is not affected by gravity or jumping.")]
     public float velocity = 5f;
     [Tooltip("This value is added to the speed value while the character is sprinting.")]
@@ -17,6 +14,7 @@ public class ThirdPersonController : MonoBehaviour
     public float jumpTime = 0.85f;
     [Space]
     [Tooltip("Force that pulls the player down. Changing this value causes all movement, jumping and falling to be changed as well.")]
+
     public float gravity = 9.8f;
     float jumpElapsedTime = 0;
     public float transitionSpeed = 5f; 
@@ -41,12 +39,24 @@ public class ThirdPersonController : MonoBehaviour
     float attackCooldown = 0f;
     float attackDuration = 0.5f;
 
-    Animator animator;
-    CharacterController cc;
+    public Animator animator;
+    UnityEngine.CharacterController cc;
+
+    private void Awake()
+    {
+        if(Instance!= null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
-        cc = GetComponent<CharacterController>();
+        cc = GetComponent<UnityEngine.CharacterController>();
         animator = GetComponent<Animator>();
 
         if (animator == null)
