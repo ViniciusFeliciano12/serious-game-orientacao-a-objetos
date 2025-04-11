@@ -2,23 +2,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using static GameDatabase;
 
-public class SkillTreeMinigameSpawner : MonoBehaviour
+public class LearnNewRecipeMinigameController : MonoBehaviour
 {
-    public static SkillTreeMinigameSpawner Instance { get; private set; }
+    public static LearnNewRecipeMinigameController Instance { get; private set; }
 
     public GameObject fieldPrefab;
-    public RectTransform propriedadesArea;
-    public RectTransform metodosArea;
-
-    public List<string> propriedades;
-    public List<string> metodos;
-
     public GameObject wordPrefab;
-    public RectTransform spawnArea;
-    public List<string> palavras;
 
-    public float padding = 20f; // margem mínima nas bordas
+    private RectTransform propriedadesArea;
+    private RectTransform metodosArea;
+    private RectTransform spawnArea;
+    private Button learnButton;
+    
+    private List<string> Propriedades;
+    private List<string> Metodos;
+    private List<string> Palavras;  
+
+    private ItemEnumerator ItemID;
+    private int correctWords = 0;
+    private TextMeshProUGUI Title;
+    private float padding = 20f;
 
     private void Awake()
     {
@@ -34,13 +40,45 @@ public class SkillTreeMinigameSpawner : MonoBehaviour
 
     private void Start()
     {
-        
+        Title = GameObject.Find("Nome").GetComponent<TextMeshProUGUI>();
+        spawnArea = GameObject.Find("PointAndClickMinigame").GetComponent<RectTransform>();
+        propriedadesArea = GameObject.Find("PropriedadesArea").GetComponent<RectTransform>();
+        metodosArea = GameObject.Find("MetodosArea").GetComponent<RectTransform>();
+        learnButton = GameObject.Find("AprenderButton").GetComponent<Button>();
+
+        learnButton.gameObject.SetActive(false);
+        spawnArea.gameObject.SetActive(false);
+    }
+
+    public void LearnSkill(){
+        GameController.Instance.AddItemLearned(ItemID);
+        SkillTreeController.Instance.HandleSkillTree();
+    }
+
+    public void StartNewGame(string title, ItemEnumerator itemID, List<string> palavras, List<string> propriedades, List<string> metodos){
+        correctWords = 0;
+        Title.text = title;
+        ItemID = itemID;
+        Palavras = palavras;
+        Propriedades = propriedades;
+        Metodos = metodos;
+
+        ClearFields();
+        Spawn();
+
+        learnButton.gameObject.SetActive(false);
+        spawnArea.gameObject.SetActive(true);
+    }
+
+    public void VerifyComplete(){
+        correctWords++;
+        learnButton.gameObject.SetActive(correctWords == Propriedades.Count + Metodos.Count);
     }
 
     public void Spawn(){
         SpawnPalavras();
-        SpawnCampos(propriedades, propriedadesArea);
-        SpawnCampos(metodos, metodosArea);
+        SpawnCampos(Propriedades, propriedadesArea);
+        SpawnCampos(Metodos, metodosArea);
     }
 
     public void ClearFields()
@@ -63,6 +101,8 @@ public class SkillTreeMinigameSpawner : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+
+        spawnArea.gameObject.SetActive(false);
     }
 
     public void SpawnCampos(List<string> palavras, RectTransform parentArea)
@@ -76,7 +116,7 @@ public class SkillTreeMinigameSpawner : MonoBehaviour
 
     public void SpawnPalavras()
     {
-        foreach (string palavra in palavras)
+        foreach (string palavra in Palavras)
         {
             GameObject wordObj = Instantiate(wordPrefab, spawnArea);
             wordObj.GetComponentInChildren<TextMeshProUGUI>().text = palavra;
