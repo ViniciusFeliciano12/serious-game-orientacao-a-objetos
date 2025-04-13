@@ -50,6 +50,7 @@ public class SkillTreeController : MonoBehaviour
     public void HandleSkillTree(){
         if(PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree)){
             LearnNewRecipeMinigameController.Instance.ClearFields();
+            InventoryController.Instance.ResetCraft();
 
             SkillTreePanel.SetActive(PauseController.Instance.pausedBySkillTree);
 
@@ -62,7 +63,7 @@ public class SkillTreeController : MonoBehaviour
     public void VerifyButtons(){
 
         for(int count = 0; count < buttons.Count(); count++){
-            buttons[count].gameObject.SetActive(GameController.Instance.VerifyItemFound((ItemEnumerator)count));
+            buttons[count].gameObject.SetActive(GameController.Instance.VerifyItemFound((SkillEnumerator)count));
 
             var buttonIcon = buttons[count].transform.Find("Icon");
         
@@ -71,7 +72,7 @@ public class SkillTreeController : MonoBehaviour
                 if (buttonIcon.TryGetComponent<RawImage>(out var buttonImage))
                 {
                     buttonImage.color = new Color(buttonImage.color.r, buttonImage.color.g, buttonImage.color.b, 
-                    GameController.Instance.VerifyItemLearned((ItemEnumerator)count) ? 1f : 0.2f);
+                    GameController.Instance.VerifyItemLearned((SkillEnumerator)count) ? 1f : 0.2f);
                 }
                 else{
                     Debug.Log("Não encontrado componente RawImage do \"Icon\" do botão da Skill Tree");
