@@ -6,7 +6,7 @@ using static GameDatabase;
 public class SkillTreeButton : MonoBehaviour
 {
     public string title;
-    public ItemEnumerator itemID;
+    public SkillEnumerator itemID;
     public List<string> propriedades;
     public List<string> metodos;
     public List<string> palavras;
@@ -22,7 +22,7 @@ public class SkillTreeButton : MonoBehaviour
             LearnNewRecipeMinigameController.Instance.StartNewGame(title, itemID, palavras, propriedades, metodos);
         }
         else{
-            
+            InventoryController.Instance.CraftItem();
         }
     }
 }

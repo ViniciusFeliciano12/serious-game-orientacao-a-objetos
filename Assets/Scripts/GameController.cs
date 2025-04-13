@@ -44,21 +44,25 @@ public class GameController : MonoBehaviour
         return PlayerCanMove;
     }
 
-    public void AddItemFound(ItemDatabase item){
-        Database.AddItem(item);
+    public List<ItemDatabase> GetInventory(){
+        return Database.GetInventory();
+    }
+
+    public void AddItemFound(SkillDatabase item){
+        Database.AddSkill(item);
         SkillTreeController.Instance.VerifyButtons();
     }
 
-    public void AddItemLearned(ItemEnumerator item){
-        Database.LearnItem(item);
+    public void AddItemLearned(SkillEnumerator item){
+        Database.LearnSkill(item);
         SkillTreeController.Instance.VerifyButtons();
     }
 
-    public bool VerifyItemFound(ItemEnumerator recipe){
-        return Database.VerifyItemFound(recipe);
+    public bool VerifyItemFound(SkillEnumerator recipe){
+        return Database.VerifySkillFound(recipe);
     }
 
-    public bool VerifyItemLearned(ItemEnumerator recipe){
-        return Database.VerifyItemLearned(recipe);
+    public bool VerifyItemLearned(SkillEnumerator recipe){
+        return Database.VerifySkillLearned(recipe);
     }
 }

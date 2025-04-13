@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0be0a805d3d35e44873f1b54d0a90c3, type: 3}
   m_Name: GameDatabaseScriptable
   m_EditorClassIdentifier: 
-  recipeKeyLearned: 0
-  recipeSwordLearned: 0
+  skillTreeObjects: []
+  itemInventoryObjects: []

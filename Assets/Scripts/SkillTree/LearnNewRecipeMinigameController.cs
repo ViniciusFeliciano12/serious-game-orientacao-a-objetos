@@ -21,7 +21,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private List<string> Metodos;
     private List<string> Palavras;  
 
-    private ItemEnumerator ItemID;
+    private SkillEnumerator ItemID;
     private int correctWords = 0;
     private TextMeshProUGUI Title;
     private float padding = 20f;
@@ -55,7 +55,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         SkillTreeController.Instance.HandleSkillTree();
     }
 
-    public void StartNewGame(string title, ItemEnumerator itemID, List<string> palavras, List<string> propriedades, List<string> metodos){
+    public void StartNewGame(string title, SkillEnumerator itemID, List<string> palavras, List<string> propriedades, List<string> metodos){
         correctWords = 0;
         Title.text = title;
         ItemID = itemID;

@@ -5,29 +5,44 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Database", menuName = "Scriptables/Database", order = 1)]
 public class GameDatabase : ScriptableObject
 {
-    public List<ItemDatabase> itemObjects;
+    public List<SkillDatabase> skillTreeObjects;
+    public List<ItemDatabase> itemInventoryObjects;
+
 
     public void ResetDatabase(){
-        itemObjects = new();
+        skillTreeObjects = new();
+        itemInventoryObjects = new();
     }
 
-    public bool VerifyItemFound(ItemEnumerator itemID){
-        return itemObjects.Any(item => itemID.Equals(item.itemID));
+    #region Inventory
+
+    public List<ItemDatabase> GetInventory(){
+        return itemInventoryObjects;
     }
 
-    public bool VerifyItemLearned(ItemEnumerator itemID){
-        return itemObjects.Any(item => itemID.Equals(item.itemID) && item.recipeLearned);
+    #endregion
+
+    #region Skill
+
+    public bool VerifySkillFound(SkillEnumerator itemID){
+        return skillTreeObjects.Any(item => itemID.Equals(item.itemID));
     }
 
-    public void LearnItem(ItemEnumerator itemID){
-        itemObjects.FirstOrDefault(item => item.itemID.Equals(itemID)).recipeLearned = true;
+    public bool VerifySkillLearned(SkillEnumerator itemID){
+        return skillTreeObjects.Any(item => itemID.Equals(item.itemID) && item.recipeLearned);
     }
 
-    public void AddItem(ItemDatabase item){
-        itemObjects.Add(item);
+    public void LearnSkill(SkillEnumerator itemID){
+        skillTreeObjects.FirstOrDefault(item => item.itemID.Equals(itemID)).recipeLearned = true;
     }
 
-    public enum ItemEnumerator{
+    public void AddSkill(SkillDatabase item){
+        skillTreeObjects.Add(item);
+    }
+
+    #endregion
+
+    public enum SkillEnumerator{
         Key,
         Sword
     }

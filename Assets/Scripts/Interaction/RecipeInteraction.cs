@@ -6,7 +6,7 @@ using static GameDatabase;
 public class RecipeInteraction : MonoBehaviour, IInteractable
 {
     public KeyCode interactionKey;
-    public ItemEnumerator itemObject;
+    public SkillEnumerator itemObject;
 
     void Start(){
         
@@ -19,7 +19,7 @@ public class RecipeInteraction : MonoBehaviour, IInteractable
     {
         if (Input.GetKeyDown(interactionKey))
         {
-            ItemDatabase RecipeItem = new(){
+            SkillDatabase RecipeItem = new(){
                 itemID = itemObject,
                 recipeLearned = false
             };
