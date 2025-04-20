@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using static GameDatabase;
+using UnityEngine.UI;
 
 public class SkillTreeButton : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class SkillTreeButton : MonoBehaviour
             LearnNewRecipeMinigameController.Instance.StartNewGame(title, itemID, palavras, propriedades, metodos);
         }
         else{
-            LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos);
+            var texture = transform.Find("Icon").GetComponent<RawImage>().texture;
+            LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, texture);
         }
     }
 }
