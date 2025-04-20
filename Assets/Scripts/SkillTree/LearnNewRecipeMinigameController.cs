@@ -137,7 +137,6 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
                 dropdown.captionText.fontStyle = FontStyles.Normal;
                 dropdown.captionText.color = Color.black;
-                Debug.Log($"Selecionado: {dropdown.options[index].text}");
                 
                 criarButton.gameObject.SetActive(correctWords >= Propriedades.Count + Metodos.Count);
             });
@@ -161,7 +160,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         foreach (var item in Propriedades)
         {
             var dropdown = dropdowns[index++];
-            string selecionado = dropdown.options[dropdown.value].text;
+            string selecionado = dropdown.captionText.text;
 
             StringPair par = new()
             {
@@ -176,7 +175,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         foreach (var item in Metodos)
         {
             var dropdown = dropdowns[index++];
-            string selecionado = dropdown.options[dropdown.value].text;
+            string selecionado = dropdown.captionText.text;
 
             StringPair par = new()
             {

@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour
 
     public void AddItemDatabase(ItemDatabase item){
         Database.AddItemDatabase(item);
+        InventoryController.Instance.UpdateInventory();
     }
 
     public void AddSkillFound(SkillDatabase item){

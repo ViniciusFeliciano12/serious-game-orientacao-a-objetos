@@ -35,7 +35,7 @@ public class ItemInventoryController : MonoBehaviour
     public void InstantiateItem(Texture texture){
         RawImage icon = gameObject.GetComponentInChildren<RawImage>();
         if(icon != null){
-            icon.texture = defaultTexture;
+            icon.texture = texture;
         }
     }
 
