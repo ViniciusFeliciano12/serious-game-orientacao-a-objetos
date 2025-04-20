@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\github\\serious-game-orientacao-a-objetos\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\SkillTree\\DropZone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SkillTree\\DropZone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\SkillTree\\SkillTreeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SkillTree\\SkillTreeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -51,6 +55,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DropZone.cs",
+              "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\SkillTree\\DropZone.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SkillTree\\DropZone.cs",
+              "ToolTip": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\SkillTree\\DropZone.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SkillTree\\DropZone.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-20T19:33:17.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SkillTreeButton.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\SkillTree\\SkillTreeButton.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SkillTree\\SkillTreeButton.cs",
@@ -63,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "GameController.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\GameController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameController.cs",
@@ -71,12 +88,11 @@
               "RelativeToolTip": "Assets\\Scripts\\GameController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T16:33:20.679Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T16:33:20.679Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "LearnNewRecipeMinigameController.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\SkillTree\\LearnNewRecipeMinigameController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SkillTree\\LearnNewRecipeMinigameController.cs",
@@ -88,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "InventoryController.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Inventory\\InventoryController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Inventory\\InventoryController.cs",
@@ -100,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ThirdPersonControllerEditor.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Devion Games\\Third Person Controller\\Scripts\\Editor\\ThirdPersonControllerEditor.cs",
               "RelativeDocumentMoniker": "Assets\\Devion Games\\Third Person Controller\\Scripts\\Editor\\ThirdPersonControllerEditor.cs",
@@ -112,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SimpleMovement.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Interactable\\Player\\SimpleMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Interactable\\Player\\SimpleMovement.cs",
@@ -123,7 +139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ThirdPersonController.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\ThirdPersonController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ThirdPersonController.cs",
@@ -134,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "PauseController.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\PauseController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PauseController.cs",
@@ -146,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MenuController.cs",
               "DocumentMoniker": "C:\\github\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\MenuController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\MenuController.cs",

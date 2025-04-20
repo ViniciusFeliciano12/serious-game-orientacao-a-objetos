@@ -29,7 +29,7 @@ public class InventoryController : MonoBehaviour
         var inventoryDatabase = GameController.Instance.GetInventory();
 
         for(int i = 0; i < inventoryDatabase.Count; i++){
-            Inventory[0].InstantiateItem(inventoryDatabase[0].icon);
+            Inventory[i].InstantiateItem(inventoryDatabase[i].icon);
         }
     }
 
@@ -37,6 +37,14 @@ public class InventoryController : MonoBehaviour
     void Update()
     {
         SelectItemInventory();
+    }
+
+    public void UpdateInventory(){
+        var inventoryDatabase = GameController.Instance.GetInventory();
+
+        for(int i = 0; i < inventoryDatabase.Count; i++){
+            Inventory[i].InstantiateItem(inventoryDatabase[i].icon);
+        }
     }
 
     private void SelectItemInventory(){
