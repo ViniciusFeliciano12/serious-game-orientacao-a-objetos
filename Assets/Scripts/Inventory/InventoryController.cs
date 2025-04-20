@@ -22,9 +22,6 @@ public class InventoryController : MonoBehaviour
 
     void Start()
     {
-        craftArea = FindInactive.FindUIElement("CraftItemPanel").GetComponent<RectTransform>();
-        craftArea.gameObject.SetActive(false);
-
         var menu = GameObject.Find("Bottom itens");
 
         Inventory = menu.GetComponentsInChildren<ItemInventoryController>();
@@ -34,14 +31,6 @@ public class InventoryController : MonoBehaviour
         for(int i = 0; i < inventoryDatabase.Count; i++){
             Inventory[0].InstantiateItem(inventoryDatabase[0].icon);
         }
-    }
-
-    public void ResetCraft(){
-        craftArea.gameObject.SetActive(false);
-    }
-
-    public void CraftItem(){
-        craftArea.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
