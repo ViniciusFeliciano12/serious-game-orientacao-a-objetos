@@ -11,14 +11,15 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     public GameObject fieldPrefab;
     public GameObject wordPrefab;
+    public GameObject dropdownPrefab;
 
     private RectTransform propriedadesArea;
     private RectTransform metodosArea;
     private RectTransform spawnArea;
     private Button learnButton;
     
-    private List<string> Propriedades;
-    private List<string> Metodos;
+    private List<Item> Propriedades;
+    private List<Item> Metodos;
     private List<string> Palavras;  
 
     private SkillEnumerator ItemID;
@@ -55,7 +56,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         SkillTreeController.Instance.HandleSkillTree();
     }
 
-    public void StartNewGame(string title, SkillEnumerator itemID, List<string> palavras, List<string> propriedades, List<string> metodos){
+    public void StartNewGame(string title, SkillEnumerator itemID, List<string> palavras, List<Item> propriedades, List<Item> metodos){
         correctWords = 0;
         Title.text = title;
         ItemID = itemID;
@@ -68,6 +69,32 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
         learnButton.gameObject.SetActive(false);
         spawnArea.gameObject.SetActive(true);
+    }
+
+    public void CraftItem(string title, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos){
+        Title.text = title;
+        ItemID = itemID;
+        Propriedades = propriedades;
+        Metodos = metodos;
+        correctWords = 0;
+        ClearFields();  
+
+        SpawnCraft(Propriedades, propriedadesArea);
+        SpawnCraft(Metodos, metodosArea);
+
+        learnButton.gameObject.SetActive(false);
+        spawnArea.gameObject.SetActive(true);
+    }
+
+    private void SpawnCraft(List<Item> palavras, RectTransform parentArea){
+        foreach (Item palavra in palavras)
+        {
+            GameObject fieldObj = Instantiate(dropdownPrefab, parentArea);
+            fieldObj.GetComponent<TextMeshProUGUI>().text = palavra.name;
+            foreach(var item in palavra.options){
+                fieldObj.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(item));
+            }
+        }
     }
 
     public void VerifyComplete(){
@@ -105,12 +132,12 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         spawnArea.gameObject.SetActive(false);
     }
 
-    public void SpawnCampos(List<string> palavras, RectTransform parentArea)
+    public void SpawnCampos(List<Item> palavras, RectTransform parentArea)
     {
-        foreach (string palavra in palavras)
+        foreach (Item palavra in palavras)
         {
             GameObject fieldObj = Instantiate(fieldPrefab, parentArea);
-            fieldObj.GetComponent<DropZone>().acceptedWord = palavra;
+            fieldObj.GetComponent<DropZone>().acceptedWord = palavra.name;
         }
     }
 
