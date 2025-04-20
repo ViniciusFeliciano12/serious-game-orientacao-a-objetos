@@ -50,7 +50,6 @@ public class SkillTreeController : MonoBehaviour
     public void HandleSkillTree(){
         if(PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree)){
             LearnNewRecipeMinigameController.Instance.ClearFields();
-            InventoryController.Instance.ResetCraft();
 
             SkillTreePanel.SetActive(PauseController.Instance.pausedBySkillTree);
 
