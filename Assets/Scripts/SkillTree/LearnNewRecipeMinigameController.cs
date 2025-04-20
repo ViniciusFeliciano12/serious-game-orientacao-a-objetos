@@ -86,14 +86,33 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         spawnArea.gameObject.SetActive(true);
     }
 
-    private void SpawnCraft(List<Item> palavras, RectTransform parentArea){
+    private void SpawnCraft(List<Item> palavras, RectTransform parentArea)
+    {
         foreach (Item palavra in palavras)
         {
+            // Instancia o prefab
             GameObject fieldObj = Instantiate(dropdownPrefab, parentArea);
-            fieldObj.GetComponent<TextMeshProUGUI>().text = palavra.name;
-            foreach(var item in palavra.options){
-                fieldObj.GetComponent<Dropdown>().options.Add(new Dropdown.OptionData(item));
+
+            // Obtém o componente TMP_Dropdown
+            TMP_Dropdown dropdown = fieldObj.GetComponent<TMP_Dropdown>();
+
+            if (dropdown == null)
+            {
+                Debug.LogError("Prefab não possui um componente TMP_Dropdown!");
+                continue;
             }
+
+            // Limpa opções anteriores
+            dropdown.options.Clear();
+
+            // Adiciona novas opções
+            foreach (var option in palavra.options)
+            {
+                dropdown.options.Add(new TMP_Dropdown.OptionData(option));
+            }
+
+            // Atualiza o label (texto visível)
+            dropdown.captionText.text = palavra.name;
         }
     }
 
