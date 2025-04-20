@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private bool PlayerCanMove = true;
     private void Awake()
     {
-        Database.ResetDatabase();
+        // Database.ResetDatabase();
 
         if(Instance!= null && Instance != this)
         {
@@ -48,12 +48,16 @@ public class GameController : MonoBehaviour
         return Database.GetInventory();
     }
 
-    public void AddItemFound(SkillDatabase item){
+    public void AddItemDatabase(ItemDatabase item){
+        Database.AddItemDatabase(item);
+    }
+
+    public void AddSkillFound(SkillDatabase item){
         Database.AddSkill(item);
         SkillTreeController.Instance.VerifyButtons();
     }
 
-    public void AddItemLearned(SkillEnumerator item){
+    public void AddSkillLearned(SkillEnumerator item){
         Database.LearnSkill(item);
         SkillTreeController.Instance.VerifyButtons();
     }

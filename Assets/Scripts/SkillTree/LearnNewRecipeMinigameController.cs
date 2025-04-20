@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using static GameDatabase;
+using System.Linq;
 
 public class LearnNewRecipeMinigameController : MonoBehaviour
 {
@@ -17,15 +18,19 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private RectTransform metodosArea;
     private RectTransform spawnArea;
     private Button learnButton;
+    private Button criarButton;
     
     private List<Item> Propriedades;
     private List<Item> Metodos;
     private List<string> Palavras;  
 
+    private Texture Texture;
     private SkillEnumerator ItemID;
     private int correctWords = 0;
     private TextMeshProUGUI Title;
     private float padding = 20f;
+
+    private List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown>();
 
     private void Awake()
     {
@@ -46,13 +51,17 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         propriedadesArea = FindInactive.FindUIElement("PropriedadesArea").GetComponent<RectTransform>();
         metodosArea = FindInactive.FindUIElement("MetodosArea").GetComponent<RectTransform>();
         learnButton = FindInactive.FindUIElement("AprenderButton").GetComponent<Button>();
+        criarButton = FindInactive.FindUIElement("CriarButton").GetComponent<Button>();
 
+        criarButton.onClick.AddListener(CriarJson);
+
+        criarButton.gameObject.SetActive(false);
         learnButton.gameObject.SetActive(false);
         spawnArea.gameObject.SetActive(false);
     }
 
     public void LearnSkill(){
-        GameController.Instance.AddItemLearned(ItemID);
+        GameController.Instance.AddSkillLearned(ItemID);
         SkillTreeController.Instance.HandleSkillTree();
     }
 
@@ -71,12 +80,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         spawnArea.gameObject.SetActive(true);
     }
 
-    public void CraftItem(string title, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos){
+    public void CraftItem(string title, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture){
         Title.text = title;
         ItemID = itemID;
         Propriedades = propriedades;
         Metodos = metodos;
         correctWords = 0;
+        Texture = texture;
+
         ClearFields();  
 
         SpawnCraft(Propriedades, propriedadesArea);
@@ -90,30 +101,96 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     {
         foreach (Item palavra in palavras)
         {
-            // Instancia o prefab
             GameObject fieldObj = Instantiate(dropdownPrefab, parentArea);
 
-            // Obtém o componente TMP_Dropdown
-            TMP_Dropdown dropdown = fieldObj.GetComponent<TMP_Dropdown>();
+            if (!fieldObj.TryGetComponent<TMP_Dropdown>(out var dropdown)) continue;
 
-            if (dropdown == null)
-            {
-                Debug.LogError("Prefab não possui um componente TMP_Dropdown!");
-                continue;
-            }
-
-            // Limpa opções anteriores
             dropdown.options.Clear();
 
-            // Adiciona novas opções
+            // Adiciona a opção de placeholder (primeira opção)
+            dropdown.options.Add(new TMP_Dropdown.OptionData(palavra.name));
+
+            // Adiciona as opções reais
             foreach (var option in palavra.options)
             {
                 dropdown.options.Add(new TMP_Dropdown.OptionData(option));
             }
 
-            // Atualiza o label (texto visível)
-            dropdown.captionText.text = palavra.name;
+            // Seleciona a opção de placeholder no início
+            dropdown.value = 0;
+            dropdown.RefreshShownValue();
+
+            // Estiliza o placeholder (apenas visual)
+            if (dropdown.captionText != null)
+            {
+                dropdown.captionText.fontStyle = FontStyles.Italic;
+                dropdown.captionText.color = new Color32(160, 160, 160, 255); // cinzinha
+            }
+
+            // Listener para quando o usuário escolher algo
+            dropdown.onValueChanged.AddListener(index =>
+            {
+                if(dropdown.options[0].text == palavra.name){
+                    dropdown.options.RemoveAt(0);
+                    correctWords++;
+                }
+
+                dropdown.captionText.fontStyle = FontStyles.Normal;
+                dropdown.captionText.color = Color.black;
+                Debug.Log($"Selecionado: {dropdown.options[index].text}");
+                
+                criarButton.gameObject.SetActive(correctWords >= Propriedades.Count + Metodos.Count);
+            });
+
+            dropdowns.Add(dropdown);
         }
+    }
+
+    private void CriarJson()
+    {
+        ItemDatabase itemDatabase = new()
+        {
+            nome = Title.text,
+            skillID = ItemID,
+            icon = Texture
+        };
+
+        int index = 0;
+
+        // Propriedades
+        foreach (var item in Propriedades)
+        {
+            var dropdown = dropdowns[index++];
+            string selecionado = dropdown.options[dropdown.value].text;
+
+            StringPair par = new()
+            {
+                chave = item.name,
+                valor = selecionado
+            };
+
+            itemDatabase.propriedades.Add(par);
+        }
+
+        // Métodos
+        foreach (var item in Metodos)
+        {
+            var dropdown = dropdowns[index++];
+            string selecionado = dropdown.options[dropdown.value].text;
+
+            StringPair par = new()
+            {
+                chave = item.name,
+                valor = selecionado
+            };
+
+            itemDatabase.metodos.Add(par);
+        }
+
+        string jsonStr = JsonUtility.ToJson(itemDatabase, true);
+        Debug.Log(jsonStr);
+
+        GameController.Instance.AddItemDatabase(itemDatabase);
     }
 
     public void VerifyComplete(){
