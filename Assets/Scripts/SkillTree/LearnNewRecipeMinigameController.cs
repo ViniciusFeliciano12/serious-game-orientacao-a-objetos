@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 using static GameDatabase;
 using System.Linq;
+using EJETAGame;
 
 public class LearnNewRecipeMinigameController : MonoBehaviour
 {
@@ -63,6 +64,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     public void LearnSkill(){
         GameController.Instance.AddSkillLearned(ItemID);
         SkillTreeController.Instance.HandleSkillTree();
+        InteractionText.instance.SetTextTimeout("Habilidade aprendida! Visite sua árvore novamente para criar um novo item.");
     }
 
     public void StartNewGame(string title, SkillEnumerator itemID, List<string> palavras, List<Item> propriedades, List<Item> metodos){
@@ -77,6 +79,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         Spawn();
 
         learnButton.gameObject.SetActive(false);
+        criarButton.gameObject.SetActive(false);
         spawnArea.gameObject.SetActive(true);
     }
 
@@ -87,6 +90,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         Metodos = metodos;
         correctWords = 0;
         Texture = texture;
+        dropdowns.Clear();
 
         ClearFields();  
 
@@ -94,6 +98,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         SpawnCraft(Metodos, metodosArea);
 
         learnButton.gameObject.SetActive(false);
+        criarButton.gameObject.SetActive(false);
         spawnArea.gameObject.SetActive(true);
     }
 
@@ -190,6 +195,8 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         Debug.Log(jsonStr);
 
         GameController.Instance.AddItemDatabase(itemDatabase);
+        
+        InteractionText.instance.SetTextTimeout("Item criado!");
     }
 
     public void VerifyComplete(){
