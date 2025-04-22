@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private bool PlayerCanMove = true;
     private void Awake()
     {
-        // Database.ResetDatabase();
+        Database.ResetDatabase();
 
         if(Instance!= null && Instance != this)
         {

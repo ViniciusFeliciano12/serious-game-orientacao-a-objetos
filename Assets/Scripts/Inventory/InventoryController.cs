@@ -7,7 +7,7 @@ public class InventoryController : MonoBehaviour
     public static InventoryController Instance { get; private set; }
 
     private RectTransform craftArea;
-    ItemInventoryController[] Inventory;
+    public ItemInventoryController[] Inventory;
     private void Awake()
     {
         if(Instance!= null && Instance != this)
@@ -28,8 +28,9 @@ public class InventoryController : MonoBehaviour
 
         var inventoryDatabase = GameController.Instance.GetInventory();
 
-        for(int i = 0; i < inventoryDatabase.Count; i++){
-            Inventory[i].InstantiateItem(inventoryDatabase[i].icon);
+        for (int i = 0; i < inventoryDatabase.Count; i++)
+        {
+            Inventory[i].InstantiateItem(inventoryDatabase[i]);
         }
     }
 
@@ -43,7 +44,7 @@ public class InventoryController : MonoBehaviour
         var inventoryDatabase = GameController.Instance.GetInventory();
 
         for(int i = 0; i < inventoryDatabase.Count; i++){
-            Inventory[i].InstantiateItem(inventoryDatabase[i].icon);
+            Inventory[i].InstantiateItem(inventoryDatabase[i]);
         }
     }
 
@@ -80,7 +81,7 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    private void SelectItemAt(int index){
+    public void SelectItemAt(int index){
         for(int i=0; i<Inventory.Count(); i++){
             if(i == index){
                 Inventory[i].ItemSelected(true);
