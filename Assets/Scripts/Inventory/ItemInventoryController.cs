@@ -1,13 +1,15 @@
+using EJETAGame;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ItemInventoryController : MonoBehaviour
+public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public string Index;
     public Texture defaultTexture;
     private Outline outline;
+    private ItemDatabase actualItem;
 
     void Start()
     {
@@ -16,32 +18,65 @@ public class ItemInventoryController : MonoBehaviour
         outline.enabled = false;
     }
 
-    public void ResetDefaults(){
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        for (int i = 0; i < InventoryController.Instance.Inventory.Length; i++)
+        {
+            if (InventoryController.Instance.Inventory[i] == this)
+            {
+                InventoryController.Instance.SelectItemAt(i);
+                break;
+            }
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (actualItem != null)
+        {
+            TooltipUI.Instance.ShowTooltip(actualItem, gameObject.GetComponent<RectTransform>());
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipUI.Instance.HideTooltip();
+    }
+
+
+    public void ResetDefaults()
+    {
         TextMeshProUGUI text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        if(text != null){
+        if (text != null)
+        {
             text.text = Index;
         }
 
         RawImage icon = gameObject.GetComponentInChildren<RawImage>();
-        if(icon != null){
+        if (icon != null)
+        {
             icon.texture = defaultTexture;
         }
     }
 
-    public void ItemSelected(bool isActive){
+    public void ItemSelected(bool isActive)
+    {
         outline.enabled = isActive;
-    }
 
-    public void InstantiateItem(Texture texture){
-        RawImage icon = gameObject.GetComponentInChildren<RawImage>();
-        if(icon != null){
-            icon.texture = texture;
+        if (isActive && actualItem != null)
+        {
+            InteractionText.instance.SetTextTimeout(actualItem.nome);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InstantiateItem(ItemDatabase item)
     {
-        
+        actualItem = item;
+
+        RawImage icon = gameObject.GetComponentInChildren<RawImage>();
+        if (icon != null)
+        {
+            icon.texture = actualItem.icon;
+        }
     }
 }
