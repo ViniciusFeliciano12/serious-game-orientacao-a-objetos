@@ -30,6 +30,10 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
         }
     }
 
+    public ItemDatabase returnActualItem(){
+        return actualItem;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (actualItem != null)
