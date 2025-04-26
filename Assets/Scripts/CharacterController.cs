@@ -14,10 +14,10 @@ public class CharacterController : MonoBehaviour
     public float jumpTime = 0.85f;
     [Space]
     [Tooltip("Force that pulls the player down. Changing this value causes all movement, jumping and falling to be changed as well.")]
-
     public float gravity = 9.8f;
+
     float jumpElapsedTime = 0;
-    public float transitionSpeed = 5f; 
+    public float transitionSpeed = 5f;
     public float speedTransitionSpeed = 5f;
 
     // Player states
@@ -39,12 +39,17 @@ public class CharacterController : MonoBehaviour
     float attackCooldown = 0f;
     float attackDuration = 0.5f;
 
+    private float timer = 0f;
+    private float interval = 2f; // 2 segundos
+
     public Animator animator;
     UnityEngine.CharacterController cc;
 
+    private bool initialPositionSet = false; // <-- nova variável para controlar o posicionamento inicial
+
     private void Awake()
     {
-        if(Instance!= null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -135,8 +140,31 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!initialPositionSet)
+        {
+            var playerPosition = GameController.Instance.GetPlayerPosition();
+
+            if (playerPosition != new Vector3())
+            {
+                Debug.Log("Aplicando posição inicial: " + playerPosition);
+                cc.enabled = false;
+                transform.position = playerPosition;
+                cc.enabled = true;
+            }
+
+            initialPositionSet = true;
+        }
+
         if (PauseController.Instance.timeStopped)
             return;
+
+        timer += Time.fixedDeltaTime;
+
+        if (timer >= interval)
+        {
+            GameController.Instance.UpdatePlayerPosition(transform.position);
+            timer = 0f;
+        }
 
         float velocityAdittion = 0;
         if (isSprinting)

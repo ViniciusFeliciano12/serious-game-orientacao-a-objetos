@@ -89,6 +89,7 @@
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_PrefabGenerator.cs" />
     <Compile Include="Assets\Models\ScriptableObject\ItemJson.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactor.cs" />
+    <Compile Include="Assets\Models\ScriptableObject\Player.cs" />
     <Compile Include="Assets\Models\ScriptableObject\SkillDatabase.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionText.cs" />
     <Compile Include="Assets\Scripts\Interaction\RecipeInteraction.cs" />

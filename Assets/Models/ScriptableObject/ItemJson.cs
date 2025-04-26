@@ -20,3 +20,16 @@ public class StringPair
     public string chave;
     public string valor;
 }
+
+public class StringPairComparer : IEqualityComparer<StringPair>
+{
+    public bool Equals(StringPair x, StringPair y)
+    {
+        return x.chave == y.chave && x.valor == y.valor;
+    }
+
+    public int GetHashCode(StringPair obj)
+    {
+        return obj.chave.GetHashCode() ^ obj.valor.GetHashCode();
+    }
+}

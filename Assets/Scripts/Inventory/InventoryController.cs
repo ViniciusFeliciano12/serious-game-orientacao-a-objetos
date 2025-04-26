@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static GameDatabase;
 
 public class InventoryController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class InventoryController : MonoBehaviour
 
     private RectTransform craftArea;
     public ItemInventoryController[] Inventory;
+
+    private int indexSelected = -1;
+    
     private void Awake()
     {
         if(Instance!= null && Instance != this)
@@ -34,11 +38,38 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         SelectItemInventory();
     }
+
+    public bool VerifyItemSelected(SkillEnumerator skillID,  List<StringPair> propriedades, List<StringPair> metodos){
+        if(indexSelected != -1){
+            var actualItem = Inventory[indexSelected].returnActualItem();
+
+            if(actualItem != null){
+                Debug.Log(actualItem.propriedades.ToString());
+                Debug.Log(actualItem.metodos.ToString());
+
+                bool idMatches = actualItem.skillID == skillID;
+                bool propriedadesMatch = List1IsContainedInList2(propriedades, actualItem.propriedades);
+                bool metodosMatch = List1IsContainedInList2(metodos, actualItem.metodos);
+
+                if(idMatches && propriedadesMatch && metodosMatch)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool List1IsContainedInList2(List<StringPair> list1, List<StringPair> list2)
+    {
+        return !list1.Except(list2, new StringPairComparer()).Any();
+    }
+
 
     public void UpdateInventory(){
         var inventoryDatabase = GameController.Instance.GetInventory();
@@ -82,6 +113,8 @@ public class InventoryController : MonoBehaviour
     }
 
     public void SelectItemAt(int index){
+        indexSelected = index;
+
         for(int i=0; i<Inventory.Count(); i++){
             if(i == index){
                 Inventory[i].ItemSelected(true);
