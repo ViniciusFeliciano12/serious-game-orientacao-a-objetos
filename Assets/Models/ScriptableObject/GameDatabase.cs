@@ -7,12 +7,25 @@ public class GameDatabase : ScriptableObject
 {
     public List<SkillDatabase> skillTreeObjects;
     public List<ItemDatabase> itemInventoryObjects;
-
+    public Player player;
 
     public void ResetDatabase(){
         skillTreeObjects = new();
         itemInventoryObjects = new();
+        player = new();
     }
+
+    #region Player
+
+    public void SavePlayerPosition(Vector3 position){
+        player.position = position;
+    }
+
+    public Vector3 GetPlayerPosition(){
+        return player.position;
+    }
+
+    #endregion
 
     #region Inventory
 

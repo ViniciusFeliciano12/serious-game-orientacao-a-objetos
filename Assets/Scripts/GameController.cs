@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     private bool PlayerCanMove = true;
     private void Awake()
     {
-        Database.ResetDatabase();
+        // Database.ResetDatabase();
 
         if(Instance!= null && Instance != this)
         {
@@ -42,6 +42,14 @@ public class GameController : MonoBehaviour
 
     public bool CanPlayerMove(){
         return PlayerCanMove;
+    }
+
+    public void UpdatePlayerPosition(Vector3 position){
+        Database.SavePlayerPosition(position);
+    }
+
+    public Vector3 GetPlayerPosition(){
+        return Database.GetPlayerPosition();
     }
 
     public List<ItemDatabase> GetInventory(){
