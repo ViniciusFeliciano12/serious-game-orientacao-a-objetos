@@ -11,31 +11,33 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 {
     public static LearnNewRecipeMinigameController Instance { get; private set; }
 
+    // Prefabs e elementos de UI
     public GameObject fieldPrefab;
     public GameObject wordPrefab;
     public GameObject dropdownPrefab;
-
     private RectTransform propriedadesArea;
     private RectTransform metodosArea;
     private RectTransform spawnArea;
     private Button learnButton;
     private Button criarButton;
-    
-    private List<Item> Propriedades;
-    private List<Item> Metodos;
-    private List<string> Palavras;  
 
-    private Texture Texture;
-    private SkillEnumerator ItemID;
+    // Dados do jogo
+    private List<Item> propriedades;
+    private List<Item> metodos;
+    private List<string> palavras;
+    private Texture texture;
+    private SkillEnumerator itemID;
     private int correctWords = 0;
-    private TextMeshProUGUI Title;
-    private float padding = 20f;
+    private TextMeshProUGUI title;
 
+    // Estado
     private List<TMP_Dropdown> dropdowns = new List<TMP_Dropdown>();
+
+    private const float padding = 20f;
 
     private void Awake()
     {
-        if(Instance!= null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -47,7 +49,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     private void Start()
     {
-        Title = FindInactive.FindUIElement("Nome").GetComponent<TextMeshProUGUI>();
+        title = FindInactive.FindUIElement("Nome").GetComponent<TextMeshProUGUI>();
         spawnArea = FindInactive.FindUIElement("PointAndClickMinigame").GetComponent<RectTransform>();
         propriedadesArea = FindInactive.FindUIElement("PropriedadesArea").GetComponent<RectTransform>();
         metodosArea = FindInactive.FindUIElement("MetodosArea").GetComponent<RectTransform>();
@@ -55,183 +57,124 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         criarButton = FindInactive.FindUIElement("CriarButton").GetComponent<Button>();
 
         criarButton.onClick.AddListener(CriarJson);
-
         criarButton.gameObject.SetActive(false);
         learnButton.gameObject.SetActive(false);
         spawnArea.gameObject.SetActive(false);
     }
 
-    public void LearnSkill(){
-        GameController.Instance.AddSkillLearned(ItemID);
-        SkillTreeController.Instance.HandleSkillTree();
-        InteractionText.instance.SetTextTimeout("Habilidade aprendida! Visite sua árvore novamente para criar um novo item.");
-    }
+    #region Shared
 
-    public void StartNewGame(string title, SkillEnumerator itemID, List<string> palavras, List<Item> propriedades, List<Item> metodos){
-        correctWords = 0;
-        Title.text = title;
-        ItemID = itemID;
-        Palavras = palavras;
-        Propriedades = propriedades;
-        Metodos = metodos;
-
-        ClearFields();
-        Spawn();
-
-        learnButton.gameObject.SetActive(false);
-        criarButton.gameObject.SetActive(false);
-        spawnArea.gameObject.SetActive(true);
-    }
-
-    public void CraftItem(string title, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture){
-        Title.text = title;
-        ItemID = itemID;
-        Propriedades = propriedades;
-        Metodos = metodos;
-        correctWords = 0;
-        Texture = texture;
-        dropdowns.Clear();
-
-        ClearFields();  
-
-        SpawnCraft(Propriedades, propriedadesArea);
-        SpawnCraft(Metodos, metodosArea);
-
-        learnButton.gameObject.SetActive(false);
-        criarButton.gameObject.SetActive(false);
-        spawnArea.gameObject.SetActive(true);
-    }
-
-    private void SpawnCraft(List<Item> palavras, RectTransform parentArea)
+    public void VerifyComplete()
     {
-        foreach (Item palavra in palavras)
-        {
-            GameObject fieldObj = Instantiate(dropdownPrefab, parentArea);
-
-            if (!fieldObj.TryGetComponent<TMP_Dropdown>(out var dropdown)) continue;
-
-            dropdown.options.Clear();
-
-            // Adiciona a opção de placeholder (primeira opção)
-            dropdown.options.Add(new TMP_Dropdown.OptionData(palavra.name));
-
-            // Adiciona as opções reais
-            foreach (var option in palavra.options)
-            {
-                dropdown.options.Add(new TMP_Dropdown.OptionData(option));
-            }
-
-            // Seleciona a opção de placeholder no início
-            dropdown.value = 0;
-            dropdown.RefreshShownValue();
-
-            // Estiliza o placeholder (apenas visual)
-            if (dropdown.captionText != null)
-            {
-                dropdown.captionText.fontStyle = FontStyles.Italic;
-                dropdown.captionText.color = new Color32(160, 160, 160, 255); // cinzinha
-            }
-
-            // Listener para quando o usuário escolher algo
-            dropdown.onValueChanged.AddListener(index =>
-            {
-                if(dropdown.options[0].text == palavra.name){
-                    dropdown.options.RemoveAt(0);
-                    correctWords++;
-                }
-
-                dropdown.captionText.fontStyle = FontStyles.Normal;
-                dropdown.captionText.color = Color.black;
-                
-                criarButton.gameObject.SetActive(correctWords >= Propriedades.Count + Metodos.Count);
-            });
-
-            dropdowns.Add(dropdown);
-        }
-    }
-
-    private void CriarJson()
-    {
-        ItemDatabase itemDatabase = new()
-        {
-            nome = Title.text,
-            skillID = ItemID,
-            icon = Texture
-        };
-
-        int index = 0;
-
-        // Propriedades
-        foreach (var item in Propriedades)
-        {
-            var dropdown = dropdowns[index++];
-            string selecionado = dropdown.captionText.text;
-
-            StringPair par = new()
-            {
-                chave = item.name,
-                valor = selecionado
-            };
-
-            itemDatabase.propriedades.Add(par);
-        }
-
-        // Métodos
-        foreach (var item in Metodos)
-        {
-            var dropdown = dropdowns[index++];
-            string selecionado = dropdown.captionText.text;
-
-            StringPair par = new()
-            {
-                chave = item.name,
-                valor = selecionado
-            };
-
-            itemDatabase.metodos.Add(par);
-        }
-
-        string jsonStr = JsonUtility.ToJson(itemDatabase, true);
-        Debug.Log(jsonStr);
-
-        GameController.Instance.AddItemDatabase(itemDatabase);
-        
-        InteractionText.instance.SetTextTimeout("Item criado!");
-    }
-
-    public void VerifyComplete(){
         correctWords++;
-        learnButton.gameObject.SetActive(correctWords == Propriedades.Count + Metodos.Count);
-    }
-
-    public void Spawn(){
-        SpawnPalavras();
-        SpawnCampos(Propriedades, propriedadesArea);
-        SpawnCampos(Metodos, metodosArea);
+        learnButton.gameObject.SetActive(correctWords == propriedades.Count + metodos.Count);
     }
 
     public void ClearFields()
     {
-        // Remove todos os filhos da área de propriedades
-        foreach (Transform child in propriedadesArea)
-        {
-            Destroy(child.gameObject);
-        }
+        ClearArea(propriedadesArea);
+        ClearArea(metodosArea);
+        ClearArea(spawnArea, "MinigameWord");
+        spawnArea.gameObject.SetActive(false);
+    }
 
-        // Remove todos os filhos da área de métodos
-        foreach (Transform child in metodosArea)
+    private void ClearArea(RectTransform area, string tag = null)
+    {
+        foreach (Transform child in area)
         {
-            Destroy(child.gameObject);
-        }
-
-        foreach (Transform child in spawnArea)
-        {
-            if (child.CompareTag("MinigameWord")){
+            if (tag == null || child.CompareTag(tag))
+            {
                 Destroy(child.gameObject);
             }
         }
+    }
 
-        spawnArea.gameObject.SetActive(false);
+    #endregion
+
+    #region LearnRecipe Minigame
+
+    public void StartNewGame(string titleText, SkillEnumerator itemID, List<string> palavras, List<Item> propriedades, List<Item> metodos, bool isInterface)
+    {
+        correctWords = 0;
+        title.text = titleText;
+        this.itemID = itemID;
+        this.palavras = palavras;
+        this.propriedades = propriedades;
+        this.metodos = metodos;
+
+        ClearFields();
+
+        if (isInterface)
+        {
+            SpawnCompleted();
+        }
+        else
+        {
+            Spawn();
+        }
+
+        learnButton.gameObject.SetActive(isInterface);
+        criarButton.gameObject.SetActive(false);
+        spawnArea.gameObject.SetActive(true);
+    }
+
+    public void Spawn()
+    {
+        SpawnPalavras();
+        SpawnCampos(propriedades, propriedadesArea);
+        SpawnCampos(metodos, metodosArea);
+    }
+
+    private void SpawnCompleted()
+    {
+        List<GameObject> palavrasObjs = CreateWords();
+
+        CreateFields(propriedades, palavrasObjs, propriedadesArea);
+        CreateFields(metodos, palavrasObjs, metodosArea);
+
+        ClearRemainingWords();
+    }
+
+    private List<GameObject> CreateWords()
+    {
+        List<GameObject> palavrasObjs = new List<GameObject>();
+
+        foreach (string palavra in palavras)
+        {
+            GameObject wordObj = Instantiate(wordPrefab, spawnArea);
+            wordObj.GetComponentInChildren<TextMeshProUGUI>().text = palavra;
+            palavrasObjs.Add(wordObj);
+            wordObj.SetActive(false); // Deixa invisível temporariamente
+        }
+
+        return palavrasObjs;
+    }
+
+    private void CreateFields(List<Item> items, List<GameObject> palavrasObjs, RectTransform area)
+    {
+        foreach (Item item in items)
+        {
+            GameObject fieldObj = Instantiate(fieldPrefab, area);
+            var dropZone = fieldObj.GetComponent<DropZone>();
+
+            var wordObj = palavrasObjs.Find(obj => obj.GetComponentInChildren<TextMeshProUGUI>().text == item.name);
+            if (wordObj != null)
+            {
+                wordObj.SetActive(true);
+                dropZone.SetCorrectWord(item.name, wordObj);
+            }
+        }
+    }
+
+    private void ClearRemainingWords()
+    {
+        foreach (Transform child in spawnArea)
+        {
+            if (child.CompareTag("MinigameWord"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 
     public void SpawnCampos(List<Item> palavras, RectTransform parentArea)
@@ -245,15 +188,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     public void SpawnPalavras()
     {
-        foreach (string palavra in Palavras)
+        foreach (string palavra in palavras)
         {
             GameObject wordObj = Instantiate(wordPrefab, spawnArea);
             wordObj.GetComponentInChildren<TextMeshProUGUI>().text = palavra;
 
             RectTransform wordRect = wordObj.GetComponent<RectTransform>();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(wordRect); // atualiza tamanho
+            LayoutRebuilder.ForceRebuildLayoutImmediate(wordRect);
 
-            // Calcula limites válidos dentro do painel
             float maxX = spawnArea.rect.width / 2f - wordRect.rect.width / 2f - padding;
             float maxY = spawnArea.rect.height / 2f - wordRect.rect.height / 2f - padding;
 
@@ -263,4 +205,147 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             wordRect.anchoredPosition = new Vector2(randomX, randomY);
         }
     }
+
+    public void LearnSkill()
+    {
+        GameController.Instance.AddSkillLearned(itemID);
+        SkillTreeController.Instance.ToggleSkillTree();
+        InteractionText.instance.SetTextTimeout("Habilidade aprendida! Visite sua árvore novamente para criar um novo item.");
+    }
+
+    #endregion
+
+    #region Craft Minigame
+
+    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture)
+    {
+        title.text = titleText;
+        this.itemID = itemID;
+        this.propriedades = propriedades;
+        this.metodos = metodos;
+        this.texture = texture;
+        correctWords = 0;
+        dropdowns.Clear();
+
+        ClearFields();
+
+        SpawnCraft(propriedades, propriedadesArea);
+        SpawnCraft(metodos, metodosArea);
+
+        learnButton.gameObject.SetActive(false);
+        criarButton.gameObject.SetActive(false);
+        spawnArea.gameObject.SetActive(true);
+    }
+
+    private void SpawnCraft(List<Item> items, RectTransform parentArea)
+    {
+        foreach (Item item in items)
+        {
+            GameObject fieldObj = Instantiate(dropdownPrefab, parentArea);
+            if (!fieldObj.TryGetComponent<TMP_Dropdown>(out var dropdown)) continue;
+
+            dropdown.options.Clear();
+            dropdown.options.Add(new TMP_Dropdown.OptionData(item.name));
+
+            foreach (var option in item.options)
+            {
+                dropdown.options.Add(new TMP_Dropdown.OptionData(option));
+            }
+
+            dropdown.value = 0;
+            dropdown.RefreshShownValue();
+
+            StylePlaceholder(dropdown);
+
+            dropdown.onValueChanged.AddListener(index =>
+            {
+                HandleDropdownChange(dropdown, item);
+            });
+
+            dropdowns.Add(dropdown);
+        }
+    }
+
+    private void StylePlaceholder(TMP_Dropdown dropdown)
+    {
+        if (dropdown.captionText != null)
+        {
+            dropdown.captionText.fontStyle = FontStyles.Italic;
+            dropdown.captionText.color = new Color32(160, 160, 160, 255);
+        }
+    }
+
+    private void HandleDropdownChange(TMP_Dropdown dropdown, Item item)
+    {
+        if (dropdown.options[0].text == item.name)
+        {
+            dropdown.options.RemoveAt(0);
+            correctWords++;
+        }
+
+        dropdown.captionText.fontStyle = FontStyles.Normal;
+        dropdown.captionText.color = Color.black;
+
+        criarButton.gameObject.SetActive(correctWords >= propriedades.Count + metodos.Count);
+    }
+
+    private void CriarJson()
+    {
+        ItemDatabase itemDatabase = new()
+        {
+            nome = title.text,
+            skillID = itemID,
+            icon = texture
+        };
+
+        int index = 0;
+
+        // Propriedades
+        AddPropertiesToDatabase(itemDatabase, ref index);
+
+        // Métodos
+        AddMethodsToDatabase(itemDatabase, ref index);
+
+        string jsonStr = JsonUtility.ToJson(itemDatabase, true);
+        Debug.Log(jsonStr);
+
+        GameController.Instance.AddItemDatabase(itemDatabase);
+        InteractionText.instance.SetTextTimeout("Item criado!");
+    }
+
+    private void AddPropertiesToDatabase(ItemDatabase itemDatabase, ref int index)
+    {
+        foreach (var item in propriedades)
+        {
+            var dropdown = dropdowns[index++];
+            string selecionado = dropdown.captionText.text;
+
+            StringPair par = new()
+            {
+                chave = item.name,
+                valor = selecionado
+            };
+
+            itemDatabase.propriedades.Add(par);
+        }
+    }
+
+    private void AddMethodsToDatabase(ItemDatabase itemDatabase, ref int index)
+    {
+        foreach (var item in metodos)
+        {
+            var dropdown = dropdowns[index++];
+            string selecionado = dropdown.captionText.text;
+
+            StringPair par = new()
+            {
+                chave = item.name,
+                valor = selecionado
+            };
+
+            itemDatabase.metodos.Add(par);
+        }
+    }
+
+    #endregion
 }
