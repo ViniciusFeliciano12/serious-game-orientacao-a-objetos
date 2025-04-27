@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
 using static GameDatabase;
 using static PauseController;
 
@@ -12,9 +11,14 @@ public class SkillTreeController : MonoBehaviour
 {
     public static SkillTreeController Instance { get; private set; }
 
+    private GameObject SkillTreePanel;
+    private Volume GlobalVolume;
+    private Button[] buttons;
+    private List<GameObject> connectionLines = new List<GameObject>();
+
     private void Awake()
     {
-        if(Instance!= null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -24,62 +28,199 @@ public class SkillTreeController : MonoBehaviour
         }
     }
 
-    private GameObject SkillTreePanel;
-    private Volume GlobalVolume;
-
-    private Button[] buttons;
-
-    void Start()
+    private void Start()
     {
         SkillTreePanel = FindInactive.FindUIElement("SkillTreePanel");
         buttons = SkillTreePanel.GetComponentsInChildren<Button>();
         GlobalVolume = FindObjectOfType<Volume>();
+
         SkillTreePanel.SetActive(false);
 
         VerifyButtons();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.I)){
-            HandleSkillTree();
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleSkillTree();
         }
     }
 
-    public void HandleSkillTree(){
-        if(PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree)){
+    public void ToggleSkillTree()
+    {
+        if (PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree))
+        {
             LearnNewRecipeMinigameController.Instance.ClearFields();
-
             SkillTreePanel.SetActive(PauseController.Instance.pausedBySkillTree);
 
-            if (GlobalVolume.profile.TryGet(out DepthOfField dof)){
+            if (GlobalVolume.profile.TryGet(out DepthOfField dof))
+            {
                 dof.focusDistance.overrideState = PauseController.Instance.pausedBySkillTree;
             }
         }
     }
 
-    public void VerifyButtons(){
+    public void VerifyButtons()
+    {
+        for (int count = 0; count < buttons.Length; count++)
+        {
+            var button = buttons[count];
+            var buttonScript = button.GetComponent<SkillTreeButton>();
 
-        for(int count = 0; count < buttons.Count(); count++){
-            buttons[count].gameObject.SetActive(GameController.Instance.VerifyItemFound((SkillEnumerator)count));
+            bool selfFound = GameController.Instance.VerifyItemFound((SkillEnumerator)count);
 
-            var buttonIcon = buttons[count].transform.Find("Icon");
-        
-            if (buttonIcon != null){
-                
-                if (buttonIcon.TryGetComponent<RawImage>(out var buttonImage))
+            if (!selfFound)
+            {
+                button.gameObject.SetActive(false);
+                continue;
+            }
+
+            bool canAppear = true;
+            bool showXMark = false;
+            bool isLearned = GameController.Instance.VerifyItemLearned((SkillEnumerator)count);
+
+            if (buttonScript.dependsOnAncestorItem != null && buttonScript.dependsOnAncestorItem.Length > 0)
+            {
+                bool allAncestorsFound = true;
+                bool allAncestorsLearned = true;
+
+                foreach (var ancestor in buttonScript.dependsOnAncestorItem)
                 {
-                    buttonImage.color = new Color(buttonImage.color.r, buttonImage.color.g, buttonImage.color.b, 
-                    GameController.Instance.VerifyItemLearned((SkillEnumerator)count) ? 1f : 0.2f);
+                    if (!GameController.Instance.VerifyItemFound(ancestor))
+                    {
+                        allAncestorsFound = false;
+                        break;
+                    }
+                    if (!GameController.Instance.VerifyItemLearned(ancestor))
+                    {
+                        allAncestorsLearned = false;
+                    }
                 }
-                else{
-                    Debug.Log("Não encontrado componente RawImage do \"Icon\" do botão da Skill Tree");
+
+                if (!allAncestorsFound)
+                {
+                    canAppear = false;
+                }
+                else if (!allAncestorsLearned)
+                {
+                    showXMark = true;
+                    isLearned = false;
                 }
             }
-            else{
-                Debug.Log("Não encontrado \"Icon\" do botão da Skill Tree");
+
+            button.gameObject.SetActive(canAppear);
+
+            if (canAppear)
+            {
+                var buttonIcon = button.transform.Find("Icon");
+                if (buttonIcon != null && buttonIcon.TryGetComponent<RawImage>(out var buttonImage))
+                {
+                    buttonImage.color = new Color(
+                        buttonImage.color.r,
+                        buttonImage.color.g,
+                        buttonImage.color.b,
+                        isLearned ? 1f : 0.2f
+                    );
+                }
+
+                var xMark = button.transform.Find("XMark");
+                if (xMark != null)
+                {
+                    xMark.gameObject.SetActive(showXMark);
+                }
+
+                // Verifica se o botão possui ancestrais e cria as linhas se necessário
+                CreateConnectionLinesForButton(button, buttonScript);
             }
         }
+    }
+
+    private void CreateConnectionLinesForButton(Button button, SkillTreeButton buttonScript)
+    {
+        // Limpa as linhas de conexão antigas
+        foreach (var line in connectionLines)
+        {
+            Destroy(line);
+        }
+        connectionLines.Clear();
+
+        // Cria novas linhas de conexão
+        if (buttonScript.dependsOnAncestorItem != null && buttonScript.dependsOnAncestorItem.Length > 0)
+        {
+            foreach (var ancestorID in buttonScript.dependsOnAncestorItem)
+            {
+                var ancestorButton = FindButtonBySkillID(ancestorID);
+
+                // Verifica se o ancestral e o item atual estão visíveis (ativos)
+                if (ancestorButton != null && ancestorButton.gameObject.activeSelf && button.gameObject.activeSelf)
+                {
+                    GameObject lineObj = CreateLineBetween(button.transform, ancestorButton.transform);
+                    connectionLines.Add(lineObj);
+                }
+            }
+        }
+    }
+
+    private GameObject CreateLineBetween(Transform from, Transform to)
+    {
+        // Cria um novo objeto para a linha
+        GameObject lineObj = new GameObject("SkillTreeConnectionLine", typeof(RectTransform), typeof(Image));
+
+        // Coloca a linha atrás dos botões
+        lineObj.transform.SetParent(SkillTreePanel.transform, false);
+        lineObj.transform.SetSiblingIndex(0);  // Coloca a linha atrás dos botões
+
+        // Acessando componentes do RectTransform e Image
+        RectTransform rectTransform = lineObj.GetComponent<RectTransform>();
+        Image image = lineObj.GetComponent<Image>();
+
+        // Carregue o sprite de uma linha suave (faça isso no Unity e adicione a textura como um Sprite)
+        Sprite lineSprite = Resources.Load<Sprite>("LineSprite"); // Substitua pelo caminho do seu sprite de linha
+
+        if (lineSprite != null)
+        {
+            image.sprite = lineSprite;
+        }
+        else
+        {
+            // Se não encontrar o sprite, use uma cor sólida (preta)
+            image.color = Color.black;
+        }
+
+        // Calculando a posição e o tamanho da linha
+        Vector3 fromPos = from.position;
+        Vector3 toPos = to.position;
+
+        // Calculando o ponto médio para a linha
+        Vector3 midPoint = (fromPos + toPos) / 2f;
+        rectTransform.position = midPoint;
+
+        // Calculando a distância entre os pontos para definir o tamanho da linha
+        float distance = Vector3.Distance(fromPos, toPos);
+        rectTransform.sizeDelta = new Vector2(distance, 5f);  // Largura da linha (ajustável)
+
+        // Calculando a direção da linha (ângulo)
+        Vector3 dir = (toPos - fromPos).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        // Rotacionando a linha para que ela fique alinhada entre os pontos
+        rectTransform.rotation = Quaternion.Euler(0, 0, angle);
+
+        return lineObj;
+    }
+
+
+    private Button FindButtonBySkillID(SkillEnumerator id)
+    {
+        foreach (var button in buttons)
+        {
+            var buttonScript = button.GetComponent<SkillTreeButton>();
+            if (buttonScript != null && buttonScript.itemID == id)
+            {
+                return button;
+            }
+        }
+        return null;
     }
 }

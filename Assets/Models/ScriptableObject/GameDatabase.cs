@@ -61,6 +61,7 @@ public class GameDatabase : ScriptableObject
 
     public enum SkillEnumerator{
         Key,
+        Weapon,
         Sword
     }
 }

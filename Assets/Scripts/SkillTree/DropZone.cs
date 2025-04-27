@@ -13,16 +13,24 @@ public class DropZone : MonoBehaviour, IDropHandler
     private Color originalColor;
     public float transitionDuration = 0.5f; // duração da transição em segundos
 
-    private void Awake()
+    private void Start()
     {
+        if (backgroundImage == null){
+            LoadBackground();
+        }
+    }
+
+    public void LoadBackground(){
+        // Aqui, garantimos que o backgroundImage esteja pronto para ser acessado
         backgroundImage = GetComponent<Image>();
         if (backgroundImage != null)
         {
             originalColor = backgroundImage.color;
-            
-            Debug.Log("Original color:"+ originalColor.ToString());
-        }else{
-            Debug.Log("BackgroundImage not found");
+            Debug.Log("Original color: " + originalColor.ToString());
+        }
+        else
+        {
+            Debug.LogError("BackgroundImage não encontrado!");
         }
     }
 
@@ -52,5 +60,19 @@ public class DropZone : MonoBehaviour, IDropHandler
                 droppedObj.GetComponent<DraggableText>().ResetPosition();
             }
         }
+    }
+
+    public void SetCorrectWord(string palavra, GameObject wordObject)
+    {
+        wordObject.transform.SetParent(transform);
+        wordObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+        var drag = wordObject.GetComponent<DraggableText>();
+        if (drag != null) drag.enabled = false;
+
+        LoadBackground();
+        backgroundImage.color = correctColor;
+
+        LearnNewRecipeMinigameController.Instance.VerifyComplete();
     }
 }
