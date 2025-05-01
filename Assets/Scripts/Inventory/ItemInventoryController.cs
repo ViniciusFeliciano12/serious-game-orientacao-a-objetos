@@ -8,14 +8,13 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
 {
     public string Index;
     public Texture defaultTexture;
-    private Outline outline;
+    private Image backgroundImage;
     private ItemDatabase actualItem;
 
     void Start()
     {
         ResetDefaults();
-        outline = gameObject.GetComponent<Outline>();
-        outline.enabled = false;
+        backgroundImage = gameObject.GetComponent<Image>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -65,7 +64,7 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
 
     public void ItemSelected(bool isActive)
     {
-        outline.enabled = isActive;
+        backgroundImage.color = isActive ? new Color(255, 255, 0, 255) : new Color(255, 255, 255, 255);
 
         if (isActive && actualItem != null)
         {
