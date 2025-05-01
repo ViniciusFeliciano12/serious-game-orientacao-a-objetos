@@ -9,7 +9,7 @@ public class DropZone : MonoBehaviour, IDropHandler
     public string acceptedWord;
     private Image backgroundImage;
 
-    public Color correctColor = new Color(0.6f, 1f, 0.6f); // verde claro
+    public Color correctColor = new(0f, 0f, 0f, 0f); // transparente
     private Color originalColor;
     public float transitionDuration = 0.5f; // duração da transição em segundos
 
@@ -44,15 +44,7 @@ public class DropZone : MonoBehaviour, IDropHandler
             {
                 Debug.Log("Palavra correta posicionada!");
 
-                droppedObj.transform.SetParent(transform);
-                droppedObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-
-                var drag = droppedObj.GetComponent<DraggableText>();
-                if (drag != null) drag.enabled = false;
-
-                if (backgroundImage != null)
-                    backgroundImage.color = correctColor;
-                LearnNewRecipeMinigameController.Instance.VerifyComplete();
+                SetCorrectWord(droppedObj);
             }
             else
             {
@@ -62,13 +54,17 @@ public class DropZone : MonoBehaviour, IDropHandler
         }
     }
 
-    public void SetCorrectWord(string palavra, GameObject wordObject)
+    public void SetCorrectWord(GameObject wordObject)
     {
         wordObject.transform.SetParent(transform);
         wordObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 
         var drag = wordObject.GetComponent<DraggableText>();
-        if (drag != null) drag.enabled = false;
+        if (drag != null)
+        {
+            drag.enabled = false;
+            drag.GetComponent<Image>().color = correctColor;
+        }
 
         LoadBackground();
         backgroundImage.color = correctColor;

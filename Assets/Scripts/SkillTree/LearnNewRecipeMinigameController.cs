@@ -17,7 +17,8 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     public GameObject dropdownPrefab;
     private RectTransform propriedadesArea;
     private RectTransform metodosArea;
-    private RectTransform spawnArea;
+    private RectTransform palavrasArea;
+    private RectTransform minigameArea;
     private Button learnButton;
     private Button criarButton;
 
@@ -50,7 +51,8 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private void Start()
     {
         title = FindInactive.FindUIElement("Nome").GetComponent<TextMeshProUGUI>();
-        spawnArea = FindInactive.FindUIElement("PointAndClickMinigame").GetComponent<RectTransform>();
+        minigameArea = FindInactive.FindUIElement("PointAndClickMinigame").GetComponent<RectTransform>();
+        palavrasArea = FindInactive.FindUIElement("SpawnArea").GetComponent<RectTransform>();
         propriedadesArea = FindInactive.FindUIElement("PropriedadesArea").GetComponent<RectTransform>();
         metodosArea = FindInactive.FindUIElement("MetodosArea").GetComponent<RectTransform>();
         learnButton = FindInactive.FindUIElement("AprenderButton").GetComponent<Button>();
@@ -59,7 +61,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         criarButton.onClick.AddListener(CriarJson);
         criarButton.gameObject.SetActive(false);
         learnButton.gameObject.SetActive(false);
-        spawnArea.gameObject.SetActive(false);
+        minigameArea.gameObject.SetActive(false);
     }
 
     #region Shared
@@ -67,15 +69,19 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     public void VerifyComplete()
     {
         correctWords++;
-        learnButton.gameObject.SetActive(correctWords == propriedades.Count + metodos.Count);
+        bool learnButtonVisible = correctWords == propriedades.Count + metodos.Count;
+        learnButton.gameObject.SetActive(learnButtonVisible);
+        if (learnButtonVisible){
+            ClearArea(palavrasArea);
+        }
     }
 
     public void ClearFields()
     {
         ClearArea(propriedadesArea);
         ClearArea(metodosArea);
-        ClearArea(spawnArea, "MinigameWord");
-        spawnArea.gameObject.SetActive(false);
+        ClearArea(palavrasArea);
+        minigameArea.gameObject.SetActive(false);
     }
 
     private void ClearArea(RectTransform area, string tag = null)
@@ -115,7 +121,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
         learnButton.gameObject.SetActive(isInterface);
         criarButton.gameObject.SetActive(false);
-        spawnArea.gameObject.SetActive(true);
+        minigameArea.gameObject.SetActive(true);
     }
 
     public void Spawn()
@@ -141,7 +147,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
         foreach (string palavra in palavras)
         {
-            GameObject wordObj = Instantiate(wordPrefab, spawnArea);
+            GameObject wordObj = Instantiate(wordPrefab, minigameArea);
             wordObj.GetComponentInChildren<TextMeshProUGUI>().text = palavra;
             palavrasObjs.Add(wordObj);
             wordObj.SetActive(false); // Deixa invisível temporariamente
@@ -161,14 +167,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             if (wordObj != null)
             {
                 wordObj.SetActive(true);
-                dropZone.SetCorrectWord(item.name, wordObj);
+                dropZone.SetCorrectWord(wordObj);
             }
         }
     }
 
     private void ClearRemainingWords()
     {
-        foreach (Transform child in spawnArea)
+        foreach (Transform child in minigameArea)
         {
             if (child.CompareTag("MinigameWord"))
             {
@@ -190,14 +196,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     {
         foreach (string palavra in palavras)
         {
-            GameObject wordObj = Instantiate(wordPrefab, spawnArea);
+            GameObject wordObj = Instantiate(wordPrefab, palavrasArea);
             wordObj.GetComponentInChildren<TextMeshProUGUI>().text = palavra;
 
             RectTransform wordRect = wordObj.GetComponent<RectTransform>();
             LayoutRebuilder.ForceRebuildLayoutImmediate(wordRect);
 
-            float maxX = spawnArea.rect.width / 2f - wordRect.rect.width / 2f - padding;
-            float maxY = spawnArea.rect.height / 2f - wordRect.rect.height / 2f - padding;
+            float maxX = palavrasArea.rect.width / 2f - wordRect.rect.width / 2f - padding;
+            float maxY = palavrasArea.rect.height / 2f - wordRect.rect.height / 2f - padding;
 
             float randomX = Random.Range(-maxX, maxX);
             float randomY = Random.Range(-maxY, maxY);
@@ -234,7 +240,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
         learnButton.gameObject.SetActive(false);
         criarButton.gameObject.SetActive(false);
-        spawnArea.gameObject.SetActive(true);
+        minigameArea.gameObject.SetActive(true);
     }
 
     private void SpawnCraft(List<Item> items, RectTransform parentArea)
