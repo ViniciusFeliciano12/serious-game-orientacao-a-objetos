@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static GameDatabase;
@@ -14,8 +16,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Database.ResetDatabase();
-
-        if(Instance!= null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -61,9 +62,18 @@ public class GameController : MonoBehaviour
         InventoryController.Instance.UpdateInventory();
     }
 
-    public void AddSkillFound(SkillDatabase item){
-        Database.AddSkill(item);
-        SkillTreeController.Instance.VerifyButtons();
+    public void AddSkillFound(SkillDatabase item)
+    {
+        try
+        {
+            Database.AddSkill(item);
+            SkillTreeController.Instance.VerifyButtons();
+        }
+        catch(Exception ex)
+        {
+            Debug.Log(ex.ToString());
+        }
+        
     }
 
     public void AddSkillLearned(SkillEnumerator item){

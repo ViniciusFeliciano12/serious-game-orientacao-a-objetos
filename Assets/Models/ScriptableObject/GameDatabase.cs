@@ -53,15 +53,19 @@ public class GameDatabase : ScriptableObject
         skillTreeObjects.FirstOrDefault(item => item.itemID.Equals(itemID)).recipeLearned = true;
     }
 
-    public void AddSkill(SkillDatabase item){
+    public void AddSkill(SkillDatabase item)
+    {
         skillTreeObjects.Add(item);
     }
 
     #endregion
 
-    public enum SkillEnumerator{
+    public enum SkillEnumerator
+    {
         Key,
         Weapon,
-        Sword
+        Sword,
+        Crowbar,
+        Torch
     }
 }
