@@ -315,8 +315,16 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         string jsonStr = JsonUtility.ToJson(itemDatabase, true);
         Debug.Log(jsonStr);
 
-        GameController.Instance.AddItemDatabase(itemDatabase);
-        InteractionText.instance.SetTextTimeout("Item criado!");
+        if (GameController.Instance.GetInventory().Count > 9)
+        {
+            InteractionText.instance.SetTextTimeout("Inventário lotado, exclua um item para criar novos...");
+        }
+        else
+        {
+            GameController.Instance.AddItemDatabase(itemDatabase);
+            InteractionText.instance.SetTextTimeout("Item criado!");
+        }
+
     }
 
     private void AddPropertiesToDatabase(ItemDatabase itemDatabase, ref int index)

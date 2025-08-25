@@ -43,19 +43,20 @@ public class InventoryController : MonoBehaviour
         SelectItemInventory();
     }
 
-    public bool VerifyItemSelected(SkillEnumerator skillID,  List<StringPair> propriedades, List<StringPair> metodos){
-        if(indexSelected != -1){
+    public bool VerifyItemSelected(SkillEnumerator skillID, List<StringPair> propriedades = null, List<StringPair> metodos = null)
+    {
+        if (indexSelected != -1)
+        {
             var actualItem = Inventory[indexSelected].returnActualItem();
 
-            if(actualItem != null){
-                Debug.Log(actualItem.propriedades.ToString());
-                Debug.Log(actualItem.metodos.ToString());
-
+            if (actualItem != null)
+            {
                 bool idMatches = actualItem.skillID == skillID;
-                bool propriedadesMatch = List1IsContainedInList2(propriedades, actualItem.propriedades);
-                bool metodosMatch = List1IsContainedInList2(metodos, actualItem.metodos);
+                
+                bool propriedadesMatch = propriedades == null || List1IsContainedInList2(propriedades, actualItem.propriedades);
+                bool metodosMatch = metodos == null || List1IsContainedInList2(metodos, actualItem.metodos);
 
-                if(idMatches && propriedadesMatch && metodosMatch)
+                if (idMatches && propriedadesMatch && metodosMatch)
                 {
                     return true;
                 }

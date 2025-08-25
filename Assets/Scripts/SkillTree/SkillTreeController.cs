@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using static GameDatabase;
 using static PauseController;
+using System;
 
 public class SkillTreeController : MonoBehaviour
 {
@@ -63,77 +64,86 @@ public class SkillTreeController : MonoBehaviour
 
     public void VerifyButtons()
     {
-        for (int count = 0; count < buttons.Length; count++)
+        try
         {
-            var button = buttons[count];
-            var buttonScript = button.GetComponent<SkillTreeButton>();
-
-            bool selfFound = GameController.Instance.VerifyItemFound((SkillEnumerator)count);
-
-            if (!selfFound)
+            for (int count = 0; count < buttons.Length; count++)
             {
-                button.gameObject.SetActive(false);
-                continue;
-            }
+                var button = buttons[count];
+                var buttonScript = button.GetComponent<SkillTreeButton>();
 
-            bool canAppear = true;
-            bool showXMark = false;
-            bool isLearned = GameController.Instance.VerifyItemLearned((SkillEnumerator)count);
+                bool selfFound = GameController.Instance.VerifyItemFound(buttonScript.itemID);
 
-            if (buttonScript.dependsOnAncestorItem != null && buttonScript.dependsOnAncestorItem.Length > 0)
-            {
-                bool allAncestorsFound = true;
-                bool allAncestorsLearned = true;
 
-                foreach (var ancestor in buttonScript.dependsOnAncestorItem)
+                if (!selfFound)
                 {
-                    if (!GameController.Instance.VerifyItemFound(ancestor))
+                    button.gameObject.SetActive(false);
+                    continue;
+                }
+
+                bool canAppear = true;
+                bool showXMark = false;
+                bool isLearned = GameController.Instance.VerifyItemLearned(buttonScript.itemID);
+
+                if (buttonScript.dependsOnAncestorItem != null && buttonScript.dependsOnAncestorItem.Length > 0)
+                {
+                    bool allAncestorsFound = true;
+                    bool allAncestorsLearned = true;
+
+                    foreach (var ancestor in buttonScript.dependsOnAncestorItem)
                     {
-                        allAncestorsFound = false;
-                        break;
+                        if (!GameController.Instance.VerifyItemFound(ancestor))
+                        {
+                            allAncestorsFound = false;
+                            break;
+                        }
+                        if (!GameController.Instance.VerifyItemLearned(ancestor))
+                        {
+                            allAncestorsLearned = false;
+                        }
                     }
-                    if (!GameController.Instance.VerifyItemLearned(ancestor))
+
+                    if (!allAncestorsFound)
                     {
-                        allAncestorsLearned = false;
+                        canAppear = false;
+                    }
+                    else if (!allAncestorsLearned)
+                    {
+                        showXMark = true;
+                        isLearned = false;
                     }
                 }
 
-                if (!allAncestorsFound)
-                {
-                    canAppear = false;
-                }
-                else if (!allAncestorsLearned)
-                {
-                    showXMark = true;
-                    isLearned = false;
-                }
-            }
+                button.gameObject.SetActive(canAppear);
 
-            button.gameObject.SetActive(canAppear);
-
-            if (canAppear)
-            {
-                var buttonIcon = button.transform.Find("Icon");
-                if (buttonIcon != null && buttonIcon.TryGetComponent<RawImage>(out var buttonImage))
+                if (canAppear)
                 {
-                    buttonImage.color = new Color(
-                        buttonImage.color.r,
-                        buttonImage.color.g,
-                        buttonImage.color.b,
-                        isLearned ? 1f : 0.2f
-                    );
-                }
+                    var buttonIcon = button.transform.Find("Icon");
+                    if (buttonIcon != null && buttonIcon.TryGetComponent<RawImage>(out var buttonImage))
+                    {
+                        buttonImage.color = new Color(
+                            buttonImage.color.r,
+                            buttonImage.color.g,
+                            buttonImage.color.b,
+                            isLearned ? 1f : 0.2f
+                        );
+                    }
 
-                var xMark = button.transform.Find("XMark");
-                if (xMark != null)
-                {
-                    xMark.gameObject.SetActive(showXMark);
-                }
+                    var xMark = button.transform.Find("XMark");
+                    if (xMark != null)
+                    {
+                        xMark.gameObject.SetActive(showXMark);
+                    }
 
-                // Verifica se o botão possui ancestrais e cria as linhas se necessário
-                CreateConnectionLinesForButton(button, buttonScript);
+                    // Verifica se o botão possui ancestrais e cria as linhas se necessário
+                    CreateConnectionLinesForButton(button, buttonScript);
+                }
             }
         }
+        catch (Exception ex)
+        {
+            Debug.Log(ex.ToString());
+        }
+        
     }
 
     private void CreateConnectionLinesForButton(Button button, SkillTreeButton buttonScript)

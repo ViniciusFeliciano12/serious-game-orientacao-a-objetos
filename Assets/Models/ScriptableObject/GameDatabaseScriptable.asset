@@ -12,5 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0be0a805d3d35e44873f1b54d0a90c3, type: 3}
   m_Name: GameDatabaseScriptable
   m_EditorClassIdentifier: 
-  skillTreeObjects: []
-  itemInventoryObjects: []
+  skillTreeObjects:
+  - itemID: 3
+    recipeLearned: 1
+  - itemID: 0
+    recipeLearned: 0
+  itemInventoryObjects:
+  - nome: "P\xE9 de Cabra"
+    icon: {fileID: 2800000, guid: bb5251ecff6db9244958c944247c7028, type: 3}
+    skillID: 3
+    propriedades:
+    - chave: Tamanho
+      valor: "M\xE9dio"
+    - chave: Material
+      valor: Madeira
+    metodos:
+    - chave: Usar
+      valor: Atacar
+  - nome: "P\xE9 de Cabra"
+    icon: {fileID: 2800000, guid: bb5251ecff6db9244958c944247c7028, type: 3}
+    skillID: 3
+    propriedades:
+    - chave: Tamanho
+      valor: "M\xE9dio"
+    - chave: Material
+      valor: Ferro
+    metodos:
+    - chave: Usar
+      valor: Desmontar
+  player:
+    position: {x: -7.8933244, y: 6.624985, z: 8.490421}
