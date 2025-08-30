@@ -13,7 +13,6 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
 
     void Start()
     {
-        ResetDefaults();
         backgroundImage = gameObject.GetComponent<Image>();
     }
 
@@ -49,6 +48,8 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
 
     public void ResetDefaults()
     {
+        actualItem = null;
+
         TextMeshProUGUI text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         if (text != null)
         {

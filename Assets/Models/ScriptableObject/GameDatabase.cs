@@ -37,11 +37,17 @@ public class GameDatabase : ScriptableObject
         itemInventoryObjects.Add(item);
     }
 
+    public void RemoveItemDatabase(ItemDatabase item)
+    {
+        itemInventoryObjects.Remove(item);
+    }
+
     #endregion
 
     #region Skill
 
-    public bool VerifySkillFound(SkillEnumerator itemID){
+    public bool VerifySkillFound(SkillEnumerator itemID)
+    {
         return skillTreeObjects.Any(item => itemID.Equals(item.itemID));
     }
 
@@ -66,6 +72,7 @@ public class GameDatabase : ScriptableObject
         Weapon,
         Sword,
         Crowbar,
-        Torch
+        Torch,
+        Gravel
     }
 }

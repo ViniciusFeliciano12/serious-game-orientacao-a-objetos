@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     private bool PlayerCanMove = true;
     private void Awake()
     {
-        Database.ResetDatabase();
+        // Database.ResetDatabase();
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -62,6 +62,12 @@ public class GameController : MonoBehaviour
         InventoryController.Instance.UpdateInventory();
     }
 
+    public void RemoveItemDatabase(ItemDatabase item)
+    {
+        Debug.Log("item a ser removido..." + item.nome);
+        Database.RemoveItemDatabase(item);
+    }
+
     public void AddSkillFound(SkillDatabase item)
     {
         try
@@ -69,11 +75,11 @@ public class GameController : MonoBehaviour
             Database.AddSkill(item);
             SkillTreeController.Instance.VerifyButtons();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Debug.Log(ex.ToString());
         }
-        
+
     }
 
     public void AddSkillLearned(SkillEnumerator item){
