@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using EJETAGame;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -33,12 +34,27 @@ public class RecipeInteraction : MonoBehaviour, IInteractable
 
     public void OnInteractEnter()
     {
-        InteractionText.instance.SetText("Aperte " +interactionKey+ " para pegar a receita");
+        InteractionText.instance.SetText("Aperte " + interactionKey + " para pegar a receita");
+
+        if (TryGetComponent<Renderer>(out var rend))
+        {
+            // Cria material temporário com URP Lit
+            Material highlightMat = new(Shader.Find("Universal Render Pipeline/Lit"));
+            highlightMat.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0.3f)); // branco transparente
+
+            // Garante que não duplica
+            List<Material> mats = new(rend.materials)
+            {
+                highlightMat
+            };
+            rend.materials = mats.ToArray();
+        }
     }
 
 
     public void OnInteractExit()
     {
+        InteractionText.instance.SetText("");
         Debug.Log("Interaction Ended");
     }
 }

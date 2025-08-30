@@ -9,6 +9,7 @@ namespace EJETAGame
     {
         public List<ItemDatabase> keys;
         public Animator animator { get; set; }
+        public bool isBarredDoor = false;
         private bool isOpen = false;
         private bool cannotCloseAnymore = false;
 
@@ -22,9 +23,9 @@ namespace EJETAGame
         public KeyCode interactionKey;
         public void Interact()
         {
-            if (!cannotCloseAnymore)
+            if (Input.GetKeyDown(interactionKey) && animator != null)
             {
-                if (Input.GetKeyDown(interactionKey) && animator != null)
+                if (!cannotCloseAnymore)
                 {
                     foreach (var key in keys)
                     {
@@ -44,33 +45,66 @@ namespace EJETAGame
                         {
                             if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
                             {
-                                cannotCloseAnymore = true;
-                                isOpen = true;
-                                animator.SetBool("IsOpen", isOpen);
-                                InteractionText.instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                                if (!isBarredDoor)
+                                {
+                                    cannotCloseAnymore = true;
+                                    isOpen = true;
+                                    animator.SetBool("IsOpen", isOpen);
+                                    InteractionText.instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                                }
+                                else
+                                {
+                                    InteractionText.instance.SetTextTimeout("Só pode ser aberta pela chave correta");
+                                }
                             }
                         }
                     }
                 }
-            }
-            else
-            {
-                InteractionText.instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                else
+                {
+                    InteractionText.instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                }
             }
         }
 
         public void OnInteractEnter()
         {
+            Debug.Log("interaction enter with door");
+
             if (!cannotCloseAnymore)
             {
-                InteractionText.instance.SetText("Aperte " + interactionKey + " para abrir ou fechar a porta");
+                InteractionText.instance.SetText("Clique com o mouse para abrir ou fechar a porta");
+            }
+
+            if (TryGetComponent<Renderer>(out var rend))
+            {
+                Material highlightMat = new(Shader.Find("Universal Render Pipeline/Lit"));
+                highlightMat.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0.3f)); // branco transparente
+
+                List<Material> mats = new(rend.materials)
+                {
+                    highlightMat
+                };
+
+                rend.materials = mats.ToArray();
             }
         }
 
-
         public void OnInteractExit()
         {
-            Debug.Log("Interaction Ended");
+            Debug.Log("interaction exit with door");
+
+            InteractionText.instance.SetText("");
+            if (TryGetComponent<Renderer>(out var rend))
+            {
+                // Remove o último material (highlight)
+                List<Material> mats = new List<Material>(rend.materials);
+                if (mats.Count > 1)
+                {
+                    mats.RemoveAt(mats.Count - 1);
+                    rend.materials = mats.ToArray();
+                }
+            }
         }
     }
 

@@ -30,17 +30,17 @@ public class InventoryController : MonoBehaviour
 
         Inventory = menu.GetComponentsInChildren<ItemInventoryController>();
 
-        var inventoryDatabase = GameController.Instance.GetInventory();
-
-        for (int i = 0; i < inventoryDatabase.Count; i++)
-        {
-            Inventory[i].InstantiateItem(inventoryDatabase[i]);
-        }
+        UpdateInventory();
     }
 
     void Update()
     {
         SelectItemInventory();
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RemoveItemInventory();
+        }
     }
 
     public bool VerifyItemSelected(SkillEnumerator skillID, List<StringPair> propriedades = null, List<StringPair> metodos = null)
@@ -71,11 +71,22 @@ public class InventoryController : MonoBehaviour
         return !list1.Except(list2, new StringPairComparer()).Any();
     }
 
+    private void RemoveItemInventory()
+    {
+        if (indexSelected != -1)
+        {
+            Debug.Log("removendo item: " + indexSelected);
+            GameController.Instance.RemoveItemDatabase(Inventory[indexSelected].returnActualItem());
+            Inventory[indexSelected].ResetDefaults();
+        }
+    }
 
-    public void UpdateInventory(){
+    public void UpdateInventory()
+    {
         var inventoryDatabase = GameController.Instance.GetInventory();
 
-        for(int i = 0; i < inventoryDatabase.Count; i++){
+        for (int i = 0; i < inventoryDatabase.Count; i++)
+        {
             Inventory[i].InstantiateItem(inventoryDatabase[i]);
         }
     }
