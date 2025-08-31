@@ -14,6 +14,8 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
     void Start()
     {
         backgroundImage = gameObject.GetComponent<Image>();
+
+        ResetDefaults();
     }
 
     public void OnPointerClick(PointerEventData eventData)

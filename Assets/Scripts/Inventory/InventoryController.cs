@@ -7,14 +7,14 @@ public class InventoryController : MonoBehaviour
 {
     public static InventoryController Instance { get; private set; }
 
-    private RectTransform craftArea;
     public ItemInventoryController[] Inventory;
-
     private int indexSelected = -1;
-    
+
+    private Dictionary<SkillEnumerator, System.Action> itemUseActions;
+
     private void Awake()
     {
-        if(Instance!= null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
@@ -27,10 +27,19 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
         var menu = GameObject.Find("Bottom itens");
-
         Inventory = menu.GetComponentsInChildren<ItemInventoryController>();
 
+        InitializeItemActions(); 
+
         UpdateInventory();
+    }
+
+    private void InitializeItemActions()
+    {
+        itemUseActions = new Dictionary<SkillEnumerator, System.Action>
+        {
+             { SkillEnumerator.Gravel, UseGravel },
+        };
     }
 
     void Update()
@@ -41,6 +50,11 @@ public class InventoryController : MonoBehaviour
         {
             RemoveItemInventory();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            TryUseSelectedItem();
+        }
     }
 
     public bool VerifyItemSelected(SkillEnumerator skillID, List<StringPair> propriedades = null, List<StringPair> metodos = null)
@@ -48,21 +62,17 @@ public class InventoryController : MonoBehaviour
         if (indexSelected != -1)
         {
             var actualItem = Inventory[indexSelected].returnActualItem();
-
             if (actualItem != null)
             {
                 bool idMatches = actualItem.skillID == skillID;
-                
                 bool propriedadesMatch = propriedades == null || List1IsContainedInList2(propriedades, actualItem.propriedades);
                 bool metodosMatch = metodos == null || List1IsContainedInList2(metodos, actualItem.metodos);
-
                 if (idMatches && propriedadesMatch && metodosMatch)
                 {
                     return true;
                 }
             }
         }
-
         return false;
     }
 
@@ -75,64 +85,72 @@ public class InventoryController : MonoBehaviour
     {
         if (indexSelected != -1)
         {
-            Debug.Log("removendo item: " + indexSelected);
-            GameController.Instance.RemoveItemDatabase(Inventory[indexSelected].returnActualItem());
-            Inventory[indexSelected].ResetDefaults();
+            var item = Inventory[indexSelected].returnActualItem();
+            if (item != null)
+            {
+                GameController.Instance.RemoveItemDatabase(item);
+                Inventory[indexSelected].ResetDefaults();
+            }
+        }
+    }
+
+    private void TryUseSelectedItem()
+    {
+        if (indexSelected != -1)
+        {
+            var item = Inventory[indexSelected].returnActualItem();
+            if (item != null)
+            {
+                if (itemUseActions.TryGetValue(item.skillID, out System.Action useAction))
+                {
+                    useAction.Invoke();
+                }
+            }
         }
     }
 
     public void UpdateInventory()
     {
         var inventoryDatabase = GameController.Instance.GetInventory();
-
         for (int i = 0; i < inventoryDatabase.Count; i++)
         {
             Inventory[i].InstantiateItem(inventoryDatabase[i]);
         }
     }
 
-    private void SelectItemInventory(){
-        if(Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0)){
-            SelectItemAt(9);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)){
-            SelectItemAt(0);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)){
-            SelectItemAt(1);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)){
-            SelectItemAt(2);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4)){
-            SelectItemAt(3);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha5) || Input.GetKeyDown(KeyCode.Keypad5)){
-            SelectItemAt(4);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha6) || Input.GetKeyDown(KeyCode.Keypad6)){
-            SelectItemAt(5);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha7) || Input.GetKeyDown(KeyCode.Keypad7)){
-            SelectItemAt(6);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha8) || Input.GetKeyDown(KeyCode.Keypad8)){
-            SelectItemAt(7);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha9) || Input.GetKeyDown(KeyCode.Keypad9)){
-            SelectItemAt(8);
-        }
-    }
-
-    public void SelectItemAt(int index){
-        indexSelected = index;
-
-        for(int i=0; i<Inventory.Count(); i++){
-            if(i == index){
-                Inventory[i].ItemSelected(true);
-            }else{
-                Inventory[i].ItemSelected(false);
+    private void SelectItemInventory()
+    {
+        for (int i = 1; i <= 9; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i) || Input.GetKeyDown(KeyCode.Keypad0 + i))
+            {
+                SelectItemAt(i - 1);
+                return;
             }
         }
+        if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            SelectItemAt(9);
+        }
     }
+
+    public void SelectItemAt(int index)
+    {
+        if (index >= Inventory.Length) return; 
+
+        indexSelected = index;
+        for (int i = 0; i < Inventory.Length; i++)
+        {
+            Inventory[i].ItemSelected(i == index);
+        }
+    }
+
+    #region Item Use Functions
+
+    private void UseGravel() 
+    {
+        Debug.Log("usando gravel...");
+    }
+
+    #endregion
 }
