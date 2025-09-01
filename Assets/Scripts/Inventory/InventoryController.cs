@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using EJETAGame;
 using UnityEngine;
 using static GameDatabase;
 
@@ -11,6 +12,8 @@ public class InventoryController : MonoBehaviour
     private int indexSelected = -1;
 
     private Dictionary<SkillEnumerator, System.Action> itemUseActions;
+
+    private bool usingGravel = false;
 
     private void Awake()
     {
@@ -29,7 +32,7 @@ public class InventoryController : MonoBehaviour
         var menu = GameObject.Find("Bottom itens");
         Inventory = menu.GetComponentsInChildren<ItemInventoryController>();
 
-        InitializeItemActions(); 
+        InitializeItemActions();
 
         UpdateInventory();
     }
@@ -39,6 +42,7 @@ public class InventoryController : MonoBehaviour
         itemUseActions = new Dictionary<SkillEnumerator, System.Action>
         {
              { SkillEnumerator.Gravel, UseGravel },
+             { SkillEnumerator.Torch, UseTorch }
         };
     }
 
@@ -46,14 +50,27 @@ public class InventoryController : MonoBehaviour
     {
         SelectItemInventory();
 
-        if (Input.GetKeyDown(KeyCode.R))
+        TryUseSelectedActiveItem();
+
+        if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].returnActualItem() != null)
         {
-            RemoveItemInventory();
+            FindInactive.Find("ConfirmErase").SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             TryUseSelectedItem();
+        }
+    }
+
+    private void TryUseSelectedActiveItem()
+    {
+        if (indexSelected != -1)
+        {
+            for (int i = 0; i < Inventory.Length; i++)
+            {
+                Inventory[i].VerifyItemActive(i == indexSelected);
+            }
         }
     }
 
@@ -81,7 +98,7 @@ public class InventoryController : MonoBehaviour
         return !list1.Except(list2, new StringPairComparer()).Any();
     }
 
-    private void RemoveItemInventory()
+    public void RemoveItemInventory()
     {
         if (indexSelected != -1)
         {
@@ -91,7 +108,14 @@ public class InventoryController : MonoBehaviour
                 GameController.Instance.RemoveItemDatabase(item);
                 Inventory[indexSelected].ResetDefaults();
             }
+
+            CloseConfirmRemoveItem();
         }
+    }
+
+    public void CloseConfirmRemoveItem()
+    {
+        FindInactive.Find("ConfirmErase").SetActive(false);
     }
 
     private void TryUseSelectedItem()
@@ -136,7 +160,7 @@ public class InventoryController : MonoBehaviour
 
     public void SelectItemAt(int index)
     {
-        if (index >= Inventory.Length) return; 
+        if (index >= Inventory.Length) return;
 
         indexSelected = index;
         for (int i = 0; i < Inventory.Length; i++)
@@ -147,9 +171,39 @@ public class InventoryController : MonoBehaviour
 
     #region Item Use Functions
 
-    private void UseGravel() 
+    private void UseGravel()
     {
-        Debug.Log("usando gravel...");
+        if (!usingGravel)
+        {
+            RemoveItemInventory();
+            InteractionText.instance.SetTextTimeout("Usando pederneira... selecione uma tocha para acender");
+            usingGravel = true;
+        }
+        else
+        {
+            InteractionText.instance.SetTextTimeout("Já está utilizando pederneira, acenda uma tocha primeiro");
+        }
+    }
+
+    private void UseTorch()
+    {
+        if (!Inventory[indexSelected].returnActualItem().itemActive)
+        {
+            if (usingGravel)
+            {
+                usingGravel = false;
+                Inventory[indexSelected].returnActualItem().itemActive = true;
+                InteractionText.instance.SetTextTimeout("Tocha acesa");
+            }
+            else
+            {
+                InteractionText.instance.SetTextTimeout("Utilize uma pederneira para acender a tocha");
+            }
+        }
+        else
+        {
+            InteractionText.instance.SetTextTimeout("Tocha já acesa");
+        }
     }
 
     #endregion
