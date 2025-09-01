@@ -17,6 +17,13 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
 
         ResetDefaults();
     }
+    public void VerifyItemActive(bool itemSelected)
+    {
+        if (itemSelected)
+        {
+            EquipItemController.Instance.EquipItem(actualItem);
+        }
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {

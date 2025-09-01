@@ -64,7 +64,6 @@ public class GameController : MonoBehaviour
 
     public void RemoveItemDatabase(ItemDatabase item)
     {
-        Debug.Log("item a ser removido..." + item.nome);
         Database.RemoveItemDatabase(item);
     }
 
@@ -79,7 +78,6 @@ public class GameController : MonoBehaviour
         {
             Debug.Log(ex.ToString());
         }
-
     }
 
     public void AddSkillLearned(SkillEnumerator item){
