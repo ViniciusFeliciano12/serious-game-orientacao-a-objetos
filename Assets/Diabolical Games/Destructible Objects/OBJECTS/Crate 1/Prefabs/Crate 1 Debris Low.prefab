@@ -290,15 +290,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa45bf49057325428bbe0bfe0e1a929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionKey: 323
   key:
     nome: 
     icon: {fileID: 0}
     skillID: 3
+    itemActive: 0
     propriedades: []
     metodos:
-    - chave: Manusear
-      valor: Desmontar
-  interactionKey: 323
+    - chave: Desmontar
+      valor: 
 --- !u!65 &3810770401989283549
 BoxCollider:
   m_ObjectHideFlags: 0

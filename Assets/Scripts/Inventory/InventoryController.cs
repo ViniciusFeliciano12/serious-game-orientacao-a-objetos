@@ -42,7 +42,8 @@ public class InventoryController : MonoBehaviour
         itemUseActions = new Dictionary<SkillEnumerator, System.Action>
         {
              { SkillEnumerator.Gravel, UseGravel },
-             { SkillEnumerator.Torch, UseTorch }
+             { SkillEnumerator.Torch, UseTorch },
+             { SkillEnumerator.Crowbar, UseCrowbar }
         };
     }
 
@@ -204,6 +205,11 @@ public class InventoryController : MonoBehaviour
         {
             InteractionText.instance.SetTextTimeout("Tocha já acesa");
         }
+    }
+    
+    private void UseCrowbar()
+    {
+
     }
 
     #endregion

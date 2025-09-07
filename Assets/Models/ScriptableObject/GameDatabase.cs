@@ -10,8 +10,8 @@ public class GameDatabase : ScriptableObject
     public Player player;
 
     public void ResetDatabase(){
-        skillTreeObjects = new();
         itemInventoryObjects = new();
+        skillTreeObjects = new();
         player = new();
     }
 
@@ -69,10 +69,12 @@ public class GameDatabase : ScriptableObject
     public enum SkillEnumerator
     {
         Key,
-        Weapon,
+        Equipment,
         Sword,
         Crowbar,
         Torch,
-        Gravel
+        Gravel,
+        Axe,
+        Shield
     }
 }

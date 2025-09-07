@@ -32,7 +32,7 @@ public class SkillTreeController : MonoBehaviour
     private void Start()
     {
         SkillTreePanel = FindInactive.FindUIElement("SkillTreePanel");
-        buttons = SkillTreePanel.GetComponentsInChildren<Button>();
+        buttons = SkillTreePanel.GetComponentsInChildren<Button>(true); // Inclui botões inativos na busca inicial
         GlobalVolume = FindObjectOfType<Volume>();
 
         SkillTreePanel.SetActive(false);
@@ -59,6 +59,12 @@ public class SkillTreeController : MonoBehaviour
             {
                 dof.focusDistance.overrideState = PauseController.Instance.pausedBySkillTree;
             }
+
+            // Atualiza a árvore sempre que ela é aberta
+            if (SkillTreePanel.activeSelf)
+            {
+                VerifyButtons();
+            }
         }
     }
 
@@ -66,13 +72,13 @@ public class SkillTreeController : MonoBehaviour
     {
         try
         {
-            for (int count = 0; count < buttons.Length; count++)
+            // ETAPA 1: Atualizar o estado de todos os botões (visibilidade, cor, etc.)
+            foreach (var button in buttons)
             {
-                var button = buttons[count];
                 var buttonScript = button.GetComponent<SkillTreeButton>();
+                if (buttonScript == null) continue;
 
                 bool selfFound = GameController.Instance.VerifyItemFound(buttonScript.itemID);
-
 
                 if (!selfFound)
                 {
@@ -109,7 +115,6 @@ public class SkillTreeController : MonoBehaviour
                     else if (!allAncestorsLearned)
                     {
                         showXMark = true;
-                        isLearned = false;
                     }
                 }
 
@@ -133,20 +138,22 @@ public class SkillTreeController : MonoBehaviour
                     {
                         xMark.gameObject.SetActive(showXMark);
                     }
-
-                    // Verifica se o botão possui ancestrais e cria as linhas se necessário
-                    CreateConnectionLinesForButton(button, buttonScript);
                 }
             }
+
+            // ETAPA 2: Após definir a visibilidade de todos os botões, desenhar todas as linhas de conexão
+            UpdateAllConnectionLines();
         }
         catch (Exception ex)
         {
-            Debug.Log(ex.ToString());
+            Debug.LogError($"Erro ao verificar os botões da Skill Tree: {ex}");
         }
-        
     }
 
-    private void CreateConnectionLinesForButton(Button button, SkillTreeButton buttonScript)
+    /// <summary>
+    /// Limpa as linhas de conexão antigas e recria todas as conexões para os botões visíveis.
+    /// </summary>
+    private void UpdateAllConnectionLines()
     {
         // Limpa as linhas de conexão antigas
         foreach (var line in connectionLines)
@@ -155,15 +162,28 @@ public class SkillTreeController : MonoBehaviour
         }
         connectionLines.Clear();
 
-        // Cria novas linhas de conexão
-        if (buttonScript.dependsOnAncestorItem != null && buttonScript.dependsOnAncestorItem.Length > 0)
+        // Itera por todos os botões para criar as novas linhas de conexão
+        foreach (var button in buttons)
         {
+            // Só processa se o botão estiver ativo/visível
+            if (!button.gameObject.activeSelf)
+            {
+                continue;
+            }
+
+            var buttonScript = button.GetComponent<SkillTreeButton>();
+            if (buttonScript == null || buttonScript.dependsOnAncestorItem == null || buttonScript.dependsOnAncestorItem.Length == 0)
+            {
+                continue;
+            }
+
+            // Cria uma linha para cada ancestral
             foreach (var ancestorID in buttonScript.dependsOnAncestorItem)
             {
                 var ancestorButton = FindButtonBySkillID(ancestorID);
 
-                // Verifica se o ancestral e o item atual estão visíveis (ativos)
-                if (ancestorButton != null && ancestorButton.gameObject.activeSelf && button.gameObject.activeSelf)
+                // Verifica se o botão ancestral foi encontrado e também está ativo
+                if (ancestorButton != null && ancestorButton.gameObject.activeSelf)
                 {
                     GameObject lineObj = CreateLineBetween(button.transform, ancestorButton.transform);
                     connectionLines.Add(lineObj);
@@ -174,52 +194,30 @@ public class SkillTreeController : MonoBehaviour
 
     private GameObject CreateLineBetween(Transform from, Transform to)
     {
-        // Cria um novo objeto para a linha
         GameObject lineObj = new GameObject("SkillTreeConnectionLine", typeof(RectTransform), typeof(Image));
 
-        // Coloca a linha atrás dos botões
         lineObj.transform.SetParent(SkillTreePanel.transform, false);
-        lineObj.transform.SetSiblingIndex(0);  // Coloca a linha atrás dos botões
+        lineObj.transform.SetAsFirstSibling(); // Coloca a linha atrás de todos os outros elementos da UI
 
-        // Acessando componentes do RectTransform e Image
         RectTransform rectTransform = lineObj.GetComponent<RectTransform>();
         Image image = lineObj.GetComponent<Image>();
+        image.color = Color.black; // Cor padrão da linha
 
-        // Carregue o sprite de uma linha suave (faça isso no Unity e adicione a textura como um Sprite)
-        Sprite lineSprite = Resources.Load<Sprite>("LineSprite"); // Substitua pelo caminho do seu sprite de linha
-
-        if (lineSprite != null)
-        {
-            image.sprite = lineSprite;
-        }
-        else
-        {
-            // Se não encontrar o sprite, use uma cor sólida (preta)
-            image.color = Color.black;
-        }
-
-        // Calculando a posição e o tamanho da linha
         Vector3 fromPos = from.position;
         Vector3 toPos = to.position;
 
-        // Calculando o ponto médio para a linha
         Vector3 midPoint = (fromPos + toPos) / 2f;
         rectTransform.position = midPoint;
 
-        // Calculando a distância entre os pontos para definir o tamanho da linha
         float distance = Vector3.Distance(fromPos, toPos);
-        rectTransform.sizeDelta = new Vector2(distance, 5f);  // Largura da linha (ajustável)
+        rectTransform.sizeDelta = new Vector2(distance, 5f);
 
-        // Calculando a direção da linha (ângulo)
         Vector3 dir = (toPos - fromPos).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-        // Rotacionando a linha para que ela fique alinhada entre os pontos
         rectTransform.rotation = Quaternion.Euler(0, 0, angle);
 
         return lineObj;
     }
-
 
     private Button FindButtonBySkillID(SkillEnumerator id)
     {
