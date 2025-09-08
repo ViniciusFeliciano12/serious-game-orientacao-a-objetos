@@ -16,29 +16,48 @@ MonoBehaviour:
   - itemID: 3
     recipeLearned: 1
   - itemID: 0
+    recipeLearned: 1
+  - itemID: 4
+    recipeLearned: 0
+  - itemID: 5
+    recipeLearned: 0
+  - itemID: 6
+    recipeLearned: 0
+  - itemID: 1
+    recipeLearned: 1
+  - itemID: 7
+    recipeLearned: 0
+  - itemID: 2
     recipeLearned: 0
   itemInventoryObjects:
   - nome: "P\xE9 de Cabra"
     icon: {fileID: 2800000, guid: bb5251ecff6db9244958c944247c7028, type: 3}
     skillID: 3
-    propriedades:
-    - chave: Tamanho
-      valor: "M\xE9dio"
-    - chave: Material
-      valor: Madeira
-    metodos:
-    - chave: Usar
-      valor: Atacar
-  - nome: "P\xE9 de Cabra"
-    icon: {fileID: 2800000, guid: bb5251ecff6db9244958c944247c7028, type: 3}
-    skillID: 3
+    itemActive: 0
     propriedades:
     - chave: Tamanho
       valor: "M\xE9dio"
     - chave: Material
       valor: Ferro
     metodos:
-    - chave: Usar
-      valor: Desmontar
+    - chave: Atacar
+      valor: 
+    - chave: Desmontar
+      valor: 
+  - nome: Chave
+    icon: {fileID: 2800000, guid: 99bf129da19b8304f9de43fae4c39181, type: 3}
+    skillID: 0
+    itemActive: 0
+    propriedades:
+    - chave: Tamanho
+      valor: Medio
+    - chave: Cor
+      valor: Branco
+    metodos:
+    - chave: Abrir
+      valor: Grade
+    - chave: Fechar
+      valor: Grade
   player:
-    position: {x: -7.8933244, y: 6.624985, z: 8.490421}
+    position: {x: 15.187256, y: 3.375, z: 14.133755}
+    life: 6
