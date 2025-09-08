@@ -35,13 +35,13 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
         }
     }
 
-    public ItemDatabase returnActualItem(){
+    public ItemDatabase ReturnActualItem(){
         return actualItem;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (actualItem != null)
+        if (actualItem != null && actualItem.icon != null)
         {
             UIController.Instance.ShowTooltip(actualItem, gameObject.GetComponent<RectTransform>());
         }

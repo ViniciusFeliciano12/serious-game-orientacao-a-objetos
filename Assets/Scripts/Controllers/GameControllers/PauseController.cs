@@ -6,9 +6,10 @@ public class PauseController : MonoBehaviour
     public static PauseController Instance { get; private set; }
 
     private GameObject Panel;
+    private GameObject GameOverPanel;
     public bool pausedGame = false;
     public bool pausedBySkillTree = false;
-
+    public bool isDead = false;
     public bool timeStopped 
     {
         get => pausedGame || pausedBySkillTree;
@@ -29,6 +30,7 @@ public class PauseController : MonoBehaviour
     void Start()
     {
         Panel = FindInactive.FindUIElement("PausePanel");
+        GameOverPanel = FindInactive.FindUIElement("GameOver Panel");
         Panel.SetActive(false);
     }
 
@@ -38,38 +40,60 @@ public class PauseController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)){
             PauseUnPause();
         }
+
+        Time.timeScale = timeStopped ? 0.00001f : 1f;
     }
 
     public bool ChangeFlowTime(PauseMode mode){
-        switch(mode){
-            case PauseMode.Pause: 
+        switch (mode)
+        {
+            case PauseMode.Pause:
                 if (!pausedBySkillTree)
-                    pausedGame = !pausedGame; 
+                    pausedGame = !pausedGame;
                 else return false;
-            break;
+                break;
 
-            case PauseMode.SkillTree: 
-                if(!pausedGame)
-                    pausedBySkillTree = !pausedBySkillTree; 
+            case PauseMode.SkillTree:
+                if (!pausedGame)
+                    pausedBySkillTree = !pausedBySkillTree;
                 else return false;
-            break;
+                break;
+
+            case PauseMode.GameOver:
+                pausedGame = true;
+                isDead = true;
+                GameOverPanel.SetActive(true);
+                break;
         }
 
-        Time.timeScale = timeStopped ? 0.00001f : 1f;
         return true;
     }
 
     public void PauseUnPause(){
-        ChangeFlowTime(PauseMode.Pause);
-        Panel.SetActive(pausedGame);
+        if (!isDead)
+        {
+            ChangeFlowTime(PauseMode.Pause);
+            Panel.SetActive(pausedGame);
+        }
     }
 
-    public void BackToMenu(){
+    public void ReloadScene()
+    {
+        isDead = false;
+        PauseUnPause();
+        GameController.Instance.ReloadScene();
+        SceneManager.LoadScene(1);
+    }
+
+    public void BackToMenu()
+    {
         SceneManager.LoadScene(0);
     }
 
-    public enum PauseMode{
+    public enum PauseMode
+    {
         Pause,
-        SkillTree
+        SkillTree,
+        GameOver
     }
 }

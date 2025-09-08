@@ -53,7 +53,7 @@ public class InventoryController : MonoBehaviour
 
         TryUseSelectedActiveItem();
 
-        if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].returnActualItem() != null)
+        if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].ReturnActualItem() != null)
         {
             FindInactive.Find("ConfirmErase").SetActive(true);
         }
@@ -79,7 +79,7 @@ public class InventoryController : MonoBehaviour
     {
         if (indexSelected != -1)
         {
-            var actualItem = Inventory[indexSelected].returnActualItem();
+            var actualItem = Inventory[indexSelected].ReturnActualItem();
             if (actualItem != null)
             {
                 bool idMatches = actualItem.skillID == skillID;
@@ -103,7 +103,7 @@ public class InventoryController : MonoBehaviour
     {
         if (indexSelected != -1)
         {
-            var item = Inventory[indexSelected].returnActualItem();
+            var item = Inventory[indexSelected].ReturnActualItem();
             if (item != null)
             {
                 GameController.Instance.RemoveItemDatabase(item);
@@ -123,7 +123,7 @@ public class InventoryController : MonoBehaviour
     {
         if (indexSelected != -1)
         {
-            var item = Inventory[indexSelected].returnActualItem();
+            var item = Inventory[indexSelected].ReturnActualItem();
             if (item != null)
             {
                 if (itemUseActions.TryGetValue(item.skillID, out System.Action useAction))
@@ -188,12 +188,12 @@ public class InventoryController : MonoBehaviour
 
     private void UseTorch()
     {
-        if (!Inventory[indexSelected].returnActualItem().itemActive)
+        if (!Inventory[indexSelected].ReturnActualItem().itemActive)
         {
             if (usingGravel)
             {
                 usingGravel = false;
-                Inventory[indexSelected].returnActualItem().itemActive = true;
+                Inventory[indexSelected].ReturnActualItem().itemActive = true;
                 UIController.Instance.SetTextTimeout("Tocha acesa");
             }
             else

@@ -72,7 +72,7 @@ public class CharacterController : MonoBehaviour
 
     void Update()
     {
-        if (PauseController.Instance.timeStopped)
+        if (CannotMove())
             return;
 
         // Input checkers
@@ -157,7 +157,7 @@ public class CharacterController : MonoBehaviour
             initialPositionSet = true;
         }
 
-        if (PauseController.Instance.timeStopped)
+        if (CannotMove())
             return;
 
         timer += Time.fixedDeltaTime;
@@ -228,5 +228,10 @@ public class CharacterController : MonoBehaviour
             jumpElapsedTime = 0;
             isJumping = false;
         }
+    }
+
+    public bool CannotMove()
+    {
+        return PauseController.Instance.timeStopped || animator.GetCurrentAnimatorStateInfo(0).IsName("Dead");
     }
 }
