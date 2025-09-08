@@ -64,41 +64,42 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.57f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameControllers\MenuController.cs" />
     <Compile Include="Assets\Diabolical Games\Destructible Objects\Scripts\Spawner.cs" />
-    <Compile Include="Assets\Scripts\Inventory\InventoryController.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\ExplodeBarrel.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\MoveCamForward.cs" />
-    <Compile Include="Assets\Scripts\Inventory\Item.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\DraggableText.cs" />
-    <Compile Include="Assets\Scripts\PauseController.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\DropZone.cs" />
-    <Compile Include="Assets\Scripts\Inventory\EquipItemController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Inventory\UIController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\DropdownPlaceholderHandler.cs" />
     <Compile Include="Assets\Models\ScriptableObject\ItemDatabase.cs" />
-    <Compile Include="Assets\Scripts\Inventory\ItemInventoryController.cs" />
     <Compile Include="Assets\Diabolical Games\Destructible Objects\Scripts\DestructibleObject.cs" />
-    <Compile Include="Assets\Scripts\Interaction\BaseInteraction\InteractionText.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameControllers\PauseController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameControllers\CharacterController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_DestroyTimed.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\DoorInteraction.cs" />
-    <Compile Include="Assets\Scripts\MenuController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\UILineConnector.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\SkillTreeButton.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Inventory\EquipItemController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_RandomScale.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameControllers\WowCameraController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_TrailFade.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\UILineConnector.cs" />
     <Compile Include="Assets\Scripts\Interaction\BaseInteraction\IInteractable.cs" />
-    <Compile Include="Assets\Scripts\WowCameraController.cs" />
-    <Compile Include="Assets\Scripts\Inventory\TooltipUI.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\LearnNewRecipeMinigameController.cs" />
     <Compile Include="Assets\Diabolical Games\Destructible Objects\Scripts\Explosion.cs" />
     <Compile Include="Assets\Scripts\Utils\FindInactive.cs" />
     <Compile Include="Assets\7th Side\Samples\Showcase\FlyCam.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\DestroyBelowY.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\SkillTreeController.cs" />
     <Compile Include="Assets\Models\ScriptableObject\GameDatabase.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\LearnNewRecipeMinigameController.cs" />
+    <Compile Include="Assets\VarcanRex\LongSword\Scripts\SimpleRotate.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Inventory\Item.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_AnimSpeedRandomizer.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_PrefabGenerator.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Inventory\ItemInventoryController.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\DestroyOnClick.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactor.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\SkillTreeController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\DraggableText.cs" />
     <Compile Include="Assets\Diabolical Games\Destructible Objects\Scripts\Despawn.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameControllers\GameController.cs" />
     <Compile Include="Assets\DoubleL\Demo\DemoCameraController.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\DestroyOnHit.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\CrateInteraction.cs" />
@@ -106,14 +107,14 @@
     <Compile Include="Assets\Scripts\Interaction\Interactives\RecipeInteraction.cs" />
     <Compile Include="Assets\Models\ScriptableObject\Player.cs" />
     <Compile Include="Assets\Models\ScriptableObject\SkillDatabase.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SkillTree\DropZone.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Inventory\InventoryController.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\EnemyInteraction.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\SkillTreeButton.cs" />
-    <Compile Include="Assets\Scripts\SkillTree\DropdownPlaceholderHandler.cs" />
     <Compile Include="Assets\Scripts\Interaction\BaseInteraction\Interactable.cs" />
-    <Compile Include="Assets\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_Rotate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Metall Ax2\Prototyping\Shaders\WorldCoordDiffuse.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Devion Games\Inventory System\Changes.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -988,10 +989,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1072,10 +1069,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1086,6 +1079,10 @@
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline">
@@ -1162,6 +1159,10 @@
     </Reference>
     <Reference Include="Cinemachine">
       <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">

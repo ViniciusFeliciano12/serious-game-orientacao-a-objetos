@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Database", menuName = "Scriptables/Database", order = 1)]
 public class GameDatabase : ScriptableObject
 {
-    public List<SkillDatabase> skillTreeObjects;
-    public List<ItemDatabase> itemInventoryObjects;
-    public Player player;
+    [SerializeField] private List<SkillDatabase> skillTreeObjects;
+    [SerializeField] private List<ItemDatabase> itemInventoryObjects;
+    [SerializeField] private Player player;
 
     public void ResetDatabase(){
         itemInventoryObjects = new();
@@ -23,6 +23,17 @@ public class GameDatabase : ScriptableObject
 
     public Vector3 GetPlayerPosition(){
         return player.position;
+    }
+
+    public int UpdatePlayerLifes(int damageTaken)
+    {
+        player.life -= damageTaken;
+        return ReturnPlayerLifes();
+    }
+
+    public int ReturnPlayerLifes()
+    {
+        return player.life;
     }
 
     #endregion
@@ -45,6 +56,11 @@ public class GameDatabase : ScriptableObject
     #endregion
 
     #region Skill
+
+    public int ReturnSkillCount()
+    {
+        return skillTreeObjects.Count;
+    }
 
     public bool VerifySkillFound(SkillEnumerator itemID)
     {

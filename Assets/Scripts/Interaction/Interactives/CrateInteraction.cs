@@ -91,7 +91,7 @@ public class CrateInteraction : Interactable
     public override void OnInteractEnter()
     {
         Debug.Log("interaction enter with crate");
-        InteractionText.instance.SetText("Utilize o pé de cabra para quebrar as caixas...");
+        UIController.Instance.SetText("Utilize o pé de cabra para quebrar as caixas...");
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
 
         foreach (Renderer rend in renderers)
@@ -112,7 +112,7 @@ public class CrateInteraction : Interactable
     public override void OnInteractExit()
     {
         Debug.Log("interaction exit with crate");
-        InteractionText.instance.SetText("");
+        UIController.Instance.SetText("");
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
 
         foreach (Renderer rend in renderers)

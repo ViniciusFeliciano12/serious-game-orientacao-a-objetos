@@ -50,13 +50,13 @@ namespace EJETAGame
                 }
 
                 foundInteractable.Interact();
-                InteractionText.instance.textAppear.gameObject.SetActive(true);
+                UIController.Instance.UpdateTextAppear(true);
             }
             else
             {
                 if (currentInteractable != null)
                 {
-                    InteractionText.instance.textAppear.gameObject.SetActive(false);
+                    UIController.Instance.UpdateTextAppear(false);
                     currentInteractable.OnInteractExit();
                     currentInteractable = null;
                 }

@@ -23,7 +23,7 @@ public class RecipeInteraction : Interactable
             };
 
             GameController.Instance.AddSkillFound(RecipeItem);
-            InteractionText.instance.SetTextTimeout("Pegou receita nova! Aperte I para verificar sua árvore de habilidades");
+            UIController.Instance.SetTextTimeout("Pegou receita nova! Aperte I para verificar sua árvore de habilidades");
             CharacterController.Instance.animator.SetTrigger("Gathering");
 
             if (TryGetComponent<Collider>(out var col))
@@ -37,7 +37,7 @@ public class RecipeInteraction : Interactable
 
     public override void OnInteractEnter()
     {
-        InteractionText.instance.SetText("Clique com o mouse para pegar a receita");
+        UIController.Instance.SetText("Clique com o mouse para pegar a receita");
 
         base.OnInteractEnter();
     }

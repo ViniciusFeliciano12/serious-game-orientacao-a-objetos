@@ -37,7 +37,7 @@ namespace EJETAGame
 
         public virtual void OnInteractExit()
         {
-            InteractionText.instance.SetText("");
+            UIController.Instance.SetText("");
             if (TryGetComponent<Renderer>(out var rend))
             {
                 // Remove o último material (highlight)

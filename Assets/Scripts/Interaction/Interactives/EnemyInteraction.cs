@@ -219,14 +219,14 @@ namespace EJETAGame
             if (jaMorreu) return;
             jaMorreu = true;
 
-            animator.SetTrigger("Morreu");
+            animator.SetTrigger("Dying");
 
             if (TryGetComponent<Collider>(out var col))
             {
                 col.enabled = false;
             }
             agente.enabled = false;
-            Destroy(gameObject, 3f);
+            Destroy(gameObject, 2.5f);
         }
 
         private void ExecutarEstadoParado()
@@ -250,7 +250,8 @@ namespace EJETAGame
         private void AtacarJogador()
         {
             animator.SetTrigger("Atacando");
-            // Lógica de dano ao jogador aqui.
+
+            GameController.Instance.UpdatePlayerLifes(danoDoInimigo);
         }
 
         public override void Interact()

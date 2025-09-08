@@ -34,7 +34,7 @@ namespace EJETAGame
                             }
                             else
                             {
-                                InteractionText.instance.SetTextTimeout("Utilize a chave correta para interagir");
+                                UIController.Instance.SetTextTimeout("Utilize a chave correta para interagir");
                             }
                         }
                         else if (key.skillID == GameDatabase.SkillEnumerator.Crowbar)
@@ -46,11 +46,11 @@ namespace EJETAGame
                                     cannotCloseAnymore = true;
                                     isOpen = true;
                                     animator.SetBool("IsOpen", isOpen);
-                                    InteractionText.instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                                    UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
                                 }
                                 else
                                 {
-                                    InteractionText.instance.SetTextTimeout("Só pode ser aberta pela chave correta");
+                                    UIController.Instance.SetTextTimeout("Só pode ser aberta pela chave correta");
                                 }
                             }
                         }
@@ -58,7 +58,7 @@ namespace EJETAGame
                 }
                 else
                 {
-                    InteractionText.instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                    UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace EJETAGame
 
             if (!cannotCloseAnymore)
             {
-                InteractionText.instance.SetText("Clique com o mouse para abrir ou fechar a porta");
+                UIController.Instance.SetText("Clique com o mouse para abrir ou fechar a porta");
             }
 
             base.OnInteractEnter();
