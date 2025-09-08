@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static GameDatabase;
 
@@ -34,14 +35,27 @@ public class GameController : MonoBehaviour
         
     }
 
+    public void ReloadScene()
+    {
+        Database.ResetDatabasePartial();
+    }
+
     public void UpdatePlayerLifes(int damageTaken)
     {
         var lifesRemaining = Database.UpdatePlayerLifes(damageTaken);
         UIController.Instance.UpdateHUD(lifes: lifesRemaining);
 
+        VerifyDead(lifesRemaining);
+    }
+
+    private async void VerifyDead(int lifesRemaining)
+    {
         if (lifesRemaining <= 0)
         {
-            //logica para resetar a fase
+            CharacterController.Instance.animator.SetTrigger("IsDead");
+
+            await Task.Delay(2500);
+            PauseController.Instance.ChangeFlowTime(PauseController.PauseMode.GameOver);
         }
     }
 

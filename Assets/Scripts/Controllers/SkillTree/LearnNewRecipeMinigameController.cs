@@ -134,7 +134,6 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     {
         SpawnPalavras();
 
-        // Une todas as propriedades e métodos para criar os objetos de palavra de uma só vez
         var allItems = propriedades.Concat(metodos).ToList();
         var wordObjects = CreateWordObjects(allItems);
 
@@ -161,7 +160,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             {
                 GameObject wordObj = Instantiate(wordPrefab, minigameArea);
                 wordObj.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
-                wordObj.SetActive(false); // Começa inativo, será ativado por SpawnCampos
+                wordObj.SetActive(false);
                 wordDict[item.name] = wordObj;
             }
         }
@@ -233,7 +232,6 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             }
             else
             {
-                // Comportamento original para campos vazios
                 dropZone.acceptedWord = item.name;
             }
         }

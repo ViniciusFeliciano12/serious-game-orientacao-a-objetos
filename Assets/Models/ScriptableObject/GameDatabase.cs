@@ -15,9 +15,15 @@ public class GameDatabase : ScriptableObject
         player = new();
     }
 
+    public void ResetDatabasePartial()
+    {
+        player = new();
+    }
+
     #region Player
 
-    public void SavePlayerPosition(Vector3 position){
+    public void SavePlayerPosition(Vector3 position)
+    {
         player.position = position;
     }
 

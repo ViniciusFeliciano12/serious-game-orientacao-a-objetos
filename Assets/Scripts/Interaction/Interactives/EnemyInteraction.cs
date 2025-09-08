@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI; // NECESSÁRIO para a IA de navegação
-using UnityEditor;    // NECESSÁRIO para desenhar o cone de visão no Editor
+using UnityEditor;
+using System.Threading.Tasks;    // NECESSÁRIO para desenhar o cone de visão no Editor
 
 namespace EJETAGame
 {
@@ -92,7 +93,7 @@ namespace EJETAGame
 
         void Update()
         {
-            if (jaMorreu || jogador == null) return;
+            if (jaMorreu || jogador == null || CharacterController.Instance.CannotMove()) return;
 
             switch (estadoAtual)
             {
