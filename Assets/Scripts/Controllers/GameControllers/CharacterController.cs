@@ -232,6 +232,6 @@ public class CharacterController : MonoBehaviour
 
     public bool CannotMove()
     {
-        return PauseController.Instance.timeStopped || animator.GetCurrentAnimatorStateInfo(0).IsName("Dead") || animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking");
+        return PauseController.Instance.timeStopped || animator.GetCurrentAnimatorStateInfo(0).IsName("Dead") || animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking") || animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack") || animator.GetCurrentAnimatorStateInfo(0).IsName("Gathering");
     }
 }

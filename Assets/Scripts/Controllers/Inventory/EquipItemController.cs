@@ -44,6 +44,11 @@ public class EquipItemController : MonoBehaviour
         }
     }
 
+    public ItemDatabase? ReturnAcutalItem()
+    {
+        return ActualItem;
+    }
+
     public void EquipItem(ItemDatabase? item)
     {
         if (ActualItem == item) return;
