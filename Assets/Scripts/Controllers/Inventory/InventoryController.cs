@@ -43,7 +43,8 @@ public class InventoryController : MonoBehaviour
         {
              { SkillEnumerator.Gravel, UseGravel },
              { SkillEnumerator.Torch, UseTorch },
-             { SkillEnumerator.Crowbar, UseCrowbar }
+             { SkillEnumerator.Crowbar, UseCrowbar },
+             { SkillEnumerator.Shield, UseShield }
         };
     }
 
@@ -206,10 +207,15 @@ public class InventoryController : MonoBehaviour
             UIController.Instance.SetTextTimeout("Tocha já acesa");
         }
     }
-    
+
     private void UseCrowbar()
     {
 
+    }
+
+    private void UseShield()
+    {
+        CharacterController.Instance.animator.SetBool("Blocking", !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"));
     }
 
     #endregion

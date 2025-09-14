@@ -12,6 +12,7 @@ public class EquipItemController : MonoBehaviour
 #nullable disable
 
     private Transform rightHandAttachPoint;
+    private Transform leftHandAttachPoint;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class EquipItemController : MonoBehaviour
         }
 
         rightHandAttachPoint = GameObject.Find("jointItemR").transform;
+        leftHandAttachPoint = GameObject.Find("jointItemL").transform;
     }
 
 #nullable enable
@@ -34,6 +36,11 @@ public class EquipItemController : MonoBehaviour
         if (ActualItem != null && ActualItem.skillID == SkillEnumerator.Torch)
         {
             ManageTorch();
+        }
+
+        if (ActualItem != null && ActualItem.skillID != SkillEnumerator.Shield)
+        {
+            ManageShield();
         }
     }
 
@@ -53,9 +60,9 @@ public class EquipItemController : MonoBehaviour
 
     private void EquipItem()
     {
-        if (rightHandAttachPoint == null)
+        if (rightHandAttachPoint == null || leftHandAttachPoint == null)
         {
-            Debug.LogError("O Ponto de Anexo (rightHandAttachPoint) não foi definido no Inspector!");
+            Debug.LogError("O Ponto de Anexo (rightHandAttachPoint) ou (leftHandAttachPoint) não foi definido no Inspector!");
             return;
         }
 
@@ -66,7 +73,14 @@ public class EquipItemController : MonoBehaviour
             return;
         }
 
-        ActualObject = Instantiate(prefab, rightHandAttachPoint);
+        if (ActualItem.skillID == SkillEnumerator.Shield)
+        {
+            ActualObject = Instantiate(prefab, leftHandAttachPoint);
+        }
+        else
+        {
+            ActualObject = Instantiate(prefab, rightHandAttachPoint);
+        }
     }
 
     private void ManageTorch()
@@ -84,11 +98,27 @@ public class EquipItemController : MonoBehaviour
         }     
     }
 
+    private void ManageShield()
+    {
+        if (CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"))
+        {
+            CharacterController.Instance.animator.SetBool("Blocking", false);
+        }
+    }
+
     private void Desequip()
     {
         if (rightHandAttachPoint != null)
         {
             foreach (Transform child in rightHandAttachPoint)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
+        if (leftHandAttachPoint != null)
+        {
+            foreach (Transform child in leftHandAttachPoint)
             {
                 Destroy(child.gameObject);
             }

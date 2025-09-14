@@ -93,7 +93,7 @@ namespace EJETAGame
 
         void Update()
         {
-            if (jaMorreu || jogador == null || CharacterController.Instance.CannotMove()) return;
+            if (jaMorreu || jogador == null || CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead")) return;
 
             switch (estadoAtual)
             {
@@ -252,7 +252,10 @@ namespace EJETAGame
         {
             animator.SetTrigger("Atacando");
 
-            GameController.Instance.UpdatePlayerLifes(danoDoInimigo);
+            if (!CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"))
+            {
+                GameController.Instance.UpdatePlayerLifes(danoDoInimigo);
+            }
         }
 
         public override void Interact()
