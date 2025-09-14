@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI; // NECESSÁRIO para a IA de navegação
 using UnityEditor;
-using System.Threading.Tasks;    // NECESSÁRIO para desenhar o cone de visão no Editor
+using System.Threading.Tasks;
+using System.Linq;    // NECESSÁRIO para desenhar o cone de visão no Editor
 
 namespace EJETAGame
 {
@@ -16,7 +17,7 @@ namespace EJETAGame
 
         #region Variáveis de Interação e Vida
         [Header("Combate e Interação")]
-        [SerializeField] private int vida = 4;
+        [SerializeField] private double vida = 4;
         [Tooltip("Itens que podem causar dano a este inimigo.")]
         public List<ItemDatabase> fraquezas;
         private InventoryController inventoryController;
@@ -260,21 +261,74 @@ namespace EJETAGame
 
         public override void Interact()
         {
-            if (Input.GetKeyDown(interactionKey))
+            if (Input.GetKeyDown(interactionKey) && !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
             {
                 foreach (var itemFracoContra in fraquezas)
                 {
                     if (inventoryController.VerifyItemSelected(itemFracoContra.skillID))
                     {
-                        CharacterController.Instance.animator.SetTrigger("Attacking");
-                        ReceberDano(1);
+                        VerifyDamage();
                         break;
                     }
                 }
             }
         }
 
-        public void ReceberDano(int quantidade)
+        private void VerifyDamage()
+        {
+            var actualItem = EquipItemController.Instance.ReturnAcutalItem();
+
+            if (actualItem.skillID == GameDatabase.SkillEnumerator.Crowbar)
+            {
+                // Se for um item especial, talvez ele tenha uma velocidade de ataque fixa
+                CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+                CharacterController.Instance.animator.SetTrigger("Attacking");
+                ReceberDano(1);
+                return;
+            }
+
+            // --- CÁLCULO DE DANO (Como antes) ---
+            var baseDmg = actualItem.skillID == GameDatabase.SkillEnumerator.Sword ? 1.5 : 1.0;
+            var actualDmg = baseDmg;
+            var propriedadesDict = actualItem.propriedades.ToDictionary(pair => pair.chave, pair => pair.valor);
+
+            if (propriedadesDict.TryGetValue("Tamanho", out string tamanhoValor))
+            {
+                if (tamanhoValor == "Médio") actualDmg += 0.5;
+                else if (tamanhoValor == "Grande") actualDmg += 1.0;
+            }
+
+            if (propriedadesDict.TryGetValue("Peso", out string pesoValor))
+            {
+                if (pesoValor == "Leve") actualDmg += 0.5;
+                else if (pesoValor == "Pesado") actualDmg += 1.0;
+            }
+
+            // --- NOVA LÓGICA DE VELOCIDADE DE ATAQUE ---
+
+            // 1. Definir limites para a velocidade para evitar animações quebradas
+            float minAttackSpeed = 0.5f; // O ataque nunca será mais lento que metade da velocidade
+            float maxAttackSpeed = 1.5f; // E nunca mais rápido que 50% a mais
+
+            float speedMultiplier = 1.0f;
+
+            // 2. Calcular o multiplicador (evitando divisão por zero)
+            if (actualDmg > 0.01f) // Usamos 0.01f para segurança com floats
+            {
+                speedMultiplier = (float)(baseDmg / actualDmg);
+            }
+
+            // 3. Limitar (Clamp) o valor para que ele fique dentro dos limites definidos
+            speedMultiplier = Mathf.Clamp(speedMultiplier, minAttackSpeed, maxAttackSpeed);
+
+            // 4. Passar os valores para o Animator
+            CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", speedMultiplier);
+            CharacterController.Instance.animator.SetTrigger("Attacking");
+
+            // --- APLICAR O DANO ---
+            ReceberDano(actualDmg);
+        }
+        public void ReceberDano(double quantidade)
         {
             if (estadoAtual == EstadoIA.Morto) return;
             vida -= quantidade;
