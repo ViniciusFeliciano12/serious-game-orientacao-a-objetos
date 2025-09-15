@@ -109,6 +109,7 @@ public class GameDatabase : ScriptableObject
         Gravel,
         Axe,
         Shield,
-        IsReusable
+        IsReusable,
+        Set
     }
 }
