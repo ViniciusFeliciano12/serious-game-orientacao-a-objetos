@@ -65,4 +65,12 @@ public class SkillTreeButton : MonoBehaviour
         var texture = transform.Find("Icon").GetComponent<RawImage>().texture;
         LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, texture);
     }
+
+    public void StartCraftItemMinigameReusable(ItemDatabase item, int index)
+    {
+        SkillTreeController.Instance.ToggleSkillTree();
+
+        var texture = transform.Find("Icon").GetComponent<RawImage>().texture;
+        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, texture, item, index);
+    }
 }

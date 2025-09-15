@@ -52,7 +52,7 @@ public class WowCameraController : MonoBehaviour
      */
 	void LateUpdate ()
 	{
- 		if (PauseController.Instance.timeStopped)
+ 		if (PauseController.Instance.TimeStopped)
             return;
 
 		Vector3 vTargetOffset;

@@ -19,6 +19,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private RectTransform minigameArea;
     private Button learnButton;
     private Button criarButton;
+    private Button alterarButton;
 
     // Dados do jogo
     private List<Item> propriedades;
@@ -28,9 +29,11 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private SkillEnumerator itemID;
     private int correctWords = 0;
     private TextMeshProUGUI title;
+    private ItemDatabase currentItemToEdit; // NOVO: Armazena o item que está sendo editado
+    private int indexToEdit = -1;
 
     // Estado
-    private List<object> dropdowns = new List<object>();
+    private readonly List<object> dropdowns = new();
 
     private const float padding = 20f;
 
@@ -54,11 +57,12 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         propriedadesArea = FindInactive.FindUIElement("PropriedadesArea").GetComponent<RectTransform>();
         metodosArea = FindInactive.FindUIElement("MetodosArea").GetComponent<RectTransform>();
         learnButton = FindInactive.FindUIElement("AprenderButton").GetComponent<Button>();
+        alterarButton = FindInactive.FindUIElement("AlterarButton").GetComponent<Button>();
         criarButton = FindInactive.FindUIElement("CriarButton").GetComponent<Button>();
 
-        criarButton.onClick.AddListener(CriarJson);
         criarButton.gameObject.SetActive(false);
         learnButton.gameObject.SetActive(false);
+        alterarButton.gameObject.SetActive(false);
         minigameArea.gameObject.SetActive(false);
     }
 
@@ -118,7 +122,6 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             Spawn();
         }
 
-        // Verifica se o jogo já começa ganho (todas as palavras são CameFromInterface)
         bool gameIsAlreadyWon = correctWords == propriedades.Count + metodos.Count;
         learnButton.gameObject.SetActive(isInterface || gameIsAlreadyWon);
         if (gameIsAlreadyWon)
@@ -169,14 +172,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     private List<GameObject> CreateWords()
     {
-        List<GameObject> palavrasObjs = new List<GameObject>();
+        List<GameObject> palavrasObjs = new();
 
         foreach (string palavra in palavras)
         {
             GameObject wordObj = Instantiate(wordPrefab, minigameArea);
             wordObj.GetComponentInChildren<TextMeshProUGUI>().text = palavra;
             palavrasObjs.Add(wordObj);
-            wordObj.SetActive(false); // Deixa invisível temporariamente
+            wordObj.SetActive(false);
         }
 
         return palavrasObjs;
@@ -218,16 +221,15 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
             if (item.cameFromInterface)
             {
-                // Comportamento para campos já preenchidos
                 if (wordObjects.TryGetValue(item.name, out GameObject wordObj))
                 {
                     wordObj.SetActive(true);
-                    dropZone.SetCorrectWord(wordObj); // Usa o método que já posiciona a palavra corretamente
+                    dropZone.SetCorrectWord(wordObj);
                 }
                 else
                 {
                     Debug.LogWarning($"Não foi encontrado o GameObject da palavra '{item.name}' para o campo pré-preenchido.");
-                    dropZone.acceptedWord = item.name; // Plano B: funciona como um campo normal
+                    dropZone.acceptedWord = item.name;
                 }
             }
             else
@@ -270,6 +272,32 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture)
     {
+        // MODIFICADO: Limpa o item de edição ao criar um novo
+        currentItemToEdit = null;
+
+        title.text = titleText;
+        this.itemID = itemID;
+        this.propriedades = propriedades;
+        this.metodos = metodos;
+        this.texture = texture;
+        correctWords = 0;
+        dropdowns.Clear();
+
+        ClearFields();
+
+        SpawnCraft(propriedades, propriedadesArea);
+        SpawnCraft(metodos, metodosArea);
+
+        learnButton.gameObject.SetActive(false);
+        minigameArea.gameObject.SetActive(true);
+        alterarButton.gameObject.SetActive(false);
+    }
+
+    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture, ItemDatabase item, int index)
+    {
+        currentItemToEdit = item;
+        indexToEdit = index;
+
         title.text = titleText;
         this.itemID = itemID;
         this.propriedades = propriedades;
@@ -286,15 +314,30 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         learnButton.gameObject.SetActive(false);
         criarButton.gameObject.SetActive(false);
         minigameArea.gameObject.SetActive(true);
+        alterarButton.gameObject.SetActive(true);
     }
 
     private void SpawnCraft(List<Item> items, RectTransform parentArea)
     {
+        var initialValues = new Dictionary<string, string>();
+        if (currentItemToEdit != null)
+        {
+            foreach (var prop in currentItemToEdit.propriedades)
+            {
+                if (!string.IsNullOrEmpty(prop.valor)) initialValues[prop.chave] = prop.valor;
+            }
+            foreach (var met in currentItemToEdit.metodos)
+            {
+                if (!string.IsNullOrEmpty(met.valor)) initialValues[met.chave] = met.valor;
+            }
+        }
+
         foreach (Item item in items)
         {
             if (item.options != null && item.options.Any())
             {
-                dropdowns.Add(CreateDropdownComponentFor(item, parentArea));
+                initialValues.TryGetValue(item.name, out string initialValue);
+                dropdowns.Add(CreateDropdownComponentFor(item, parentArea, initialValue));
             }
             else
             {
@@ -303,11 +346,10 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         }
 
         int totalDropdowns = propriedades.Count(item => item.options != null && item.options.Any()) + metodos.Count(item => item.options != null && item.options.Any());
-
         criarButton.gameObject.SetActive(correctWords >= totalDropdowns);
     }
 
-    private TMP_Dropdown CreateDropdownComponentFor(Item item, RectTransform parentArea)
+    private TMP_Dropdown CreateDropdownComponentFor(Item item, RectTransform parentArea, string initialValue)
     {
         GameObject fieldObj = Instantiate(dropdownPrefab, parentArea);
         if (!fieldObj.TryGetComponent<TMP_Dropdown>(out var dropdown))
@@ -321,10 +363,27 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         dropdown.options.Add(new TMP_Dropdown.OptionData(item.name));
         dropdown.options.AddRange(item.options.Select(option => new TMP_Dropdown.OptionData(option)));
 
-        dropdown.value = 0;
-        dropdown.RefreshShownValue();
-        StylePlaceholder(dropdown);
+        if (!string.IsNullOrEmpty(initialValue))
+        {
+            int selectedIndex = dropdown.options.FindIndex(opt => opt.text == initialValue);
+            if (selectedIndex > 0) 
+            {
+                dropdown.value = selectedIndex;
+                SetDropdownAsCorrect(dropdown, item, false); 
+            }
+            else
+            {
+                dropdown.value = 0;
+                StylePlaceholder(dropdown);
+            }
+        }
+        else
+        {
+            dropdown.value = 0;
+            StylePlaceholder(dropdown);
+        }
 
+        dropdown.RefreshShownValue();
         dropdown.onValueChanged.AddListener(index => HandleDropdownChange(dropdown, item));
 
         return dropdown;
@@ -337,15 +396,8 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         var textComponent = fieldObj.GetComponentInChildren<TextMeshProUGUI>();
         var draggableComponent = fieldObj.GetComponentInChildren<DraggableText>();
 
-        if (textComponent != null)
-        {
-            textComponent.text = item.name;
-        }
-
-        if (draggableComponent != null)
-        {
-            draggableComponent.enabled = false;
-        }
+        if (textComponent != null) textComponent.text = item.name;
+        if (draggableComponent != null) draggableComponent.enabled = false;
 
         return textComponent;
     }
@@ -361,9 +413,25 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     private void HandleDropdownChange(TMP_Dropdown dropdown, Item item)
     {
-        if (dropdown.options[0].text == item.name)
+        SetDropdownAsCorrect(dropdown, item, true);
+    }
+
+    // NOVO: Método centralizado para tratar um dropdown como "correto"
+    private void SetDropdownAsCorrect(TMP_Dropdown dropdown, Item item, bool removePlaceholder)
+    {
+        if (removePlaceholder && dropdown.options[0].text == item.name)
         {
             dropdown.options.RemoveAt(0);
+            // Como o índice 0 foi removido, o valor selecionado (que era 1) agora é 0.
+            // Para garantir que a opção correta permaneça visível, ajustamos o valor.
+            dropdown.value--;
+            dropdown.RefreshShownValue();
+            correctWords++;
+        }
+        else if (!removePlaceholder)
+        {
+            // Se não removemos o placeholder, mas estamos setando um valor,
+            // também contamos como uma palavra correta.
             correctWords++;
         }
 
@@ -371,13 +439,12 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         dropdown.captionText.color = Color.black;
 
         int totalDropdowns = propriedades.Count(item => item.options != null && item.options.Any()) + metodos.Count(item => item.options != null && item.options.Any());
-
         criarButton.gameObject.SetActive(correctWords >= totalDropdowns);
     }
 
-    private void CriarJson()
+    public void CriarJson()
     {
-        if (GameController.Instance.GetInventory().Count > 9)
+        if (GameController.Instance.GetInventory().Count > 9 && currentItemToEdit != null)
         {
             UIController.Instance.SetTextTimeout("Inventário lotado, exclua um item para criar novos...");
         }
@@ -391,18 +458,24 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             };
 
             int index = 0;
-
-            // Propriedades
             AddPropertiesToDatabase(itemDatabase, ref index);
-
-            // Métodos
             AddMethodsToDatabase(itemDatabase, ref index);
 
             string jsonStr = JsonUtility.ToJson(itemDatabase, true);
             Debug.Log(jsonStr);
 
-            GameController.Instance.AddItemDatabase(itemDatabase);
-            UIController.Instance.SetTextTimeout("Item criado!");
+            if (currentItemToEdit == null)
+            {
+                GameController.Instance.AddItemDatabase(itemDatabase);
+                UIController.Instance.SetTextTimeout("Item criado!");
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Objeto alterado com sucesso!");
+                GameController.Instance.EditItemDatabase(itemDatabase, indexToEdit);
+            }
+
+            SkillTreeController.Instance.ToggleSkillTree();
         }
     }
 
@@ -411,22 +484,15 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         foreach (var item in propriedades)
         {
             string selecionado = "";
-
             if (item.options.Count > 0)
             {
                 var element = dropdowns[index++];
-
                 if (element is TMP_Dropdown dropdown)
                 {
                     selecionado = dropdown.captionText.text;
                 }
             }
-
-            itemDatabase.propriedades.Add(new()
-            {
-                chave = item.name,
-                valor = selecionado
-            });
+            itemDatabase.propriedades.Add(new() { chave = item.name, valor = selecionado });
         }
     }
 
@@ -435,22 +501,15 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         foreach (var item in metodos)
         {
             string selecionado = "";
-
             if (item.options.Count > 0)
             {
                 var element = dropdowns[index++];
-
                 if (element is TMP_Dropdown dropdown)
                 {
                     selecionado = dropdown.captionText.text;
                 }
             }
-
-            itemDatabase.metodos.Add(new()
-            {
-                chave = item.name,
-                valor = selecionado
-            });
+            itemDatabase.metodos.Add(new() { chave = item.name, valor = selecionado });
         }
     }
 

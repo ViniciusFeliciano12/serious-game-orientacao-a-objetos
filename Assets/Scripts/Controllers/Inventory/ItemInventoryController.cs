@@ -52,7 +52,6 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
         UIController.Instance.HideTooltip();
     }
 
-
     public void ResetDefaults()
     {
         actualItem = null;
