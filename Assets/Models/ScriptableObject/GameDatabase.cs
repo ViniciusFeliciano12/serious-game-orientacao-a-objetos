@@ -9,7 +9,8 @@ public class GameDatabase : ScriptableObject
     [SerializeField] private List<ItemDatabase> itemInventoryObjects;
     [SerializeField] private Player player;
 
-    public void ResetDatabase(){
+    public void ResetDatabase()
+    {
         itemInventoryObjects = new();
         skillTreeObjects = new();
         player = new();
@@ -52,6 +53,16 @@ public class GameDatabase : ScriptableObject
 
     public void AddItemDatabase(ItemDatabase item){
         itemInventoryObjects.Add(item);
+    }
+
+    public void EditItemDatabase(ItemDatabase item, int index)
+    {
+        itemInventoryObjects[index].nome = item.nome;
+        itemInventoryObjects[index].metodos = item.metodos;
+        itemInventoryObjects[index].propriedades = item.propriedades;
+        itemInventoryObjects[index].icon = item.icon;
+        itemInventoryObjects[index].itemActive = item.itemActive;
+        itemInventoryObjects[index].skillID = item.skillID;
     }
 
     public void RemoveItemDatabase(ItemDatabase item)
@@ -97,6 +108,7 @@ public class GameDatabase : ScriptableObject
         Torch,
         Gravel,
         Axe,
-        Shield
+        Shield,
+        IsReusable
     }
 }

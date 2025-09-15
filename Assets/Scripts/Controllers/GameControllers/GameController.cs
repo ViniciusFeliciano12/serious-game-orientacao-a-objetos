@@ -29,12 +29,6 @@ public class GameController : MonoBehaviour
         UIController.Instance.UpdateHUD(lifes: Database.ReturnPlayerLifes(), scrolls: Database.ReturnSkillCount());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ReloadScene()
     {
         Database.ResetDatabasePartial();
@@ -81,6 +75,12 @@ public class GameController : MonoBehaviour
 
     public void AddItemDatabase(ItemDatabase item){
         Database.AddItemDatabase(item);
+        InventoryController.Instance.UpdateInventory();
+    }
+
+    public void EditItemDatabase(ItemDatabase item, int index)
+    {
+        Database.EditItemDatabase(item, index);
         InventoryController.Instance.UpdateInventory();
     }
 

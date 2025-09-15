@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI; // NECESSÁRIO para a IA de navegação
+using UnityEngine.AI;
 using UnityEditor;
-using System.Threading.Tasks;
-using System.Linq;    // NECESSÁRIO para desenhar o cone de visão no Editor
+using System.Linq;   
 
 namespace EJETAGame
 {
@@ -12,7 +11,6 @@ namespace EJETAGame
     [RequireComponent(typeof(Animator))]
     public class EnemyInteraction : Interactable
     {
-        // Enum para definir os possíveis estados da IA
         public enum EstadoIA { Patrulhando, Perseguindo, Atacando, Morto, Parado }
 
         #region Variáveis de Interação e Vida

@@ -6,6 +6,8 @@ public class RecipeInteraction : Interactable
 {
     public SkillEnumerator itemObject;
 
+    public bool isntRecipe;
+
     void Start(){
         
         if(GameController.Instance.VerifyItemFound(itemObject)){
@@ -17,13 +19,23 @@ public class RecipeInteraction : Interactable
     {
         if (Input.GetKeyDown(interactionKey))
         {
-            SkillDatabase RecipeItem = new(){
+            SkillDatabase RecipeItem = new()
+            {
                 itemID = itemObject,
                 recipeLearned = false
             };
 
             GameController.Instance.AddSkillFound(RecipeItem);
-            UIController.Instance.SetTextTimeout("Pegou receita nova! Aperte I para verificar sua árvore de habilidades");
+
+            if (!isntRecipe)
+            {
+                UIController.Instance.SetTextTimeout("Pegou receita nova! Aperte I para verificar sua árvore de habilidades");
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Aprendeu a reutilização dos itens que você possui! Aperte E para remodelar ele.");
+            }
+
             CharacterController.Instance.animator.SetTrigger("Gathering");
 
             if (TryGetComponent<Collider>(out var col))

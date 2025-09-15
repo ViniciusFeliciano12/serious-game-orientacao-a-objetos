@@ -10,7 +10,7 @@ public class PauseController : MonoBehaviour
     public bool pausedGame = false;
     public bool pausedBySkillTree = false;
     public bool isDead = false;
-    public bool timeStopped 
+    public bool TimeStopped 
     {
         get => pausedGame || pausedBySkillTree;
     }
@@ -41,7 +41,7 @@ public class PauseController : MonoBehaviour
             PauseUnPause();
         }
 
-        Time.timeScale = timeStopped ? 0.00001f : 1f;
+        Time.timeScale = TimeStopped ? 0.00001f : 1f;
     }
 
     public bool ChangeFlowTime(PauseMode mode){

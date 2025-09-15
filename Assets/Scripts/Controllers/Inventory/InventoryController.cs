@@ -54,9 +54,24 @@ public class InventoryController : MonoBehaviour
 
         TryUseSelectedActiveItem();
 
-        if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].ReturnActualItem() != null)
+        if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].ReturnActualItem() != null && Inventory[indexSelected].ReturnActualItem().icon != null)
         {
             FindInactive.Find("ConfirmErase").SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && Inventory[indexSelected].ReturnActualItem() is ItemDatabase item && item.icon != null && GameController.Instance.VerifyItemFound(SkillEnumerator.IsReusable))
+        {
+            var gameObj = FindInactive.FindUIElement("SkillTreePanel");
+
+            var buttons = gameObj.GetComponentsInChildren<SkillTreeButton>(true);
+
+            foreach(var button in buttons)
+            {
+                if (button.title == item.nome)
+                {
+                    button.StartCraftItemMinigameReusable(item, indexSelected);
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
