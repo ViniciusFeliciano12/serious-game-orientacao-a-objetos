@@ -17,6 +17,7 @@ public class CrateInteraction : Interactable
             if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
             {
                 DespawnDebris();
+                CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
                 CharacterController.Instance.animator.SetTrigger("Attacking");
             }
         }
