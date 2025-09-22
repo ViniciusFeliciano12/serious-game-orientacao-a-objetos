@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using EJETAGame;
 using UnityEngine;
 using static GameDatabase;
 
@@ -12,8 +11,14 @@ public class InventoryController : MonoBehaviour
     private int indexSelected = -1;
 
     private Dictionary<SkillEnumerator, System.Action> itemUseActions;
+    private Dictionary<SkillEnumerator, System.Action> itemUseActionRightButton;
+
+    private ItemDatabase swordSaved;
+    private ItemDatabase shieldSaved;
 
     private bool usingGravel = false;
+    private bool usingSword = false;
+    private bool usingShield = false;
 
     private void Awake()
     {
@@ -44,7 +49,14 @@ public class InventoryController : MonoBehaviour
              { SkillEnumerator.Gravel, UseGravel },
              { SkillEnumerator.Torch, UseTorch },
              { SkillEnumerator.Crowbar, UseCrowbar },
-             { SkillEnumerator.Shield, UseShield }
+             { SkillEnumerator.Shield, UseShield },
+        };
+
+        itemUseActionRightButton = new Dictionary<SkillEnumerator, System.Action>
+        {
+             { SkillEnumerator.Sword, UseSwordRightButton },
+             { SkillEnumerator.Shield, UseShieldRightButton },
+             { SkillEnumerator.Set, UseShield }
         };
     }
 
@@ -65,7 +77,7 @@ public class InventoryController : MonoBehaviour
 
             var buttons = gameObj.GetComponentsInChildren<SkillTreeButton>(true);
 
-            foreach(var button in buttons)
+            foreach (var button in buttons)
             {
                 if (button.title == item.nome)
                 {
@@ -78,6 +90,40 @@ public class InventoryController : MonoBehaviour
         {
             TryUseSelectedItem();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            TryUseSelectedItemRightButton();
+        }
+
+        if (usingShield && usingSword)
+        {
+            usingShield = false;
+            usingSword = false;
+            CreateSet();
+        }
+    }
+
+    private void CreateSet()
+    {
+        Texture2D iconeDaTextura = Resources.Load<Texture2D>("Icon/espada-escudo");
+
+        ItemDatabase itemDatabase = new()
+        {
+            nome = "Conjunto",
+            skillID = SkillEnumerator.Set,
+            icon = iconeDaTextura,
+            propriedades = swordSaved.propriedades,
+            metodos = swordSaved.metodos
+        };
+
+        itemDatabase.metodos.AddRange(shieldSaved.metodos);
+
+        string jsonStr = JsonUtility.ToJson(itemDatabase, true);
+        Debug.Log(jsonStr);
+
+        GameController.Instance.AddItemDatabase(itemDatabase);
+        UIController.Instance.SetTextTimeout("Conjunto criado!");
     }
 
     private void TryUseSelectedActiveItem()
@@ -143,6 +189,21 @@ public class InventoryController : MonoBehaviour
             if (item != null)
             {
                 if (itemUseActions.TryGetValue(item.skillID, out System.Action useAction))
+                {
+                    useAction.Invoke();
+                }
+            }
+        }
+    }
+
+    private void TryUseSelectedItemRightButton()
+    {
+        if (indexSelected != -1)
+        {
+            var item = Inventory[indexSelected].ReturnActualItem();
+            if (item != null)
+            {
+                if (itemUseActionRightButton.TryGetValue(item.skillID, out System.Action useAction))
                 {
                     useAction.Invoke();
                 }
@@ -224,6 +285,41 @@ public class InventoryController : MonoBehaviour
     }
 
     private void UseCrowbar()
+    {
+
+    }
+
+    private void UseSwordRightButton()
+    {
+        if (!usingSword)
+        {
+            swordSaved = Inventory[indexSelected].actualItem;
+            RemoveItemInventory();
+            UIController.Instance.SetTextTimeout("Usando espada... selecione um escudo para ativar o conjunto");
+            usingSword = true;
+        }
+        else
+        {
+            UIController.Instance.SetTextTimeout("Já está utilizando espada, escolha um escudo primeiro");
+        }
+    }
+
+    private void UseShieldRightButton()
+    {
+        if (!usingShield)
+        {
+            shieldSaved = Inventory[indexSelected].actualItem;
+            RemoveItemInventory();
+            UIController.Instance.SetTextTimeout("Usando escudo... selecione uma espada para ativar o conjunto");
+            usingShield = true;
+        }
+        else
+        {
+            UIController.Instance.SetTextTimeout("Já está utilizando escudo, escolha uma espada primeiro");
+        }
+    }
+
+    private void UseSetRightHand()
     {
 
     }

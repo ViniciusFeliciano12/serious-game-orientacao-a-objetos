@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 1152677113710255306}
   - component: {fileID: 8597777919853630096}
   - component: {fileID: 7212114071170275725}
+  - component: {fileID: 3355333930064960097}
   m_Layer: 0
   m_Name: Skin_1
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 56995825459094021}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b549692f7f04c6c409ff3e2bf2f5e3a7, type: 3}
-  m_Controller: {fileID: 9100000, guid: 043765f8a01c47a4c800f8e312d42e07, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e2a7736d4097e84e85cc71026141aa2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -134,13 +135,8 @@ MonoBehaviour:
     itemActive: 0
     propriedades: []
     metodos: []
-  keys:
-  - nome: 
-    icon: {fileID: 0}
-    skillID: 2
-    itemActive: 0
-    propriedades: []
-    metodos: []
+  vida: 4
+  fraquezas:
   - nome: 
     icon: {fileID: 0}
     skillID: 3
@@ -153,6 +149,30 @@ MonoBehaviour:
     itemActive: 0
     propriedades: []
     metodos: []
+  - nome: 
+    icon: {fileID: 0}
+    skillID: 2
+    itemActive: 0
+    propriedades: []
+    metodos: []
+  - nome: 
+    icon: {fileID: 0}
+    skillID: 9
+    itemActive: 0
+    propriedades: []
+    metodos: []
+  pontoDeVisao: {fileID: 1437007353176887029}
+  pontosDePatrulha:
+  - {fileID: 0}
+  - {fileID: 0}
+  raioDeDeteccao: 9.5
+  raioDeAtaque: 1.15
+  anguloDeVisao: 99
+  alturaDoAlvo: 1.2
+  danoDoInimigo: 1
+  tempoEntreAtaques: 2
+  estadoAtual: 0
+  velocidadeDeRotacao: 2
 --- !u!136 &7212114071170275725
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -176,6 +196,28 @@ CapsuleCollider:
   m_Height: 1.9087644
   m_Direction: 1
   m_Center: {x: 0, y: 0.95453, z: 0}
+--- !u!195 &3355333930064960097
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56995825459094021}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &322190121802558858
 GameObject:
   m_ObjectHideFlags: 0
