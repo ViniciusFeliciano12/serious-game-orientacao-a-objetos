@@ -291,31 +291,37 @@ public class InventoryController : MonoBehaviour
 
     private void UseSwordRightButton()
     {
-        if (!usingSword)
+        if (GameController.Instance.VerifyItemLearned(SkillEnumerator.Set))
         {
-            swordSaved = Inventory[indexSelected].actualItem;
-            RemoveItemInventory();
-            UIController.Instance.SetTextTimeout("Usando espada... selecione um escudo para ativar o conjunto");
-            usingSword = true;
-        }
-        else
-        {
-            UIController.Instance.SetTextTimeout("Já está utilizando espada, escolha um escudo primeiro");
+            if (!usingSword)
+            {
+                swordSaved = Inventory[indexSelected].actualItem;
+                RemoveItemInventory();
+                UIController.Instance.SetTextTimeout("Usando espada... selecione um escudo para ativar o conjunto");
+                usingSword = true;
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Já está utilizando espada, escolha um escudo primeiro");
+            }
         }
     }
 
     private void UseShieldRightButton()
     {
-        if (!usingShield)
+        if (GameController.Instance.VerifyItemLearned(SkillEnumerator.Set))
         {
-            shieldSaved = Inventory[indexSelected].actualItem;
-            RemoveItemInventory();
-            UIController.Instance.SetTextTimeout("Usando escudo... selecione uma espada para ativar o conjunto");
-            usingShield = true;
-        }
-        else
-        {
-            UIController.Instance.SetTextTimeout("Já está utilizando escudo, escolha uma espada primeiro");
+            if (!usingShield)
+            {
+                shieldSaved = Inventory[indexSelected].actualItem;
+                RemoveItemInventory();
+                UIController.Instance.SetTextTimeout("Usando escudo... selecione uma espada para ativar o conjunto");
+                usingShield = true;
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Já está utilizando escudo, escolha uma espada primeiro");
+            }
         }
     }
 
