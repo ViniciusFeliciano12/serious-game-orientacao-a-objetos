@@ -38,7 +38,7 @@ public class EquipItemController : MonoBehaviour
             ManageTorch();
         }
 
-        if (ActualItem != null && ActualItem.skillID != SkillEnumerator.Shield)
+        if (ActualItem != null && (ActualItem.skillID != SkillEnumerator.Shield && ActualItem.skillID != SkillEnumerator.Set))
         {
             ManageShield();
         }
@@ -68,6 +68,13 @@ public class EquipItemController : MonoBehaviour
         if (rightHandAttachPoint == null || leftHandAttachPoint == null)
         {
             Debug.LogError("O Ponto de Anexo (rightHandAttachPoint) ou (leftHandAttachPoint) não foi definido no Inspector!");
+            return;
+        }
+
+        if (ActualItem.skillID == SkillEnumerator.Set)
+        {
+            ActualObject = Instantiate(Resources.Load<GameObject>("Escudo"), leftHandAttachPoint);
+            ActualObject = Instantiate(Resources.Load<GameObject>("Espada"), rightHandAttachPoint);
             return;
         }
 
