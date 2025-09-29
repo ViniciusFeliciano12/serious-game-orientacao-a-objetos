@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        // Database.ResetDatabase();
+        //Database.ResetDatabase();
         UIController.Instance.UpdateHUD(lifes: Database.ReturnPlayerLifes(), scrolls: Database.ReturnSkillCount());
     }
 

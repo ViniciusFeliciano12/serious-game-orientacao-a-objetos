@@ -18,17 +18,27 @@ MonoBehaviour:
   - itemID: 0
     recipeLearned: 1
   - itemID: 4
-    recipeLearned: 0
+    recipeLearned: 1
   - itemID: 5
-    recipeLearned: 0
+    recipeLearned: 1
   - itemID: 6
-    recipeLearned: 0
+    recipeLearned: 1
   - itemID: 1
     recipeLearned: 1
   - itemID: 7
-    recipeLearned: 0
+    recipeLearned: 1
   - itemID: 2
+    recipeLearned: 1
+  - itemID: 8
     recipeLearned: 0
+  - itemID: 11
+    recipeLearned: 1
+  - itemID: 9
+    recipeLearned: 1
+  - itemID: 10
+    recipeLearned: 1
+  - itemID: 12
+    recipeLearned: 1
   itemInventoryObjects:
   - nome: "P\xE9 de Cabra"
     icon: {fileID: 2800000, guid: bb5251ecff6db9244958c944247c7028, type: 3}
@@ -58,6 +68,48 @@ MonoBehaviour:
       valor: Grade
     - chave: Fechar
       valor: Grade
+  - nome: Tocha
+    icon: {fileID: 2800000, guid: 4d92a6779ce19f34f9831e5554283081, type: 3}
+    skillID: 4
+    itemActive: 1
+    propriedades:
+    - chave: Tamanho
+      valor: Pequeno
+    metodos:
+    - chave: Acender
+      valor: 
+  - nome: Ignitor
+    icon: {fileID: 2800000, guid: 55002cb96620c9646864d0a1a6da67d9, type: 3}
+    skillID: 12
+    itemActive: 0
+    propriedades: []
+    metodos:
+    - chave: Acender tocha
+      valor: 
+  - nome: Machado
+    icon: {fileID: 2800000, guid: 81e9ec1d21e1f8f43a06e7e75c17fc37, type: 3}
+    skillID: 6
+    itemActive: 0
+    propriedades:
+    - chave: Tamanho
+      valor: Medio
+    - chave: Peso
+      valor: Pesado
+    metodos:
+    - chave: Manusear
+      valor: Atacar
+  - nome: Escudo
+    icon: {fileID: 2800000, guid: b97c91e8b348f3f4ebdc11f5c82182cd, type: 3}
+    skillID: 7
+    itemActive: 0
+    propriedades:
+    - chave: Tamanho
+      valor: Medio
+    - chave: Peso
+      valor: Pesado
+    metodos:
+    - chave: Manuesar
+      valor: Defender
   player:
-    position: {x: 15.187256, y: 3.375, z: 14.133755}
-    life: 6
+    position: {x: -5.7008057, y: 0.114990234, z: 7.1628284}
+    life: 2

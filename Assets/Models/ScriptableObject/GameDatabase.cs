@@ -110,6 +110,9 @@ public class GameDatabase : ScriptableObject
         Axe,
         Shield,
         IsReusable,
-        Set
+        Set,
+        Rag,
+        Oil,
+        Ignitor
     }
 }

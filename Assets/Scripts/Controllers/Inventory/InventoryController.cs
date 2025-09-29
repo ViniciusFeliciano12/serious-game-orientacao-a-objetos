@@ -19,6 +19,9 @@ public class InventoryController : MonoBehaviour
     private bool usingGravel = false;
     private bool usingSword = false;
     private bool usingShield = false;
+    private bool usingGravelRightButton = false;
+    private bool usingRagRightButton = false;
+    private bool usingOilRightButton = false;
 
     private void Awake()
     {
@@ -46,17 +49,20 @@ public class InventoryController : MonoBehaviour
     {
         itemUseActions = new Dictionary<SkillEnumerator, System.Action>
         {
-             { SkillEnumerator.Gravel, UseGravel },
              { SkillEnumerator.Torch, UseTorch },
-             { SkillEnumerator.Crowbar, UseCrowbar },
              { SkillEnumerator.Shield, UseShield },
+             { SkillEnumerator.Gravel, UseGravel },
+             { SkillEnumerator.Crowbar, UseCrowbar },
         };
 
         itemUseActionRightButton = new Dictionary<SkillEnumerator, System.Action>
         {
+             { SkillEnumerator.Set, UseShield },
+             { SkillEnumerator.Rag, UseRag },
+             { SkillEnumerator.Oil, UseOil },
              { SkillEnumerator.Sword, UseSwordRightButton },
              { SkillEnumerator.Shield, UseShieldRightButton },
-             { SkillEnumerator.Set, UseShield }
+             { SkillEnumerator.Gravel, UseGravelRightButton },
         };
     }
 
@@ -96,12 +102,45 @@ public class InventoryController : MonoBehaviour
             TryUseSelectedItemRightButton();
         }
 
+        CreateItens();
+    }
+
+    private void CreateItens()
+    {
         if (usingShield && usingSword)
         {
             usingShield = false;
             usingSword = false;
             CreateSet();
         }
+
+        if (usingOilRightButton && usingGravelRightButton && usingRagRightButton)
+        {
+            usingOilRightButton = false;
+            usingGravelRightButton = false;
+            usingRagRightButton = false;
+            CreateIgnitor();
+        }
+    }
+
+    private void CreateIgnitor()
+    {
+        Texture2D iconeDaTextura = Resources.Load<Texture2D>("Icon/fogo");
+
+        ItemDatabase itemDatabase = new()
+        {
+            nome = "Ignitor",
+            skillID = SkillEnumerator.Ignitor,
+            icon = iconeDaTextura,
+        };
+
+        itemDatabase.metodos.Add(new StringPair() { chave = "Acender tocha" });
+
+        string jsonStr = JsonUtility.ToJson(itemDatabase, true);
+        Debug.Log(jsonStr);
+
+        GameController.Instance.AddItemDatabase(itemDatabase);
+        UIController.Instance.SetTextTimeout("Ignitor criado!");
     }
 
     private void CreateSet()
@@ -253,9 +292,9 @@ public class InventoryController : MonoBehaviour
     {
         if (!usingGravel)
         {
+            usingGravel = true;
             RemoveItemInventory();
             UIController.Instance.SetTextTimeout("Usando pederneira... selecione uma tocha para acender");
-            usingGravel = true;
         }
         else
         {
@@ -295,10 +334,10 @@ public class InventoryController : MonoBehaviour
         {
             if (!usingSword)
             {
+                usingSword = true;
                 swordSaved = Inventory[indexSelected].actualItem;
                 RemoveItemInventory();
                 UIController.Instance.SetTextTimeout("Usando espada... selecione um escudo para ativar o conjunto");
-                usingSword = true;
             }
             else
             {
@@ -313,10 +352,10 @@ public class InventoryController : MonoBehaviour
         {
             if (!usingShield)
             {
+                usingShield = true;
                 shieldSaved = Inventory[indexSelected].actualItem;
                 RemoveItemInventory();
                 UIController.Instance.SetTextTimeout("Usando escudo... selecione uma espada para ativar o conjunto");
-                usingShield = true;
             }
             else
             {
@@ -325,9 +364,55 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    private void UseSetRightHand()
+    private void UseRag()
     {
+        if (GameController.Instance.VerifyItemLearned(SkillEnumerator.Ignitor))
+        {
+            if (!usingRagRightButton)
+            {
+                usingRagRightButton = true;
+                RemoveItemInventory();
+                UIController.Instance.SetTextTimeout("Usando trapo... termine a fórmula para criar o ignitor");
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Já está utilizando um trapo, termine de montar o ignitor primeiro");
+            }
+        }
+    }
 
+    private void UseOil()
+    {
+        if (GameController.Instance.VerifyItemLearned(SkillEnumerator.Ignitor))
+        {
+            if (!usingOilRightButton)
+            {
+                usingOilRightButton = true;
+                RemoveItemInventory();
+                UIController.Instance.SetTextTimeout("Usando trapo... termine a fórmula para criar o ignitor");
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Já está utilizando um óleo, termine de montar o ignitor primeiro");
+            }
+        }
+    }
+
+    private void UseGravelRightButton()
+    {
+        if (GameController.Instance.VerifyItemLearned(SkillEnumerator.Ignitor))
+        {
+            if (!usingGravelRightButton)
+            {
+                usingGravelRightButton = true;
+                RemoveItemInventory();
+                UIController.Instance.SetTextTimeout("Usando trapo... termine a fórmula para criar o ignitor");
+            }
+            else
+            {
+                UIController.Instance.SetTextTimeout("Já está utilizando um cascalho, termine de montar o ignitor primeiro");
+            }
+        }
     }
 
     private void UseShield()

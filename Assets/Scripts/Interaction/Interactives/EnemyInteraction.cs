@@ -68,7 +68,7 @@ namespace EJETAGame
 
         // --- MÉTODOS DA UNITY ---
 
-        void Start()
+        public virtual void Start()
         {
             inventoryController = InventoryController.Instance;
             animator = GetComponent<Animator>();
@@ -326,6 +326,7 @@ namespace EJETAGame
             // --- APLICAR O DANO ---
             ReceberDano(actualDmg);
         }
+
         public void ReceberDano(double quantidade)
         {
             if (estadoAtual == EstadoIA.Morto) return;
