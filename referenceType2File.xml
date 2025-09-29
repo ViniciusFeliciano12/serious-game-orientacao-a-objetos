@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfTypeDate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TypeDate>
+    <guid>468620ec746c07342bec3c6f13cf0f6e</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/AssetCollector.cs</fileName>
+    <timeStamp>2025-09-29T16:05:13.8133848-03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.AssetCollector</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c60c1aa84cf7138428ed607bbf57a543</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/AssetReferenceCollection.cs</fileName>
+    <timeStamp>2025-09-29T16:05:13.8158893-03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.AssetReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>57348b2f668c4f94991036984a167d7a</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/ClassReferenceCollection.cs</fileName>
+    <timeStamp>2025-09-29T16:05:13.8188958-03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.ClassReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>fee3e37377ed3894fa8791001698b97a</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/CollectionData.cs</fileName>
+    <timeStamp>2025-09-29T16:05:13.8214148-03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.CollectionData</string>
+      <string>UnitySweeper.TypeDate</string>
+      <string>UnitySweeper.IReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>43aa86d65f4da9044b50760253d25b36</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/FindUnusedAssetsWindow.cs</fileName>
+    <timeStamp>2025-09-29T16:05:13.8244138-03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.FindUnusedAssetsWindow</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>099322d544dd8f94691d29e027c59b35</guid>
+    <fileName>Assets/Plugins/UnitySweeper/Editor/ShaderReferenceCollection.cs</fileName>
+    <timeStamp>2025-09-29T16:05:13.825917-03:00</timeStamp>
+    <typeFullName>
+      <string>UnitySweeper.ShaderReferenceCollection</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp-Editor-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8aaa4830b23c850489dfcadc1a0ad8c2</guid>
+    <fileName>Assets/Scripts/HistoryScript.cs</fileName>
+    <timeStamp>2025-09-29T15:20:13.6510667-03:00</timeStamp>
+    <typeFullName>
+      <string>HistoryScript</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c4dbec79b496e1341835062a6d3824ab</guid>
+    <fileName>Assets/DoubleL/Demo/DemoCameraController.cs</fileName>
+    <timeStamp>2025-09-07T15:12:21.1228118-03:00</timeStamp>
+    <typeFullName>
+      <string>DoubleL.DemoCameraController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a0be0a805d3d35e44873f1b54d0a90c3</guid>
+    <fileName>Assets/Models/ScriptableObject/GameDatabase.cs</fileName>
+    <timeStamp>2025-09-28T18:02:12.0764613-03:00</timeStamp>
+    <typeFullName>
+      <string>GameDatabase</string>
+      <string>GameDatabase+SkillEnumerator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>305533c3a39501549810a53f20ad56e6</guid>
+    <fileName>Assets/Models/ScriptableObject/ItemDatabase.cs</fileName>
+    <timeStamp>2025-09-07T15:12:21.9449433-03:00</timeStamp>
+    <typeFullName>
+      <string>ItemDatabase</string>
+      <string>StringPair</string>
+      <string>StringPairComparer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2e8f24fbb34b38b4abbad62750aeb257</guid>
+    <fileName>Assets/Models/ScriptableObject/Player.cs</fileName>
+    <timeStamp>2025-09-07T19:11:54.3967233-03:00</timeStamp>
+    <typeFullName>
+      <string>Player</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>f2282d169b2f39d4f960ab0f1d1dfd35</guid>
+    <fileName>Assets/Models/ScriptableObject/SkillDatabase.cs</fileName>
+    <timeStamp>2025-09-07T15:12:21.9469409-03:00</timeStamp>
+    <typeFullName>
+      <string>SkillDatabase</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>ce80ec15170904dfd819be4055b24490</guid>
+    <fileName>Assets/PBS Barrels and Crates/Scripts/CrateGridBuilder.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1017304-03:00</timeStamp>
+    <typeFullName>
+      <string>CrateGridBuilder</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a93d3aa64bf274a71ac0009e12a3ad4c</guid>
+    <fileName>Assets/PBS Barrels and Crates/Scripts/DestroyBelowY.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1027678-03:00</timeStamp>
+    <typeFullName>
+      <string>DestroyBelowY</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>9213d3b28856047fa85ccd9d92e8380f</guid>
+    <fileName>Assets/PBS Barrels and Crates/Scripts/DestroyOnClick.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1032839-03:00</timeStamp>
+    <typeFullName>
+      <string>DestroyOnClick</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>bfdbaee57b82c436d906ffa7d643cb15</guid>
+    <fileName>Assets/PBS Barrels and Crates/Scripts/DestroyOnHit.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1043314-03:00</timeStamp>
+    <typeFullName>
+      <string>DestroyOnHit</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c16cddbb3a58849a2966d50f2084408b</guid>
+    <fileName>Assets/PBS Barrels and Crates/Scripts/ExplodeBarrel.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1048414-03:00</timeStamp>
+    <typeFullName>
+      <string>ExplodeBarrel</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>35e4068d06e24450da0d285091a95869</guid>
+    <fileName>Assets/PBS Barrels and Crates/Scripts/MoveCamForward.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.106423-03:00</timeStamp>
+    <typeFullName>
+      <string>MoveCamForward</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a3068ad890099fd4289d2c9c39990f23</guid>
+    <fileName>Assets/Scripts/Interaction/Interactor.cs</fileName>
+    <timeStamp>2025-09-07T23:50:31.6240573-03:00</timeStamp>
+    <typeFullName>
+      <string>EJETAGame.Interactor</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3b14e3d6ee04ad34682edf6cffde4026</guid>
+    <fileName>Assets/Scripts/Utils/FindInactive.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1953898-03:00</timeStamp>
+    <typeFullName>
+      <string>FindInactive</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2a91d04e7a75105488894bfab58f9b24</guid>
+    <fileName>Assets/Scripts/Utils/SaveSystem.cs</fileName>
+    <timeStamp>2025-09-29T15:48:10.3918386-03:00</timeStamp>
+    <typeFullName>
+      <string>SaveSystem</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>52f0a07ad0f8b5346bb2bacc3da25e5d</guid>
+    <fileName>Assets/7th Side/Samples/Showcase/FlyCam.cs</fileName>
+    <timeStamp>2025-09-07T15:12:19.6194194-03:00</timeStamp>
+    <typeFullName>
+      <string>FlyCam</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>82642e6ac1194ef4b829bac2586aff78</guid>
+    <fileName>Assets/Diabolical Games/Destructible Objects/Scripts/Despawn.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.7916431-03:00</timeStamp>
+    <typeFullName>
+      <string>DiabolicalGames.Despawn</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6df0017fec6ca4d4c97045d46eb7c26d</guid>
+    <fileName>Assets/Diabolical Games/Destructible Objects/Scripts/DestructibleObject.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.7927869-03:00</timeStamp>
+    <typeFullName>
+      <string>DiabolicalGames.DestructibleObject</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>df9c3ec9f2e60d845a6888098412d545</guid>
+    <fileName>Assets/Diabolical Games/Destructible Objects/Scripts/Explosion.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.7939425-03:00</timeStamp>
+    <typeFullName>
+      <string>DiabolicalGames.Explosion</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8a931465bf1dca045b2d388a52a7bd2b</guid>
+    <fileName>Assets/Diabolical Games/Destructible Objects/Scripts/Spawner.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.7947358-03:00</timeStamp>
+    <typeFullName>
+      <string>DiabolicalGames.Spawner</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4dbd62af2a25df34c9a8e8a7bcb2c370</guid>
+    <fileName>Assets/Scripts/Controllers/GameControllers/CharacterController.cs</fileName>
+    <timeStamp>2025-09-28T18:56:05.0937965-03:00</timeStamp>
+    <typeFullName>
+      <string>CharacterController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>37bc75ad47cbcdf4b97391f5ca1a0f71</guid>
+    <fileName>Assets/Scripts/Controllers/GameControllers/GameController.cs</fileName>
+    <timeStamp>2025-09-29T15:52:03.1659584-03:00</timeStamp>
+    <typeFullName>
+      <string>GameController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3c8ef7de3d20d724a94ecf960998846c</guid>
+    <fileName>Assets/Scripts/Controllers/GameControllers/MenuController.cs</fileName>
+    <timeStamp>2025-09-29T15:54:19.0659495-03:00</timeStamp>
+    <typeFullName>
+      <string>MenuController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1d30a50958bfa0f4f9fa28ccc23cbc7c</guid>
+    <fileName>Assets/Scripts/Controllers/GameControllers/PauseController.cs</fileName>
+    <timeStamp>2025-09-29T15:52:10.6459277-03:00</timeStamp>
+    <typeFullName>
+      <string>PauseController</string>
+      <string>PauseController+PauseMode</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>78bfe315ac0ad9b4da8c8e1f992d6ccc</guid>
+    <fileName>Assets/Scripts/Controllers/GameControllers/WowCameraController.cs</fileName>
+    <timeStamp>2025-09-14T18:14:15.5853152-03:00</timeStamp>
+    <typeFullName>
+      <string>WowCameraController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>10350fb3e1803f747b63f6504d5c001d</guid>
+    <fileName>Assets/Scripts/Controllers/Inventory/EquipItemController.cs</fileName>
+    <timeStamp>2025-09-21T20:58:24.1940274-03:00</timeStamp>
+    <typeFullName>
+      <string>EquipItemController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>b3a2e507ea29210419c5206cef63697f</guid>
+    <fileName>Assets/Scripts/Controllers/Inventory/InventoryController.cs</fileName>
+    <timeStamp>2025-09-28T19:36:40.6375952-03:00</timeStamp>
+    <typeFullName>
+      <string>InventoryController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>90a844e4d8e95d64a8687e31756449ad</guid>
+    <fileName>Assets/Scripts/Controllers/Inventory/Item.cs</fileName>
+    <timeStamp>2025-09-07T20:09:29.8178264-03:00</timeStamp>
+    <typeFullName>
+      <string>Item</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d5244a3d132b60a4d98e7c6973545835</guid>
+    <fileName>Assets/Scripts/Controllers/Inventory/ItemInventoryController.cs</fileName>
+    <timeStamp>2025-09-14T20:34:12.2234721-03:00</timeStamp>
+    <typeFullName>
+      <string>ItemInventoryController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e89c78917591998488455520e35427d4</guid>
+    <fileName>Assets/Scripts/Controllers/Inventory/UIController.cs</fileName>
+    <timeStamp>2025-09-07T23:44:32.109611-03:00</timeStamp>
+    <typeFullName>
+      <string>UIController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3c14cd7784aed914385f37088aa5abb7</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/DraggableText.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1888196-03:00</timeStamp>
+    <typeFullName>
+      <string>DraggableText</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>8c0933a389db6d84b856c4a42c3640b8</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/DropdownPlaceholderHandler.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.190382-03:00</timeStamp>
+    <typeFullName>
+      <string>DropdownPlaceholderHandler</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>c1ff1e739afa65c43aae13edd69d4db0</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/DropZone.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1898614-03:00</timeStamp>
+    <typeFullName>
+      <string>DropZone</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>aa796d62cadd58b4caaec3f9f3004f0a</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/LearnNewRecipeMinigameController.cs</fileName>
+    <timeStamp>2025-09-28T18:56:07.4068041-03:00</timeStamp>
+    <typeFullName>
+      <string>LearnNewRecipeMinigameController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>4d8bb4174f7b4f749b690efb0c8c481a</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/SkillTreeButton.cs</fileName>
+    <timeStamp>2025-09-14T20:35:25.5583926-03:00</timeStamp>
+    <typeFullName>
+      <string>SkillTreeButton</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2eba94c2c713caf49bb5605e2b3a6b83</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/SkillTreeController.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1930152-03:00</timeStamp>
+    <typeFullName>
+      <string>SkillTreeController</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>d735dd2b380400d48a9fc6475aa87983</guid>
+    <fileName>Assets/Scripts/Controllers/SkillTree/UILineConnector.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1943551-03:00</timeStamp>
+    <typeFullName>
+      <string>UILineConnector</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>68a8c438bf04f704d9f36b730048781a</guid>
+    <fileName>Assets/Scripts/Interaction/BaseInteraction/IInteractable.cs</fileName>
+    <timeStamp>2025-09-07T15:12:22.1725485-03:00</timeStamp>
+    <typeFullName>
+      <string>EJETAGame.IInteractable</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>fcfa4af928c59724fb2f1d8676f5ad46</guid>
+    <fileName>Assets/Scripts/Interaction/BaseInteraction/Interactable.cs</fileName>
+    <timeStamp>2025-09-07T17:16:51.409774-03:00</timeStamp>
+    <typeFullName>
+      <string>EJETAGame.Interactable</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3fa45bf49057325428bbe0bfe0e1a929</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/CrateInteraction.cs</fileName>
+    <timeStamp>2025-09-29T16:21:50.8152372-03:00</timeStamp>
+    <typeFullName>
+      <string>CrateInteraction</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>3929e10fbe2bfdb48867324501dfe906</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/DoorInteraction.cs</fileName>
+    <timeStamp>2025-09-07T17:19:04.7519559-03:00</timeStamp>
+    <typeFullName>
+      <string>EJETAGame.DoorInteraction</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>267f423174d1ff545ab88e67995de7da</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/EnemyInteraction.cs</fileName>
+    <timeStamp>2025-09-29T15:21:29.3625815-03:00</timeStamp>
+    <typeFullName>
+      <string>EJETAGame.EnemyInteraction</string>
+      <string>EJETAGame.EnemyInteraction+EstadoIA</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>1a2aa21110531f1489e60439bba59eaa</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/MinotaurInteraction.cs</fileName>
+    <timeStamp>2025-09-28T20:43:28.1013258-03:00</timeStamp>
+    <typeFullName>
+      <string>Assets.Scripts.Interaction.Interactives.MinotaurInteraction</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>aa999979a421db540bd70b1366d11be2</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/PlankInteraction.cs</fileName>
+    <timeStamp>2025-09-22T09:56:22.9575635-03:00</timeStamp>
+    <typeFullName>
+      <string>PlankInteraction</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>e76ac3b9c0cb48340bcb7f83e37dfd12</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/RecipeInteraction.cs</fileName>
+    <timeStamp>2025-09-14T18:18:45.3689521-03:00</timeStamp>
+    <typeFullName>
+      <string>RecipeInteraction</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>153f58b6d6390834f987981a8a5ae5f2</guid>
+    <fileName>Assets/Scripts/Interaction/Interactives/TorchInteraction.cs</fileName>
+    <timeStamp>2025-09-29T15:20:25.2180493-03:00</timeStamp>
+    <typeFullName>
+      <string>TorchInteraction</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2d4fe6e2fb7d25e4997119c3f58f711c</guid>
+    <fileName>Assets/VarcanRex/LongSword/Scripts/SimpleRotate.cs</fileName>
+    <timeStamp>2022-01-25T16:03:14-03:00</timeStamp>
+    <typeFullName>
+      <string>SimpleRotate</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a080bcd10c1a0244c89a938b8b6fab1c</guid>
+    <fileName>Assets/Devion Games/Inventory System/Examples/Particle Effects/ShurikenMagic/Scripts/SM_AnimSpeedRandomizer.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.2624517-03:00</timeStamp>
+    <typeFullName>
+      <string>SM_AnimSpeedRandomizer</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2b16f08d89689c6459c9c7fc56f26601</guid>
+    <fileName>Assets/Devion Games/Inventory System/Examples/Particle Effects/ShurikenMagic/Scripts/SM_DestroyTimed.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.2634531-03:00</timeStamp>
+    <typeFullName>
+      <string>SM_DestroyTimed</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>6bae5a4269cfd484294389dd43b14d24</guid>
+    <fileName>Assets/Devion Games/Inventory System/Examples/Particle Effects/ShurikenMagic/Scripts/SM_PrefabGenerator.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.2644506-03:00</timeStamp>
+    <typeFullName>
+      <string>SM_PrefabGenerator</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>2f0b04f2452077e4ba068accfd0d1dc1</guid>
+    <fileName>Assets/Devion Games/Inventory System/Examples/Particle Effects/ShurikenMagic/Scripts/SM_RandomScale.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.2654504-03:00</timeStamp>
+    <typeFullName>
+      <string>SM_RandomScale</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>75d9053ad8d01f34fbb75a4d4bea7189</guid>
+    <fileName>Assets/Devion Games/Inventory System/Examples/Particle Effects/ShurikenMagic/Scripts/SM_Rotate.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.266956-03:00</timeStamp>
+    <typeFullName>
+      <string>SM_Rotate</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+  <TypeDate>
+    <guid>a829251d06c705842a16b41ad28372c7</guid>
+    <fileName>Assets/Devion Games/Inventory System/Examples/Particle Effects/ShurikenMagic/Scripts/SM_TrailFade.cs</fileName>
+    <timeStamp>2025-09-07T15:12:20.2680539-03:00</timeStamp>
+    <typeFullName>
+      <string>SM_TrailFade</string>
+    </typeFullName>
+    <assembly>Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</assembly>
+  </TypeDate>
+</ArrayOfTypeDate>

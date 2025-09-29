@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EJETAGame;
 using UnityEngine;
 
@@ -10,15 +11,23 @@ public class CrateInteraction : Interactable
 
     }
 
-    public override void Interact()
+    public override async void Interact()
     {
         if (Input.GetKeyDown(interactionKey) && !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
         {
             if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
             {
-                DespawnDebris();
                 CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
                 CharacterController.Instance.animator.SetTrigger("Attacking");
+
+                await Task.Delay(800);
+
+                DespawnDebris();
+
+                if (transform.TryGetComponent<AudioSource>(out AudioSource audio))
+                {
+                    audio.Play();
+                }
             }
         }
     }
@@ -41,7 +50,6 @@ public class CrateInteraction : Interactable
 
         List<Renderer> renderers = new();
 
-        // pega todos os filhos que sobraram
         foreach (Transform child in transform)
         {
             if (child.TryGetComponent<Renderer>(out var rend))
@@ -50,7 +58,6 @@ public class CrateInteraction : Interactable
             }
         }
 
-        // guarda os materiais
         List<Material> mats = new();
         foreach (Renderer r in renderers)
         {
@@ -96,11 +103,9 @@ public class CrateInteraction : Interactable
 
         foreach (Renderer rend in renderers)
         {
-            // Cria um material URP Lit para highlight
             Material highlightMat = new(Shader.Find("Universal Render Pipeline/Lit"));
             highlightMat.SetColor("_BaseColor", new Color(1f, 1f, 1f, 0.1f)); // branco transparente
 
-            // Adiciona o material no objeto filho
             List<Material> mats = new(rend.materials)
             {
                 highlightMat

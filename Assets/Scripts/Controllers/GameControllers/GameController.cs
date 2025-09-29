@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     public void ReloadScene()
     {
         Database.ResetDatabasePartial();
+        SaveSystem.Save(Database);
     }
 
     public void UpdatePlayerLifes(int damageTaken)

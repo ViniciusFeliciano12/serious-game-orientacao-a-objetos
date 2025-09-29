@@ -314,6 +314,13 @@ namespace EJETAGame
         public void ReceberDano(double quantidade)
         {
             if (estadoAtual == EstadoIA.Morto) return;
+
+            if (jogador != null)
+            {
+                Vector3 posicaoParaOlhar = new Vector3(jogador.position.x, transform.position.y, jogador.position.z);
+                transform.LookAt(posicaoParaOlhar);
+            }
+
             vida -= quantidade;
             if (vida <= 0)
             {
