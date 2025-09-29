@@ -44,8 +44,7 @@ public class HistoryScript : MonoBehaviour
 
         HistoryText.text = "";
 
-        string historia2 = "\r\n\r\nContudo, até o poder mais negro se volta contra quem o empunha. Entre seus soldados havia um homem simples, chamado John Nobody. O rei, inflamado por luxúria, cobiçou sua esposa. Ordenou que o soldado fosse lançado à prisão do Minotauro, acreditando que nada escaparia de tão vil destino.\r\n\r\nMas os deuses, oh sim… os deuses contemplaram aquele momento. No esquecimento de um nome comum, encontraram a chama da vingança divina.\r\n\r\nPois é através dos pequenos e rejeitados que os céus se erguem contra os ímpios. E assim começou a história que agora vos narro...";
-
+        string historia2 = "Contudo, até o poder mais negro se volta contra quem o empunha. Entre seus soldados havia um homem simples, chamado John Doe. Os deuses encontraram-no a oportunidade perfeita de aplicar a punição contra o rei profano, utilizando seu soldado para isso.\r\n\r\nComo uma centelha divina, a primeira missão foi data; destruir o Minotauro para acabar com seu reinado. John Doe, sob instrução divina, iniciou uma revolta e não tardou para ser capturado e jogado na prisão junto com o monstro.\r\n\r\nPois é através dos pequenos e rejeitados pela justiça humana que os céus se erguem contra os ímpios. E assim começou a história que agora vos narro...";
         await MostrarHistoria(historia2);
 
         ContinueButton.SetActive(true);
