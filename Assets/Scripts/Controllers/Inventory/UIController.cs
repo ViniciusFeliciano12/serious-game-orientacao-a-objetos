@@ -98,7 +98,7 @@ public class UIController : MonoBehaviour
     public void UpdateHUD(int? lifes = null, int? scrolls = null)
     {
         if (lifeText && lifes != null) lifeText.SetText($"{lifes}/10");
-        if (scrollsText && scrolls != null) scrollsText.SetText($"{scrolls}/4");
+        if (scrollsText && scrolls != null) scrollsText.SetText($"{scrolls}");
     }
 
     #endregion

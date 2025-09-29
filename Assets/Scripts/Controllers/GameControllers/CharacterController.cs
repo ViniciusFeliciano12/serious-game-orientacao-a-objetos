@@ -22,6 +22,10 @@ public class CharacterController : MonoBehaviour
     public float transitionSpeed = 5f;
     public float speedTransitionSpeed = 5f;
 
+    //audios
+
+    private AudioSource[] audioSources;
+
     // Player states
     bool isJumping = false;
     bool isSprinting = false;
@@ -42,12 +46,12 @@ public class CharacterController : MonoBehaviour
     readonly float attackDuration = 0.5f;
 
     private float timer = 0f;
-    private readonly float interval = 2f; // 2 segundos
+    private readonly float interval = 2f; 
 
     public Animator animator;
     UnityEngine.CharacterController cc;
 
-    private bool initialPositionSet = false; // <-- nova variável para controlar o posicionamento inicial
+    private bool initialPositionSet = false; 
 
     private void Awake()
     {
@@ -65,6 +69,7 @@ public class CharacterController : MonoBehaviour
     {
         cc = GetComponent<UnityEngine.CharacterController>();
         animator = GetComponent<Animator>();
+        audioSources = GetComponents<AudioSource>();
 
         if (animator == null)
             Debug.LogWarning("Hey buddy, you don't have the Animator component in your player. Without it, the animations won't work.");
@@ -215,7 +220,28 @@ public class CharacterController : MonoBehaviour
 
         Vector3 moviment = verticalDirection + horizontalDirection;
         cc.Move(moviment);
+
+        // 🎵 Controle do som de passos
+        bool isMoving = (directionX != 0 || directionZ != 0);
+        bool grounded = cc.isGrounded; // só toca se estiver no chão
+
+        if (isMoving && grounded)
+        {
+            if (!audioSources[1].isPlaying)
+            {
+                audioSources[1].loop = true;
+                audioSources[1].Play();
+            }
+        }
+        else
+        {
+            if (audioSources[1].isPlaying)
+            {
+                audioSources[1].Stop();
+            }
+        }
     }
+
 
     void HeadHittingDetect()
     {

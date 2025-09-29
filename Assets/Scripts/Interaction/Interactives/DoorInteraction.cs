@@ -1,79 +1,96 @@
-namespace EJETAGame
+
+using EJETAGame;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using UnityEngine;
+
+public class DoorInteraction : Interactable
 {
-    using System.Collections.Generic;
-    using UnityEngine;
+    public List<ItemDatabase> keys;
+    public Animator animator { get; set; }
+    public bool isBarredDoor = false;
+    public int scrollsFoundToUnlock = -1;
+    private bool isOpen = false;
+    private bool cannotCloseAnymore = false;
+    private AudioSource[] audioSources;
 
-    public class DoorInteraction : Interactable
-    {
-        public List<ItemDatabase> keys;
-        public Animator animator { get; set; }
-        public bool isBarredDoor = false;
-        private bool isOpen = false;
-        private bool cannotCloseAnymore = false;
+    void Start(){
+        animator = transform.parent.GetComponent<Animator>();
+        audioSources = transform.GetComponents<AudioSource>();
 
-        void Start(){
-            animator = transform.parent.GetComponent<Animator>();
-            
-            animator.SetBool("IsOpen", isOpen);
-        }
+        animator.SetBool("IsOpen", isOpen);
+    }
        
-        public override void Interact()
+    public override async void Interact()
+    {
+        if (!(Input.GetKeyDown(interactionKey) && animator != null && !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack")))
         {
-            if (Input.GetKeyDown(interactionKey) && animator != null)
+            return;
+        }
+
+        if (GameController.Instance.Database.ReturnSkillCount() < scrollsFoundToUnlock)
+        {
+            UIController.Instance.SetTextTimeout("Encontre todos os pergaminhos da sala para progredir");
+            return;
+        }
+
+        if (cannotCloseAnymore)
+        {
+            UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+            return;
+        }
+
+        foreach (var key in keys)
+        {
+            if (key.skillID == GameDatabase.SkillEnumerator.Key)
             {
-                if (!cannotCloseAnymore)
+                if (InventoryController.Instance.VerifyItemSelected(key.skillID, key.propriedades, new() { isOpen ? key.metodos[1] : key.metodos[0] }))
                 {
-                    foreach (var key in keys)
-                    {
-                        if (key.skillID == GameDatabase.SkillEnumerator.Key)
-                        {
-                            if (InventoryController.Instance.VerifyItemSelected(key.skillID, key.propriedades, new() { isOpen ? key.metodos[1] : key.metodos[0] }))
-                            { //verificar se pode interagir
-                                isOpen = !isOpen;
-                                animator.SetBool("IsOpen", isOpen);
-                            }
-                            else
-                            {
-                                UIController.Instance.SetTextTimeout("Utilize a chave correta para interagir");
-                            }
-                        }
-                        else if (key.skillID == GameDatabase.SkillEnumerator.Crowbar)
-                        {
-                            if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
-                            {
-                                if (!isBarredDoor)
-                                {
-                                    cannotCloseAnymore = true;
-                                    isOpen = true;
-                                    animator.SetBool("IsOpen", isOpen);
-                                    UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
-                                }
-                                else
-                                {
-                                    UIController.Instance.SetTextTimeout("Só pode ser aberta pela chave correta");
-                                }
-                            }
-                        }
-                    }
+                    isOpen = !isOpen;
+                    animator.SetBool("IsOpen", isOpen);
+                    audioSources[0].Play();
                 }
                 else
                 {
-                    UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                    UIController.Instance.SetTextTimeout("Utilize a chave correta para interagir");
+                }
+            }
+            else if (key.skillID == GameDatabase.SkillEnumerator.Crowbar)
+            {
+                if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
+                {
+                    if (!isBarredDoor)
+                    {
+                        cannotCloseAnymore = true;
+                        isOpen = true;
+
+                        CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+                        CharacterController.Instance.animator.SetTrigger("Attacking");
+
+                        await Task.Delay(800);
+
+                        animator.SetBool("IsOpen", isOpen);
+                        audioSources[1].Play();
+                        UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+                    }
+                    else
+                    {
+                        UIController.Instance.SetTextTimeout("Só pode ser aberta pela chave correta");
+                    }
                 }
             }
         }
-
-        public override void OnInteractEnter()
-        {
-            Debug.Log("interaction enter with door");
-
-            if (!cannotCloseAnymore)
-            {
-                UIController.Instance.SetText("Clique com o mouse para abrir ou fechar a porta");
-            }
-
-            base.OnInteractEnter();
-        }
     }
 
+    public override void OnInteractEnter()
+    {
+        Debug.Log("interaction enter with door");
+
+        if (!cannotCloseAnymore)
+        {
+            UIController.Instance.SetText("Clique com o mouse para abrir ou fechar a porta");
+        }
+
+        base.OnInteractEnter();
+    }
 }
