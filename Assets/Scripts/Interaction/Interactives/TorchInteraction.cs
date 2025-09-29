@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Interaction.Interactives;
 using EJETAGame;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class TorchInteraction : Interactable

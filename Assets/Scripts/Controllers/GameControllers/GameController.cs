@@ -25,8 +25,17 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        //Database.ResetDatabase();
+        if (SaveSystem.SaveExists())
+        {
+            SaveSystem.Load(Database);
+        }
+
         UIController.Instance.UpdateHUD(lifes: Database.ReturnPlayerLifes(), scrolls: Database.ReturnSkillCount());
+    }
+
+    public void SaveGame()
+    {
+        SaveSystem.Save(Database);
     }
 
     public void ReloadScene()
