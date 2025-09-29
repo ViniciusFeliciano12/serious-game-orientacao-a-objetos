@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace EJETAGame
 {
-    // Adiciona componentes automaticamente para garantir que a IA funcione
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(Animator))]
     public class EnemyInteraction : Interactable
@@ -66,7 +65,6 @@ namespace EJETAGame
         private float velocidadeOriginalDoAgente;
         #endregion
 
-        // --- MÉTODOS DA UNITY ---
 
         public virtual void Start()
         {
@@ -107,8 +105,6 @@ namespace EJETAGame
             tempoDesdeUltimoAtaque += Time.deltaTime;
         }
 
-        // --- MÉTODOS DE CONTROLE DE MOVIMENTO E ANIMAÇÃO ---
-
         private void AtualizarRotacaoEAnimacao()
         {
             if (estadoAtual == EstadoIA.Atacando || estadoAtual == EstadoIA.Morto || estadoAtual == EstadoIA.Parado)
@@ -148,8 +144,6 @@ namespace EJETAGame
                 animator.SetBool("Walking", false);
             }
         }
-
-        // --- MÉTODOS DE LÓGICA E ESTADOS DA IA ---
 
         private void MudarParaEstado(EstadoIA novoEstado)
         {
@@ -245,8 +239,6 @@ namespace EJETAGame
             indicePontoAtual = (indicePontoAtual + 1) % pontosDePatrulha.Length;
         }
 
-        // --- MÉTODOS DE AÇÃO (ATAQUE, DANO, DETECÇÃO) ---
-
         private void AtacarJogador()
         {
             animator.SetTrigger("Atacando");
@@ -278,14 +270,12 @@ namespace EJETAGame
 
             if (actualItem.skillID == GameDatabase.SkillEnumerator.Crowbar)
             {
-                // Se for um item especial, talvez ele tenha uma velocidade de ataque fixa
                 CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
                 CharacterController.Instance.animator.SetTrigger("Attacking");
                 ReceberDano(1);
                 return;
             }
 
-            // --- CÁLCULO DE DANO (Como antes) ---
             var baseDmg = actualItem.skillID == GameDatabase.SkillEnumerator.Sword ? 1.5 : 1.0;
             var actualDmg = baseDmg;
             var propriedadesDict = actualItem.propriedades.ToDictionary(pair => pair.chave, pair => pair.valor);
@@ -302,28 +292,22 @@ namespace EJETAGame
                 else if (pesoValor == "Pesado") actualDmg += 1.0;
             }
 
-            // --- NOVA LÓGICA DE VELOCIDADE DE ATAQUE ---
 
-            // 1. Definir limites para a velocidade para evitar animações quebradas
-            float minAttackSpeed = 0.5f; // O ataque nunca será mais lento que metade da velocidade
-            float maxAttackSpeed = 1.5f; // E nunca mais rápido que 50% a mais
+            float minAttackSpeed = 0.5f; 
+            float maxAttackSpeed = 1.5f; 
 
             float speedMultiplier = 1.0f;
 
-            // 2. Calcular o multiplicador (evitando divisão por zero)
-            if (actualDmg > 0.01f) // Usamos 0.01f para segurança com floats
+            if (actualDmg > 0.01f)
             {
                 speedMultiplier = (float)(baseDmg / actualDmg);
             }
 
-            // 3. Limitar (Clamp) o valor para que ele fique dentro dos limites definidos
             speedMultiplier = Mathf.Clamp(speedMultiplier, minAttackSpeed, maxAttackSpeed);
 
-            // 4. Passar os valores para o Animator
             CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", speedMultiplier);
             CharacterController.Instance.animator.SetTrigger("Attacking");
 
-            // --- APLICAR O DANO ---
             ReceberDano(actualDmg);
         }
 
@@ -345,9 +329,6 @@ namespace EJETAGame
             Vector3 pontoDeOrigem = (pontoDeVisao != null) ? pontoDeVisao.position : transform.position;
             Vector3 posicaoAlvo = jogador.position + Vector3.up * alturaDoAlvo;
 
-            // ... (código de distância e ângulo) ...
-            // ...
-
             Vector3 direcaoParaJogador = (posicaoAlvo - pontoDeOrigem).normalized;
             float anguloParaJogador = Vector3.Angle(transform.forward, direcaoParaJogador);
 
@@ -356,8 +337,6 @@ namespace EJETAGame
                 return false;
             }
 
-            // --- ADICIONE A LINHA AQUI ---
-            // Desenha o raio para podermos vê-lo na janela Scene.
             Debug.DrawRay(pontoDeOrigem, direcaoParaJogador * raioDeDeteccao, Color.magenta);
 
             if (Physics.Raycast(pontoDeOrigem, direcaoParaJogador, out RaycastHit hit, raioDeDeteccao, ~0, QueryTriggerInteraction.Ignore))
@@ -371,9 +350,7 @@ namespace EJETAGame
             return false;
         }
 
-
-        // --- MÉTODOS DE VISUALIZAÇÃO/DEBUG ---
-
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             Vector3 pontoDeOrigem = (pontoDeVisao != null) ? pontoDeVisao.position : transform.position;
@@ -399,5 +376,6 @@ namespace EJETAGame
             }
             return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
         }
+#endif
     }
 }

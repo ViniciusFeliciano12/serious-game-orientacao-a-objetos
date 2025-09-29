@@ -87,6 +87,7 @@ public class PauseController : MonoBehaviour
 
     public void BackToMenu()
     {
+        GameController.Instance.SaveGame();
         SceneManager.LoadScene(0);
     }
 
