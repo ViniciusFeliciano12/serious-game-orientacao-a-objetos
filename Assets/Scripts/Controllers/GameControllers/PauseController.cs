@@ -82,7 +82,7 @@ public class PauseController : MonoBehaviour
         isDead = false;
         PauseUnPause();
         GameController.Instance.ReloadScene();
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void BackToMenu()

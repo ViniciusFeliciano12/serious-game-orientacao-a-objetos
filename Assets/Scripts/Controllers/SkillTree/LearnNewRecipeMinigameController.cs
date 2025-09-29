@@ -422,16 +422,13 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         if (removePlaceholder && dropdown.options[0].text == item.name)
         {
             dropdown.options.RemoveAt(0);
-            // Como o índice 0 foi removido, o valor selecionado (que era 1) agora é 0.
-            // Para garantir que a opção correta permaneça visível, ajustamos o valor.
+
             dropdown.value--;
             dropdown.RefreshShownValue();
             correctWords++;
         }
         else if (!removePlaceholder)
         {
-            // Se não removemos o placeholder, mas estamos setando um valor,
-            // também contamos como uma palavra correta.
             correctWords++;
         }
 
