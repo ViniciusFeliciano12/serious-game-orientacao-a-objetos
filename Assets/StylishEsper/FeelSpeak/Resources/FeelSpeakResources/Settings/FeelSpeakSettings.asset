@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2d4f289d70e0f40b8bb15b0d8a08d0, type: 3}
+  m_Name: FeelSpeakSettings
+  m_EditorClassIdentifier: 
+  debugLogMode: 1
+  textSpeed: 1
+  enableFastForward: 1
+  sentenceEndPause: 0.15
+  ellipsisSpeedMultiplier: 0.1
+  enableObjectTextColors: 1
+  enableTextSounds: 1
+  defaultTextSound: {fileID: 0}
+  textSoundMinDelay: 0.08
+  enableVoiceLines: 1
+  activeSpeakerSpriteColor: {r: 1, g: 1, b: 1, a: 1}
+  inactiveSpeakerSpriteColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  choiceDisplayLength: 0.5
+  databaseName: FeelSpeak
+  defaultAutomaticNextOnComplete: 0
+  defaultAutomaticNextDelay: 0
+  timeoutEnabledByDefault: 0
+  defaultTimeoutLength: 30
+  defaultDelay: 5
+  defaultHideDialogueBox: 0

@@ -125,13 +125,11 @@ public class InventoryController : MonoBehaviour
 
     private void CreateIgnitor()
     {
-        Texture2D iconeDaTextura = Resources.Load<Texture2D>("Icon/fogo");
-
         ItemDatabase itemDatabase = new()
         {
             nome = "Ignitor",
             skillID = SkillEnumerator.Ignitor,
-            icon = iconeDaTextura,
+            iconPath = "Icon/fogo",
         };
 
         itemDatabase.metodos.Add(new StringPair() { chave = "Acender tocha" });
@@ -145,13 +143,11 @@ public class InventoryController : MonoBehaviour
 
     private void CreateSet()
     {
-        Texture2D iconeDaTextura = Resources.Load<Texture2D>("Icon/espada-escudo");
-
         ItemDatabase itemDatabase = new()
         {
             nome = "Conjunto",
             skillID = SkillEnumerator.Set,
-            icon = iconeDaTextura,
+            iconPath = "Icon/espada-escudo",
             propriedades = swordSaved.propriedades,
             metodos = swordSaved.metodos
         };

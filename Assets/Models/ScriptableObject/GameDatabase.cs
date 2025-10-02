@@ -60,7 +60,6 @@ public class GameDatabase : ScriptableObject
         itemInventoryObjects[index].nome = item.nome;
         itemInventoryObjects[index].metodos = item.metodos;
         itemInventoryObjects[index].propriedades = item.propriedades;
-        itemInventoryObjects[index].icon = item.icon;
         itemInventoryObjects[index].itemActive = item.itemActive;
         itemInventoryObjects[index].skillID = item.skillID;
     }
