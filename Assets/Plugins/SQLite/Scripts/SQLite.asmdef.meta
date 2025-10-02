@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 684e0be275565e843983896705fb4e84
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299357
+  packageName: Inventool - Inventory, Items, Crafting, Enchanting, Merchants, Storage
+    & More
+  packageVersion: 1.7.9
+  assetPath: Assets/Plugins/SQLite/Scripts/SQLite.asmdef
+  uploadId: 776634

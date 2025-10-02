@@ -25,7 +25,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private List<Item> propriedades;
     private List<Item> metodos;
     private List<string> palavras;
-    private Texture texture;
+    private string texture;
     private SkillEnumerator itemID;
     private int correctWords = 0;
     private TextMeshProUGUI title;
@@ -270,7 +270,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     #region Craft Minigame
 
-    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture)
+    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, string texture)
     {
         // MODIFICADO: Limpa o item de edição ao criar um novo
         currentItemToEdit = null;
@@ -293,7 +293,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         alterarButton.gameObject.SetActive(false);
     }
 
-    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, Texture texture, ItemDatabase item, int index)
+    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, string texture, ItemDatabase item, int index)
     {
         currentItemToEdit = item;
         indexToEdit = index;
@@ -451,7 +451,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
             {
                 nome = title.text,
                 skillID = itemID,
-                icon = texture
+                iconPath = "Icon/" + texture
             };
 
             int index = 0;

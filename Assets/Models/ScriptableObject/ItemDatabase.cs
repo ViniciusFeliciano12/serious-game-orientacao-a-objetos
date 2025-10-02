@@ -6,12 +6,34 @@ using static GameDatabase;
 public class ItemDatabase
 {
     public string nome;
-    public Texture icon;
     public SkillEnumerator skillID;
     public bool itemActive;
 
+    public string iconPath;
+
     public List<StringPair> propriedades = new();
     public List<StringPair> metodos = new();
+
+    [System.NonSerialized]
+    private Texture _icon;
+
+    public Texture icon
+    {
+        get
+        {
+            if (_icon == null && !string.IsNullOrEmpty(iconPath))
+            {
+                _icon = Resources.Load<Texture>(iconPath);
+            }
+            return _icon;
+        }
+    }
+
+    public void UpdateIconPath(string newPath)
+    {
+        iconPath = newPath;
+        _icon = null;
+    }
 }
 
 

@@ -8,6 +8,7 @@ using EJETAGame;
 public class SkillTreeButton : MonoBehaviour
 {
     public string title;
+    public string iconPath;
     public SkillEnumerator itemID;
     public SkillEnumerator[] dependsOnAncestorItem;
     public bool isInterface;
@@ -62,15 +63,13 @@ public class SkillTreeButton : MonoBehaviour
 
     private void StartCraftItemMinigame()
     {
-        var texture = transform.Find("Icon").GetComponent<RawImage>().texture;
-        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, texture);
+        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, iconPath);
     }
 
     public void StartCraftItemMinigameReusable(ItemDatabase item, int index)
     {
         SkillTreeController.Instance.ToggleSkillTree();
 
-        var texture = transform.Find("Icon").GetComponent<RawImage>().texture;
-        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, texture, item, index);
+        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, iconPath, item, index);
     }
 }
