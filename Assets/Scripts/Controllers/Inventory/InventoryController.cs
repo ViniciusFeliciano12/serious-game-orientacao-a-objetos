@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 using static GameDatabase;
 
 public class InventoryController : MonoBehaviour
@@ -72,22 +73,25 @@ public class InventoryController : MonoBehaviour
 
         TryUseSelectedActiveItem();
 
-        if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].ReturnActualItem() != null && Inventory[indexSelected].ReturnActualItem().icon != null)
+        if (indexSelected != -1)
         {
-            FindInactive.Find("ConfirmErase").SetActive(true);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && Inventory[indexSelected].ReturnActualItem() is ItemDatabase item && item.icon != null && GameController.Instance.VerifyItemFound(SkillEnumerator.IsReusable))
-        {
-            var gameObj = FindInactive.FindUIElement("SkillTreePanel");
-
-            var buttons = gameObj.GetComponentsInChildren<SkillTreeButton>(true);
-
-            foreach (var button in buttons)
+            if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].ReturnActualItem() != null && Inventory[indexSelected].ReturnActualItem().icon != null)
             {
-                if (button.title == item.nome)
+                FindInactive.Find("ConfirmErase").SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && Inventory[indexSelected].ReturnActualItem() is ItemDatabase item && item.icon != null && GameController.Instance.VerifyItemFound(SkillEnumerator.IsReusable))
+            {
+                var gameObj = FindInactive.FindUIElement("SkillTreePanel");
+
+                var buttons = gameObj.GetComponentsInChildren<SkillTreeButton>(true);
+
+                foreach (var button in buttons)
                 {
-                    button.StartCraftItemMinigameReusable(item, indexSelected);
+                    if (button.title == item.nome)
+                    {
+                        button.StartCraftItemMinigameReusable(item, indexSelected);
+                    }
                 }
             }
         }
@@ -413,7 +417,7 @@ public class InventoryController : MonoBehaviour
 
     private void UseShield()
     {
-        CharacterController.Instance.animator.SetBool("Blocking", !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"));
+        MainCharacterController.Instance.animator.SetBool("Blocking", !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"));
     }
 
     #endregion

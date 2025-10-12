@@ -112,9 +112,9 @@ public class EquipItemController : MonoBehaviour
 
     private void ManageShield()
     {
-        if (CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"))
+        if (MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"))
         {
-            CharacterController.Instance.animator.SetBool("Blocking", false);
+            MainCharacterController.Instance.animator.SetBool("Blocking", false);
         }
     }
 

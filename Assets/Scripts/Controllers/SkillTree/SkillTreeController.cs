@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using static GameDatabase;
 using static PauseController;
 using System;
@@ -13,7 +10,6 @@ public class SkillTreeController : MonoBehaviour
     public static SkillTreeController Instance { get; private set; }
 
     private GameObject SkillTreePanel;
-    private Volume GlobalVolume;
     private Button[] buttons;
     private List<GameObject> connectionLines = new List<GameObject>();
 
@@ -33,7 +29,6 @@ public class SkillTreeController : MonoBehaviour
     {
         SkillTreePanel = FindInactive.FindUIElement("SkillTreePanel");
         buttons = SkillTreePanel.GetComponentsInChildren<Button>(true); // Inclui botões inativos na busca inicial
-        GlobalVolume = FindObjectOfType<Volume>();
 
         SkillTreePanel.SetActive(false);
 
@@ -53,14 +48,8 @@ public class SkillTreeController : MonoBehaviour
         if (PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree))
         {
             LearnNewRecipeMinigameController.Instance.ClearFields();
-            SkillTreePanel.SetActive(PauseController.Instance.pausedBySkillTree);
+            SkillTreePanel.SetActive(PauseController.Instance.currentState.Equals(InternalPauseState.SkillTree));
 
-            if (GlobalVolume.profile.TryGet(out DepthOfField dof))
-            {
-                dof.focusDistance.overrideState = PauseController.Instance.pausedBySkillTree;
-            }
-
-            // Atualiza a árvore sempre que ela é aberta
             if (SkillTreePanel.activeSelf)
             {
                 VerifyButtons();
@@ -141,7 +130,6 @@ public class SkillTreeController : MonoBehaviour
                 }
             }
 
-            // ETAPA 2: Após definir a visibilidade de todos os botões, desenhar todas as linhas de conexão
             UpdateAllConnectionLines();
         }
         catch (Exception ex)
@@ -155,17 +143,14 @@ public class SkillTreeController : MonoBehaviour
     /// </summary>
     private void UpdateAllConnectionLines()
     {
-        // Limpa as linhas de conexão antigas
         foreach (var line in connectionLines)
         {
             Destroy(line);
         }
         connectionLines.Clear();
 
-        // Itera por todos os botões para criar as novas linhas de conexão
         foreach (var button in buttons)
         {
-            // Só processa se o botão estiver ativo/visível
             if (!button.gameObject.activeSelf)
             {
                 continue;
@@ -177,12 +162,10 @@ public class SkillTreeController : MonoBehaviour
                 continue;
             }
 
-            // Cria uma linha para cada ancestral
             foreach (var ancestorID in buttonScript.dependsOnAncestorItem)
             {
                 var ancestorButton = FindButtonBySkillID(ancestorID);
 
-                // Verifica se o botão ancestral foi encontrado e também está ativo
                 if (ancestorButton != null && ancestorButton.gameObject.activeSelf)
                 {
                     GameObject lineObj = CreateLineBetween(button.transform, ancestorButton.transform);

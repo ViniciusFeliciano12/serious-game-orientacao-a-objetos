@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4d442bb8ebe6d41a455fa22cd22b75, type: 3}
+  m_Name: -2_Pinky
+  m_EditorClassIdentifier: 
+  id: -2
+  sprite: {fileID: 21300000, guid: a9db70aa731f1e74f9a29f239bc1b2c0, type: 3}
+  localizedDisplayNames:
+  - localeCode: zh-Hans
+    value: 
+  - localeCode: en
+    value: 
+  - localeCode: ja
+    value: 
+  - localeCode: es
+    value: 
+  characterName: Pinky
+  textSound: {fileID: 8300000, guid: b81d711b2606e1b4bbef87f5b3d84490, type: 3}
+  textColor: {r: 0.9553486, g: 0.5726238, b: 1, a: 1}
+  characterEmotions:
+  - emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    sprite: {fileID: 21300000, guid: e026edc58c7179d47a3ee3c8c63d2b7e, type: 3}
+    soundOverride: {fileID: 0}
+    textSoundOverride: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: 79f5916c4d4fa4844a6e38a6eabb2597, type: 2}
+    sprite: {fileID: 21300000, guid: e365ea2146ca52f4687550742d4c7c07, type: 3}
+    soundOverride: {fileID: 0}
+    textSoundOverride: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: cb66b5c6fc1b7b6429c249e5d55891c0, type: 2}
+    sprite: {fileID: 21300000, guid: b26d66ec640443b46b8e24577f2df5b8, type: 3}
+    soundOverride: {fileID: 0}
+    textSoundOverride: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: c08e736a9f0afc64aad46e38eda37488, type: 2}
+    sprite: {fileID: 21300000, guid: e1af54f50ef32b84db88ee13f9fa1ec1, type: 3}
+    soundOverride: {fileID: 0}
+    textSoundOverride: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: f13e624bacaf342489914d096c5ca1ba, type: 2}
+    sprite: {fileID: 21300000, guid: 2899e422da64cc04cb5943987376949c, type: 3}
+    soundOverride: {fileID: 0}
+    textSoundOverride: {fileID: 0}
+    animationNameOverride: 

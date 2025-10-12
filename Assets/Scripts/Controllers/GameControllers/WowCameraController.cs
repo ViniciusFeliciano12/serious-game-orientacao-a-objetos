@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using Esper.FeelSpeak;
 using System.Collections;
+using UnityEngine;
 
 public class WowCameraController : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class WowCameraController : MonoBehaviour
      */
 	void LateUpdate ()
 	{
- 		if (PauseController.Instance.TimeStopped)
+ 		if (PauseController.Instance.TimeStopped || FeelSpeak.HasActiveDialogue)
             return;
 
 		Vector3 vTargetOffset;

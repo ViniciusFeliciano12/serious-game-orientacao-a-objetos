@@ -7,7 +7,7 @@ namespace Sample {
 public class GhostScript : MonoBehaviour
 {
     private Animator Anim;
-    private CharacterController Ctrl;
+    private MainCharacterController Ctrl;
     private Vector3 MoveDirection = Vector3.zero;
     // Cache hash values
     private static readonly int IdleState = Animator.StringToHash("Base Layer.idle");
@@ -30,7 +30,7 @@ public class GhostScript : MonoBehaviour
     void Start()
     {
         Anim = this.GetComponent<Animator>();
-        Ctrl = this.GetComponent<CharacterController>();
+        Ctrl = this.GetComponent<MainCharacterController>();
         HP_text = GameObject.Find("Canvas/HP").GetComponent<Text>();
         HP_text.text = "HP " + HP.ToString();
     }

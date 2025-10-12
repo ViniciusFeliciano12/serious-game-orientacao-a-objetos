@@ -90,7 +90,7 @@ namespace EJETAGame
 
         void Update()
         {
-            if (jaMorreu || jogador == null || CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead")) return;
+            if (jaMorreu || jogador == null || MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead")) return;
 
             switch (estadoAtual)
             {
@@ -243,7 +243,7 @@ namespace EJETAGame
         {
             animator.SetTrigger("Atacando");
 
-            if (!CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"))
+            if (!MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"))
             {
                 GameController.Instance.UpdatePlayerLifes(danoDoInimigo);
             }
@@ -251,7 +251,7 @@ namespace EJETAGame
 
         public override void Interact()
         {
-            if (Input.GetKeyDown(interactionKey) && !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
+            if (Input.GetKeyDown(interactionKey) && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
             {
                 foreach (var itemFracoContra in fraquezas)
                 {
@@ -270,8 +270,8 @@ namespace EJETAGame
 
             if (actualItem.skillID == GameDatabase.SkillEnumerator.Crowbar)
             {
-                CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
-                CharacterController.Instance.animator.SetTrigger("Attacking");
+                MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+                MainCharacterController.Instance.animator.SetTrigger("Attacking");
                 ReceberDano(1);
                 return;
             }
@@ -305,8 +305,8 @@ namespace EJETAGame
 
             speedMultiplier = Mathf.Clamp(speedMultiplier, minAttackSpeed, maxAttackSpeed);
 
-            CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", speedMultiplier);
-            CharacterController.Instance.animator.SetTrigger("Attacking");
+            MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", speedMultiplier);
+            MainCharacterController.Instance.animator.SetTrigger("Attacking");
 
             ReceberDano(actualDmg);
         }
