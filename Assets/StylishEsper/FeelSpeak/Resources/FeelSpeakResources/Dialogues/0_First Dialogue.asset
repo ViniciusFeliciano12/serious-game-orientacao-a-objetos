@@ -1,0 +1,298 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 0_First Dialogue
+  m_EditorClassIdentifier: 
+  id: 0
+  graphName: First Dialogue
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 0
+    id: 0
+    position: {x: 513, y: 253}
+    inputConnections: []
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 0
+      inputNodeId: 2
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 0}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Voc\xEA desperta de um sono profundo..."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 1
+    position: {x: 860, y: 228}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 2
+      inputNodeId: 1
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 1
+      inputNodeId: 3
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Espera, o que estou fazendo aqui?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 2
+    position: {x: 689, y: 228}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 0
+      inputNodeId: 2
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 2
+      inputNodeId: 1
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Que dor de cabe\xE7a..."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 3
+    position: {x: 1042, y: 228}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 1
+      inputNodeId: 3
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 3
+      inputNodeId: 4
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Agora me lembrei, eu fui preso, n\xE3o \xE9? Preciso dar um jeito
+      de sair daqui imediatamente."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 4
+    position: {x: 1211, y: 228}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 3
+      inputNodeId: 4
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 4
+      inputNodeId: 5
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 0}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Voc\xEA olha para o lado, e repentinamente se depara com um ser voador
+      te encarando. Seu cora\xE7\xE3o quase para quando identifica ser um fantasma!"
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 5
+    position: {x: 1343, y: 228}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 4
+      inputNodeId: 5
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "N\xE3o tema! Eu sou um esp\xEDrito enviado pelos Deuses para te guiar,
+      viajante."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 6
+    position: {x: 1500, y: 228}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Os deuses te inspiraram com sua coragem, e agora, voc\xEA ser\xE1
+      finalmente aben\xE7oado para terminar sua tarefa."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 7
+    position: {x: 1665, y: 228}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 0}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Voc\xEA olha confuso para ele, sem entender muito bem. Mesmo assim,
+      resolve parar para olhar o que o esp\xEDrito em sua frente tem a dizer."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 8
+    position: {x: 1824, y: 228}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Os deuses te aben\xE7oaram com o poder \"Objetifica\"! Com esse poder,
+      voc\xEA ser\xE1 capaz de criar objetos que te ajudar\xE3o em sua miss\xE3o."
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 9
+    position: {x: 2005, y: 228}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Para criar esses objetos, ser\xE1 necess\xE1rio que voc\xEA encontre
+      pergaminhos. Eles foram espalhados pela pris\xE3o para que voc\xEA aprenda
+      como cria-los. Olhe ali mesmo! Tem um ali no canto, experimente pega-lo!"
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 10
+    position: {x: 2178, y: 228}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Certo... vamos ver como vai ser isso.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 11
+    position: {x: 2336, y: 267}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 0}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Voc\xEA ainda n\xE3o entende muito bem o que est\xE1 acontecendo,
+      mas sem alternativas, resolve seguir as instru\xE7\xF5es do esp\xEDrito."
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 0
+    outputNodeId: 0
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 2
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 1
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 3
+    inputNodeId: 4
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 4
+    inputNodeId: 5
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 5
+    inputNodeId: 6
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 6
+    inputNodeId: 7
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 7
+    inputNodeId: 8
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 8
+    inputNodeId: 9
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 9
+    inputNodeId: 10
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 10
+    inputNodeId: 11
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

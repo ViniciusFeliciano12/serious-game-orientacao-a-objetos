@@ -23,7 +23,7 @@ public class DoorInteraction : Interactable
        
     public override async void Interact()
     {
-        if (!(Input.GetKeyDown(interactionKey) && animator != null && !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack")))
+        if (!(Input.GetKeyDown(interactionKey) && animator != null && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack")))
         {
             return;
         }
@@ -64,8 +64,8 @@ public class DoorInteraction : Interactable
                         cannotCloseAnymore = true;
                         isOpen = true;
 
-                        CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
-                        CharacterController.Instance.animator.SetTrigger("Attacking");
+                        MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+                        MainCharacterController.Instance.animator.SetTrigger("Attacking");
 
                         await Task.Delay(800);
 

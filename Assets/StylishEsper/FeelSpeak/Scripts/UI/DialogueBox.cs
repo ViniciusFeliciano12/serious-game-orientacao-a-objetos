@@ -235,13 +235,11 @@ namespace Esper.FeelSpeak.UI.UGUI
             Open();
             Next(null);
 
-            var dialogue = activeDialogue;
-
-            if (dialogue != null)
+            if (activeDialogue != null)
             {
-                dialogue.dialogueGraph.callOnceOnDialogueStarted.Invoke();
-                dialogue.dialogueGraph.callOnceOnDialogueStarted.RemoveAllListeners();
-                FeelSpeak.onDialogueStarted.Invoke(dialogue.dialogueGraph);
+                activeDialogue.dialogueGraph.callOnceOnDialogueStarted.Invoke();
+                activeDialogue.dialogueGraph.callOnceOnDialogueStarted.RemoveAllListeners();
+                FeelSpeak.onDialogueStarted.Invoke(activeDialogue.dialogueGraph);
             }
         }
 
@@ -618,8 +616,8 @@ namespace Esper.FeelSpeak.UI.UGUI
         /// <param name="dialogueGraph">The dialogue graph.</param>
         public bool PrepareDialogue(DialogueGraph dialogueGraph)
         {
-            var dialogue = new Dialogue(dialogueGraph);
-            return dialogue.Prepare();
+            activeDialogue = new Dialogue(dialogueGraph);
+            return activeDialogue.Prepare();
         }
 
         /// <summary>
@@ -629,8 +627,8 @@ namespace Esper.FeelSpeak.UI.UGUI
         /// <returns>The task.</returns>
         public async Task<bool> PrepareDialogueAsync(DialogueGraph dialogueGraph)
         {
-            var dialogue = new Dialogue(dialogueGraph);
-            return await dialogue.PrepareAsync();
+            activeDialogue = new Dialogue(dialogueGraph);
+            return await activeDialogue.PrepareAsync();
         }
 
         /// <summary>

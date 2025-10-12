@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
     {
         if (lifesRemaining <= 0)
         {
-            CharacterController.Instance.animator.SetTrigger("IsDead");
+            MainCharacterController.Instance.animator.SetTrigger("IsDead");
 
             await Task.Delay(2500);
             PauseController.Instance.ChangeFlowTime(PauseController.PauseMode.GameOver);

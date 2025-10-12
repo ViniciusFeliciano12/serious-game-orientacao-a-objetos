@@ -63,7 +63,7 @@
     <Compile Include="Assets\Scripts\Controllers\GameControllers\MenuController.cs" />
     <Compile Include="Assets\StylishEsper\FeelSpeak\Examples\Scripts\FSInputExample.cs" />
     <Compile Include="Assets\Diabolical Games\Destructible Objects\Scripts\Spawner.cs" />
-    <Compile Include="Assets\Scripts\HistoryScript.cs" />
+    <Compile Include="Assets\StylishEsper\FeelSpeak\Examples\3D Demo\UnityTechnologies\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\ExplodeBarrel.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\MoveCamForward.cs" />
     <Compile Include="Assets\Scripts\Controllers\Inventory\UIController.cs" />
@@ -73,7 +73,6 @@
     <Compile Include="Assets\Models\ScriptableObject\ItemDatabase.cs" />
     <Compile Include="Assets\Diabolical Games\Destructible Objects\Scripts\DestructibleObject.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameControllers\PauseController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\GameControllers\CharacterController.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_DestroyTimed.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\DoorInteraction.cs" />
     <Compile Include="Assets\Scripts\Controllers\SkillTree\UILineConnector.cs" />
@@ -98,7 +97,9 @@
     <Compile Include="Assets\Scripts\Controllers\Inventory\Item.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_AnimSpeedRandomizer.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_PrefabGenerator.cs" />
+    <Compile Include="Assets\Scripts\HistoryControllers\HistoryScript.cs" />
     <Compile Include="Assets\Scripts\Controllers\Inventory\ItemInventoryController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameControllers\MainCharacterController.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\DestroyOnClick.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactor.cs" />
     <Compile Include="Assets\Scripts\Controllers\SkillTree\SkillTreeController.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Assets\Scripts\Controllers\Inventory\InventoryController.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\EnemyInteraction.cs" />
     <Compile Include="Assets\Scripts\Interaction\BaseInteraction\Interactable.cs" />
+    <Compile Include="Assets\Scripts\HistoryControllers\DialogueManagement.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_Rotate.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +133,7 @@
     <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\StylishEsper\FeelSpeak\README.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\StylishEsper\FeelSpeak\Examples\3D Demo\UnityTechnologies\license.txt" />
     <None Include="Assets\GhostCharacter_Free\Documents\readme_txt.txt" />
     <None Include="Assets\Diabolical Games\Destructible Objects\Destructible Objects.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />

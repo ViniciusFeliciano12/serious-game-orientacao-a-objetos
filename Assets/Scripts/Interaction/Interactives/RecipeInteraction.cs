@@ -36,7 +36,7 @@ public class RecipeInteraction : Interactable
                 UIController.Instance.SetTextTimeout("Aprendeu a reutilização dos itens que você possui! Aperte E para remodelar ele.");
             }
 
-            CharacterController.Instance.animator.SetTrigger("Gathering");
+            MainCharacterController.Instance.animator.SetTrigger("Gathering");
 
             if (TryGetComponent<Collider>(out var col))
             {

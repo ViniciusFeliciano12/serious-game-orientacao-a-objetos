@@ -9,8 +9,8 @@ public class PlankInteraction : Interactable
         {
             if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
             {
-                CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
-                CharacterController.Instance.animator.SetTrigger("Attacking");
+                MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+                MainCharacterController.Instance.animator.SetTrigger("Attacking");
                 
                 if (TryGetComponent<Collider>(out var col))
                 {

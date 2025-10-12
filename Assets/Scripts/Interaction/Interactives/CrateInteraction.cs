@@ -13,12 +13,12 @@ public class CrateInteraction : Interactable
 
     public override async void Interact()
     {
-        if (Input.GetKeyDown(interactionKey) && !CharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
+        if (Input.GetKeyDown(interactionKey) && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
         {
             if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
             {
-                CharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
-                CharacterController.Instance.animator.SetTrigger("Attacking");
+                MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+                MainCharacterController.Instance.animator.SetTrigger("Attacking");
 
                 await Task.Delay(800);
 

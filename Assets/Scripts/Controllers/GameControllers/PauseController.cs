@@ -1,25 +1,40 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class PauseController : MonoBehaviour
 {
     public static PauseController Instance { get; private set; }
 
+    public enum PauseMode
+    {
+        Pause,
+        SkillTree,
+        GameOver,
+    }
+
+    public enum InternalPauseState
+    {
+        None,
+        GamePaused,
+        SkillTree,
+        GameOver
+    }
+
+    public InternalPauseState currentState = InternalPauseState.None;
+
     private GameObject Panel;
     private GameObject GameOverPanel;
-    public bool pausedGame = false;
-    public bool pausedBySkillTree = false;
-    public bool isDead = false;
-    public bool TimeStopped 
-    {
-        get => pausedGame || pausedBySkillTree;
-    }
+    private Volume GlobalVolume;
+
+    public bool TimeStopped => currentState != InternalPauseState.None;
 
     private void Awake()
     {
-        if(Instance!= null && Instance != this)
+        if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
@@ -31,70 +46,85 @@ public class PauseController : MonoBehaviour
     {
         Panel = FindInactive.FindUIElement("PausePanel");
         GameOverPanel = FindInactive.FindUIElement("GameOver Panel");
-        Panel.SetActive(false);
+        GlobalVolume = FindObjectOfType<Volume>();
+
+        if (Panel != null) Panel.SetActive(false);
+        if (GameOverPanel != null) GameOverPanel.SetActive(false);
+
+        Time.timeScale = 1f;
+        currentState = InternalPauseState.None;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            PauseUnPause();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangeFlowTime(PauseMode.Pause);
         }
 
-        Time.timeScale = TimeStopped ? 0.00001f : 1f;
+        if (GlobalVolume.profile.TryGet(out DepthOfField dof))
+        {
+            dof.focusDistance.overrideState = TimeStopped;
+        }
+
+        Time.timeScale = TimeStopped ? 0f : 1f;
     }
 
-    public bool ChangeFlowTime(PauseMode mode){
+    public bool ChangeFlowTime(PauseMode mode)
+    {
         switch (mode)
         {
             case PauseMode.Pause:
-                if (!pausedBySkillTree)
-                    pausedGame = !pausedGame;
-                else return false;
-                break;
+
+                if (currentState != InternalPauseState.None && currentState != InternalPauseState.GamePaused)
+                {
+                    return false;
+                }
+
+                bool isNowPaused = (currentState == InternalPauseState.None);
+                currentState = isNowPaused ? InternalPauseState.GamePaused : InternalPauseState.None;
+                Panel.SetActive(isNowPaused);
+                return true;
 
             case PauseMode.SkillTree:
-                if (!pausedGame)
-                    pausedBySkillTree = !pausedBySkillTree;
-                else return false;
-                break;
+                if (currentState != InternalPauseState.None && currentState != InternalPauseState.SkillTree)
+                {
+                    return false;
+                }
+
+                currentState = (currentState == InternalPauseState.None) ? InternalPauseState.SkillTree : InternalPauseState.None;
+                return true;
+
 
             case PauseMode.GameOver:
-                pausedGame = true;
-                isDead = true;
+                currentState = InternalPauseState.GameOver;
                 GameOverPanel.SetActive(true);
-                break;
+                return true;
         }
 
-        return true;
+        return false;
     }
 
-    public void PauseUnPause(){
-        if (!isDead)
+    public void ResumeFromButton()
+    {
+        if (currentState == InternalPauseState.GamePaused)
         {
             ChangeFlowTime(PauseMode.Pause);
-            Panel.SetActive(pausedGame);
         }
     }
 
     public void ReloadScene()
     {
-        isDead = false;
-        PauseUnPause();
-        GameController.Instance.ReloadScene();
-        SceneManager.LoadScene(2);
+        currentState = InternalPauseState.None;
+        GameController.Instance.ReloadScene(); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void BackToMenu()
     {
+        currentState = InternalPauseState.None; 
+        Time.timeScale = 1f; 
         GameController.Instance.SaveGame();
         SceneManager.LoadScene(0);
-    }
-
-    public enum PauseMode
-    {
-        Pause,
-        SkillTree,
-        GameOver
     }
 }

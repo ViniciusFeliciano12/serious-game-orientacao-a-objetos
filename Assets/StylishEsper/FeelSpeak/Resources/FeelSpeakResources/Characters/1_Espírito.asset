@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4d442bb8ebe6d41a455fa22cd22b75, type: 3}
+  m_Name: "1_Esp\xEDrito"
+  m_EditorClassIdentifier: 
+  id: 1
+  sprite: {fileID: 21300000, guid: a05b853430f82474788cec23dcb725a6, type: 3}
+  characterName: "Esp\xEDrito"
+  textSound: {fileID: 0}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  characterEmotions:
+  - emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    sprite: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: 79f5916c4d4fa4844a6e38a6eabb2597, type: 2}
+    sprite: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: cb66b5c6fc1b7b6429c249e5d55891c0, type: 2}
+    sprite: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: c08e736a9f0afc64aad46e38eda37488, type: 2}
+    sprite: {fileID: 0}
+    animationNameOverride: 
+  - emotion: {fileID: 11400000, guid: f13e624bacaf342489914d096c5ca1ba, type: 2}
+    sprite: {fileID: 0}
+    animationNameOverride: 

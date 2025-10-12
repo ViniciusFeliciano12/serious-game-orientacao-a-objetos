@@ -1,0 +1,1844 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: -2_Pinky
+  m_EditorClassIdentifier: 
+  id: -2
+  graphName: Pinky
+  text: 
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 0
+    id: 0
+    position: {x: 530.717, y: 75.169815}
+    inputConnections: []
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 0
+      inputNodeId: 1
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Welcome to FSD! I will be guiding you through the basics of <color=red>Feel
+      Speak</color>. My name is <character> and I am feeling <emotion>!
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 1
+    position: {x: 725.43396, y: 75.169815}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 0
+      inputNodeId: 1
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 1
+      inputNodeId: 2
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: I'm sure you have a lot of questions. <i>Feel</i> free to ask me anything!
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 9
+    position: {x: 1163.7737, y: -322.41513}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 5
+      inputNodeId: 9
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 9
+      inputNodeId: 11
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Who am I?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 10
+    position: {x: 1163.7737, y: -100.528305}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 5
+      inputNodeId: 10
+      outputPortIndex: 1
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 10
+      inputNodeId: 17
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: What's my purpose?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 11
+    position: {x: 1353.0566, y: -322.41513}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 9
+      inputNodeId: 11
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 11
+      inputNodeId: 12
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: You are <character=-3>! A player-controlled character that can navigate
+      around this demo freely.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 12
+    position: {x: 1547.7737, y: -322.41513}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 11
+      inputNodeId: 12
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 12
+      inputNodeId: 13
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Your model was actually AI generated to save time. In fact, me and
+      <character=-1> over there are just recolored versions of you. Isn't that great?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 13
+    position: {x: 1762.4152, y: -322.41513}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 12
+      inputNodeId: 13
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 13
+      inputNodeId: 14
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 11400000, guid: c08e736a9f0afc64aad46e38eda37488, type: 2}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: I guess...? So, uh... who created... us?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 14
+    position: {x: 1989.736, y: -322.41513}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 13
+      inputNodeId: 14
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 14
+      inputNodeId: 15
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: The developer of <color=red>Feel Speak</color>, Stylish Esper! You
+      can visit their website by <link="https://stylishesper.com"><u><color=green>clicking
+      this link</color></u></link>.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 15
+    position: {x: 2217.9624, y: -322.41513}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 14
+      inputNodeId: 15
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 15
+      inputNodeId: 16
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Oh... okay.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 16
+    position: {x: 3244.9812, y: 122.26416}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 15
+      inputNodeId: 16
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 24
+      inputNodeId: 16
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 32
+      inputNodeId: 16
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 16
+      inputNodeId: 2
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: So, is there anything else you'd like to learn about?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 17
+    position: {x: 1353.0566, y: -100.528305}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 10
+      inputNodeId: 17
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 17
+      inputNodeId: 18
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    suppressEmotionAnimation: 1
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Your purpose is VERY important! Your purpose is... for demo purposes!
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 18
+    position: {x: 1547.7737, y: -99.62265}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 17
+      inputNodeId: 18
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 18
+      inputNodeId: 19
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 11400000, guid: f13e624bacaf342489914d096c5ca1ba, type: 2}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: ...<pause=1>Huh?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 19
+    position: {x: 1762.4152, y: -100.528305}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 18
+      inputNodeId: 19
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 19
+      inputNodeId: 21
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    suppressEmotionAnimation: 1
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: I said what I said.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 20
+    position: {x: 2217.9624, y: -100.528305}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 21
+      inputNodeId: 20
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 20
+      inputNodeId: 22
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    suppressEmotionAnimation: 1
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: It is what it is.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 21
+    position: {x: 1988.8302, y: -99.62265}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 19
+      inputNodeId: 21
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 21
+      inputNodeId: 20
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 11400000, guid: 79f5916c4d4fa4844a6e38a6eabb2597, type: 2}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: But... that's not... A GOOD PURPOSE TO HAVE!
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 22
+    position: {x: 2430.7925, y: -100.528305}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 20
+      inputNodeId: 22
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 22
+      inputNodeId: 60
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 11400000, guid: 79f5916c4d4fa4844a6e38a6eabb2597, type: 2}
+    suppressEmotionAnimation: 1
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: '!!!'
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 24
+    position: {x: 2876.3774, y: -99.62265}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 60
+      inputNodeId: 24
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 24
+      inputNodeId: 16
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 11400000, guid: cb66b5c6fc1b7b6429c249e5d55891c0, type: 2}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Fair point...
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 25
+    position: {x: 1163.7737, y: 122.26416}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 2
+      inputNodeId: 25
+      outputPortIndex: 2
+      inputPortIndex: 0
+    outputConnections: []
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Make sure to talk to <character=goldy> to learn more about <color=red>Feel
+      Speak's</color> capabilities.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 27
+    position: {x: 1335.8491, y: 353.20755}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 6
+      inputNodeId: 27
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 27
+      inputNodeId: 29
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: FSD is simply the name of the demo scene.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 29
+    position: {x: 1545.9623, y: 353.20755}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 27
+      inputNodeId: 29
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 29
+      inputNodeId: 30
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: This place is made up of basic blocks. There's nothing special here
+      at all.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 30
+    position: {x: 1766.9435, y: 353.20755}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 29
+      inputNodeId: 30
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 30
+      inputNodeId: 31
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: If you look around, you might notice some moving objects. They use
+      a simple ping pong movement script to make them travel back and forth... or
+      they won't move at all if you're on the 2D demo.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 31
+    position: {x: 1988.8302, y: 353.20755}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 30
+      inputNodeId: 31
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 31
+      inputNodeId: 32
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: deaf290626cb66945b74d9f53b883c73, type: 2}
+    emotion: {fileID: 11400000, guid: f13e624bacaf342489914d096c5ca1ba, type: 2}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: ...
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 32
+    position: {x: 2217.9624, y: 353.20755}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 31
+      inputNodeId: 32
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 32
+      inputNodeId: 16
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 11400000, guid: e036e4db0df522f4ea74e05b4cda8e58, type: 2}
+    suppressEmotionAnimation: 1
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Haha... yeah, there's nothing really interesting here.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 36
+    position: {x: 1545.9623, y: 814.1887}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 6
+      inputNodeId: 36
+      outputPortIndex: 1
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 36
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: <color=red>Feel Speak</color> is an emotion-based dialogue system.
+      It's designed to support all types of games with varying dialogue requirements.
+      This place, and us, exist to simply showcase its potential.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 37
+    position: {x: 1766.9435, y: 810.56604}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 36
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 48
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 44
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 40
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 34
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 37
+      inputNodeId: 38
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: <color=red>Feel Speak</color> has a lot of features. Is there anything
+      you'd like to learn about in specific?
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 40
+    position: {x: 2867.3208, y: 576}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 42
+      inputNodeId: 40
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 40
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: I'd always recommend referring to the <link="https://stylishesper.gitbook.io/feel-speak"><u><color=green>documentation</color></u></link>,
+      as it has more information in general.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 41
+    position: {x: 2217.9624, y: 576}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 41
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 41
+      inputNodeId: 39
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: You can create dialogue from the <color=blue>Object Manager</color>
+      window by opening it from <color=grey>Window > Feel Speak > Object Manager</color>,
+      heading over to the dialogue tab, and then clicking the plus button at the
+      bottom.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 39
+    position: {x: 2430.7925, y: 576}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 41
+      inputNodeId: 39
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 39
+      inputNodeId: 42
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: After creating the dialogue, you can open it in the <color=blue>Dialogue
+      Editor</color> by clicking on the 'Open In Dialogue Editor' button on the right-hand
+      side of the window.'
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 42
+    position: {x: 2651.7737, y: 576}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 39
+      inputNodeId: 42
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 42
+      inputNodeId: 40
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: At that point, you can freely add nodes. I'd recommend checking out
+      the documentation to learn about each node. You can also talk to <character=goldy>
+      to get an example of each in action.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 43
+    position: {x: 2430.7925, y: 797.88684}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 45
+      inputNodeId: 43
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 43
+      inputNodeId: 44
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: You can edit character data from the right-hand side. Feel Speak characters
+      are used to display the current character that is speaking, like the character
+      images you see on the dialogue box.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 44
+    position: {x: 2651.7737, y: 797.88684}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 43
+      inputNodeId: 44
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 44
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: They can also be used to find the current character object in the scene
+      to help express emotions in multiple ways. This is done by giving the <color=blue>Speaker</color>
+      component to a GameObject and setting the character.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 45
+    position: {x: 2217.9624, y: 797.88684}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 45
+      outputPortIndex: 1
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 45
+      inputNodeId: 43
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: You can create characters from the <color=blue>Object Manager</color>
+      window by opening it from <color=grey>Window > Feel Speak > Object Manager</color>,
+      heading over to the character tab, and then clicking the plus button at the
+      bottom.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 46
+    position: {x: 2217.9624, y: 1017.9623}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 46
+      outputPortIndex: 2
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 46
+      inputNodeId: 47
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: You can create emotions from the <color=blue>Object Manager</color>
+      window by opening it from <color=grey>Window > Feel Speak > Object Manager</color>,
+      heading over to the emotion tab, and then clicking the plus button at the bottom.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 47
+    position: {x: 2430.7925, y: 1017.9623}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 46
+      inputNodeId: 47
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 47
+      inputNodeId: 48
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: You can edit emotion data from the right-hand side. Emotions are used
+      to set custom preset options to help express an emotion that a character may
+      be feeling.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 48
+    position: {x: 2651.7737, y: 1017.9623}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 47
+      inputNodeId: 48
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 48
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Once an emotion is created, all characters are updated to include setting
+      options for the new emotion. This helps you set custom character data for each
+      emotion state.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 50
+    position: {x: 2217.9624, y: 1238.9435}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 50
+      outputPortIndex: 3
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 50
+      inputNodeId: 3
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: The <link="https://u3d.as/3zcG"><u><color=green>full version</color></u></link>
+      has multiple extra features. Here's a list of features that are only available
+      in the full version.
+    voiceLine: {fileID: 0}
+  - graphId: 0
+    id: 60
+    position: {x: 2651.7737, y: -99.62264}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 22
+      inputNodeId: 60
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 60
+      inputNodeId: 24
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 11400000, guid: f13e624bacaf342489914d096c5ca1ba, type: 2}
+    suppressEmotionAnimation: 1
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Look here, buddy. At least you were given the gift of choice. How
+      do you think the rest of us feel? Do you know what it\u2019s like to be trapped,
+      saying the same lines for eternity? Or to endlessly wait for the next '<character=robo>,'
+      just to repeat the same explanation over and over again?"
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 4
+    position: {x: 2680.755, y: 1238.9435}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 4
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 4
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Dialogue groups provide an additional layer of organization for your
+      dialogue graphs, making it easier to manage and navigate large collections.
+      This feature is especially useful for complex projects with a high volume of
+      dialogue.
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 7
+    position: {x: 2680.755, y: 1413.7358}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 7
+      outputPortIndex: 1
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 7
+      inputNodeId: 35
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: 'The full version contains 3 more nodes: the <color=yellow>Action</color>,
+      <color=green>Boolean</color>, and <color=lightblue>Nest</color> nodes.'
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 8
+    position: {x: 2680.755, y: 1588.5283}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 8
+      outputPortIndex: 2
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 8
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: The full version includes comprehensive localization support, covering
+      both text and voice lines.
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 26
+    position: {x: 2680.755, y: 1763.3208}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 26
+      outputPortIndex: 3
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 26
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Currently, only a single speaker sprite is visible. In the full version,
+      you have the option to always display the two most recent speaker sprites.
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 28
+    position: {x: 2680.755, y: 1938.1133}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 28
+      outputPortIndex: 4
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 28
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "The Emotion Bubble is a bonus feature available in the full version
+      that provides an additional way to show what a character is feeling. While
+      it\u2019s primarily intended to display emotion sprites, it can be used to
+      show any sprite you choose."
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 33
+    position: {x: 2680.755, y: 2112.9058}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 33
+      outputPortIndex: 5
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 33
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: In the per-emotion settings for a character, only the animation name
+      can be overridden. In the full version, you can also override the emotion sound
+      and text sounds for even more control.
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 34
+    position: {x: 2217.9624, y: 1555.0189}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 34
+      outputPortIndex: 6
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 34
+      inputNodeId: 37
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Generally, the full version will be prioritized when it comes to updates
+      and general improvements. I'd highly recommend grabbing it if you can.
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 35
+    position: {x: 2847.3962, y: 1413.7358}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 7
+      inputNodeId: 35
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 35
+      inputNodeId: 49
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: The <color=yellow>Action Node</color> allows you to run any method,
+      field, or property of any GameObject, component, prefab, or ScriptableObject.
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 49
+    position: {x: 3025.8115, y: 1413.7358}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 35
+      inputNodeId: 49
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 49
+      inputNodeId: 51
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "The <color=green>Boolean Node</color> works similarly, but with a
+      key difference: it limits selectable methods, fields, and properties to those
+      that return a boolean value. You can reference any GameObject, component, prefab,
+      or ScriptableObject. It features two output ports\u2014one for true and one
+      for false\u2014enabling logical branching in your dialogue flow"
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 51
+    position: {x: 3208.755, y: 1413.7358}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 49
+      inputNodeId: 51
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 51
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "The <color=lightblue>Nest Node</color> allows you to embed one dialogue
+      graph inside another, making it ideal for reusing common dialogue sequences.
+      While powerful, improper use can lead to unexpected behavior, so it\u2019s
+      important to structure your graphs thoughtfully."
+    voiceLine: {fileID: 0}
+  - graphId: -2
+    id: 52
+    position: {x: 3506.717, y: 1500.6793}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 4
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 51
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 8
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 26
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 28
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 33
+      inputNodeId: 52
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 52
+      inputNodeId: 3
+      outputPortIndex: 0
+      inputPortIndex: 0
+    character: {fileID: 11400000, guid: e31775fb7a910f547b0549bf2cb9c5d2, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Is there anything else you'd like to know about the full version?
+    voiceLine: {fileID: 0}
+  choiceNodes:
+  - graphId: 0
+    id: 2
+    position: {x: 929.2076, y: 75.169815}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 5
+      inputNodeId: 2
+      outputPortIndex: 2
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 6
+      inputNodeId: 2
+      outputPortIndex: 2
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 16
+      inputNodeId: 2
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 2
+      outputPortIndex: 4
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 1
+      inputNodeId: 2
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 2
+      inputNodeId: 5
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 2
+      inputNodeId: 6
+      outputPortIndex: 1
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 2
+      inputNodeId: 25
+      outputPortIndex: 2
+      inputPortIndex: 0
+    useTimeout: 0
+    timeout: 5
+    timeoutChoiceIsRandom: 1
+    timeoutChoiceIndex: 1
+    choices:
+    - name: Me
+      text: About me...
+      index: 0
+    - name: Place
+      text: About this place...
+      index: 1
+    - name: Exit
+      text: Nah, I'm good.
+      index: 2
+  - graphId: 0
+    id: 5
+    position: {x: 929.2076, y: -147.62265}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 2
+      inputNodeId: 5
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 5
+      inputNodeId: 9
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 5
+      inputNodeId: 10
+      outputPortIndex: 1
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 5
+      inputNodeId: 2
+      outputPortIndex: 2
+      inputPortIndex: 0
+    useTimeout: 0
+    timeout: 30
+    timeoutChoiceIsRandom: 0
+    timeoutChoiceIndex: 0
+    choices:
+    - name: Who
+      text: Who am I?
+      index: 0
+    - name: Purpose
+      text: What is my purpose?
+      index: 1
+    - name: Other
+      text: About something else...
+      index: 2
+  - graphId: 0
+    id: 6
+    position: {x: 1084.9812, y: 353.20755}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 2
+      inputNodeId: 6
+      outputPortIndex: 1
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 6
+      inputNodeId: 27
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 6
+      inputNodeId: 36
+      outputPortIndex: 1
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 6
+      inputNodeId: 2
+      outputPortIndex: 2
+      inputPortIndex: 0
+    useTimeout: 0
+    timeout: 30
+    timeoutChoiceIsRandom: 0
+    timeoutChoiceIndex: 0
+    choices:
+    - name: FSD
+      text: FSD
+      index: 0
+    - name: FS
+      text: Feel Speak?
+      index: 1
+    - name: Other
+      text: About something else...
+      index: 2
+  - graphId: 0
+    id: 38
+    position: {x: 1988.8302, y: 814.1887}
+    inputConnections:
+    - graphId: 0
+      outputNodeId: 37
+      inputNodeId: 38
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 41
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 45
+      outputPortIndex: 1
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 46
+      outputPortIndex: 2
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 50
+      outputPortIndex: 3
+      inputPortIndex: 0
+    - graphId: 0
+      outputNodeId: 38
+      inputNodeId: 2
+      outputPortIndex: 4
+      inputPortIndex: 0
+    useTimeout: 0
+    timeout: 30
+    timeoutChoiceIsRandom: 0
+    timeoutChoiceIndex: 0
+    choices:
+    - name: Dialogue
+      text: How do I create dialogue?
+      index: 0
+    - name: Characters
+      text: How do I create characters?
+      index: 1
+    - name: Emotions
+      text: How do I create emotions?
+      index: 2
+    - name: Limitations
+      text: What's not available in the lite version?
+      index: 3
+    - name: Other
+      text: About something else...
+      index: 4
+  - graphId: -2
+    id: 3
+    position: {x: 2430.7925, y: 1238.9435}
+    inputConnections:
+    - graphId: -2
+      outputNodeId: 50
+      inputNodeId: 3
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 52
+      inputNodeId: 3
+      outputPortIndex: 0
+      inputPortIndex: 0
+    outputConnections:
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 4
+      outputPortIndex: 0
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 7
+      outputPortIndex: 1
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 8
+      outputPortIndex: 2
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 26
+      outputPortIndex: 3
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 28
+      outputPortIndex: 4
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 33
+      outputPortIndex: 5
+      inputPortIndex: 0
+    - graphId: -2
+      outputNodeId: 3
+      inputNodeId: 34
+      outputPortIndex: 6
+      inputPortIndex: 0
+    useTimeout: 0
+    timeout: 30
+    timeoutChoiceIsRandom: 0
+    timeoutChoiceIndex: 0
+    choices:
+    - name: Groups
+      text: Dialogue Groups
+      index: 0
+    - name: Nodes
+      text: Extra Nodes
+      index: 1
+    - name: Localization
+      text: Localization
+      index: 2
+    - name: Double
+      text: Two Speakers
+      index: 3
+    - name: Bubble
+      text: Emotion Bubble
+      index: 4
+    - name: Overrides
+      text: Sound Overrides
+      index: 5
+    - name: Exit
+      text: No thanks.
+      index: 6
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 0
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 2
+    inputNodeId: 5
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 5
+    inputNodeId: 2
+    outputPortIndex: 2
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 6
+    inputNodeId: 2
+    outputPortIndex: 2
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 5
+    inputNodeId: 9
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 5
+    inputNodeId: 10
+    outputPortIndex: 1
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 9
+    inputNodeId: 11
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 11
+    inputNodeId: 12
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 12
+    inputNodeId: 13
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 13
+    inputNodeId: 14
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 14
+    inputNodeId: 15
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 15
+    inputNodeId: 16
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 16
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 10
+    inputNodeId: 17
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 17
+    inputNodeId: 18
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 18
+    inputNodeId: 19
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 19
+    inputNodeId: 21
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 21
+    inputNodeId: 20
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 20
+    inputNodeId: 22
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 24
+    inputNodeId: 16
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 2
+    inputNodeId: 25
+    outputPortIndex: 2
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 6
+    inputNodeId: 27
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 27
+    inputNodeId: 29
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 30
+    inputNodeId: 31
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 31
+    inputNodeId: 32
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 6
+    inputNodeId: 36
+    outputPortIndex: 1
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 37
+    inputNodeId: 38
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 38
+    inputNodeId: 41
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 41
+    inputNodeId: 39
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 39
+    inputNodeId: 42
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 45
+    inputNodeId: 43
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 43
+    inputNodeId: 44
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 38
+    inputNodeId: 45
+    outputPortIndex: 1
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 46
+    inputNodeId: 47
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 47
+    inputNodeId: 48
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 38
+    inputNodeId: 46
+    outputPortIndex: 2
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 36
+    inputNodeId: 37
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 48
+    inputNodeId: 37
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 44
+    inputNodeId: 37
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 40
+    inputNodeId: 37
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 38
+    inputNodeId: 2
+    outputPortIndex: 4
+    inputPortIndex: 0
+  - graphId: 0
+    outputNodeId: 38
+    inputNodeId: 50
+    outputPortIndex: 3
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 60
+    inputNodeId: 24
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 2
+    inputNodeId: 6
+    outputPortIndex: 1
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 29
+    inputNodeId: 30
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 32
+    inputNodeId: 16
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 50
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 4
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 7
+    outputPortIndex: 1
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 8
+    outputPortIndex: 2
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 42
+    inputNodeId: 40
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 26
+    outputPortIndex: 3
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 28
+    outputPortIndex: 4
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 33
+    outputPortIndex: 5
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 3
+    inputNodeId: 34
+    outputPortIndex: 6
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 34
+    inputNodeId: 37
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 7
+    inputNodeId: 35
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 35
+    inputNodeId: 49
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 49
+    inputNodeId: 51
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 52
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 4
+    inputNodeId: 52
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 51
+    inputNodeId: 52
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 8
+    inputNodeId: 52
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 26
+    inputNodeId: 52
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 28
+    inputNodeId: 52
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 33
+    inputNodeId: 52
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: -2
+    outputNodeId: 22
+    inputNodeId: 60
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []
