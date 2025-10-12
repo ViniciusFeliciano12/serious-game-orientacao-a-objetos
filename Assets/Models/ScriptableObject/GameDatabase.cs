@@ -78,6 +78,11 @@ public class GameDatabase : ScriptableObject
         return skillTreeObjects.Count;
     }
 
+    public int ReturnSkillLearnedCount()
+    {
+        return skillTreeObjects.Where(item => item.recipeLearned).Count();
+    }
+
     public bool VerifySkillFound(SkillEnumerator itemID)
     {
         return skillTreeObjects.Any(item => itemID.Equals(item.itemID));
@@ -85,6 +90,16 @@ public class GameDatabase : ScriptableObject
 
     public bool VerifySkillLearned(SkillEnumerator itemID){
         return skillTreeObjects.Any(item => itemID.Equals(item.itemID) && item.recipeLearned);
+    }
+
+    public bool VerifyItemAlreadyCreated(SkillEnumerator itemID)
+    {
+        return skillTreeObjects.Any(item => itemID.Equals(item.itemID) && item.createdFirstTime);
+    }
+
+    public void CreateSkillFirstTime(SkillEnumerator itemID)
+    {
+        skillTreeObjects.FirstOrDefault(item => item.itemID.Equals(itemID)).createdFirstTime = true;
     }
 
     public void LearnSkill(SkillEnumerator itemID){

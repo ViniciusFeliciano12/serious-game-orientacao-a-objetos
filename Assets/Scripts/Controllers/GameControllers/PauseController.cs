@@ -1,3 +1,4 @@
+using Esper.FeelSpeak;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -59,58 +60,66 @@ public class PauseController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ChangeFlowTime(PauseMode.Pause);
+            TogglePause();
         }
-
-        if (GlobalVolume.profile.TryGet(out DepthOfField dof))
-        {
-            dof.focusDistance.overrideState = TimeStopped;
-        }
-
-        Time.timeScale = TimeStopped ? 0f : 1f;
     }
 
     public bool ChangeFlowTime(PauseMode mode)
     {
+        bool changedFlowTime = false;
+
+        if (DialogueManagement.Instance.HasActiveDialogue())
+        {
+            return false;
+        }
+
         switch (mode)
         {
             case PauseMode.Pause:
 
-                if (currentState != InternalPauseState.None && currentState != InternalPauseState.GamePaused)
+                if (currentState == InternalPauseState.None || currentState == InternalPauseState.GamePaused)
                 {
-                    return false;
+                    bool isNowPaused = currentState == InternalPauseState.None;
+
+                    currentState = isNowPaused ? InternalPauseState.GamePaused : InternalPauseState.None;
+                    Panel.SetActive(isNowPaused);
+                    changedFlowTime = true;
                 }
 
-                bool isNowPaused = (currentState == InternalPauseState.None);
-                currentState = isNowPaused ? InternalPauseState.GamePaused : InternalPauseState.None;
-                Panel.SetActive(isNowPaused);
-                return true;
+                break;
 
             case PauseMode.SkillTree:
-                if (currentState != InternalPauseState.None && currentState != InternalPauseState.SkillTree)
+                if (currentState == InternalPauseState.None || currentState == InternalPauseState.SkillTree)
                 {
-                    return false;
+                    currentState = (currentState == InternalPauseState.None) ? InternalPauseState.SkillTree : InternalPauseState.None;
+                    changedFlowTime = true;
                 }
-
-                currentState = (currentState == InternalPauseState.None) ? InternalPauseState.SkillTree : InternalPauseState.None;
-                return true;
-
+                
+                break;
 
             case PauseMode.GameOver:
                 currentState = InternalPauseState.GameOver;
                 GameOverPanel.SetActive(true);
-                return true;
+                changedFlowTime = true;
+                break;
         }
 
-        return false;
+        if (changedFlowTime)
+        {
+            if (GlobalVolume.profile.TryGet(out DepthOfField dof))
+            {
+                dof.focusDistance.overrideState = TimeStopped;
+            }
+
+            Time.timeScale = TimeStopped ? 0f : 1f;
+        }
+
+        return changedFlowTime;
     }
 
-    public void ResumeFromButton()
+    public void TogglePause()
     {
-        if (currentState == InternalPauseState.GamePaused)
-        {
-            ChangeFlowTime(PauseMode.Pause);
-        }
+        ChangeFlowTime(PauseMode.Pause);
     }
 
     public void ReloadScene()

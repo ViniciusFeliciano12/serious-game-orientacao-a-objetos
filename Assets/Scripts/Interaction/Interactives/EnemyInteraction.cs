@@ -1,8 +1,9 @@
+using Esper.FeelSpeak;
 using System.Collections.Generic;
+using System.Linq;   
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor;
-using System.Linq;   
 
 namespace EJETAGame
 {
@@ -90,7 +91,9 @@ namespace EJETAGame
 
         void Update()
         {
-            if (jaMorreu || jogador == null || MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead")) return;
+            var characterDead = jogador == null || MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead");
+
+            if (jaMorreu || characterDead || DialogueManagement.Instance.HasActiveDialogue()) return;
 
             switch (estadoAtual)
             {

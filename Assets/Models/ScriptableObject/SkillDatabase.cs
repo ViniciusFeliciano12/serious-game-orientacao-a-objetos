@@ -6,4 +6,5 @@ public class SkillDatabase
 {
     public SkillEnumerator itemID;
     public bool recipeLearned;
+    public bool createdFirstTime;
 }

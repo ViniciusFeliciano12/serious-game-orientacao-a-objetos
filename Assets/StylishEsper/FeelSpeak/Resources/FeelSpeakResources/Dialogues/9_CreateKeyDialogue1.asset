@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 9_CreateKeyDialogue1
+  m_EditorClassIdentifier: 
+  id: 9
+  graphName: CreateKeyDialogue1
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 9
+    id: 0
+    position: {x: 484, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Parab\xE9ns por encontrar a chave! Como voc\xEA pode ter percebido,
+      o p\xE9 de cabra n\xE3o \xE9 capaz de abrir as portas de metal. A chave, por
+      outro lado, consegue - desde que voc\xEA acerte a combina\xE7\xE3o de propriedades
+      e m\xE9todos que encaixem perfeitamente naquela porta."
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 1
+    position: {x: 644, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Ali\xE1s, as chaves tamb\xE9m servem para abrir e fechar as portas
+      comuns, j\xE1 que com o p\xE9 de cabra elas n\xE3o podem ser fechadas ap\xF3s
+      serem destru\xEDdas. Tenha isso em mente pois ser\xE1 \xFAtil no futuro!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 9
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

@@ -1,5 +1,6 @@
 namespace EJETAGame
 {
+    using Esper.FeelSpeak;
     using System;
     using System.Collections.Generic;
     using UnityEngine;
@@ -9,14 +10,17 @@ namespace EJETAGame
         //Which button the user must press to initiate the Interaction;
         public KeyCode interactionKey;
         public ItemDatabase key;
+        public string dialogueName;
         void Start(){
             
         }
 
-        
         public virtual void Interact()
         {
-            
+            if (Input.GetKeyDown(interactionKey) && !DialogueManagement.Instance.HasActiveDialogue() && !string.IsNullOrEmpty(dialogueName))
+            {
+                DialogueManagement.Instance.StartDialogue(dialogueName);
+            }
         }
 
         public virtual void OnInteractEnter()

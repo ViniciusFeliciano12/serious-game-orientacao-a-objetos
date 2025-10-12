@@ -24,11 +24,6 @@ public class DialogueManagement : MonoBehaviour
         VerifyStartDialogue();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void VerifyStartDialogue()
     {
@@ -38,9 +33,22 @@ public class DialogueManagement : MonoBehaviour
         }
     }
 
-    public void ChangeFlowTime()
+    public void DialogueStart()
     {
-        //PauseController.Instance.ChangeFlowTime(PauseController.PauseMode.Dialogue);
+        Time.timeScale = 1.0f;
+    }
+        
+    public void DialogueEnd()
+    {
+        if (PauseController.Instance.TimeStopped)
+        {
+            Time.timeScale = 0f;
+        }
+    }
+
+    public bool HasActiveDialogue()
+    {
+        return FeelSpeak.HasActiveDialogue;
     }
 
     public async void StartDialogue(string dialogueGraph)

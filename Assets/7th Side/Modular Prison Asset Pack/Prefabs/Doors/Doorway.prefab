@@ -252,16 +252,17 @@ MonoBehaviour:
   interactionKey: 323
   key:
     nome: 
-    icon: {fileID: 0}
     skillID: 0
     itemActive: 0
+    iconPath: 
     propriedades: []
     metodos: []
+  dialogueName: 
   keys:
   - nome: "P\xE9 de cabra"
-    icon: {fileID: 0}
     skillID: 3
     itemActive: 0
+    iconPath: 
     propriedades:
     - chave: 
       valor: 
@@ -269,6 +270,7 @@ MonoBehaviour:
     - chave: Desmontar
       valor: 
   isBarredDoor: 0
+  scrollsFoundToUnlock: -1
 --- !u!82 &3023688202024144365
 AudioSource:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class RecipeInteraction : Interactable
 
     public override void Interact()
     {
+        base.Interact();
+
         if (Input.GetKeyDown(interactionKey))
         {
             SkillDatabase RecipeItem = new()

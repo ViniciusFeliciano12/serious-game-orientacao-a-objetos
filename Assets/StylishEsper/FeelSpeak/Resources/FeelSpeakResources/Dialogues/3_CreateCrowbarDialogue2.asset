@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 3_CreateCrowbarDialogue2
+  m_EditorClassIdentifier: 
+  id: 3
+  graphName: CreateCrowbarDialogue2
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 3
+    id: 0
+    position: {x: 183, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Para conseguir criar um objeto, voc\xEA precisa primeiro entender
+      como ele funciona. Pense nisso como uma receita, e voc\xEA precisa descobrir
+      do que ela \xE9 composta."
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 1
+    position: {x: 309, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Para isso, voc\xEA precisa entender alguns conceitos b\xE1sicos da
+      cria\xE7\xE3o de objetos."
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 2
+    position: {x: 434, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "A primeira coisa que precisa entender \xE9 o que s\xE3o \"Propriedades\"
+      e \"M\xE9todos\"!"
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 3
+    position: {x: 563, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Propriedades s\xE3o atributos que comp\xF5em o objeto. Ou seja, informa\xE7\xF5es
+      importantes a respeito dele, como o que ele \xE9 feito, o seu tamanho... Entre
+      diversas outras possibilidades."
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 4
+    position: {x: 692, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Elas s\xE3o importantes para distinguir entre objetos iguais. Afinal,
+      o objeto \"casa\" tem o atributo \"tamanho\", mas duas casas ainda podem possuir
+      tamanhos diferentes!"
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 5
+    position: {x: 832, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "M\xE9todos, por outro lado, s\xE3o as a\xE7\xF5es que um objeto pode
+      realizar. Nesse sentido, uma porta pode \"abrir\", por exemplo."
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 6
+    position: {x: 969, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Tente adivinhar as propriedades e m\xE9todos do p\xE9 de cabra! Dessa
+      forma, aprender\xE1 a cri\xE1-lo!"
+    voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 7
+    position: {x: 1114, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Clique e arraste as palavras corretas at\xE9 o seu respectivo campo.
+      Caso erre, n\xE3o se preocupe, apenas tente novamente em outro lugar!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 3
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 2
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 3
+    inputNodeId: 4
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 4
+    inputNodeId: 5
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 5
+    inputNodeId: 6
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 6
+    inputNodeId: 7
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

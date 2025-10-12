@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 5_CreateCrowbarDialogue4
+  m_EditorClassIdentifier: 
+  id: 5
+  graphName: CreateCrowbarDialogue4
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 5
+    id: 0
+    position: {x: 570, y: 199}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Muito bem. Agora voc\xEA precisar\xE1 selecionar as propriedades e
+      m\xE9todos que deseja para seu objeto."
+    voiceLine: {fileID: 0}
+  - graphId: 5
+    id: 1
+    position: {x: 719, y: 199}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "As propriedades recebem um valor ao serem instanciadas, ou seja -
+      criadas! Dessa forma, voc\xEA definir\xE1 valores diferentes mesmo que esteja
+      criando dois p\xE9 de cabra, por exemplo."
+    voiceLine: {fileID: 0}
+  - graphId: 5
+    id: 2
+    position: {x: 869, y: 199}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "J\xE1 os m\xE9todos, podem ou n\xE3o receber valores. Agora, n\xE3o
+      \xE9 necess\xE1rio definir nenhum valor para os m\xE9todos pois eles fazem
+      apenas uma coisa. Mas alguns m\xE9todos podem receber valores diferentes! Quando
+      chegar a hora, explicarei isso melhor. Agora, por enquanto continue."
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 5
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 5
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

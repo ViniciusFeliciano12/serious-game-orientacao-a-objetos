@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 11_CreateKeyDialogue1
+  m_EditorClassIdentifier: 
+  id: 11
+  graphName: CreateKeyDialogue1
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 11
+    id: 0
+    position: {x: 594, y: 125}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Parab\xE9ns por encontrar a chave! Com ela, voc\xEA poder\xE1 abrir
+      as portas de metais que n\xE3o podem ser abertas com o p\xE9 de cabra."
+    voiceLine: {fileID: 0}
+  - graphId: 11
+    id: 1
+    position: {x: 740, y: 125}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "No entanto, diferente do p\xE9 de cabra, com a chave voc\xEA precisa
+      acertar a combina\xE7\xE3o de propriedades e m\xE9todos que permitam ela encaixar
+      perfeitamente na porta que quer abrir."
+    voiceLine: {fileID: 0}
+  - graphId: 11
+    id: 2
+    position: {x: 890, y: 125}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Com as chaves, voc\xEA tamb\xE9m poder\xE1 fechar as portas que abrir
+      com elas, diferente do p\xE9 de cabra. Tenha isso em mente, pois ser\xE1 importante
+      no futuro!"
+    voiceLine: {fileID: 0}
+  - graphId: 11
+    id: 3
+    position: {x: 1041, y: 125}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Ali\xE1s, lembra que eu comentei antes sobre os m\xE9todos com valores
+      diferentes? Pois ent\xE3o, aqui temos um caso... Chaves podem abrir e fechar
+      muitas coisas, como portas e grades. Nesse caso, voc\xEA precisar\xE1 escolher
+      qual das duas a chave abrir\xE1. Afinal, uma chave \xE9 feita espec\xEDficamente
+      para um tipo de porta! Chaves de grades n\xE3o abrir\xE3o portas e vice-versa."
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 11
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 11
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 11
+    outputNodeId: 2
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

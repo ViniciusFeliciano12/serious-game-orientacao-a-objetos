@@ -53,7 +53,7 @@ public class WowCameraController : MonoBehaviour
      */
 	void LateUpdate ()
 	{
- 		if (PauseController.Instance.TimeStopped || FeelSpeak.HasActiveDialogue)
+ 		if (PauseController.Instance.TimeStopped || DialogueManagement.Instance.HasActiveDialogue())
             return;
 
 		Vector3 vTargetOffset;

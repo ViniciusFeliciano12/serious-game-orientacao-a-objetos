@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Interaction\Interactives\DoorInteraction.cs" />
     <Compile Include="Assets\Scripts\Controllers\SkillTree\UILineConnector.cs" />
     <Compile Include="Assets\StylishEsper\FeelSpeak\Examples\Scripts\FSDemo.cs" />
+    <Compile Include="Assets\Models\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\Controllers\SkillTree\SkillTreeButton.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\MinotaurInteraction.cs" />
     <Compile Include="Assets\Scripts\Controllers\Inventory\EquipItemController.cs" />

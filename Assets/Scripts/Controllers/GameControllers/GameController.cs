@@ -85,6 +85,7 @@ public class GameController : MonoBehaviour
 
     public void AddItemDatabase(ItemDatabase item){
         Database.AddItemDatabase(item);
+        Database.CreateSkillFirstTime(item.skillID);
         InventoryController.Instance.UpdateInventory();
     }
 
@@ -116,6 +117,11 @@ public class GameController : MonoBehaviour
         {
             Debug.Log(ex.ToString());
         }
+    }
+
+    public bool VerifyItemAlreadyCreated(SkillEnumerator item)
+    {
+        return Database.VerifyItemAlreadyCreated(item);
     }
 
     public void AddSkillLearned(SkillEnumerator item){

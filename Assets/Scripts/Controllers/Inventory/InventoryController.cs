@@ -176,6 +176,18 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    public ItemDatabase ReturnActualItem()
+    {
+        if (indexSelected != -1)
+        {
+            return Inventory[indexSelected].ReturnActualItem();
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public bool VerifyItemSelected(SkillEnumerator skillID, List<StringPair> propriedades = null, List<StringPair> metodos = null)
     {
         if (indexSelected != -1)

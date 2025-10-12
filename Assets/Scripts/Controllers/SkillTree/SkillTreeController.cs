@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using static GameDatabase;
 using static PauseController;
 using System;
+using Esper.FeelSpeak;
 
 public class SkillTreeController : MonoBehaviour
 {
@@ -48,12 +49,17 @@ public class SkillTreeController : MonoBehaviour
         if (PauseController.Instance.ChangeFlowTime(PauseMode.SkillTree))
         {
             LearnNewRecipeMinigameController.Instance.ClearFields();
-            SkillTreePanel.SetActive(PauseController.Instance.currentState.Equals(InternalPauseState.SkillTree));
+            SkillTreePanel.SetActive(!SkillTreePanel.activeSelf);
 
             if (SkillTreePanel.activeSelf)
             {
                 VerifyButtons();
-            }
+
+                if (!GameController.Instance.VerifyItemLearned(SkillEnumerator.Crowbar))
+                {
+                    DialogueManagement.Instance.StartDialogue("CreateCrowbarDialogue1");
+                }
+            } 
         }
     }
 

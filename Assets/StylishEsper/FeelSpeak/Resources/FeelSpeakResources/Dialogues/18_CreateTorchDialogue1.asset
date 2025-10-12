@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 18_CreateTorchDialogue1
+  m_EditorClassIdentifier: 
+  id: 18
+  graphName: CreateTorchDialogue1
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 18
+    id: 0
+    position: {x: 581, y: 221}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Parab\xE9ns por criar sua primeira tocha! Com ela, a explora\xE7\xE3o
+      ficar\xE1 muito mais f\xE1cil. No entanto, perceba que ela est\xE1 desligada.
+      Para liga-la, precisar\xE1 utilizar o cascalho com o bot\xE3o esquerdo e em
+      seguida clicar na tocha, para acend\xEA-la. Boa sorte!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections: []
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []
