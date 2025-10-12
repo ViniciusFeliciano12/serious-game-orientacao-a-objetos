@@ -1,20 +1,19 @@
+using Assets.Models;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using static GameDatabase;
-using UnityEngine.UI;
-using EJETAGame;
 
 public class SkillTreeButton : MonoBehaviour
 {
     public string title;
     public string iconPath;
     public SkillEnumerator itemID;
-    public SkillEnumerator[] dependsOnAncestorItem;
     public bool isInterface;
+    public SkillEnumerator[] dependsOnAncestorItem;
     public List<Item> propriedades;
     public List<Item> metodos;
     public List<string> palavras;
+    public List<DialogueTrigger> dialogueTriggers;
 
     private Transform xMark; // Guardar referência pro XMark
 
@@ -25,21 +24,17 @@ public class SkillTreeButton : MonoBehaviour
 
     public void Clicked()
     {
-        // Se o XMark estiver ativo, não deixa clicar
         if (xMark != null && xMark.gameObject.activeSelf)
         {
-            // Só pra feedback se quiser: Debug.Log("Não pode clicar ainda! Depêndencias não aprendidas.");
             return;
         }
 
-        // Caso o item ainda não tenha sido aprendido, inicia o minigame
         if (!GameController.Instance.VerifyItemLearned(itemID))
         {
             StartNewRecipeMinigame();
             return;
         }
 
-        // Caso o item já tenha sido aprendido, processa de acordo com o tipo de item
         if (isInterface)
         {
             HandleInterfaceItem();
@@ -52,7 +47,7 @@ public class SkillTreeButton : MonoBehaviour
 
     private void StartNewRecipeMinigame()
     {
-        LearnNewRecipeMinigameController.Instance.StartNewGame(title, itemID, palavras, propriedades, metodos, isInterface);
+        LearnNewRecipeMinigameController.Instance.StartNewGame(title, itemID, palavras, propriedades, metodos, dialogueTriggers, isInterface);
     }
 
     private void HandleInterfaceItem()
@@ -63,13 +58,13 @@ public class SkillTreeButton : MonoBehaviour
 
     private void StartCraftItemMinigame()
     {
-        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, iconPath);
+        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, dialogueTriggers, iconPath);
     }
 
     public void StartCraftItemMinigameReusable(ItemDatabase item, int index)
     {
         SkillTreeController.Instance.ToggleSkillTree();
 
-        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, iconPath, item, index);
+        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, dialogueTriggers, iconPath, item, index);
     }
 }

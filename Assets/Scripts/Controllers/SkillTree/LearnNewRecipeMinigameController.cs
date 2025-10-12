@@ -1,9 +1,10 @@
-using static GameDatabase;
+using Assets.Models;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
+using static GameDatabase;
 
 public class LearnNewRecipeMinigameController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     private List<Item> propriedades;
     private List<Item> metodos;
     private List<string> palavras;
+    List<DialogueTrigger> dialogues;
     private string texture;
     private SkillEnumerator itemID;
     private int correctWords = 0;
@@ -102,7 +104,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     #region LearnRecipe Minigame
 
-    public void StartNewGame(string titleText, SkillEnumerator itemID, List<string> palavras, List<Item> propriedades, List<Item> metodos, bool isInterface)
+    public void StartNewGame(string titleText, SkillEnumerator itemID, List<string> palavras, List<Item> propriedades, List<Item> metodos, List<DialogueTrigger> dialogues, bool isInterface)
     {
         correctWords = 0;
         title.text = titleText;
@@ -110,6 +112,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         this.palavras = palavras;
         this.propriedades = propriedades;
         this.metodos = metodos;
+        this.dialogues = dialogues;
 
         ClearFields();
 
@@ -131,6 +134,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
         criarButton.gameObject.SetActive(false);
         minigameArea.gameObject.SetActive(true);
+
+        dialogues.ForEach(item =>
+        {
+            if (item.WhenTrigger == SkillDialogueTrigger.BeforeLearningSkill)
+            {
+                DialogueManagement.Instance.StartDialogue(item.DialogueName);
+            }
+        });
     }
 
     public void Spawn()
@@ -263,6 +274,15 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
     {
         GameController.Instance.AddSkillLearned(itemID);
         SkillTreeController.Instance.ToggleSkillTree();
+
+        dialogues.ForEach(item =>
+        {
+            if (item.WhenTrigger == SkillDialogueTrigger.AfterLearningSkill)
+            {
+                DialogueManagement.Instance.StartDialogue(item.DialogueName);
+            }
+        });
+
         UIController.Instance.SetTextTimeout("Habilidade aprendida! Visite sua árvore novamente para criar um novo item.");
     }
 
@@ -270,7 +290,7 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
     #region Craft Minigame
 
-    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, string texture)
+    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, List<DialogueTrigger> dialogues, string texture)
     {
         // MODIFICADO: Limpa o item de edição ao criar um novo
         currentItemToEdit = null;
@@ -280,6 +300,8 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         this.propriedades = propriedades;
         this.metodos = metodos;
         this.texture = texture;
+        this.dialogues = dialogues;
+
         correctWords = 0;
         dropdowns.Clear();
 
@@ -291,9 +313,17 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         learnButton.gameObject.SetActive(false);
         minigameArea.gameObject.SetActive(true);
         alterarButton.gameObject.SetActive(false);
+
+        dialogues.ForEach(item =>
+        {
+            if (item.WhenTrigger == SkillDialogueTrigger.BeforeCreatingSkill && !GameController.Instance.VerifyItemAlreadyCreated(itemID))
+            {
+                DialogueManagement.Instance.StartDialogue(item.DialogueName);
+            }
+        });
     }
 
-    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, string texture, ItemDatabase item, int index)
+    public void CraftItem(string titleText, SkillEnumerator itemID, List<Item> propriedades, List<Item> metodos, List<DialogueTrigger> dialogues, string texture, ItemDatabase item, int index)
     {
         currentItemToEdit = item;
         indexToEdit = index;
@@ -302,7 +332,9 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         this.itemID = itemID;
         this.propriedades = propriedades;
         this.metodos = metodos;
+        this.dialogues = dialogues;
         this.texture = texture;
+
         correctWords = 0;
         dropdowns.Clear();
 
@@ -463,6 +495,14 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
 
             if (currentItemToEdit == null)
             {
+                dialogues.ForEach(item =>
+                {
+                    if (item.WhenTrigger == SkillDialogueTrigger.AfterCreatingSkill && !GameController.Instance.VerifyItemAlreadyCreated(itemID))
+                    {
+                        DialogueManagement.Instance.StartDialogue(item.DialogueName);
+                    }
+                });
+
                 GameController.Instance.AddItemDatabase(itemDatabase);
                 UIController.Instance.SetTextTimeout("Item criado!");
             }

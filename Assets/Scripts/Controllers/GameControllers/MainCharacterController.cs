@@ -260,7 +260,7 @@ public class MainCharacterController : MonoBehaviour
     public bool CannotMove()
     {
         return  PauseController.Instance.TimeStopped ||
-                FeelSpeak.HasActiveDialogue || 
+                DialogueManagement.Instance.HasActiveDialogue() || 
                 (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") && 
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("Run") && 
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("RunJump"));

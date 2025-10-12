@@ -1,6 +1,7 @@
 
 using EJETAGame;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -23,61 +24,60 @@ public class DoorInteraction : Interactable
        
     public override async void Interact()
     {
-        if (!(Input.GetKeyDown(interactionKey) && animator != null && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack")))
+        if (!(Input.GetKeyDown(interactionKey) && !DialogueManagement.Instance.HasActiveDialogue() && animator != null && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack")))
         {
             return;
         }
 
-        if (GameController.Instance.Database.ReturnSkillCount() < scrollsFoundToUnlock)
+        if (GameController.Instance.Database.ReturnSkillLearnedCount() < scrollsFoundToUnlock)
         {
-            UIController.Instance.SetTextTimeout("Encontre todos os pergaminhos da sala para progredir");
+            DialogueManagement.Instance.StartDialogue("LearnAllRecipesDialogue");
             return;
         }
 
         if (cannotCloseAnymore)
         {
-            UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+            DialogueManagement.Instance.StartDialogue("DoorBrokeDialogue");
             return;
         }
 
-        foreach (var key in keys)
+        var actualItem = InventoryController.Instance.ReturnActualItem();
+
+        var key = keys.FirstOrDefault(item => item.skillID == actualItem.skillID);
+
+        if (actualItem.skillID == GameDatabase.SkillEnumerator.Key)
         {
-            if (key.skillID == GameDatabase.SkillEnumerator.Key)
+            if (InventoryController.Instance.VerifyItemSelected(key.skillID, key.propriedades, new() { isOpen ? key.metodos[1] : key.metodos[0] }))
             {
-                if (InventoryController.Instance.VerifyItemSelected(key.skillID, key.propriedades, new() { isOpen ? key.metodos[1] : key.metodos[0] }))
-                {
-                    isOpen = !isOpen;
-                    animator.SetBool("IsOpen", isOpen);
-                    audioSources[0].Play();
-                }
-                else
-                {
-                    UIController.Instance.SetTextTimeout("Utilize a chave correta para interagir");
-                }
+                isOpen = !isOpen;
+                animator.SetBool("IsOpen", isOpen);
+                audioSources[0].Play();
             }
-            else if (key.skillID == GameDatabase.SkillEnumerator.Crowbar)
+            else
             {
-                if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
-                {
-                    if (!isBarredDoor)
-                    {
-                        cannotCloseAnymore = true;
-                        isOpen = true;
+                DialogueManagement.Instance.StartDialogue("WrongDoorDialogue");
+            }
+        }
 
-                        MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
-                        MainCharacterController.Instance.animator.SetTrigger("Attacking");
+        if (actualItem.skillID == GameDatabase.SkillEnumerator.Crowbar)
+        {
+            MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
+            MainCharacterController.Instance.animator.SetTrigger("Attacking");
 
-                        await Task.Delay(800);
+            await Task.Delay(800);
 
-                        animator.SetBool("IsOpen", isOpen);
-                        audioSources[1].Play();
-                        UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
-                    }
-                    else
-                    {
-                        UIController.Instance.SetTextTimeout("Só pode ser aberta pela chave correta");
-                    }
-                }
+            if (!isBarredDoor)
+            {
+                cannotCloseAnymore = true;
+                isOpen = true;
+
+                animator.SetBool("IsOpen", isOpen);
+                audioSources[1].Play();
+                UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+            }
+            else
+            {
+                DialogueManagement.Instance.StartDialogue("OnlyOpenByKeyDialogue");
             }
         }
     }

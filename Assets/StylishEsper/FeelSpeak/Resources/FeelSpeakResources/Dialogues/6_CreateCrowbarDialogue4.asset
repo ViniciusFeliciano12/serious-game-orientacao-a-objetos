@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 6_CreateCrowbarDialogue4
+  m_EditorClassIdentifier: 
+  id: 6
+  graphName: CreateCrowbarDialogue4
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 6
+    id: 0
+    position: {x: 581, y: 51}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Para criar um objeto, voc\xEA deve definir os valores de suas propriedades
+      e m\xE9todos."
+    voiceLine: {fileID: 0}
+  - graphId: 6
+    id: 1
+    position: {x: 730, y: 51}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "As propriedades s\xE3o escolhidas quando o objeto \xE9 instanciado
+      - ou seja, criado! S\xE3o o que define os valores, pois apesar de um P\xE9
+      de Cabra possuir a propriedade \"Tamanho\", diferentes P\xE9 de Cabras podem
+      possuir tamanhos diferentes!"
+    voiceLine: {fileID: 0}
+  - graphId: 6
+    id: 2
+    position: {x: 881, y: 51}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Os m\xE9todos podem receber valores, tamb\xE9m. Mas nem todos os m\xE9todos
+      precisam disso, pois alguns apenas fazem uma \xFAnica coisa - nesse caso, o
+      p\xE9 de cabra apenas possui m\xE9todos assim. No futuro voc\xEA entender\xE1
+      como funciona a passagem de par\xE2metro (valor) para eles!"
+    voiceLine: {fileID: 0}
+  - graphId: 6
+    id: 3
+    position: {x: 1036, y: 51}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Vamos, escolha as propriedades do seu primeiro p\xE9 de cabra para
+      cria-lo!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 6
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 6
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 6
+    outputNodeId: 2
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []
