@@ -50,49 +50,43 @@ namespace Esper.FeelSpeak.Database
 
             string databaseFullPath = string.Empty;
 
-#if UNITY_EDITOR
             bool updateDatabase = false;
-#endif
             databaseName = $"{FeelSpeak.Settings.databaseName}.db";
 
-            if (!Application.isPlaying)
-            {
-                databaseFullPath = Path.Combine(DatabaseEditorDirectoryPath, databaseName);
-
-                // Create database directory if it does not exists
-                if (!Directory.Exists(DatabaseEditorDirectoryPath))
-                {
-                    Directory.CreateDirectory(DatabaseEditorDirectoryPath);
-                }
-
-                // Create database file if it does not exist
-                if (!File.Exists(databaseFullPath))
-                {
-                    File.WriteAllBytes(databaseFullPath, new byte[] { });
 #if UNITY_EDITOR
-                    updateDatabase = true;
-#endif
-                }
+            // Always connect to editor database if in the Unity editor
+            databaseFullPath = Path.Combine(DatabaseEditorDirectoryPath, databaseName);
+
+            // Create database directory if it does not exists
+            if (!Directory.Exists(DatabaseEditorDirectoryPath))
+            {
+                Directory.CreateDirectory(DatabaseEditorDirectoryPath);
             }
-            else
+
+            // Create database file if it does not exist
+            if (!File.Exists(databaseFullPath))
             {
-                databaseFullPath = Path.Combine(DatabaseRuntimeDirectoryPath, databaseName);
-
-                // Create database directory if it does not exist
-                if (!Directory.Exists(DatabaseRuntimeDirectoryPath))
-                {
-                    Directory.CreateDirectory(DatabaseRuntimeDirectoryPath);
-                }
-
-#if UNITY_EDITOR
-                CreateRuntimeDatabase();
+                File.WriteAllBytes(databaseFullPath, new byte[] { });
+                updateDatabase = true;
+            }
 #else
-                if (!File.Exists(databaseFullPath))
-                {
-                    CreateRuntimeDatabase();
-                }
-#endif
+            // Connect to runtime database if not in the Unity editor
+            databaseFullPath = Path.Combine(DatabaseRuntimeDirectoryPath, databaseName);
+
+            // Create database directory if it does not exist
+            if (!Directory.Exists(DatabaseRuntimeDirectoryPath))
+            {
+                Directory.CreateDirectory(DatabaseRuntimeDirectoryPath);
             }
+
+            if (!File.Exists(databaseFullPath))
+            {
+                CreateRuntimeDatabase();
+            }
+
+            // Always update database in case of changes made
+            updateDatabase = true;
+#endif
 
             connection = new SQLiteConnection(databaseFullPath);
 
@@ -101,21 +95,45 @@ namespace Esper.FeelSpeak.Database
             CreateCharacterTable();
             CreateEmotionTable();
 
-            if (Application.isPlaying)
+            if (updateDatabase)
             {
-                FeelSpeakLogger.Log("Feel Speak: Initialized database connection.");
-            }
-#if UNITY_EDITOR
-            else if (updateDatabase)
-            {
+                // Clear tables to ensure deleted objects are removed
+                ClearTable(dialogueTableName);
+                ClearTable(characterTableName);
+                ClearTable(emotionTableName);
+
                 var graphs = FeelSpeak.GetAllDialogueGraphs();
 
                 foreach (var item in graphs)
                 {
                     item.UpdateDatabaseRecord();
                 }
+
+                var characters = FeelSpeak.GetAllCharacters();
+
+                foreach (var item in characters)
+                {
+                    item.UpdateDatabaseRecord();
+                }
+
+                var emotions = FeelSpeak.GetAllEmotions();
+
+                foreach (var item in emotions)
+                {
+                    item.UpdateDatabaseRecord();
+                }
+
+                graphs = null;
+                characters = null;
+                emotions = null;
+
+                Resources.UnloadUnusedAssets();
             }
-#endif
+
+            if (Application.isPlaying)
+            {
+                FeelSpeakLogger.Log("Feel Speak: Initialized database connection.");
+            }
         }
 
         /// <summary>
@@ -210,6 +228,15 @@ namespace Esper.FeelSpeak.Database
             string databaseFullPath = Path.Combine(DatabaseEditorDirectoryPath, dbName);
             File.Delete(databaseFullPath);
             File.Delete($"{databaseFullPath}.meta");
+        }
+
+        /// <summary>
+        /// Deletes all records from a table.
+        /// </summary>
+        /// <param name="tableName">The name of the table.</param>
+        public static void ClearTable(string tableName)
+        {
+            connection.Execute($"DELETE FROM {tableName}");
         }
 
         /// <summary>

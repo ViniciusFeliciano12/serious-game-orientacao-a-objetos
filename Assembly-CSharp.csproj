@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Interaction\Interactives\EnemyInteraction.cs" />
     <Compile Include="Assets\Scripts\Interaction\BaseInteraction\Interactable.cs" />
     <Compile Include="Assets\Scripts\HistoryControllers\DialogueManagement.cs" />
+    <Compile Include="Assets\Scripts\HistoryControllers\DialogueTriggerScript.cs" />
     <Compile Include="Assets\Devion Games\Inventory System\Examples\Particle Effects\ShurikenMagic\Scripts\SM_Rotate.cs" />
   </ItemGroup>
   <ItemGroup>

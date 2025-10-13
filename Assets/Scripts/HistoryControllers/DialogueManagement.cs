@@ -1,12 +1,16 @@
 ﻿using Esper.FeelSpeak;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+
+delegate bool DestroyDialogue();
 
 public class DialogueManagement : MonoBehaviour
 {
     public static DialogueManagement Instance { get; private set; }
 
-    
+    private Dictionary<string, DestroyDialogue> triggerDialoguesCondition;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,8 +26,15 @@ public class DialogueManagement : MonoBehaviour
     void Start()
     {
         VerifyStartDialogue();
+
+        triggerDialoguesCondition = new Dictionary<string, DestroyDialogue>
+        {
+             { "EnemyInSightDialogue", EnemyInSightDialogue },
+        };
     }
 
+
+ 
 
     private void VerifyStartDialogue()
     {
@@ -56,4 +67,23 @@ public class DialogueManagement : MonoBehaviour
         await Task.Delay(200);
         FeelSpeak.TriggerDialogue(FeelSpeak.GetDialogueGraph(dialogueGraph));
     }
+
+    #region World Trigger Dialogues
+
+    public bool VerifyDialogueStillExists(string dialogueGraph)
+    {
+        if (triggerDialoguesCondition.TryGetValue(dialogueGraph, out DestroyDialogue useAction))
+        {
+            return useAction.Invoke();
+        }
+
+        return false;
+    }
+
+    private bool EnemyInSightDialogue()
+    {
+        return GameController.Instance.GetInventoryCount() > 4;
+    }
+
+    #endregion
 }

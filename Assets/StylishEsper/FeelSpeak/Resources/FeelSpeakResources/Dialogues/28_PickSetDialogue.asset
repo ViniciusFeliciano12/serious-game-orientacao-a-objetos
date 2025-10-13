@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 28_PickSetDialogue
+  m_EditorClassIdentifier: 
+  id: 28
+  graphName: PickSetDialogue
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 28
+    id: 0
+    position: {x: 432, y: 251}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Parece que voc\xEA encontrou a receita do conjunto!"
+    voiceLine: {fileID: 0}
+  - graphId: 28
+    id: 1
+    position: {x: 614, y: 251}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Ele ser\xE1 muito \xFAtil para enfrentar o minotauro. Por que n\xE3o
+      tenta aprend\xEA-lo?"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 28
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

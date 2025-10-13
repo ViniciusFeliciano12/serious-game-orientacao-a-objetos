@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Interaction.Interactives;
 using EJETAGame;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class TorchInteraction : Interactable
@@ -8,29 +9,44 @@ public class TorchInteraction : Interactable
     private GameObject Smoke;
     private GameObject Fire;
     private Renderer[] torchRenderers;
+    private bool active;
 
+    public int torchId;
+    
     void Start()
     {
         Smoke = transform.Find("Smoke").gameObject;
         Fire = transform.Find("Fire").gameObject;
+
+        if (GameController.Instance.TorchAlreadyLit(torchId))
+        {
+            ActiveTorch();
+            MinotaurInteraction.Instance.ReceberDano(4);
+        }
     }
 
     public override void Interact()
     {
-        if (Input.GetKeyDown(interactionKey))
+        if (Input.GetKeyDown(interactionKey) && !active)
         {
             if (key.skillID == GameDatabase.SkillEnumerator.Ignitor)
             {
                 if (InventoryController.Instance.VerifyItemSelected(key.skillID))
                 {
-                    Smoke.SetActive(true);
-                    Fire.SetActive(true);
-
-                    MinotaurInteraction.Instance.ReceberDano(4);
-                    InventoryController.Instance.RemoveItemInventory();
+                    ActiveTorch();
+                    GameController.Instance.SaveTorchLit(torchId);
+                    MinotaurInteraction.Instance.ReceberDanoFromTorch(4);
                 }
             }
         }
+    }
+
+    private void ActiveTorch()
+    {
+        active = true;
+
+        Smoke.SetActive(active);
+        Fire.SetActive(active);
     }
 
     public override void OnInteractEnter()

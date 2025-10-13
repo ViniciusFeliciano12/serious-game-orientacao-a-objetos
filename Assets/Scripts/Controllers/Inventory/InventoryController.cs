@@ -1,3 +1,4 @@
+using Esper.FeelSpeak.Graph;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -96,12 +97,12 @@ public class InventoryController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && indexSelected != -1 && (!MainCharacterController.Instance.CannotMove() || Inventory[indexSelected].actualItem?.skillID == SkillEnumerator.Shield))
         {
             TryUseSelectedItem();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1) && indexSelected != -1 && (!MainCharacterController.Instance.CannotMove() || Inventory[indexSelected].actualItem?.skillID == SkillEnumerator.Set))
         {
             TryUseSelectedItemRightButton();
         }
@@ -143,6 +144,12 @@ public class InventoryController : MonoBehaviour
 
         GameController.Instance.AddItemDatabase(itemDatabase);
         UIController.Instance.SetTextTimeout("Ignitor criado!");
+
+        if (!GameController.Instance.DialogueAlreadyPlayed("CreateIgnitorDialogue3"))
+        {
+            DialogueManagement.Instance.StartDialogue("CreateIgnitorDialogue3");
+            GameController.Instance.SaveDialoguePlayed("CreateIgnitorDialogue3");
+        }
     }
 
     private void CreateSet()
@@ -162,7 +169,12 @@ public class InventoryController : MonoBehaviour
         Debug.Log(jsonStr);
 
         GameController.Instance.AddItemDatabase(itemDatabase);
-        UIController.Instance.SetTextTimeout("Conjunto criado!");
+
+        if (!GameController.Instance.DialogueAlreadyPlayed("CreateSetDialogue3"))
+        {
+            DialogueManagement.Instance.StartDialogue("CreateSetDialogue3");
+            GameController.Instance.SaveDialoguePlayed("CreateSetDialogue3");
+        }
     }
 
     private void TryUseSelectedActiveItem()
@@ -220,7 +232,7 @@ public class InventoryController : MonoBehaviour
             if (item != null)
             {
                 GameController.Instance.RemoveItemDatabase(item);
-                Inventory[indexSelected].ResetDefaults();
+                UpdateInventory();
             }
 
             CloseConfirmRemoveItem();
@@ -265,9 +277,16 @@ public class InventoryController : MonoBehaviour
     public void UpdateInventory()
     {
         var inventoryDatabase = GameController.Instance.GetInventory();
-        for (int i = 0; i < inventoryDatabase.Count; i++)
+        for (int i = 0; i < 10; i++)
         {
-            Inventory[i].InstantiateItem(inventoryDatabase[i]);
+            if (i < inventoryDatabase.Count)
+            {
+                Inventory[i].InstantiateItem(inventoryDatabase[i]);
+            }
+            else
+            {
+                Inventory[i].ResetDefaults();
+            }
         }
     }
 
@@ -401,7 +420,7 @@ public class InventoryController : MonoBehaviour
             {
                 usingOilRightButton = true;
                 RemoveItemInventory();
-                UIController.Instance.SetTextTimeout("Usando trapo... termine a fórmula para criar o ignitor");
+                UIController.Instance.SetTextTimeout("Usando óleo... termine a fórmula para criar o ignitor");
             }
             else
             {
@@ -418,7 +437,7 @@ public class InventoryController : MonoBehaviour
             {
                 usingGravelRightButton = true;
                 RemoveItemInventory();
-                UIController.Instance.SetTextTimeout("Usando trapo... termine a fórmula para criar o ignitor");
+                UIController.Instance.SetTextTimeout("Usando cascalho... termine a fórmula para criar o ignitor");
             }
             else
             {
@@ -429,7 +448,10 @@ public class InventoryController : MonoBehaviour
 
     private void UseShield()
     {
-        MainCharacterController.Instance.animator.SetBool("Blocking", !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"));
+        if (!DialogueManagement.Instance.HasActiveDialogue())
+        {
+            MainCharacterController.Instance.animator.SetBool("Blocking", !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Blocking"));
+        }
     }
 
     #endregion

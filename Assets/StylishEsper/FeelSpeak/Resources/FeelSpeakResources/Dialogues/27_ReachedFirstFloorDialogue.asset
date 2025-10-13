@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 27_ReachedFirstFloorDialogue
+  m_EditorClassIdentifier: 
+  id: 27
+  graphName: ReachedFirstFloorDialogue
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 27
+    id: 0
+    position: {x: 499, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Finalmente... Chegamos no t\xE9rreo..."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 1
+    position: {x: 662, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Esse ser\xE1 o nosso \xFAltimo desafio, mas tamb\xE9m, o mais dif\xEDcil.
+      \xC9 aqui que o minotauro est\xE1... e ele n\xE3o pode ser derrotado."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 2
+    position: {x: 837, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "N\xE3o pode ser derrotado? Ent\xE3o qual foi o prop\xF3sito em termos
+      vindo at\xE9 aqui?"
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 3
+    position: {x: 997, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Se acalme! Ele n\xE3o pode ser derrotado, mas por meios convencionais.
+      Com seus poderes conseguiremos. Mas ainda n\xE3o ser\xE1 f\xE1cil."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 4
+    position: {x: 1164, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Ent\xE3o o que precisamos fazer para vencer ele?"
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 5
+    position: {x: 1343, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "O minotauro \xE9 uma criatura das trevas. Devido a isso, a \xFAnica
+      fraqueza dele \xE9 a luz."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 6
+    position: {x: 1521, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Nesse andar, existem diversas tochas apagadas penduradas na parede...
+      voc\xEA precisar\xE1 acender todas elas se quiser ter uma chance contra o monstro."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 7
+    position: {x: 1689, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: 84646e84bce19e3448ee6bd5a152260f, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Acender as tochas? Parece f\xE1cil pra mim..."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 8
+    position: {x: 1870, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Para conseguir fazer isso, ter\xE1 de criar um Ignitor. Tente procurar
+      os itens espalhados pelo andar e conforme encontrar, aprender\xE1 como cria-lo."
+    voiceLine: {fileID: 0}
+  - graphId: 27
+    id: 9
+    position: {x: 2047, y: 172}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Mas fique atento... o minotauro \xE9 r\xE1pido e forte! Tentar enfrentar
+      ele sem ligar as tochas \xE9 o mesmo que pedir pra apanhar!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 27
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 2
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 3
+    inputNodeId: 4
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 4
+    inputNodeId: 5
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 5
+    inputNodeId: 6
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 6
+    inputNodeId: 7
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 7
+    inputNodeId: 8
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 27
+    outputNodeId: 8
+    inputNodeId: 9
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

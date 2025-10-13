@@ -1,6 +1,7 @@
 using Esper.FeelSpeak;
 using System.Collections.Generic;
-using System.Linq;   
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,7 +20,7 @@ namespace EJETAGame
         [Tooltip("Itens que podem causar dano a este inimigo.")]
         public List<ItemDatabase> fraquezas;
         private InventoryController inventoryController;
-        private Animator animator;
+        protected Animator animator;
         #endregion
 
         #region Variáveis da IA
@@ -55,7 +56,7 @@ namespace EJETAGame
         #region Estado da IA
         [Header("Estado Atual")]
         [SerializeField]
-        private EstadoIA estadoAtual;
+        protected EstadoIA estadoAtual;
         private bool jaMorreu = false;
         #endregion
 
@@ -93,7 +94,14 @@ namespace EJETAGame
         {
             var characterDead = jogador == null || MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Dead");
 
-            if (jaMorreu || characterDead || DialogueManagement.Instance.HasActiveDialogue()) return;
+            if (jaMorreu || characterDead) return;
+
+            if (DialogueManagement.Instance.HasActiveDialogue() || animator.GetCurrentAnimatorStateInfo(0).IsName("Shout"))
+            {
+                ExecutarEstadoParado();
+                AtualizarRotacaoEAnimacao();
+                return;
+            }
 
             switch (estadoAtual)
             {
@@ -314,7 +322,7 @@ namespace EJETAGame
             ReceberDano(actualDmg);
         }
 
-        public void ReceberDano(double quantidade)
+        public virtual void ReceberDano(double quantidade)
         {
             if (estadoAtual == EstadoIA.Morto) return;
 

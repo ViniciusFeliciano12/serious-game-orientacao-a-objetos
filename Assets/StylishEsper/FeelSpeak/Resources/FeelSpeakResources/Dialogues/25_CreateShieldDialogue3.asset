@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 25_CreateShieldDialogue3
+  m_EditorClassIdentifier: 
+  id: 25
+  graphName: CreateShieldDialogue3
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 25
+    id: 0
+    position: {x: 1151.9043, y: -71.70489}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Muito bem, com o escudo voc\xEA poder\xE1 bloquear qualquer dano que
+      receberia dos seus inimigos. Pressione com o bot\xE3o esquerdo do mouse para
+      levanta-lo!"
+    voiceLine: {fileID: 0}
+  - graphId: 25
+    id: 1
+    position: {x: 1313, y: -72}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Mas lembre-se que enquanto est\xE1 com o escudo levantado, n\xE3o
+      poder\xE1 se mover... Al\xE9m disso, selecionar outro item do invent\xE1rio
+      far\xE1 com que o escudo des\xE7a, ent\xE3o utilize sabiamente!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 25
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

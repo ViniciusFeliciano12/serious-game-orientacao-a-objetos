@@ -52,8 +52,25 @@ public class SkillTreeButton : MonoBehaviour
 
     private void HandleInterfaceItem()
     {
-        LearnNewRecipeMinigameController.Instance.ClearFields();
-        UIController.Instance.SetTextTimeout("Classes abstratas não podem ser instanciadas");
+        string dialogue = "";
+
+        if (itemID == SkillEnumerator.Set)
+        {
+            dialogue = "CreateSetDialogue4";
+        }
+        else if (itemID == SkillEnumerator.Ignitor)
+        {
+            dialogue = "CreateIgnitorDialogue1";
+        }
+        else if (itemID == SkillEnumerator.Equipment)
+        {
+            dialogue = "TryingCreateInterfaceErrorDialogue";
+        }
+
+        if (dialogue != "")
+        {
+            DialogueManagement.Instance.StartDialogue(dialogue);
+        }
     }
 
     private void StartCraftItemMinigame()

@@ -138,7 +138,7 @@ namespace Esper.FeelSpeak.Editor
 
         private void AskToSave()
         {
-            if (!graphView.hasUnsavedChanges || !graphView.graph)
+            if (graphView == null || !graphView.hasUnsavedChanges || !graphView.graph)
             {
                 return;
             }

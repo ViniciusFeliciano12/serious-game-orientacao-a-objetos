@@ -1,4 +1,5 @@
 using Esper.FeelSpeak;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -122,11 +123,15 @@ public class PauseController : MonoBehaviour
         ChangeFlowTime(PauseMode.Pause);
     }
 
-    public void ReloadScene()
+    public async void ReloadScene()
     {
         currentState = InternalPauseState.None;
         GameController.Instance.ReloadScene(); 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        await Task.Delay(200);
+
+        DialogueManagement.Instance.StartDialogue("YouDiedDialogue");
     }
 
     public void BackToMenu()

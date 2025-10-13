@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 29_CreateSetDialogue1
+  m_EditorClassIdentifier: 
+  id: 29
+  graphName: CreateSetDialogue1
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 29
+    id: 0
+    position: {x: 443, y: 232}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "O conjunto \xE9 diferente das coisas que voc\xEA j\xE1 fez at\xE9
+      ent\xE3o!"
+    voiceLine: {fileID: 0}
+  - graphId: 29
+    id: 1
+    position: {x: 615, y: 232}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Ele \xE9 um objeto composto, ou seja, ele possui em sua composi\xE7\xE3o
+      outros dois objetos."
+    voiceLine: {fileID: 0}
+  - graphId: 29
+    id: 2
+    position: {x: 797, y: 232}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Para cria-lo, voc\xEA precisar\xE1 ter uma espada e um escudo. Elas
+      far\xE3o parte do seu novo conjunto, e dessa forma poder\xE1 equipar os dois
+      ao mesmo tempo! O que faz com que as lutas fiquem muito mais f\xE1ceis, n\xE3o
+      acha?"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 29
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 29
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

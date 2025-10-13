@@ -105,6 +105,36 @@ public class GameController : MonoBehaviour
         return Database.ReturnSkillCount();
     }
 
+    public void SaveDialoguePlayed(string dialogueGraph)
+    {
+        Database.SaveDialoguePlayed(dialogueGraph);
+    }
+
+    public bool DialogueAlreadyPlayed(string dialogueGraph)
+    {
+        return Database.DialogueAlreadyPlayed(dialogueGraph);
+    }
+
+    public int GetInventoryLearnedCount()
+    {
+        return Database.ReturnSkillLearnedCount();
+    }
+
+    public void SaveTorchLit(int torchId)
+    {
+        Database.SaveTorchLit(torchId);
+    }
+
+    public bool TorchAlreadyLit(int torchId)
+    {
+        return Database.TorchAlreadyLit(torchId);
+    }
+
+    public int QuantityTorchesLit()
+    {
+        return Database.QuantityTorchesLit();
+    }
+
     public void AddSkillFound(SkillDatabase item)
     {
         try

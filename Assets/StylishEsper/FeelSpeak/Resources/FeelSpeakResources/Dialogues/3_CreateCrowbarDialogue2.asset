@@ -18,7 +18,7 @@ MonoBehaviour:
   dialogueNodes:
   - graphId: 3
     id: 0
-    position: {x: 183, y: 143}
+    position: {x: -40, y: 143}
     inputConnections: []
     outputConnections: []
     character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
@@ -33,7 +33,7 @@ MonoBehaviour:
     voiceLine: {fileID: 0}
   - graphId: 3
     id: 1
-    position: {x: 309, y: 143}
+    position: {x: 98, y: 143}
     inputConnections: []
     outputConnections: []
     character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
@@ -47,7 +47,7 @@ MonoBehaviour:
     voiceLine: {fileID: 0}
   - graphId: 3
     id: 2
-    position: {x: 434, y: 143}
+    position: {x: 402, y: 143}
     inputConnections: []
     outputConnections: []
     character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
@@ -56,12 +56,12 @@ MonoBehaviour:
     suppressEmotionSound: 0
     automaticNextOnComplete: 0
     automaticNextDelay: 0
-    dialogue: "A primeira coisa que precisa entender \xE9 o que s\xE3o \"Propriedades\"
+    dialogue: "Outra coisa que precisa entender \xE9 o que s\xE3o \"Propriedades\"
       e \"M\xE9todos\"!"
     voiceLine: {fileID: 0}
   - graphId: 3
     id: 3
-    position: {x: 563, y: 143}
+    position: {x: 556, y: 143}
     inputConnections: []
     outputConnections: []
     character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
@@ -86,8 +86,8 @@ MonoBehaviour:
     automaticNextOnComplete: 0
     automaticNextDelay: 0
     dialogue: "Elas s\xE3o importantes para distinguir entre objetos iguais. Afinal,
-      o objeto \"casa\" tem o atributo \"tamanho\", mas duas casas ainda podem possuir
-      tamanhos diferentes!"
+      os objetos da classe \"casa\" possuem o atributo \"tamanho\", mas duas casas
+      ainda podem ter tamanhos diferentes!"
     voiceLine: {fileID: 0}
   - graphId: 3
     id: 5
@@ -101,7 +101,8 @@ MonoBehaviour:
     automaticNextOnComplete: 0
     automaticNextDelay: 0
     dialogue: "M\xE9todos, por outro lado, s\xE3o as a\xE7\xF5es que um objeto pode
-      realizar. Nesse sentido, uma porta pode \"abrir\", por exemplo."
+      realizar. Nesse sentido, uma objeto da classe \"porta\" pode \"abrir\", por
+      exemplo."
     voiceLine: {fileID: 0}
   - graphId: 3
     id: 6
@@ -131,20 +132,25 @@ MonoBehaviour:
     dialogue: "Clique e arraste as palavras corretas at\xE9 o seu respectivo campo.
       Caso erre, n\xE3o se preocupe, apenas tente novamente em outro lugar!"
     voiceLine: {fileID: 0}
+  - graphId: 3
+    id: 8
+    position: {x: 244, y: 143}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Objetos s\xE3o inst\xE2ncias - ou manifesta\xE7\xF5es - de uma classe.
+      Uma classe pode ser, por exemplo, \"P\xE9 de Cabra\"! Enquanto os objetos s\xE3o,
+      em ess\xEAncia, os p\xE9s de cabras que voc\xEA criar dessa classe."
+    voiceLine: {fileID: 0}
   choiceNodes: []
   delayNodes: []
   soundNodes: []
   connections:
-  - graphId: 3
-    outputNodeId: 0
-    inputNodeId: 1
-    outputPortIndex: 0
-    inputPortIndex: 0
-  - graphId: 3
-    outputNodeId: 1
-    inputNodeId: 2
-    outputPortIndex: 0
-    inputPortIndex: 0
   - graphId: 3
     outputNodeId: 2
     inputNodeId: 3
@@ -168,6 +174,21 @@ MonoBehaviour:
   - graphId: 3
     outputNodeId: 6
     inputNodeId: 7
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 1
+    inputNodeId: 8
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 3
+    outputNodeId: 8
+    inputNodeId: 2
     outputPortIndex: 0
     inputPortIndex: 0
   callOnceOnDialogueStarted:

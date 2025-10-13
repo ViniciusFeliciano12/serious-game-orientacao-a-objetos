@@ -24,20 +24,14 @@ public class DoorInteraction : Interactable
        
     public override async void Interact()
     {
-        if (!(Input.GetKeyDown(interactionKey) && !DialogueManagement.Instance.HasActiveDialogue() && animator != null && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack")))
+        if (!Input.GetKeyDown(interactionKey) || animator == null || MainCharacterController.Instance.CannotMove())
         {
             return;
         }
 
-        if (GameController.Instance.Database.ReturnSkillLearnedCount() < scrollsFoundToUnlock)
+        if (GameController.Instance.GetInventoryLearnedCount() < scrollsFoundToUnlock)
         {
             DialogueManagement.Instance.StartDialogue("LearnAllRecipesDialogue");
-            return;
-        }
-
-        if (cannotCloseAnymore)
-        {
-            DialogueManagement.Instance.StartDialogue("DoorBrokeDialogue");
             return;
         }
 
@@ -47,6 +41,12 @@ public class DoorInteraction : Interactable
 
         if (actualItem.skillID == GameDatabase.SkillEnumerator.Key)
         {
+            if (cannotCloseAnymore)
+            {
+                DialogueManagement.Instance.StartDialogue("DoorBrokeDialogue");
+                return;
+            }
+
             if (InventoryController.Instance.VerifyItemSelected(key.skillID, key.propriedades, new() { isOpen ? key.metodos[1] : key.metodos[0] }))
             {
                 isOpen = !isOpen;
@@ -61,6 +61,12 @@ public class DoorInteraction : Interactable
 
         if (actualItem.skillID == GameDatabase.SkillEnumerator.Crowbar)
         {
+            if (cannotCloseAnymore)
+            {
+                DialogueManagement.Instance.StartDialogue("DoorBrokeDialogue");
+                return;
+            }
+
             MainCharacterController.Instance.animator.SetFloat("AttackSpeedMultiplier", 1.0f);
             MainCharacterController.Instance.animator.SetTrigger("Attacking");
 
