@@ -180,6 +180,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 1
   defaultTexture: {fileID: 8400000, guid: e79a661e8a227044ab48ebe9cf7435a9, type: 2}
+  actualItem:
+    nome: 
+    skillID: 0
+    itemActive: 0
+    iconPath: 
+    propriedades: []
+    metodos: []
 --- !u!1 &7769729560534805130
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8.1, y: -10}
+  m_AnchoredPosition: {x: 14.4, y: -18.7}
   m_SizeDelta: {x: 10, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2027164338595366157
@@ -247,8 +254,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b9d0a184865de0840bb4dec08991b4be, type: 2}
-  m_sharedMaterial: {fileID: 8494887671053924291, guid: b9d0a184865de0840bb4dec08991b4be, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f9b3ab4f2316e5b44a1d2c859fbeeeda, type: 2}
+  m_sharedMaterial: {fileID: 4776071041159812567, guid: f9b3ab4f2316e5b44a1d2c859fbeeeda, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

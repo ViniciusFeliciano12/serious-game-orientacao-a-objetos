@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public string Index;
     public Texture defaultTexture;
     private Image backgroundImage;
     public ItemDatabase actualItem;
@@ -56,12 +55,6 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
     {
         actualItem = null;
 
-        TextMeshProUGUI text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        if (text != null)
-        {
-            text.text = Index;
-        }
-
         RawImage icon = gameObject.GetComponentInChildren<RawImage>();
         if (icon != null)
         {
@@ -82,13 +75,6 @@ public class ItemInventoryController : MonoBehaviour, IPointerClickHandler, IPoi
     public void InstantiateItem(ItemDatabase item)
     {
         actualItem = item;
-
-        TextMeshProUGUI text = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-
-        if (text != null)
-        {
-            text.text = Index;
-        }
 
         RawImage icon = gameObject.GetComponentInChildren<RawImage>();
         if (icon != null)

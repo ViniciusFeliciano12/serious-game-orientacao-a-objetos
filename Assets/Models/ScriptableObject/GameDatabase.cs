@@ -7,12 +7,16 @@ public class GameDatabase : ScriptableObject
 {
     [SerializeField] private List<SkillDatabase> skillTreeObjects;
     [SerializeField] private List<ItemDatabase> itemInventoryObjects;
+    [SerializeField] private List<string> dialoguesAlreadyPlayed;
+    [SerializeField] private List<int> torchesAlreadyLit;
     [SerializeField] private Player player;
 
     public void ResetDatabase()
     {
         itemInventoryObjects = new();
         skillTreeObjects = new();
+        dialoguesAlreadyPlayed = new();
+        torchesAlreadyLit = new();
         player = new();
     }
 
@@ -67,6 +71,39 @@ public class GameDatabase : ScriptableObject
     public void RemoveItemDatabase(ItemDatabase item)
     {
         itemInventoryObjects.Remove(item);
+    }
+
+    #endregion
+
+    #region Torches
+
+    public void SaveTorchLit(int torchId)
+    {
+        torchesAlreadyLit.Add(torchId);
+    }
+
+    public bool TorchAlreadyLit(int torchId)
+    {
+        return torchesAlreadyLit.Exists(item => item.Equals(torchId));
+    }
+
+    public int QuantityTorchesLit()
+    {
+        return torchesAlreadyLit.Count();
+    }
+
+    #endregion
+
+    #region Dialogues
+
+    public void SaveDialoguePlayed(string dialogueGraph)
+    {
+        dialoguesAlreadyPlayed.Add(dialogueGraph);
+    }
+
+    public bool DialogueAlreadyPlayed(string dialogueGraph)
+    {
+        return dialoguesAlreadyPlayed.Exists(item => item.Equals(dialogueGraph));
     }
 
     #endregion

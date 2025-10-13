@@ -1,10 +1,14 @@
-﻿using Esper.FeelSpeak;
-using System.Collections;
+﻿using Assets.Scripts.Interaction.Interactives;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class WowCameraController : MonoBehaviour
 {
-	public Transform target;
+    public static WowCameraController Instance { get; private set; }
+
+    public Transform target;
+	public Transform playerTarget;
+	public Transform minotaurTarget;
 
 	public float targetHeight = 1.7f;
 	public float distance = 5.0f;
@@ -33,9 +37,21 @@ public class WowCameraController : MonoBehaviour
 	private float desiredDistance;
 	private float correctedDistance;
 
-	void Start ()
+    public void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    void Start ()
 	{
-		Vector3 angles = transform.eulerAngles;
+        Vector3 angles = transform.eulerAngles;
 		xDeg = angles.x;
 		yDeg = angles.y;
 
@@ -48,9 +64,6 @@ public class WowCameraController : MonoBehaviour
 			this.gameObject.GetComponent<Rigidbody>().freezeRotation = true;
 	}
 
-	/**
-     * Camera logic on LateUpdate to only update after all character movement logic has been handled.
-     */
 	void LateUpdate ()
 	{
  		if (PauseController.Instance.TimeStopped || DialogueManagement.Instance.HasActiveDialogue())
@@ -58,7 +71,6 @@ public class WowCameraController : MonoBehaviour
 
 		Vector3 vTargetOffset;
 
-		// Don't do anything if target is not defined
 		if (!target)
 			return;
 
@@ -94,29 +106,20 @@ public class WowCameraController : MonoBehaviour
 		vTargetOffset = new Vector3 (0, -targetHeight, 0);
 		Vector3 position = target.position - (rotation * Vector3.forward * desiredDistance + vTargetOffset);
 
-		// check for collision using the true target's desired registration point as set by user using height
 		RaycastHit collisionHit;
 		Vector3 trueTargetPosition = new Vector3(target.position.x, target.position.y, target.position.z) - vTargetOffset;
 
-		// if there was a collision, correct the camera position and calculate the corrected distance
 		bool isCorrected = false;
 		if (Physics.Linecast (trueTargetPosition, position, out collisionHit, collisionLayers.value))
 		{
-			// calculate the distance from the original estimated position to the collision location,
-			// subtracting out a safety "offset" distance from the object we hit.  The offset will help
-			// keep the camera from being right on top of the surface we hit, which usually shows up as
-			// the surface geometry getting partially clipped by the camera's front clipping plane.
 			correctedDistance = Vector3.Distance (trueTargetPosition, collisionHit.point) - offsetFromWall;
 			isCorrected = true;
 		}
 
-		// For smoothing, lerp distance only if either distance wasn't corrected, or correctedDistance is more than currentDistance
 		currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp (currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance;
 
-		// keep within legal limits
 		currentDistance = Mathf.Clamp (currentDistance, minDistance, maxDistance);
 
-		// recalculate position based on the new currentDistance
 		position = target.position - (rotation * Vector3.forward * currentDistance + vTargetOffset);
 
 		transform.rotation = rotation;
@@ -130,5 +133,14 @@ public class WowCameraController : MonoBehaviour
 		if (angle > 360)
 			angle -= 360;
 		return Mathf.Clamp (angle, min, max);
+	}
+
+	public async void FocusOnMinotaur()
+	{
+		target = minotaurTarget;
+
+		await Task.Delay(2500);
+
+		target = playerTarget;
 	}
 }

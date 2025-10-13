@@ -15,49 +15,62 @@ MonoBehaviour:
   skillTreeObjects:
   - itemID: 3
     recipeLearned: 1
+    createdFirstTime: 1
   - itemID: 0
     recipeLearned: 1
+    createdFirstTime: 1
   - itemID: 4
     recipeLearned: 1
+    createdFirstTime: 1
   - itemID: 5
     recipeLearned: 1
-  - itemID: 6
-    recipeLearned: 1
+    createdFirstTime: 1
   - itemID: 1
     recipeLearned: 1
-  - itemID: 7
-    recipeLearned: 1
+    createdFirstTime: 0
   - itemID: 2
     recipeLearned: 1
+    createdFirstTime: 1
+  - itemID: 7
+    recipeLearned: 1
+    createdFirstTime: 1
+  - itemID: 6
+    recipeLearned: 1
+    createdFirstTime: 1
   - itemID: 8
     recipeLearned: 0
-  - itemID: 11
-    recipeLearned: 1
-  - itemID: 9
-    recipeLearned: 1
-  - itemID: 10
-    recipeLearned: 1
+    createdFirstTime: 0
   - itemID: 12
     recipeLearned: 1
+    createdFirstTime: 1
+  - itemID: 9
+    recipeLearned: 1
+    createdFirstTime: 1
+  - itemID: 10
+    recipeLearned: 1
+    createdFirstTime: 1
+  - itemID: 11
+    recipeLearned: 1
+    createdFirstTime: 1
   itemInventoryObjects:
   - nome: "P\xE9 de Cabra"
-    icon: {fileID: 2800000, guid: bb5251ecff6db9244958c944247c7028, type: 3}
     skillID: 3
     itemActive: 0
+    iconPath: Icon/crowbar
     propriedades:
     - chave: Tamanho
-      valor: "M\xE9dio"
+      valor: Grande
     - chave: Material
-      valor: Ferro
+      valor: Madeira
     metodos:
     - chave: Atacar
       valor: 
     - chave: Desmontar
       valor: 
   - nome: Chave
-    icon: {fileID: 2800000, guid: 99bf129da19b8304f9de43fae4c39181, type: 3}
     skillID: 0
     itemActive: 0
+    iconPath: Icon/key
     propriedades:
     - chave: Tamanho
       valor: Medio
@@ -68,28 +81,10 @@ MonoBehaviour:
       valor: Grade
     - chave: Fechar
       valor: Grade
-  - nome: Tocha
-    icon: {fileID: 2800000, guid: 4d92a6779ce19f34f9831e5554283081, type: 3}
-    skillID: 4
-    itemActive: 1
-    propriedades:
-    - chave: Tamanho
-      valor: Pequeno
-    metodos:
-    - chave: Acender
-      valor: 
-  - nome: Ignitor
-    icon: {fileID: 2800000, guid: 55002cb96620c9646864d0a1a6da67d9, type: 3}
-    skillID: 12
+  - nome: Conjunto
+    skillID: 9
     itemActive: 0
-    propriedades: []
-    metodos:
-    - chave: Acender tocha
-      valor: 
-  - nome: Machado
-    icon: {fileID: 2800000, guid: 81e9ec1d21e1f8f43a06e7e75c17fc37, type: 3}
-    skillID: 6
-    itemActive: 0
+    iconPath: Icon/espada-escudo
     propriedades:
     - chave: Tamanho
       valor: Medio
@@ -98,18 +93,46 @@ MonoBehaviour:
     metodos:
     - chave: Manusear
       valor: Atacar
-  - nome: Escudo
-    icon: {fileID: 2800000, guid: b97c91e8b348f3f4ebdc11f5c82182cd, type: 3}
-    skillID: 7
+    - chave: Manuesar
+      valor: Defender
+  - nome: Tocha
+    skillID: 4
+    itemActive: 1
+    iconPath: Icon/torch
+    propriedades:
+    - chave: Tamanho
+      valor: Pequeno
+    metodos:
+    - chave: Acender
+      valor: 
+  - nome: Ignitor
+    skillID: 12
     itemActive: 0
+    iconPath: Icon/fogo
+    propriedades: []
+    metodos:
+    - chave: Acender tocha
+      valor: 
+  - nome: Machado
+    skillID: 6
+    itemActive: 0
+    iconPath: Icon/Axe
     propriedades:
     - chave: Tamanho
       valor: Medio
     - chave: Peso
       valor: Pesado
     metodos:
-    - chave: Manuesar
-      valor: Defender
+    - chave: Manusear
+      valor: Atacar
+  dialoguesAlreadyPlayed:
+  - EnemyInSightDialogue
+  - ReachedFirstFloorDialogue
+  - CreateIgnitorDialogue3
+  - CreateSetDialogue3
+  - FirstTorchLitDialogue
+  - LastTorchDialogue
+  torchesAlreadyLit: 08000000050000000d00000012000000040000001500000019000000070000000e000000110000001400000013000000090000000a0000000b0000000c00000017000000100000000f0000001b00000006000000180000001a00000016000000
   player:
-    position: {x: -5.7008057, y: 0.114990234, z: 7.1628284}
-    life: 2
+    position: {x: -1.3946055, y: 0.11497533, z: 1.1099398}
+    life: 10

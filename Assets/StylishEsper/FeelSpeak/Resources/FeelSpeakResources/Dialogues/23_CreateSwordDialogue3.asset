@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 23_CreateSwordDialogue3
+  m_EditorClassIdentifier: 
+  id: 23
+  graphName: CreateSwordDialogue3
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 23
+    id: 0
+    position: {x: 459, y: 264}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "A espada ir\xE1 dar mais dano que o p\xE9 de cabra... mas tome cuidado,
+      pois os atributos dele influenciam no dano que causar\xE1!"
+    voiceLine: {fileID: 0}
+  - graphId: 23
+    id: 1
+    position: {x: 611, y: 264}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Quanto maior e mais pesado, mais dano ir\xE1 causar nos inimigos...
+      por\xE9m, mais lento ficar\xE1, de forma que fica vulner\xE1vel por mais tempo! "
+    voiceLine: {fileID: 0}
+  - graphId: 23
+    id: 2
+    position: {x: 778, y: 264}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Tente encontrar o equil\xEDbrio perfeito que satisfa\xE7a melhor as
+      suas necessidades, para evitar ser capturado novamente pelo guarda!"
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 23
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 23
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []

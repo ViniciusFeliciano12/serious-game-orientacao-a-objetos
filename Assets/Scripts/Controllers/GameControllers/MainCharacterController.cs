@@ -30,21 +30,12 @@ public class MainCharacterController : MonoBehaviour
     // Player states
     bool isJumping = false;
     bool isSprinting = false;
-    bool isCrouching = false;
 
     // Inputs
     float inputHorizontal;
     float inputVertical;
     bool inputJump;
-    bool inputCrouch;
     bool inputSprint;
-
-    // Combat system
-    bool combatMode = false;
-    bool isAttacking = false;
-    bool attackLeftNext = true;
-    float attackCooldown = 0f;
-    readonly float attackDuration = 0.5f;
 
     private float timer = 0f;
     private readonly float interval = 2f; 
@@ -79,23 +70,31 @@ public class MainCharacterController : MonoBehaviour
     void Update()
     {
         if (CannotMove())
-            return;
-
-        // Input checkers
-        inputHorizontal = Input.GetAxis("Horizontal");
-        inputVertical = Input.GetAxis("Vertical");
-        inputJump = Input.GetAxis("Jump") == 1f;
-        inputSprint = Input.GetAxis("Fire3") == 1f;
-        inputCrouch = Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.JoystickButton1);
-
-        if (inputCrouch)
-            isCrouching = !isCrouching;
+        {
+            inputHorizontal = 0f;
+            inputVertical = 0f;
+            inputJump = false;
+            isSprinting = false;
+        }
+        else
+        {
+            inputHorizontal = Input.GetAxis("Horizontal");
+            inputVertical = Input.GetAxis("Vertical");
+            inputJump = Input.GetAxis("Jump") == 1f;
+            inputSprint = Input.GetAxis("Fire3") == 1f;
+           
+            if (inputJump && cc.isGrounded)
+            {
+                isJumping = true;
+            }
+        }
 
         if (cc.isGrounded && animator != null)
         {
             float minimumSpeed = 0.9f;
-            float targetSpeed = cc.velocity.magnitude > 0 ? 1f : 0f;
+            float targetSpeed = new Vector2(cc.velocity.x, cc.velocity.z).magnitude > 0.1f ? 1f : 0f;
             animator.SetFloat("Speed", targetSpeed);
+
             isSprinting = cc.velocity.magnitude > minimumSpeed && inputSprint;
         }
 
@@ -103,44 +102,6 @@ public class MainCharacterController : MonoBehaviour
         {
             float targetValue = cc.isGrounded ? 0f : 1f;
             animator.SetFloat("Jumping", targetValue);
-        }
-
-        if (inputJump && cc.isGrounded)
-        {
-            isJumping = true;
-        }
-
-        // Toggle Combat Mode
-        if (Input.GetKeyDown(KeyCode.C) && !isJumping)
-        {
-            combatMode = !combatMode;
-            if (animator != null)
-            {
-                animator.SetBool("CombatMode", combatMode);
-            }
-        }
-
-        // Combat attack logic
-        if (combatMode && !isAttacking && Input.GetMouseButtonDown(0))
-        {
-            if (animator != null)
-            {
-                string animationTrigger = attackLeftNext ? "PunchLeft" : "PunchRight";
-                animator.SetTrigger(animationTrigger);
-
-                isAttacking = true;
-                attackCooldown = attackDuration;
-                attackLeftNext = !attackLeftNext;
-            }
-        }
-
-        if (isAttacking)
-        {
-            attackCooldown -= Time.deltaTime;
-            if (attackCooldown <= 0f)
-            {
-                isAttacking = false;
-            }
         }
 
         HeadHittingDetect();
@@ -151,7 +112,6 @@ public class MainCharacterController : MonoBehaviour
         if (!initialPositionSet)
         {
             var playerPosition = GameController.Instance.GetPlayerPosition();
-
             if (playerPosition != new Vector3())
             {
                 Debug.Log("Aplicando posição inicial: " + playerPosition);
@@ -159,15 +119,10 @@ public class MainCharacterController : MonoBehaviour
                 transform.position = playerPosition;
                 cc.enabled = true;
             }
-
             initialPositionSet = true;
         }
 
-        if (CannotMove())
-            return;
-
         timer += Time.fixedDeltaTime;
-
         if (timer >= interval)
         {
             GameController.Instance.UpdatePlayerPosition(transform.position);
@@ -177,8 +132,6 @@ public class MainCharacterController : MonoBehaviour
         float velocityAdittion = 0;
         if (isSprinting)
             velocityAdittion = sprintAdittion;
-        if (isCrouching)
-            velocityAdittion = -(velocity * 0.50f);
 
         float directionX = inputHorizontal * (velocity + velocityAdittion) * Time.deltaTime;
         float directionZ = inputVertical * (velocity + velocityAdittion) * Time.deltaTime;
@@ -224,7 +177,7 @@ public class MainCharacterController : MonoBehaviour
 
         // 🎵 Controle do som de passos
         bool isMoving = (directionX != 0 || directionZ != 0);
-        bool grounded = cc.isGrounded; // só toca se estiver no chão
+        bool grounded = cc.isGrounded;
 
         if (isMoving && grounded)
         {
@@ -242,7 +195,6 @@ public class MainCharacterController : MonoBehaviour
             }
         }
     }
-
 
     void HeadHittingDetect()
     {

@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6933279a06f8dd44e8b877f677e096ef, type: 3}
+  m_Name: 9_EnemyInSightDialogue
+  m_EditorClassIdentifier: 
+  id: 9
+  graphName: EnemyInSightDialogue
+  startingNodeId: 0
+  dialogueNodes:
+  - graphId: 9
+    id: 0
+    position: {x: 466, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: Espere! Tem um guarda adiante... se ele te ver, vai te atacar!
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 1
+    position: {x: 634, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Tome cuidado com ele. Voc\xEA pode acerta-lo com seu p\xE9 de cabra,
+      mas n\xE3o ir\xE1 dar muito dano."
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 2
+    position: {x: 793, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Voc\xEA ainda n\xE3o possui equipamentos, ent\xE3o acho que enfrenta-los
+      dessa forma \xE9 sua \xFAnica escolha por enquanto..."
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 3
+    position: {x: 943, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 0}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "O guarda fica andando de um lado para o outro, fazendo sua patrulha...
+      Enquanto ele anda, voc\xEA consegue ouvir ele reclamar."
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 4
+    position: {x: 1071, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: 35a8c84869eab0d4fbd387e4d8f8323c, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Droga... Como foi que voc\xEA se prendeu dentro dessa sela? "
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 5
+    position: {x: 1238, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 0}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Voc\xEA percebe que ele est\xE1 falando com outro guarda que est\xE1
+      preso em algum lugar, mas n\xE3o consegue ouvir as palavras do segundo."
+    voiceLine: {fileID: 0}
+  - graphId: 9
+    id: 6
+    position: {x: 1365, y: 124}
+    inputConnections: []
+    outputConnections: []
+    character: {fileID: 11400000, guid: 35a8c84869eab0d4fbd387e4d8f8323c, type: 2}
+    emotion: {fileID: 0}
+    suppressEmotionAnimation: 0
+    suppressEmotionSound: 0
+    automaticNextOnComplete: 0
+    automaticNextDelay: 0
+    dialogue: "Espere um pouco, vou procurar a chave. Tenho certeza que a chave desse
+      andar \xE9 um pouco menor e mais escura que a do andar de cima..."
+    voiceLine: {fileID: 0}
+  choiceNodes: []
+  delayNodes: []
+  soundNodes: []
+  connections:
+  - graphId: 9
+    outputNodeId: 0
+    inputNodeId: 1
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 9
+    outputNodeId: 1
+    inputNodeId: 2
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 9
+    outputNodeId: 2
+    inputNodeId: 3
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 9
+    outputNodeId: 3
+    inputNodeId: 4
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 9
+    outputNodeId: 4
+    inputNodeId: 5
+    outputPortIndex: 0
+    inputPortIndex: 0
+  - graphId: 9
+    outputNodeId: 5
+    inputNodeId: 6
+    outputPortIndex: 0
+    inputPortIndex: 0
+  callOnceOnDialogueStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  callOnceOnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls: []
