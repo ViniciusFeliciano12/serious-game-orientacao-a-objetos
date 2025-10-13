@@ -20,21 +20,15 @@ MonoBehaviour:
   enableObjectTextColors: 1
   enableTextSounds: 1
   defaultTextSound: {fileID: 8300000, guid: b81d711b2606e1b4bbef87f5b3d84490, type: 3}
-  textSoundCharacterSkip: 1
   textSoundMinDelay: 0.08
   enableVoiceLines: 1
   activeSpeakerSpriteColor: {r: 1, g: 1, b: 1, a: 1}
   inactiveSpeakerSpriteColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   choiceDisplayLength: 0.5
   databaseName: FeelSpeak
-  enableLocalization: 0
-  defaultShowEmotionBubble: 1
-  defaultBubbleDisplayLength: 1.5
-  defaultAutomaticNextOnComplete: 0
+  defaultAutomaticNextOnComplete: 1
   defaultAutomaticNextDelay: 0
   timeoutEnabledByDefault: 0
   defaultTimeoutLength: 30
   defaultDelay: 5
   defaultHideDialogueBox: 0
-  textLockedLocaleCode: 
-  audioLockedLocaleCode: 

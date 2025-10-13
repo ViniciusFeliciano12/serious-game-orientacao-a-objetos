@@ -60,6 +60,7 @@ namespace Assets.Scripts.Interaction.Interactives
 
             if (quantity < 3 || quantity == 24)
             {
+                GetComponent<AudioSource>().Play();
                 WowCameraController.Instance.FocusOnMinotaur();
                 animator.SetTrigger("TakeDamage");
             }

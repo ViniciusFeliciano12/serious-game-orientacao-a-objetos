@@ -10,6 +10,7 @@ public class DoorInteraction : Interactable
     public List<ItemDatabase> keys;
     public Animator animator { get; set; }
     public bool isBarredDoor = false;
+    public bool lastDoor = false;
     public int scrollsFoundToUnlock = -1;
     private bool isOpen = false;
     private bool cannotCloseAnymore = false;
