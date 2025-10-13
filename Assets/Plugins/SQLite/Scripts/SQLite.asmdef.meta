@@ -7,9 +7,8 @@ AssemblyDefinitionImporter:
   assetBundleVariant: 
 AssetOrigin:
   serializedVersion: 1
-  productId: 299357
-  packageName: Inventool - Inventory, Items, Crafting, Enchanting, Merchants, Storage
-    & More
-  packageVersion: 1.7.9
+  productId: 325697
+  packageName: Feel Speak Lite (Dialogue System)
+  packageVersion: 1.0.6
   assetPath: Assets/Plugins/SQLite/Scripts/SQLite.asmdef
-  uploadId: 776634
+  uploadId: 803368

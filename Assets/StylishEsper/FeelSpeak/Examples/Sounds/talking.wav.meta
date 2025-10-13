@@ -21,3 +21,10 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 325697
+  packageName: Feel Speak Lite (Dialogue System)
+  packageVersion: 1.0.6
+  assetPath: Assets/StylishEsper/FeelSpeak/Examples/Sounds/talking.wav
+  uploadId: 803368

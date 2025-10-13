@@ -11,6 +11,7 @@ namespace EJETAGame
         public KeyCode interactionKey;
         public ItemDatabase key;
         public string dialogueName;
+
         void Start(){
             
         }
@@ -19,7 +20,11 @@ namespace EJETAGame
         {
             if (Input.GetKeyDown(interactionKey) && !DialogueManagement.Instance.HasActiveDialogue() && !string.IsNullOrEmpty(dialogueName))
             {
-                DialogueManagement.Instance.StartDialogue(dialogueName);
+                if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
+                { 
+                    DialogueManagement.Instance.StartDialogue(dialogueName);
+                    GameController.Instance.SaveDialoguePlayed(dialogueName);
+                }
             }
         }
 

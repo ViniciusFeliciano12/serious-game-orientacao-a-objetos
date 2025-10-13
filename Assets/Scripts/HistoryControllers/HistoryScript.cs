@@ -6,29 +6,42 @@ using UnityEngine.UI;
 
 public class HistoryScript : MonoBehaviour
 {
-    public TextMeshProUGUI HistoryText;
-    public GameObject ContinueButton;
-    public RawImage backgroundImage;
+    private TextMeshProUGUI HistoryText;
+    private GameObject ContinueButton;
+    private RawImage BackgroundImage;
+
+    public GameObject ControllersPanel;
+    public GameObject HistoryPanel;
 
     public float typingSpeed = 0.000000007f;
 
-    async void Start()
+    void Start()
     {
-        if (ContinueButton != null)
+        if (ControllersPanel != null)
         {
-            ContinueButton.SetActive(false);
+            ControllersPanel.SetActive(true);
         }
 
-        if (HistoryText != null)
+        if (HistoryPanel != null)
         {
-            await ShowTextAsync();
+            ContinueButton = HistoryPanel.transform.Find("Iniciar Jogo").gameObject;
+            HistoryText = HistoryPanel.transform.Find("TextHistory").GetComponent<TextMeshProUGUI>();
+            BackgroundImage = HistoryPanel.transform.Find("BackgroundImage").GetComponent<RawImage>();
+            ContinueButton.SetActive(false);
+            HistoryPanel.SetActive(false);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void StartHistory()
+    {
+        ControllersPanel.SetActive(false);
+        HistoryPanel.SetActive(true);
+        _ = ShowTextAsync();
     }
 
     async Task ShowTextAsync()
@@ -42,10 +55,10 @@ public class HistoryScript : MonoBehaviour
 
         await Task.Delay(1000);
 
-        await MostrarHistoria("", "");
+        HistoryText.text = "";
 
         await MostrarHistoria("Contudo, o poder sombrio sempre cobra seu preço. Entre os soldados havia um homem de bom coração, " +
-        "chamado John Doe. Ele via o medo nos olhos do povo e sabia que precisava agir.\r\n\r\nOs céus, vendo a pureza em seu coração, " +
+        "chamado John. Ele via o medo nos olhos do povo e sabia que precisava agir.\r\n\r\nOs céus, vendo a pureza em seu coração, " +
         "o escolheram. Uma luz divina o tocou, concedendo-lhe a força necessária para sua missão: proteger os inocentes e parar o Minotauro. " +
         "John Doe tentou alertar os outros, mas sua nova convicção foi vista como uma ameaça, e ele foi capturado e jogado na prisão junto ao monstro.\r\n\r\n" +
         "Pois é através dos corajosos que os céus agem contra a escuridão. E assim começou a história que agora vos narro...", "BackgroundImages/sitting");
@@ -55,7 +68,7 @@ public class HistoryScript : MonoBehaviour
 
     public async Task MostrarHistoria(string historia, string image)
     {
-        backgroundImage.texture = Resources.Load<Texture>(image);
+        BackgroundImage.texture = Resources.Load<Texture>(image);
 
         foreach (char caracter in historia)
         {

@@ -1,5 +1,6 @@
 
 using EJETAGame;
+using Esper.FeelSpeak;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -85,6 +86,13 @@ public class DoorInteraction : Interactable
             else
             {
                 DialogueManagement.Instance.StartDialogue("OnlyOpenByKeyDialogue");
+            }
+
+            base.Interact();
+
+            if (lastDoor && isOpen)
+            {
+                PauseController.Instance.FinishGame();
             }
         }
     }
