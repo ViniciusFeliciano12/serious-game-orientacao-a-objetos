@@ -97,12 +97,14 @@ namespace Esper.FeelSpeak
                 FeelSpeakDatabase.Disconnect();
             }
         }
+#endif
 
         /// <summary>
-        /// Updates the record of this object in the database (editor only).
+        /// Updates the record of this object in the database.
         /// </summary>
         public void UpdateDatabaseRecord()
         {
+#if UNITY_EDITOR
             bool disconnectOnComplete = false;
 
             if (!FeelSpeakDatabase.IsConnected)
@@ -110,6 +112,7 @@ namespace Esper.FeelSpeak
                 FeelSpeakDatabase.Initialize();
                 disconnectOnComplete = true;
             }
+#endif
 
             if (FeelSpeakDatabase.HasEmotionRecord(id))
             {
@@ -120,12 +123,13 @@ namespace Esper.FeelSpeak
                 FeelSpeakDatabase.InsertEmotionRecord(DatabaseRecord);
             }
 
+#if UNITY_EDITOR
             if (disconnectOnComplete)
             {
                 FeelSpeakDatabase.Disconnect();
             }
-        }
 #endif
+        }
 
         /// <summary>
         /// Creates a copy of this emotion.

@@ -5,3 +5,10 @@ PrefabImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 325697
+  packageName: Feel Speak Lite (Dialogue System)
+  packageVersion: 1.0.6
+  assetPath: Assets/StylishEsper/FeelSpeak/Prefabs/uGUI/ChoiceTimer.prefab
+  uploadId: 803368

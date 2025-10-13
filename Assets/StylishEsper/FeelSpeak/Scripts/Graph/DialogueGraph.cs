@@ -115,12 +115,14 @@ namespace Esper.FeelSpeak.Graph
                 FeelSpeakDatabase.Disconnect();
             }
         }
+#endif
 
         /// <summary>
-        /// Updates the record of this object in the database (editor only).
+        /// Updates the record of this object in the database.
         /// </summary>
         public void UpdateDatabaseRecord()
         {
+#if UNITY_EDITOR
             bool disconnectOnComplete = false;
 
             if (!FeelSpeakDatabase.IsConnected)
@@ -128,6 +130,7 @@ namespace Esper.FeelSpeak.Graph
                 FeelSpeakDatabase.Initialize();
                 disconnectOnComplete = true;
             }
+#endif
 
             if (FeelSpeakDatabase.HasDialogueRecord(id))
             {
@@ -138,12 +141,13 @@ namespace Esper.FeelSpeak.Graph
                 FeelSpeakDatabase.InsertDialogueRecord(DatabaseRecord);
             }
 
+#if UNITY_EDITOR
             if (disconnectOnComplete)
             {
                 FeelSpeakDatabase.Disconnect();
             }
-        }
 #endif
+        }
 
         /// <summary>
         /// Adds a node.

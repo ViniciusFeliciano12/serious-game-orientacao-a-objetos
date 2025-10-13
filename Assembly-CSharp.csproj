@@ -67,6 +67,7 @@
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\ExplodeBarrel.cs" />
     <Compile Include="Assets\PBS Barrels and Crates\Scripts\MoveCamForward.cs" />
     <Compile Include="Assets\Scripts\Controllers\Inventory\UIController.cs" />
+    <Compile Include="Assets\Scripts\Utils\CreditosScript.cs" />
     <Compile Include="Assets\Scripts\Controllers\SkillTree\DropdownPlaceholderHandler.cs" />
     <Compile Include="Assets\GhostCharacter_Free\Scripts\GhostScript.cs" />
     <Compile Include="Assets\Scripts\Interaction\Interactives\PlankInteraction.cs" />
