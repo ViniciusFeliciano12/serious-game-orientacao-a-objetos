@@ -18,7 +18,7 @@ MonoBehaviour:
   dialogueNodes:
   - graphId: 40
     id: 0
-    position: {x: 520, y: 130}
+    position: {x: 483, y: 130}
     inputConnections: []
     outputConnections: []
     character: {fileID: 11400000, guid: e13a1ef722c2a3649985df259b584a18, type: 2}
@@ -69,7 +69,7 @@ MonoBehaviour:
     automaticNextOnComplete: 0
     automaticNextDelay: 0
     dialogue: "Na verdade, ele permite que voc\xEA possa editar os objetos que voc\xEA
-      j\xE1 possui! Apertando E enquanto est\xE1 com um item equipado, permitir\xE1
+      j\xE1 possui! Apertando \"E\" enquanto est\xE1 com um item equipado, permitir\xE1
       reutilizar seus objetos com propriedades e m\xE9todos diferentes."
     voiceLine: {fileID: 0}
   - graphId: 40

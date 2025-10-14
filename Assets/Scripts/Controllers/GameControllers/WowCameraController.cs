@@ -1,41 +1,40 @@
 ﻿using Assets.Scripts.Interaction.Interactives;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WowCameraController : MonoBehaviour
 {
     public static WowCameraController Instance { get; private set; }
 
     public Transform target;
-	public Transform playerTarget;
-	public Transform minotaurTarget;
+    public Transform playerTarget;
+    public Transform minotaurTarget;
 
-	public float targetHeight = 1.7f;
-	public float distance = 5.0f;
-	public float offsetFromWall = 0.1f;
+    public float targetHeight = 1.7f;
+    public float distance = 5.0f;
+    public float offsetFromWall = 0.1f;
 
-	public float maxDistance = 20;
-	public float minDistance = .6f;
-	public float speedDistance = 5;
+    public float maxDistance = 20;
+    public float minDistance = .6f;
+    public float speedDistance = 5;
 
-	public float xSpeed = 200.0f;
-	public float ySpeed = 200.0f;
+    public float xSpeed = 200.0f;
+    public float ySpeed = 200.0f;
 
-	public int yMinLimit = -40;
-	public int yMaxLimit = 80;
+    public int yMinLimit = -40;
+    public int yMaxLimit = 80;
 
-	public int zoomRate = 40;
+    public int zoomRate = 40;
+    public float zoomDampening = 5.0f;
 
-	public float rotationDampening = 3.0f;
-	public float zoomDampening = 5.0f;
+    public LayerMask collisionLayers = -1;
 
-	public LayerMask collisionLayers = -1;
-
-	private float xDeg = 0.0f;
-	private float yDeg = 0.0f;
-	private float currentDistance;
-	private float desiredDistance;
-	private float correctedDistance;
+    private float xDeg = 0.0f;
+    private float yDeg = 0.0f;
+    private float currentDistance;
+    private float desiredDistance;
+    private float correctedDistance;
 
     public void Awake()
     {
@@ -49,98 +48,78 @@ public class WowCameraController : MonoBehaviour
         }
     }
 
-    void Start ()
-	{
+    void Start()
+    {
         Vector3 angles = transform.eulerAngles;
-		xDeg = angles.x;
-		yDeg = angles.y;
+        xDeg = angles.y;
+        yDeg = angles.x;
 
-		currentDistance = distance;
-		desiredDistance = distance;
-		correctedDistance = distance;
+        currentDistance = distance;
+        desiredDistance = distance;
+        correctedDistance = distance;
 
-		// Make the rigid body not change rotation
-		if (this.gameObject.GetComponent<Rigidbody>())
-			this.gameObject.GetComponent<Rigidbody>().freezeRotation = true;
-	}
+        if (this.gameObject.GetComponent<Rigidbody>())
+            this.gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+    }
 
-	void LateUpdate ()
-	{
- 		if (PauseController.Instance.TimeStopped || DialogueManagement.Instance.HasActiveDialogue())
+    void LateUpdate()
+    {
+        Cursor.lockState = PauseController.Instance.TimeStopped || DialogueManagement.Instance.HasActiveDialogue() ? CursorLockMode.None : CursorLockMode.Locked;
+
+        if (PauseController.Instance.TimeStopped || DialogueManagement.Instance.HasActiveDialogue() || !target)
             return;
 
-		Vector3 vTargetOffset;
+        if (GUIUtility.hotControl == 0)
+        {
+            xDeg += Input.GetAxis("Mouse X") * xSpeed * 0.02f;
+            yDeg -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+        }
 
-		if (!target)
-			return;
+        yDeg = ClampAngle(yDeg, yMinLimit, yMaxLimit);
 
-		// If either mouse buttons are down, let the mouse govern camera position
-		if (GUIUtility.hotControl == 0) {
-			if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
-			{
-				xDeg += Input.GetAxis ("Mouse X") * xSpeed * 0.02f;
-				yDeg -= Input.GetAxis ("Mouse Y") * ySpeed * 0.02f;
-			}
+        desiredDistance -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs(desiredDistance) * speedDistance;
+        desiredDistance = Mathf.Clamp(desiredDistance, minDistance, maxDistance);
 
-			// otherwise, ease behind the target if any of the directional keys are pressed
-			else if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-			{
-				float targetRotationAngle = target.eulerAngles.y;
-				float currentRotationAngle = transform.eulerAngles.y;
-				xDeg = Mathf.LerpAngle (currentRotationAngle, targetRotationAngle, rotationDampening * Time.deltaTime);
-			}
-		}
+        currentDistance = Mathf.Lerp(currentDistance, desiredDistance, Time.deltaTime * zoomDampening);
 
+        Quaternion rotation = Quaternion.Euler(yDeg, xDeg, 0);
 
-		// calculate the desired distance
-		desiredDistance -= Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs (desiredDistance) * speedDistance;
-		desiredDistance = Mathf.Clamp (desiredDistance, minDistance, maxDistance);
+        Vector3 targetPositionWithOffset = target.position + new Vector3(0, targetHeight, 0);
+        Vector3 desiredCameraPos = targetPositionWithOffset - (rotation * Vector3.forward * currentDistance);
 
-		yDeg = ClampAngle(yDeg, yMinLimit, yMaxLimit);
+        RaycastHit collisionHit;
 
-		// set camera rotation
-		Quaternion rotation = Quaternion.Euler(yDeg, xDeg, 0);
-		correctedDistance = desiredDistance;
+        // **AQUI ESTÁ A CORREÇÃO**
+        // Declaramos a variável 'position' antes do 'if' para que ela exista no escopo correto.
+        Vector3 position;
 
-		// calculate desired camera position
-		vTargetOffset = new Vector3 (0, -targetHeight, 0);
-		Vector3 position = target.position - (rotation * Vector3.forward * desiredDistance + vTargetOffset);
+        if (Physics.Linecast(targetPositionWithOffset, desiredCameraPos, out collisionHit, collisionLayers.value))
+        {
+            correctedDistance = Vector3.Distance(targetPositionWithOffset, collisionHit.point) - offsetFromWall;
+            position = targetPositionWithOffset - (rotation * Vector3.forward * correctedDistance);
+        }
+        else
+        {
+            position = desiredCameraPos;
+        }
 
-		RaycastHit collisionHit;
-		Vector3 trueTargetPosition = new Vector3(target.position.x, target.position.y, target.position.z) - vTargetOffset;
+        transform.rotation = rotation;
+        transform.position = position;
+    }
 
-		bool isCorrected = false;
-		if (Physics.Linecast (trueTargetPosition, position, out collisionHit, collisionLayers.value))
-		{
-			correctedDistance = Vector3.Distance (trueTargetPosition, collisionHit.point) - offsetFromWall;
-			isCorrected = true;
-		}
+    private static float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360)
+            angle += 360;
+        if (angle > 360)
+            angle -= 360;
+        return Mathf.Clamp(angle, min, max);
+    }
 
-		currentDistance = !isCorrected || correctedDistance > currentDistance ? Mathf.Lerp (currentDistance, correctedDistance, Time.deltaTime * zoomDampening) : correctedDistance;
-
-		currentDistance = Mathf.Clamp (currentDistance, minDistance, maxDistance);
-
-		position = target.position - (rotation * Vector3.forward * currentDistance + vTargetOffset);
-
-		transform.rotation = rotation;
-		transform.position = position;
-	}
-
-	private static float ClampAngle (float angle, float min, float max)
-	{
-		if (angle < -360)
-			angle += 360;
-		if (angle > 360)
-			angle -= 360;
-		return Mathf.Clamp (angle, min, max);
-	}
-
-	public async void FocusOnMinotaur()
-	{
-		target = minotaurTarget;
-
-		await Task.Delay(2500);
-
-		target = playerTarget;
-	}
+    public async void FocusOnMinotaur()
+    {
+        target = minotaurTarget;
+        await Task.Delay(2500);
+        target = playerTarget;
+    }
 }

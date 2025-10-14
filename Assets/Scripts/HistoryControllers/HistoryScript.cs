@@ -17,6 +17,8 @@ public class HistoryScript : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         if (ControllersPanel != null)
         {
             ControllersPanel.SetActive(true);

@@ -13,6 +13,8 @@ public class CreditosScript : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         Time.timeScale = 1f;
         rectTransform = GetComponent<RectTransform>();
     }

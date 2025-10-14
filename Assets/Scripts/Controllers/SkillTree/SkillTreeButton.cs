@@ -80,8 +80,14 @@ public class SkillTreeButton : MonoBehaviour
 
     public void StartCraftItemMinigameReusable(ItemDatabase item, int index)
     {
-        SkillTreeController.Instance.ToggleSkillTree();
-
-        LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, dialogueTriggers, iconPath, item, index);
+        if (FindInactive.Find("PointAndClickMinigame").activeInHierarchy)
+        {
+            SkillTreeController.Instance.ToggleSkillTree();
+        }
+        else
+        {
+            SkillTreeController.Instance.ToggleSkillTree();
+            LearnNewRecipeMinigameController.Instance.CraftItem(title, itemID, propriedades, metodos, dialogueTriggers, iconPath, item, index);
+        }
     }
 }

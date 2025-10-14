@@ -18,10 +18,13 @@ public class TorchInteraction : Interactable
         Smoke = transform.Find("Smoke").gameObject;
         Fire = transform.Find("Fire").gameObject;
 
-        if (GameController.Instance.TorchAlreadyLit(torchId))
+        if (GameController.Instance != null)
         {
-            ActiveTorch();
-            MinotaurInteraction.Instance.ReceberDano(4);
+            if (GameController.Instance.TorchAlreadyLit(torchId))
+            {
+                ActiveTorch();
+                MinotaurInteraction.Instance.ReceberDano(4);
+            }
         }
     }
 
