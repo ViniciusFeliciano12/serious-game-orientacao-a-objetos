@@ -177,6 +177,8 @@ public class PauseController : MonoBehaviour
     private IEnumerator RotinaFadeOut()
     {
         float tempoDecorrido = 0f;
+        PainelFade.gameObject.SetActive(true);
+
         Color corDoPainel = PainelFade.color;
 
         while (tempoDecorrido < duracaoFade)
