@@ -44,8 +44,9 @@ public class DialogueManagement : MonoBehaviour
         }
     }
 
-    public void DialogueStart()
+    public async void DialogueStart()
     {
+        await Task.Delay(250);
         Time.timeScale = 1.0f;
     }
         

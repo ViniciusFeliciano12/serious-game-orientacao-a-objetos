@@ -3,52 +3,72 @@
   "WorkspaceRootPath": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\doorinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|c:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\doorinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\interactives\\doorinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|c:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\baseinteraction\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\baseinteraction\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|c:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\pausecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\pausecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\historycontrollers\\historyscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\historycontrollers\\historyscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\utils\\creditosscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utils\\creditosscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\skilltree\\skilltreebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\skilltree\\skilltreebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\stylishesper\\feelspeak\\scripts\\editor\\dialoguegrapheditorwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|solutionrelative:assets\\stylishesper\\feelspeak\\scripts\\editor\\dialoguegrapheditorwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\companioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\companioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\historycontrollers\\dialoguemanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\historycontrollers\\dialoguemanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\diabolical games\\destructible objects\\scripts\\destructibleobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\diabolical games\\destructible objects\\scripts\\destructibleobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|c:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\skilltree\\learnnewrecipeminigamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\skilltree\\learnnewrecipeminigamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\stylishesper\\feelspeak\\scripts\\database\\feelspeakdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|solutionrelative:assets\\stylishesper\\feelspeak\\scripts\\database\\feelspeakdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|c:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\skilltree\\skilltreebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\skilltree\\skilltreebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\historycontrollers\\historyscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\historycontrollers\\historyscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|c:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\historycontrollers\\dialoguetriggerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\historycontrollers\\dialoguetriggerscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\stylishesper\\feelspeak\\scripts\\feelspeak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|solutionrelative:assets\\stylishesper\\feelspeak\\scripts\\feelspeak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\inventory\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\inventory\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\plankinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\interactives\\plankinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\torchinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\interactives\\torchinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\stylishesper\\feelspeak\\scripts\\editor\\dialoguegrapheditorwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|solutionrelative:assets\\stylishesper\\feelspeak\\scripts\\editor\\dialoguegrapheditorwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\stylishesper\\feelspeak\\scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC431255-76C4-9636-A83B-0C4B1A59F439}|FeelSpeak.csproj|solutionrelative:assets\\stylishesper\\feelspeak\\scripts\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\baseinteraction\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\baseinteraction\\interactable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\pausecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\pausecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\diabolical games\\destructible objects\\scripts\\destructibleobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\diabolical games\\destructible objects\\scripts\\destructibleobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\enemyinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,30 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\minotaurinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\interactives\\minotaurinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\plankinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\interactives\\plankinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\inventory\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\inventory\\inventorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\wowcameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\wowcameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\torchinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interaction\\interactives\\torchinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\controllers\\gamecontrollers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\gamecontrollers\\gamecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\models\\scriptableobject\\gamedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|solutionrelative:assets\\models\\scriptableobject\\gamedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D779556-13CA-A354-9E1C-C9E805A885A9}|Assembly-CSharp.csproj|C:\\github\\tcc\\serious-game-orientacao-a-objetos\\assets\\scripts\\interaction\\interactives\\recipeinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -94,82 +90,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Interactable.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T00:53:55.718Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HistoryScript.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAUwE4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T22:20:42.03Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PauseController.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
-              "ViewState": "AgIAAKUAAAAAAAAAAAD4v40AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T20:44:53.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CreditosScript.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Utils\\CreditosScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Utils\\CreditosScript.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Utils\\CreditosScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Utils\\CreditosScript.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T20:39:07.505Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SkillTreeButton.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:18:54.554Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CompanionController.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\CompanionController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\CompanionController.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\CompanionController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\CompanionController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAADwv0wAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:05:12.449Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -178,14 +100,118 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\DoorInteraction.cs",
               "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\DoorInteraction.cs",
               "RelativeToolTip": "Assets\\Scripts\\Interaction\\Interactives\\DoorInteraction.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAgwF0AAABMAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAQwFIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T05:29:18.567Z",
+              "WhenOpened": "2025-10-14T03:43:16.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DialogueTriggerScript.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\DialogueTriggerScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HistoryControllers\\DialogueTriggerScript.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\DialogueTriggerScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HistoryControllers\\DialogueTriggerScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T03:35:33.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LearnNewRecipeMinigameController.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\SkillTree\\LearnNewRecipeMinigameController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\SkillTree\\LearnNewRecipeMinigameController.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\SkillTree\\LearnNewRecipeMinigameController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\SkillTree\\LearnNewRecipeMinigameController.cs",
+              "ViewState": "AgIAANMBAAAAAAAAAAAAAEMBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T03:30:35.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SkillTreeButton.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\SkillTree\\SkillTreeButton.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAiwFIAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T03:27:43.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InventoryController.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAF0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T04:48:22.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TorchInteraction.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBYAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T04:08:33.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DialogueManagement.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAIwDAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T02:00:06.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "FeelSpeak.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\StylishEsper\\FeelSpeak\\Scripts\\FeelSpeak.cs",
+              "RelativeDocumentMoniker": "Assets\\StylishEsper\\FeelSpeak\\Scripts\\FeelSpeak.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\StylishEsper\\FeelSpeak\\Scripts\\FeelSpeak.cs",
+              "RelativeToolTip": "Assets\\StylishEsper\\FeelSpeak\\Scripts\\FeelSpeak.cs",
+              "ViewState": "AgIAAFIBAAAAAAAAAAArwFwBAABvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T02:19:03.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HistoryScript.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\HistoryControllers\\HistoryScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T22:20:42.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "DialogueGraphEditorWindow.cs",
               "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\StylishEsper\\FeelSpeak\\Scripts\\Editor\\DialogueGraphEditorWindow.cs",
               "RelativeDocumentMoniker": "Assets\\StylishEsper\\FeelSpeak\\Scripts\\Editor\\DialogueGraphEditorWindow.cs",
@@ -197,19 +223,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "FeelSpeakDatabase.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\StylishEsper\\FeelSpeak\\Scripts\\Database\\FeelSpeakDatabase.cs",
-              "RelativeDocumentMoniker": "Assets\\StylishEsper\\FeelSpeak\\Scripts\\Database\\FeelSpeakDatabase.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\StylishEsper\\FeelSpeak\\Scripts\\Database\\FeelSpeakDatabase.cs",
-              "RelativeToolTip": "Assets\\StylishEsper\\FeelSpeak\\Scripts\\Database\\FeelSpeakDatabase.cs",
-              "ViewState": "AgIAAFUAAAAAAAAAAABFwGwAAAAtAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "MenuController.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\MenuController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\MenuController.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\MenuController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\MenuController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAcwCMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T07:12:13.048Z"
+              "WhenOpened": "2025-10-14T02:26:33.105Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
+              "Title": "GameController.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAswHIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T22:50:36.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PlankInteraction.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T05:56:39.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Character.cs",
               "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\StylishEsper\\FeelSpeak\\Scripts\\Character.cs",
               "RelativeDocumentMoniker": "Assets\\StylishEsper\\FeelSpeak\\Scripts\\Character.cs",
@@ -221,31 +273,31 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PauseController.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\PauseController.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAD4v40AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-13T20:44:53.499Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "PlankInteraction.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Interaction\\Interactives\\PlankInteraction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
+              "Title": "Interactable.cs",
+              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
+              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interaction\\BaseInteraction\\Interactable.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T05:56:39.208Z"
+              "WhenOpened": "2025-10-14T00:53:55.718Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "DialogueManagement.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
-              "RelativeToolTip": "Assets\\Scripts\\HistoryControllers\\DialogueManagement.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAIwEMAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T02:00:06.941Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "DestructibleObject.cs",
               "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Diabolical Games\\Destructible Objects\\Scripts\\DestructibleObject.cs",
               "RelativeDocumentMoniker": "Assets\\Diabolical Games\\Destructible Objects\\Scripts\\DestructibleObject.cs",
@@ -257,31 +309,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "InventoryController.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Controllers\\Inventory\\InventoryController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAqwLAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T04:48:22.891Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "WowCameraController.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\WowCameraController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\WowCameraController.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\WowCameraController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\WowCameraController.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAiwIsAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T04:37:12.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "MinotaurInteraction.cs",
               "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\MinotaurInteraction.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\MinotaurInteraction.cs",
@@ -293,7 +321,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "EnemyInteraction.cs",
               "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\EnemyInteraction.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\EnemyInteraction.cs",
@@ -305,19 +333,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "TorchInteraction.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Interaction\\Interactives\\TorchInteraction.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAcwCUAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T04:08:33.001Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 19,
               "Title": "RecipeInteraction.cs",
               "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Interaction\\Interactives\\RecipeInteraction.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Interaction\\Interactives\\RecipeInteraction.cs",
@@ -326,30 +342,6 @@
               "ViewState": "AgIAABAAAAAAAAAAAAAAwA0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T23:02:44.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "GameDatabase.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Models\\ScriptableObject\\GameDatabase.cs",
-              "RelativeDocumentMoniker": "Assets\\Models\\ScriptableObject\\GameDatabase.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Models\\ScriptableObject\\GameDatabase.cs",
-              "RelativeToolTip": "Assets\\Models\\ScriptableObject\\GameDatabase.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAwGcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T20:23:30.67Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "GameController.cs",
-              "DocumentMoniker": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
-              "ToolTip": "C:\\github\\tcc\\serious-game-orientacao-a-objetos\\Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Controllers\\GameControllers\\GameController.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAADwv3IAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-12T22:50:36.478Z"
             }
           ]
         }

@@ -9,20 +9,26 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
+        // Apenas verifica se o arquivo de save existe para habilitar o botão.
+        // Não vamos carregar os dados aqui para manter o GameDatabase "limpo".
         if (ContinueButton != null)
         {
-            // tenta carregar o save logo no início
-            bool saveOk = SaveSystem.Load(Database);
-
-            ContinueButton.interactable = saveOk;
+            ContinueButton.interactable = SaveSystem.SaveExists();
         }
     }
 
     public void ContinueGame()
     {
-        // se quiser, já pode salvar antes de trocar de cena
-        SaveSystem.Save(Database);
-        SceneManager.LoadScene(2);
+        if (SaveSystem.Load(Database))
+        {
+            SceneManager.LoadScene(2); 
+        }
+        else
+        {
+            Debug.LogError("Falha ao carregar o save. O arquivo pode estar corrompido ou foi deletado.");
+        }
     }
 
     public void GoToPhase1()

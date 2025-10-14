@@ -39,8 +39,8 @@ public class DoorInteraction : Interactable
 
         var actualItem = InventoryController.Instance.ReturnActualItem();
 
-        var key = keys.FirstOrDefault(item => item.skillID == actualItem.skillID);
-
+        var key = keys.FirstOrDefault(item => item.skillID == actualItem?.skillID);
+        
         if (actualItem.skillID == GameDatabase.SkillEnumerator.Key)
         {
             if (cannotCloseAnymore)
@@ -54,12 +54,6 @@ public class DoorInteraction : Interactable
                 isOpen = !isOpen;
                 animator.SetBool("IsOpen", isOpen);
                 audioSources[0].Play();
-
-                if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
-                {
-                    DialogueManagement.Instance.StartDialogue(dialogueName);
-                    GameController.Instance.SaveDialoguePlayed(dialogueName);
-                }
             }
             else
             {
@@ -88,16 +82,20 @@ public class DoorInteraction : Interactable
                 animator.SetBool("IsOpen", isOpen);
                 audioSources[1].Play();
                 UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+            }
+            else
+            {
+                DialogueManagement.Instance.StartDialogue("OnlyOpenByKeyDialogue");
+                return;
+            }
 
+            if (!string.IsNullOrEmpty(dialogueName))
+            {
                 if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
                 {
                     DialogueManagement.Instance.StartDialogue(dialogueName);
                     GameController.Instance.SaveDialoguePlayed(dialogueName);
                 }
-            }
-            else
-            {
-                DialogueManagement.Instance.StartDialogue("OnlyOpenByKeyDialogue");
             }
 
             if (lastDoor && isOpen)
