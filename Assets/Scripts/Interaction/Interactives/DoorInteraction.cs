@@ -54,6 +54,12 @@ public class DoorInteraction : Interactable
                 isOpen = !isOpen;
                 animator.SetBool("IsOpen", isOpen);
                 audioSources[0].Play();
+
+                if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
+                {
+                    DialogueManagement.Instance.StartDialogue(dialogueName);
+                    GameController.Instance.SaveDialoguePlayed(dialogueName);
+                }
             }
             else
             {
@@ -82,13 +88,17 @@ public class DoorInteraction : Interactable
                 animator.SetBool("IsOpen", isOpen);
                 audioSources[1].Play();
                 UIController.Instance.SetTextTimeout("Porta destruída... não se pode mais fechar");
+
+                if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
+                {
+                    DialogueManagement.Instance.StartDialogue(dialogueName);
+                    GameController.Instance.SaveDialoguePlayed(dialogueName);
+                }
             }
             else
             {
                 DialogueManagement.Instance.StartDialogue("OnlyOpenByKeyDialogue");
             }
-
-            base.Interact();
 
             if (lastDoor && isOpen)
             {
