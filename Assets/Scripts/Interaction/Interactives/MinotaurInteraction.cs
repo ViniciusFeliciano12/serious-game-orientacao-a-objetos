@@ -25,11 +25,7 @@ namespace Assets.Scripts.Interaction.Interactives
 
             if (estadoAtual == EstadoIA.Morto)
             {
-                if (!GameController.Instance.DialogueAlreadyPlayed("MinotaurDeadDialogue"))
-                {
-                    DialogueManagement.Instance.StartDialogue("MinotaurDeadDialogue");
-                    GameController.Instance.SaveDialoguePlayed("MinotaurDeadDialogue");
-                }
+                DialogueManagement.Instance.StartDialogueOnlyOnce("MinotaurDeadDialogue");
             }
         }
 
@@ -51,11 +47,7 @@ namespace Assets.Scripts.Interaction.Interactives
 
             if (quantity == 1)
             {
-                if (!GameController.Instance.DialogueAlreadyPlayed("FirstTorchLitDialogue"))
-                {
-                    DialogueManagement.Instance.StartDialogue("FirstTorchLitDialogue");
-                    GameController.Instance.SaveDialoguePlayed("FirstTorchLitDialogue");
-                }
+                DialogueManagement.Instance.StartDialogueOnlyOnce("FirstTorchLitDialogue");
             }
 
             if (quantity < 3 || quantity == 24)
@@ -67,11 +59,7 @@ namespace Assets.Scripts.Interaction.Interactives
 
             if (quantity == 24)
             {
-                if (!GameController.Instance.DialogueAlreadyPlayed("LastTorchDialogue"))
-                {
-                    DialogueManagement.Instance.StartDialogue("LastTorchDialogue");
-                    GameController.Instance.SaveDialoguePlayed("LastTorchDialogue");
-                }
+                DialogueManagement.Instance.StartDialogueOnlyOnce("LastTorchDialogue");
             }
 
             UIController.Instance.SetTextTimeout($"Tocha acesa, faltam {24 - quantity}");
