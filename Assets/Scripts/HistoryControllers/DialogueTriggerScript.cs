@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DialogueTriggerScript : MonoBehaviour
@@ -9,20 +8,18 @@ public class DialogueTriggerScript : MonoBehaviour
 
     void Start()
     {
-        if (GameController.Instance.DialogueAlreadyPlayed(dialogueName))
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        DialogueManagement.Instance.StartDialogue(dialogueName);
-
         if (canBePlayedOnce)
         {
-            GameController.Instance.SaveDialoguePlayed(dialogueName);
-            Destroy(gameObject);
+            DialogueManagement.Instance.StartDialogueOnlyOnce(dialogueName);
+        }
+        else
+        {
+            DialogueManagement.Instance.StartDialogue(dialogueName);
         }
     }
 }

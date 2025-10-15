@@ -262,7 +262,7 @@ namespace EJETAGame
 
         public override void Interact()
         {
-            if (Input.GetKeyDown(interactionKey) && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
+            if (Input.GetKeyDown(interactionKey) && !MainCharacterController.Instance.CannotMove())
             {
                 foreach (var itemFracoContra in fraquezas)
                 {

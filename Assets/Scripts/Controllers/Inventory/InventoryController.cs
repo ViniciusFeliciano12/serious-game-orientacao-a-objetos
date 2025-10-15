@@ -78,7 +78,11 @@ public class InventoryController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R) && Inventory[indexSelected].ReturnActualItem() != null && Inventory[indexSelected].ReturnActualItem().icon != null)
             {
-                FindInactive.Find("ConfirmErase").SetActive(true);
+                if (PauseController.Instance.ChangeFlowTime(PauseController.PauseMode.DeletingItem))
+                {
+                    var panel = FindInactive.Find("ConfirmErase");
+                    panel.SetActive(!panel.activeSelf);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.E) && Inventory[indexSelected].ReturnActualItem() is ItemDatabase item && item.icon != null && GameController.Instance.VerifyItemFound(SkillEnumerator.IsReusable))
@@ -216,6 +220,12 @@ public class InventoryController : MonoBehaviour
         return !list1.Except(list2, new StringPairComparer()).Any();
     }
 
+    public void RemoveItemInventoryByButton()
+    {
+        RemoveItemInventory();
+        CloseConfirmRemoveItem();
+    }
+
     public void RemoveItemInventory()
     {
         if (indexSelected != -1)
@@ -227,13 +237,14 @@ public class InventoryController : MonoBehaviour
                 UpdateInventory();
             }
 
-            CloseConfirmRemoveItem();
+            
         }
     }
 
     public void CloseConfirmRemoveItem()
     {
         FindInactive.Find("ConfirmErase").SetActive(false);
+        PauseController.Instance.ChangeFlowTime(PauseController.PauseMode.DeletingItem);
     }
 
     private void TryUseSelectedItem()
