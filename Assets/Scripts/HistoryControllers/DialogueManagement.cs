@@ -67,15 +67,21 @@ public class DialogueManagement : MonoBehaviour
     public async void StartDialogue(string dialogueGraph)
     {
         await Task.Delay(200);
-        FeelSpeak.TriggerDialogue(FeelSpeak.GetDialogueGraph(dialogueGraph));
+
+        if (!HasActiveDialogue() && !string.IsNullOrEmpty(dialogueGraph))
+        {
+            FeelSpeak.TriggerDialogue(FeelSpeak.GetDialogueGraph(dialogueGraph));
+        }
     }
 
     public void StartDialogueOnlyOnce(string dialogueGraph)
     {
-        if (!GameController.Instance.DialogueAlreadyPlayed(dialogueGraph) && !string.IsNullOrEmpty(dialogueGraph) && !HasActiveDialogue())
+        if (!HasActiveDialogue() && !string.IsNullOrEmpty(dialogueGraph))
         {
-            StartDialogue(dialogueGraph);
-            GameController.Instance.SaveDialoguePlayed(dialogueGraph);
+            if (GameController.Instance.SaveDialoguePlayed(dialogueGraph))
+            {
+                FeelSpeak.TriggerDialogue(FeelSpeak.GetDialogueGraph(dialogueGraph));
+            }
         }
     }
 

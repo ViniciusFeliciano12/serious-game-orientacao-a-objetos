@@ -17,6 +17,7 @@ public class PauseController : MonoBehaviour
         Pause,
         SkillTree,
         GameOver,
+        DeletingItem,
         EndGame
     }
 
@@ -26,6 +27,7 @@ public class PauseController : MonoBehaviour
         GamePaused,
         SkillTree,
         GameOver,
+        DeletingItem,
         EndGame
     }
 
@@ -109,6 +111,15 @@ public class PauseController : MonoBehaviour
                     changedFlowTime = true;
                 }
                 
+                break;
+
+            case PauseMode.DeletingItem:
+                if (currentState == InternalPauseState.None || currentState == InternalPauseState.DeletingItem)
+                {
+                    currentState = (currentState == InternalPauseState.None) ? InternalPauseState.DeletingItem : InternalPauseState.None;
+                    changedFlowTime = true;
+                }
+
                 break;
 
             case PauseMode.GameOver:

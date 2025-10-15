@@ -13,7 +13,7 @@ public class CrateInteraction : Interactable
 
     public override async void Interact()
     {
-        if (Input.GetKeyDown(interactionKey) && !MainCharacterController.Instance.animator.GetCurrentAnimatorStateInfo(0).IsName("Armed_Attack"))
+        if (Input.GetKeyDown(interactionKey) && !MainCharacterController.Instance.CannotMove())
         {
             if (InventoryController.Instance.VerifyItemSelected(key.skillID, metodos: key.metodos))
             {

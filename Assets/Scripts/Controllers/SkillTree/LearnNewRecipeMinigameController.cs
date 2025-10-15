@@ -126,14 +126,16 @@ public class LearnNewRecipeMinigameController : MonoBehaviour
         }
 
         bool gameIsAlreadyWon = correctWords == propriedades.Count + metodos.Count;
-        learnButton.gameObject.SetActive(isInterface || gameIsAlreadyWon);
+
         if (gameIsAlreadyWon)
         {
             ClearArea(palavrasArea);
         }
 
         criarButton.gameObject.SetActive(false);
+        alterarButton.gameObject.SetActive(false);
         minigameArea.gameObject.SetActive(true);
+        learnButton.gameObject.SetActive(isInterface || gameIsAlreadyWon);
 
         dialogues.ForEach(item =>
         {

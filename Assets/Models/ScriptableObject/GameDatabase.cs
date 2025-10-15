@@ -96,9 +96,15 @@ public class GameDatabase : ScriptableObject
 
     #region Dialogues
 
-    public void SaveDialoguePlayed(string dialogueGraph)
+    public bool SaveDialoguePlayed(string dialogueGraph)
     {
-        dialoguesAlreadyPlayed.Add(dialogueGraph);
+        if (!DialogueAlreadyPlayed(dialogueGraph))
+        {
+            dialoguesAlreadyPlayed.Add(dialogueGraph);
+            return true;
+        }
+
+        return false;
     }
 
     public bool DialogueAlreadyPlayed(string dialogueGraph)

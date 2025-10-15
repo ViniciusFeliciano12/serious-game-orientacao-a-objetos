@@ -105,9 +105,9 @@ public class GameController : MonoBehaviour
         return Database.ReturnSkillCount();
     }
 
-    public void SaveDialoguePlayed(string dialogueGraph)
+    public bool SaveDialoguePlayed(string dialogueGraph)
     {
-        Database.SaveDialoguePlayed(dialogueGraph);
+        return Database.SaveDialoguePlayed(dialogueGraph);
     }
 
     public bool DialogueAlreadyPlayed(string dialogueGraph)
