@@ -145,11 +145,7 @@ public class InventoryController : MonoBehaviour
         GameController.Instance.AddItemDatabase(itemDatabase);
         UIController.Instance.SetTextTimeout("Ignitor criado!");
 
-        if (!GameController.Instance.DialogueAlreadyPlayed("CreateIgnitorDialogue3"))
-        {
-            DialogueManagement.Instance.StartDialogue("CreateIgnitorDialogue3");
-            GameController.Instance.SaveDialoguePlayed("CreateIgnitorDialogue3");
-        }
+        DialogueManagement.Instance.StartDialogueOnlyOnce("CreateIgnitorDialogue3");
     }
 
     private void CreateSet()
@@ -170,11 +166,7 @@ public class InventoryController : MonoBehaviour
 
         GameController.Instance.AddItemDatabase(itemDatabase);
 
-        if (!GameController.Instance.DialogueAlreadyPlayed("CreateSetDialogue3"))
-        {
-            DialogueManagement.Instance.StartDialogue("CreateSetDialogue3");
-            GameController.Instance.SaveDialoguePlayed("CreateSetDialogue3");
-        }
+        DialogueManagement.Instance.StartDialogueOnlyOnce("CreateSetDialogue3");
     }
 
     private void TryUseSelectedActiveItem()

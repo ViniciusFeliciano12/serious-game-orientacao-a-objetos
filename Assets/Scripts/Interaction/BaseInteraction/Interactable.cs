@@ -18,15 +18,9 @@ namespace EJETAGame
 
         public virtual void Interact()
         {
-            bool activeDialogue = DialogueManagement.Instance.HasActiveDialogue();
-
-            if (Input.GetKeyDown(interactionKey) && !activeDialogue && !string.IsNullOrEmpty(dialogueName))
+            if (Input.GetKeyDown(interactionKey))
             {
-                if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
-                { 
-                    DialogueManagement.Instance.StartDialogue(dialogueName);
-                    GameController.Instance.SaveDialoguePlayed(dialogueName);
-                }
+                DialogueManagement.Instance.StartDialogueOnlyOnce(dialogueName); 
             }
         }
 

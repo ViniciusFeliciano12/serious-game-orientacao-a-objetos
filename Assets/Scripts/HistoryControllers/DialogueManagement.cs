@@ -1,4 +1,5 @@
 ﻿using Esper.FeelSpeak;
+using Esper.FeelSpeak.Graph;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -67,6 +68,15 @@ public class DialogueManagement : MonoBehaviour
     {
         await Task.Delay(200);
         FeelSpeak.TriggerDialogue(FeelSpeak.GetDialogueGraph(dialogueGraph));
+    }
+
+    public void StartDialogueOnlyOnce(string dialogueGraph)
+    {
+        if (!GameController.Instance.DialogueAlreadyPlayed(dialogueGraph) && !string.IsNullOrEmpty(dialogueGraph) && !HasActiveDialogue())
+        {
+            StartDialogue(dialogueGraph);
+            GameController.Instance.SaveDialoguePlayed(dialogueGraph);
+        }
     }
 
     #region World Trigger Dialogues

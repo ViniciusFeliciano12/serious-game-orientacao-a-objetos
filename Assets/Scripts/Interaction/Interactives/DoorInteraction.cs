@@ -89,14 +89,7 @@ public class DoorInteraction : Interactable
                 return;
             }
 
-            if (!string.IsNullOrEmpty(dialogueName))
-            {
-                if (!GameController.Instance.DialogueAlreadyPlayed(dialogueName))
-                {
-                    DialogueManagement.Instance.StartDialogue(dialogueName);
-                    GameController.Instance.SaveDialoguePlayed(dialogueName);
-                }
-            }
+            DialogueManagement.Instance.StartDialogueOnlyOnce(dialogueName);
 
             if (lastDoor && isOpen)
             {
