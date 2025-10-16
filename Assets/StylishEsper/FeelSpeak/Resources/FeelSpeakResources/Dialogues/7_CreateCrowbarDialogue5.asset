@@ -27,9 +27,8 @@ MonoBehaviour:
     suppressEmotionSound: 0
     automaticNextOnComplete: 0
     automaticNextDelay: 0
-    dialogue: "Muito bem! Selecione 1 ou clique no seu p\xE9 de cabra para poder
-      usa-lo, e tente utiliza-lo para destruir a porta para come\xE7armos a fugir
-      esse lugar."
+    dialogue: "Muito bem! Selecione 1 para poder usa-lo, e tente utiliza-lo para
+      destruir a porta para come\xE7armos a fugir esse lugar."
     voiceLine: {fileID: 0}
   choiceNodes: []
   delayNodes: []

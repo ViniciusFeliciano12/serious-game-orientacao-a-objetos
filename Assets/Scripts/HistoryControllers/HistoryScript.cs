@@ -8,6 +8,7 @@ public class HistoryScript : MonoBehaviour
 {
     private TextMeshProUGUI HistoryText;
     private GameObject ContinueButton;
+    private GameObject NextButton;
     private RawImage BackgroundImage;
 
     public GameObject ControllersPanel;
@@ -27,8 +28,10 @@ public class HistoryScript : MonoBehaviour
         if (HistoryPanel != null)
         {
             ContinueButton = HistoryPanel.transform.Find("Iniciar Jogo").gameObject;
+            NextButton = HistoryPanel.transform.Find("Next").gameObject;
             HistoryText = HistoryPanel.transform.Find("TextHistory").GetComponent<TextMeshProUGUI>();
             BackgroundImage = HistoryPanel.transform.Find("BackgroundImage").GetComponent<RawImage>();
+            NextButton.SetActive(false);
             ContinueButton.SetActive(false);
             HistoryPanel.SetActive(false);
         }
@@ -39,23 +42,23 @@ public class HistoryScript : MonoBehaviour
 
     }
 
-    public void StartHistory()
+    public async void StartHistory()
     {
         ControllersPanel.SetActive(false);
         HistoryPanel.SetActive(true);
-        _ = ShowTextAsync();
+        await MostrarHistoria("Escutem, pois vos conto uma história esquecida pelos homens e observada pelos céus.\r\n\r\nHá eras incontáveis, " +
+         "quando o mundo ainda era jovem, um reino se ergueu sobre as ruínas de um antigo conflito. Seu rei, herdeiro de linhagens enfraquecidas, " +
+         "temeu a sombra da ruína que se aproximava.\r\n\r\nEm desespero, ele fez uma promessa a um poder sombrio. Ofereceu o que tinha de mais " +
+         "precioso: a felicidade de sua família e a confiança de seu povo. Assim, selou um pacto com o Abismo. E em resposta, não recebeu ouro nem glória, " +
+         "mas um filhote de besta: um Minotauro.\r\n\r\nA criatura cresceu, movida por uma fúria incontrolável e um poder avassalador. Sob seu comando, o rei venceu " +
+         "desafios impossíveis e expandiu seu domínio. O reino prosperou… mas seu líder se tornou um tirano.", "BackgroundImages/minotaur");
+
+        NextButton.SetActive(true);
     }
 
-    async Task ShowTextAsync()
+    public async void NextButtonClicked()
     {
-        await MostrarHistoria("Escutem, pois vos conto uma história esquecida pelos homens e observada pelos céus.\r\n\r\nHá eras incontáveis, " +
-        "quando o mundo ainda era jovem, um reino se ergueu sobre as ruínas de um antigo conflito. Seu rei, herdeiro de linhagens enfraquecidas, " +
-        "temeu a sombra da ruína que se aproximava.\r\n\r\nEm desespero, ele fez uma promessa a um poder sombrio. Ofereceu o que tinha de mais " +
-        "precioso: a felicidade de sua família e a confiança de seu povo. Assim, selou um pacto com o Abismo. E em resposta, não recebeu ouro nem glória, " +
-        "mas um filhote de besta: um Minotauro.\r\n\r\nA criatura cresceu, movida por uma fúria incontrolável e um poder avassalador. Sob seu comando, o rei venceu " +
-        "desafios impossíveis e expandiu seu domínio. O reino prosperou… mas seu líder se tornou um tirano.", "BackgroundImages/minotaur");
-
-        await Task.Delay(1000);
+        NextButton.SetActive(false);
 
         HistoryText.text = "";
 

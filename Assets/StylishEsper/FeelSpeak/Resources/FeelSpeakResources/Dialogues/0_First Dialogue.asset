@@ -158,8 +158,8 @@ MonoBehaviour:
     suppressEmotionSound: 0
     automaticNextOnComplete: 0
     automaticNextDelay: 0
-    dialogue: "Os deuses te inspiraram com sua coragem, e agora, voc\xEA ser\xE1
-      finalmente aben\xE7oado para terminar sua tarefa."
+    dialogue: "Os deuses te deram coragem para desafiar o tirano, e agora, voc\xEA
+      ser\xE1 finalmente aben\xE7oado para terminar sua tarefa."
     voiceLine: {fileID: 0}
   - graphId: 0
     id: 7
