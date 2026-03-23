@@ -123,7 +123,17 @@ Assets/
 
 ---
 
-## Como Executar
+## Como jogar em windows
+
+### Passos
+
+- [Clique aqui para ir até os releases](https://github.com/ViniciusFeliciano12/serious-game-orientacao-a-objetos/releases)
+- Selecione a versão mais recente 
+- Baixe o arquivo Objetifica.7z 
+- Extraia o arquivo, navegue até a pasta build e execute "serious game orientacao a objetos.exe"
+
+
+## Como Executar o Projeto
 
 ### Pré-requisitos
 
