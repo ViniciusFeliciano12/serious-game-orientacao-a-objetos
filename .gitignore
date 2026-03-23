@@ -47,6 +47,14 @@ referencemap.xml
 Assets/EditorSaves/
 
 # ===========================
+# Arquivos comprimidos / builds exportadas
+# ===========================
+*.7z
+*.zip
+*.rar
+*.tar.gz
+
+# ===========================
 # Sistema operacional
 # ===========================
 .DS_Store
