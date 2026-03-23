@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/github/tcc/serious-game-orientacao-a-objetos -name GameDatabase* -o -name *SkillEnumerator*)"
+    ]
+  }
+}

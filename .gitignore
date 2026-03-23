@@ -1,8 +1,65 @@
-# Ignorar outros arquivos ou pastas desnecessárias
+# ===========================
+# Unity gerados automaticamente
+# ===========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+
+# Arquivos de asset importados pelo Unity (regenerados ao abrir)
+*.pidb
+*.booproj
+*.svd
+*.userprefs
+*.unityproj
+
+# Soluções e projetos C# gerados pelo Unity
+*.csproj
+*.sln
+*.suo
+*.user
+
+# ===========================
+# Visual Studio / IDE
+# ===========================
+.vs/
+.vsconfig
+UpgradeLog*.htm
+
+# ===========================
+# Arquivos gerados pelo MSBuild / Roslyn
+# ===========================
+referenceType2File.xml
+referencemap.xml
+
+# ===========================
+# VSCode (opcional — manter apenas se quiser compartilhar config de editor)
+# ===========================
+# .vscode/
+
+# ===========================
+# Saves locais do editor
+# ===========================
+Assets/EditorSaves/
+
+# ===========================
+# Sistema operacional
+# ===========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ===========================
+# Arquivos de crash/diagnóstico
+# ===========================
+sysinfo.txt
+crashlytics-build.properties
+
+# ===========================
+# Git interno
+# ===========================
 .git/
-Library/
-Logs/
-Temp/
-UserSettings/
-cuzcuz.sln
-Build/
