@@ -152,7 +152,7 @@ Assets/
 | | |
 |---|---|
 | **Instituição** | Universidade Tecnológica Federal do Paraná — UTFPR |
-| **Curso** | Engenharia de Software |
+| **Curso** | Ciência da Computação |
 | **Trabalho** | Trabalho de Conclusão de Curso (TCC) |
 | **Aluno** | Vinicius Otávio Feliciano |
 | **Orientador** | Prof. Dr. Jorge Aikes Junior |
